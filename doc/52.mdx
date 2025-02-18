@@ -1,0 +1,45 @@
+<Update label="Anaconda 1.6.0 (Jun 21, 2013)" description="">
+    Highlights:
+    
+    * the “Launcher”, which allows users to start up applications
+    * conda has now the ability to build conda packages, which can be
+      uploaded to binstar.org
+    * conda now uses a SAT solver to solve the install dependency problem
+    
+    Enhancements:
+    
+    * added a .pkg installer for macOS, such that installing Anaconda does
+      not require command line access
+    * create copy of .bashrc (.bash\_profile on macOS) before appending the PATH
+      setting upon install
+    * Windows Menu items should are now installed system wide
+    
+    Fixes:
+    
+    * removed Lib/test/testbz2\_bigmem.bz2 from Windows, this (harmless) file
+      was triggering Trojan-ArcBomb.BZip.Agent warning, see:
+      `<http://bugs.python.org/issue17843>`
+    * json.decoder in Python 2.7 standard library not using .decode(‘hex’),
+      this was (mysteriously) causing install problems on macOS
+    * fixed PIL.\_imagetk on Linux
+    
+    Updated:
+    
+    * python from 2.7.4 to 2.7.5, and 3.3.1 to 3.3.2
+    * conda from 1.5.2 to 1.7.1
+    * numba from 0.8.1 to 0.9.0
+    * requests from 1.2.0 to 1.2.3
+    
+    Added:
+    
+    * launcher 0.1.1
+    * binstar 0.1.1
+    * itsdangerous 0.21
+    * keyring 1.4
+    * llvmmath 0.1.0
+    * pep8 1.4.5
+    * pywin32 218.4 on Windows
+    
+    
+    
+</Update>

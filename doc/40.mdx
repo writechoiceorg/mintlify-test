@@ -1,0 +1,357 @@
+<Update label="Anaconda 2.3.0 (Jul 02, 2015)" description="">
+    Highlights:
+    
+    * updates to 60 packages, including Python 2.7.10 and Pandas 0.16.2
+    * support for signed packages in conda
+    
+    Fixes:
+    
+    * fixed the extra space in IPython terminal being created when typing the
+      tab key on Linux
+    * added missing zope.interface.common sub-package
+    * fixed Sphinx package being included in Spyder package
+    
+    Enhancements:
+    
+    * added support for signed packages in conda
+    * added curl on Windows, and kerberos authentication support
+    * added Windows support for libnetcdf and hdf5
+    * split gdal into libgdal and gdal (python-bindings)
+    
+    Known issues:
+    
+    * when opening some HDF5 files, pytables will crash on Windows and Python 3
+    
+    Major package updates:
+    
+    * bokeh from 0.8.1 to 0.9.0
+    * conda from 3.10.0 to 3.14.1
+    * conda-build from 1.11.0 to 1.14.1
+    * conda-env from 2.1.3 to 2.2.3
+    * ipython from 3.0.0 to 3.2.0
+    * numba from 0.17.0 to 0.19.1
+    * pandas from 0.15.2 to 0.16.2
+    * pillow from 2.7.0 to 2.8.2
+    * python from 2.7.9 to 2.7.10
+    * requests from 2.6.0 to 2.7.0
+    * scikit-image from 0.11.2 to 0.11.3
+    * scikit-learn from 0.15.2 to 0.16.1
+    * spyder from 2.3.4 to 2.3.5.2
+    
+    
+    <Accordion title="Packages">
+    
+     <Tabs>
+     <Tab title="Python 3.4">
+     
+     
+     | Name | Version | Summary / License |
+     | --- | --- | --- |
+     | [abstract-rendering](https://github.com/JosephCottam/AbstractRendering) Linux Mac | 0.5.1 | Rendering as a binning process / 3-clause BSD |
+     | [alabaster](https://github.com/bitprophet/alabaster) | 0.7.3 | A configurable sidebar-enabled Sphinx theme / BSD |
+     | [appscript](http://appscript.sourceforge.net/) Mac | 1.0.1 | Control AppleScriptable applications from Python / Public-Domain |
+     | [argcomplete](https://github.com/kislyuk/argcomplete) | 0.8.9 | Bash tab completion for argparse. Tab complete all the things! / Apache |
+     | [astropy](http://www.astropy.org/) | 1.0.3 | Community-developed python astronomy tools / BSD |
+     | [babel](http://babel.pocoo.org/) | 1.3 | Internationalization utilities / BSD |
+     | [bcolz](https://github.com/Blosc/bcolz) | 0.9.0 | columnar and compressed data containers. / BSD |
+     | [beautiful-soup](http://www.crummy.com/software/BeautifulSoup/) | 4.3.2 | Screen-scraping library / PSF, MIT |
+     | [binstar](http://binstar.org) | 0.11.0 | Binstar command line client library / BSD |
+     | [bitarray](https://github.com/ilanschnell/bitarray) | 0.8.1 | efficient arrays of booleans – C extension / PSF |
+     | [blaze-core](http://blaze.pydata.org) | 0.8.0 | Blaze is the next generation of NumPy / BSD |
+     | [blz](https://github.com/ContinuumIO/blz) | 0.6.2 | a compressed data container / BSD |
+     | [bokeh](https://github.com/ContinuumIO/Bokeh) | 0.9.0 | Statistical and novel interactive HTML plots for Python / 3-clause BSD |
+     | [boto](https://github.com/boto/boto/) | 2.38.0 | Amazon Web Services Library / MIT |
+     | [bottleneck](http://berkeleyanalytics.com/bottleneck) | 1.0.0 | Fast NumPy array functions written in Cython. / Simplified BSD |
+     | [certifi](http://python-requests.org) | 14.05.14 | Python package for providing Mozilla’s CA Bundle. / ISC |
+     | [cffi](http://cffi.readthedocs.org) | 1.1.0 | Foreign Function Interface for Python calling C code / MIT |
+     | [clyent](https://github.com/binstar/clyent) | 0.3.4 | Command line client Library for windows and posix / BSD |
+     | [colorama](http://code.google.com/p/colorama/) | 0.3.3 | Cross-platform colored terminal text. / BSD |
+     | [conda](http://conda.pydata.org/) | 3.14.1 | cross-platform, Python-agnostic binary package manager / BSD |
+     | [conda-build](https://github.com/conda/conda-build) | 1.14.1 | Commands and tools for building conda packages / BSD |
+     | [conda-env](https://github.com/conda/conda-env/) | 2.2.3 | Provides a unified interface to dealing with Conda environments. / BSD |
+     | [configobj](http://www.voidspace.org.uk/python/configobj.html) | 5.0.6 | Config file reading, writing and validation / BSD |
+     | [cryptography](https://github.com/pyca/cryptography) | 0.9.1 | provides cryptographic recipes and primitives to Python developers / Apache |
+     | [curl](http://curl.haxx.se/) | 7.43.0 | tool and library for transferring data with URL syntax / MIT/X derivate |
+     | [cython](http://www.cython.org/) | 0.22.1 | The Cython compiler for writing C extensions for the Python language / Apache |
+     | [cytoolz](https://github.com/pytoolz/cytoolz) | 0.7.3 | Cython implementation of Toolz, high performance functional utilities / BSD |
+     | [datashape](https://github.com/ContinuumIO/datashape) | 0.4.5 | A data description language / BSD |
+     | [decorator](http://pypi.python.org/pypi/decorator) | 3.4.2 | Better living through Python with decorators / BSD |
+     | [docutils](http://docutils.sourceforge.net) | 0.12 | Utilities for general- and special-purpose documentation / Public-Domain, PSF, 2-clause BSD, GPLv3 |
+     | [dynd-python](https://github.com/ContinuumIO/dynd-python) | 0.6.5 | Python exposure of the DyND dynamic multi-dimensional array library / BSD |
+     | [fastcache](https://github.com/pbrady/fastcache) | 1.0.2 | C implementation of Python 3 functools.lru\_cache / MIT |
+     | [flask](http://flask.pocoo.org/) | 0.10.1 | A microframework based on Werkzeug, Jinja2 and good intentions / BSD |
+     | [fontconfig](http://www.freedesktop.org/wiki/Software/fontconfig/) Linux | 2.11.1 | Fontconfig is a library for configuring and customizing font access / BSD |
+     | [freetype](http://freetype.sourceforge.net/index2.html) Linux Mac | 2.5.2 | A Free, High-Quality, and Portable Font Engine / FreeType License |
+     | [greenlet](http://pypi.python.org/pypi/greenlet/) | 0.4.7 | Lightweight in-process concurrent programming / MIT |
+     | [h5py](http://code.google.com/p/h5py/) | 2.5.0 | Read and write HDF5 files from Python. / 3-clause BSD |
+     | [hdf5](http://www.hdfgroup.org/HDF5/) | 1.8.15.1 | HDF5 is a data model, library, and file format for storing and managing data / BSD-like |
+     | [idna](https://github.com/kjd/idna) | 2.0 | Internationalized Domain Names in Applications / BSD |
+     | [ipython](http://ipython.org/) | 3.2.0 | Productive Interactive Computing / BSD |
+     | [itsdangerous](http://github.com/mitsuhiko/itsdangerous) | 0.24 | Various helpers to pass trusted data to untrusted environments and back. / BSD |
+     | [jdcal](http://github.com/phn/jdcal) | 1.0 | Julian dates from proleptic Gregorian and Julian calendars. / BSD |
+     | [jedi](https://github.com/davidhalter/jedi) | 0.8.1 | / MIT |
+     | [jinja2](http://jinja.pocoo.org/docs/) | 2.7.3 | An easy to use stand-alone template engine written in pure python. / BSD |
+     | [jpeg](http://www.ijg.org/) Linux Mac | 8d | read/write jpeg COM, EXIF, IPTC medata / Custom free software license |
+     | [jsonschema](http://github.com/Julian/jsonschema) | 2.4.0 | An implementation of JSON Schema validation for Python / MIT |
+     | [launcher](None) Mac Windows | 1.0.0 | Anaconda’s application launcher / proprietary - Continuum Analytics, Inc. |
+     | [libdynd](https://github.com/libdynd/dynd-python) Linux Mac | 0.6.5 | Python exposure of DyND / BSD |
+     | [libffi](https://github.com/atgreen/libffi) Linux | 3.0.13 | A portable foreign-function interface library / MIT |
+     | [libpng](http://www.libpng.org/pub/png/libpng.html) Linux Mac | 1.6.17 | libpng is the official PNG reference library / libpng license |
+     | [libsodium](http://libsodium.org) Linux Mac | 0.4.5 | a modern software library for encryption, signatures, password hashing, etc. / MIT |
+     | [libtiff](http://www.libtiff.org/) Linux Mac | 4.0.2 | PyLibTiff: a Python tiff library / BSD-like |
+     | [libxml2](http://xmlsoft.org/) Linux Mac | 2.9.2 | The XML C parser and toolkit of Gnome / MIT |
+     | [libxslt](http://xmlsoft.org/) Linux Mac | 1.1.28 | Libxslt is the XSLT C library developed for the GNOME project / MIT |
+     | [llvmlite](https://github.com/numba/llvmlite) | 0.5.0 | lightweight wrapper around basic LLVM functionality / BSD |
+     | [lxml](http://lxml.de/) | 3.4.4 | XML processing library combining libxml2/libxslt with the ElementTree API / BSD |
+     | [markupsafe](http://github.com/mitsuhiko/markupsafe) | 0.23 | Implements a XML/HTML/XHTML Markup safe string for Python / BSD |
+     | [matplotlib](http://matplotlib.sourceforge.net/) | 1.4.3 | Python plotting package / PSF-based |
+     | [menuinst](https://github.com/ContinuumIO/menuinst) Windows | 1.0.4 | cross platform install of menu items / BSD |
+     | [mistune](https://github.com/lepture/mistune) | 0.5.1 | The fastest markdown parser in pure Python with renderer feature / BSD |
+     | [mock](http://www.voidspace.org.uk/python/mock/) | 1.0.1 | A Python Mocking and Patching Library for Testing / BSD |
+     | [multipledispatch](http://github.com/mrocklin/multipledispatch/) | 0.4.7 | Multiple dispatch / BSD |
+     | [networkx](http://networkx.lanl.gov/) | 1.9.1 | Python package for creating and manipulating graphs and networks / BSD |
+     | [nltk](http://nltk.org/) | 3.0.3 | Natural Language Toolkit / Apache |
+     | [node-webkit](https://github.com/rogerwang/node-webkit) Mac Windows | 0.10.1 | calls Node.js modules from DOM and enables a new way of writing applications / MIT |
+     | [nose](http://readthedocs.org/docs/nose/) | 1.3.7 | nose extends unittest to make testing easier / LGPL |
+     | [numba](http://continuum.io/developer-resources.html) | 0.19.1 | compiling Python code using LLVM / BSD |
+     | [numexpr](https://github.com/pydata/numexpr) | 2.4.3 | Fast numerical expression evaluator for NumPy / MIT |
+     | [numpy](http://numpy.scipy.org/) | 1.9.2 | array processing for numbers, strings, records, and objects. / BSD |
+     | [odo](http://odo.pydata.org/en/latest/) | 0.3.2 | Data Migration for Blaze Project / BSD |
+     | [openpyxl](http://openpyxl.readthedocs.org) | 1.8.5 | A Python library to read/write Excel 2007 xlsx/xlsm files / MIT |
+     | [openssl](http://www.openssl.org/) Linux Mac | 1.0.1k | OpenSSL is an open-source implementation of the SSL and TLS protocols / Apache-style |
+     | [pandas](http://pandas.pydata.org/) | 0.16.2 | Powerful data structures for data analysis, time series,and statistics / BSD |
+     | [patsy](https://github.com/pydata/patsy) | 0.3.0 | a library for describing statistical models and building design matrices. / BSD |
+     | [pep8](http://pep8.readthedocs.org/) | 1.6.2 | Python style guide checker / MIT |
+     | [pillow](http://python-pillow.github.io/) | 2.8.2 | Python Imaging Library (Fork) / PIL license |
+     | [pip](http://www.pip-installer.org/) | 7.0.3 | PyPA recommended tool for installing Python packages / MIT |
+     | [ply](http://www.dabeaz.com/ply/) | 3.6 | Python Lex & Yacc / BSD |
+     | [psutil](https://github.com/giampaolo/psutil) | 2.2.1 | A cross-platform process and system utilities module for Python / BSD |
+     | [ptyprocess](https://github.com/pexpect/ptyprocess) Linux Mac | 0.4 | Run a subprocess in a pseudo terminal / ISC |
+     | [py](http://pylib.readthedocs.org/en/latest/) | 1.4.27 | library with cross-python path, ini-parsing, io, code, log facilities / MIT |
+     | [pyasn1](http://sourceforge.net/projects/pyasn1/) | 0.1.7 | Offline IP address to Autonomous System Number lookup module / BSD |
+     | [pycosat](https://github.com/ilanschnell/pycosat) | 0.6.1 | bindings to picosat (a SAT solver) / MIT |
+     | [pycparser](https://github.com/eliben/pycparser) | 2.14 | C parser in Python / BSD |
+     | [pycrypto](http://www.pycrypto.org/) | 2.6.1 | Cryptographic modules for Python. / Public-Domain |
+     | [pycurl](http://pycurl.sourceforge.net/) Linux Mac | 7.19.5.1 | PycURL – cURL library module for Python / LGPL, MIT |
+     | [pyflakes](https://launchpad.net/pyflakes) | 0.9.2 | passive checker of Python programs / MIT |
+     | [pygments](http://pygments.org/) | 2.0.2 | Pygments is a syntax highlighting package written in Python / BSD |
+     | [pyopenssl](https://github.com/pyca/pyopenssl) | 0.15.1 | Python wrapper module around the OpenSSL library / Apache |
+     | [pyparsing](http://pyparsing.wikispaces.com/) | 2.0.3 | Python parsing module / MIT |
+     | [pyqt](http://www.riverbankcomputing.co.uk/software/pyqt) | 4.11.3 | PyQt is a Python binding of the cross-platform GUI toolkit Qt / Commercial, GPLv2, GPLv3 |
+     | [pyreadline](http://ipython.org/pyreadline.html) Windows | 2.0 | A python implmementation of GNU readline. / BSD |
+     | [pytables](http://www.pytables.org) | 3.2.0 | brings together Python, HDF5 and NumPy to easily handle large amounts of data / BSD |
+     | [pytest](http://pytest.org/) | 2.7.1 | simple powerful testing with Python / MIT |
+     | [python](http://www.python.org/) | 3.4.3 | general purpose programming language / PSF |
+     | [python-dateutil](https://dateutil.readthedocs.org/) | 2.4.2 | Extensions to the standard Python datetime module / BSD |
+     | [pytz](http://pytz.sourceforge.net/) | 2015.4 | World timezone definitions, modern and historical / MIT |
+     | [pywin32](https://pypi.python.org/pypi/pywin32) Windows | 219 | Python extensions for Windows / PSF |
+     | [pyyaml](http://pyyaml.org/wiki/PyYAML) | 3.11 | YAML parser and emitter for Python / MIT |
+     | [pyzmq](https://github.com/zeromq/pyzmq) | 14.7.0 | zeromq bindings for Python / LGPL and BSD |
+     | [qt](http://qt-project.org) Linux Mac | 4.8.6 | Qt is a cross-platform application and UI framework / LGPL |
+     | [readline](http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html) Linux Mac | 6.2 | provides line-editing and for programs with a command-line interface / GPL3 |
+     | [redis](http://redis.io/download/) Linux Mac | 2.6.9 | Redis is an open source, BSD licensed, advanced key-value cache and store / 3-clause BSD |
+     | [redis-py](https://github.com/andymccurdy/redis-py/) Linux Mac | 2.10.3 | Redis Python Client / MIT |
+     | [requests](http://docs.python-requests.org/en/latest/index.html) | 2.7.0 | Python HTTP for Humans / Apache |
+     | [rope](http://rope.sourceforge.net/) | 0.9.4 | a python refactoring library / GPL |
+     | [runipy](https://github.com/paulgb/runipy) | 0.1.3 | Run IPython notebooks from the command line / BSD |
+     | [scikit-image](http://scikit-image.org/) | 0.11.3 | Image processing routines for SciPy / 3-clause BSD |
+     | [scikit-learn](http://scikit-learn.org/stable/) | 0.16.1 | A set of python modules for machine learning and data mining / 3-clause BSD |
+     | [scipy](http://www.scipy.org/) | 0.15.1 | Scientific Library for Python / BSD |
+     | [setuptools](https://pypi.python.org/pypi/setuptools) | 17.1.1 | Easily download, build, install, upgrade, and uninstall Python packages / PSF or ZPL |
+     | [sip](http://www.riverbankcomputing.com/software/sip/intro) Linux Mac | 4.16.5 | / GPL3 |
+     | [six](http://pypi.python.org/pypi/six/) | 1.9.0 | Python 2 and 3 compatibility utilities / MIT |
+     | [snowballstemmer](https://github.com/shibukawa/snowball_py) | 1.2.0 | provides 16 stemmer algorithms generated from Snowball algorithms / BSD |
+     | [sockjs-tornado](http://github.com/mrjoes/sockjs-tornado/) | 1.0.1 | SockJS python server implementation on top of Tornado framework / MIT |
+     | [sphinx](http://sphinx-doc.org) | 1.3.1 | Python documentation generator / BSD |
+     | [sphinx\_rtd\_theme](https://github.com/snide/sphinx_rtd_theme/) | 0.1.7 | ReadTheDocs.org theme for Sphinx / BSD |
+     | [spyder](https://github.com/spyder-ide/spyder) | 2.3.5.2 | Scientific PYthon Development EnviRonment / MIT |
+     | [sqlalchemy](http://www.sqlalchemy.org/) | 1.0.5 | Database Abstraction Library / MIT |
+     | [sqlite](http://www.sqlite.org/) Linux Mac | 3.8.4.1 | implements a self-contained, zero-configuration, SQL database engine / Public-Domain |
+     | [statsmodels](http://statsmodels.sourceforge.net/) | 0.6.1 | Statistical computations and models for use with SciPy / 3-clause BSD |
+     | [sympy](http://sympy.org) | 0.7.6 | SymPy is a Python library for symbolic mathematics / 3-clause BSD |
+     | [terminado](https://github.com/takluyver/terminado) Linux Mac | 0.5 | Terminals served to term.js using Tornado websockets / BSD |
+     | [theano](http://deeplearning.net/software/theano/) Linux | 0.7.0 | Optimizing compiler for evaluating mathematical expressions on CPUs and GPUs / BSD |
+     | [tk](http://www.tcl.tk/) Linux Mac | 8.5.18 | powerful but easy to learn dynamic programming language / BSD-like |
+     | [toolz](http://toolz.readthedocs.org/en/latest/) | 0.7.2 | List processing tools and functional utilities / BSD |
+     | [tornado](http://www.tornadoweb.org/) | 4.2 | Tornado is a Python web framework and asynchronous networking library / Apache |
+     | [ujson](http://www.esn.me/) | 1.33 | Ultra fast JSON encoder and decoder for Python / BSD |
+     | [util-linux](http://freecode.com/projects/util-linux) Linux | 2.21 | Util-linux is a suite of essential utilities for any Linux system / GPL2 |
+     | [werkzeug](http://werkzeug.pocoo.org/) | 0.10.4 | The Swiss Army knife of Python web development / BSD |
+     | [xlrd](http://www.lexicon.net/sjmachin/xlrd.htm) | 0.9.3 | Library for developers to extract data from Microsoft Excel spreadsheet files / BSD |
+     | [xlsxwriter](https://github.com/jmcnamara/XlsxWriter) | 0.7.3 | A Python module for creating Excel XLSX files / BSD |
+     | [xlwings](http://xlwings.org/) Mac Windows | 0.3.5 | Make Excel fly. Interact with Excel from Python and vice versa / 3-clause BSD |
+     | [xlwt](http://www.python-excel.org/) | 1.0.0 | writing data and formatting information to Excel files / BSD |
+     | [xz](http://tukaani.org/xz/) Linux Mac | 5.0.5 | a free general-purpose data compression software with high compression ratio / Public-Domain, GPL |
+     | [yaml](http://www.yaml.org/) Linux Mac | 0.1.6 | a human friendly data serialization standard for all programming languages / MIT |
+     | [zeromq](http://zeromq.org) Linux Mac | 4.0.5 | a messaging system, or “message-oriented middleware” / LGPL |
+     | [zlib](http://zlib.net/) | 1.2.8 | A Massively Spiffy Yet Delicately Unobtrusive Compression Library / zlib |
+     
+     
+     
+     </Tab>
+     
+     <Tab title="Python 2.7">
+     
+     
+     | Name | Version | Summary / License |
+     | --- | --- | --- |
+     | [abstract-rendering](https://github.com/JosephCottam/AbstractRendering) Linux Mac | 0.5.1 | Rendering as a binning process / 3-clause BSD |
+     | [alabaster](https://github.com/bitprophet/alabaster) | 0.7.3 | A configurable sidebar-enabled Sphinx theme / BSD |
+     | [appscript](http://appscript.sourceforge.net/) Mac | 1.0.1 | Control AppleScriptable applications from Python / Public-Domain |
+     | [argcomplete](https://github.com/kislyuk/argcomplete) | 0.8.9 | Bash tab completion for argparse. Tab complete all the things! / Apache |
+     | [astropy](http://www.astropy.org/) | 1.0.3 | Community-developed python astronomy tools / BSD |
+     | [babel](http://babel.pocoo.org/) | 1.3 | Internationalization utilities / BSD |
+     | [bcolz](https://github.com/Blosc/bcolz) | 0.9.0 | columnar and compressed data containers. / BSD |
+     | [beautiful-soup](http://www.crummy.com/software/BeautifulSoup/) | 4.3.2 | Screen-scraping library / PSF, MIT |
+     | [binstar](http://binstar.org) | 0.11.0 | Binstar command line client library / BSD |
+     | [bitarray](https://github.com/ilanschnell/bitarray) | 0.8.1 | efficient arrays of booleans – C extension / PSF |
+     | [blaze-core](http://blaze.pydata.org) | 0.8.0 | Blaze is the next generation of NumPy / BSD |
+     | [blz](https://github.com/ContinuumIO/blz) | 0.6.2 | a compressed data container / BSD |
+     | [bokeh](https://github.com/ContinuumIO/Bokeh) | 0.9.0 | Statistical and novel interactive HTML plots for Python / 3-clause BSD |
+     | [boto](https://github.com/boto/boto/) | 2.38.0 | Amazon Web Services Library / MIT |
+     | [bottleneck](http://berkeleyanalytics.com/bottleneck) | 1.0.0 | Fast NumPy array functions written in Cython. / Simplified BSD |
+     | [cairo](http://cairographics.org/) Linux | 1.12.18 | Cairo is a 2D graphics library with support for multiple output devices. / LGPL 2.1, MPL 1.1 |
+     | [cdecimal](http://www.bytereef.org/mpdecimal/index.html) | 2.3 | Fast drop-in replacement for decimal.py / BSD |
+     | [certifi](http://python-requests.org) | 14.05.14 | Python package for providing Mozilla’s CA Bundle. / ISC |
+     | [cffi](http://cffi.readthedocs.org) | 1.1.0 | Foreign Function Interface for Python calling C code / MIT |
+     | [clyent](https://github.com/binstar/clyent) | 0.3.4 | Command line client Library for windows and posix / BSD |
+     | [colorama](http://code.google.com/p/colorama/) | 0.3.3 | Cross-platform colored terminal text. / BSD |
+     | [conda](http://conda.pydata.org/) | 3.14.1 | cross-platform, Python-agnostic binary package manager / BSD |
+     | [conda-build](https://github.com/conda/conda-build) | 1.14.1 | Commands and tools for building conda packages / BSD |
+     | [conda-env](https://github.com/conda/conda-env/) | 2.2.3 | Provides a unified interface to dealing with Conda environments. / BSD |
+     | [configobj](http://www.voidspace.org.uk/python/configobj.html) | 5.0.6 | Config file reading, writing and validation / BSD |
+     | [cryptography](https://github.com/pyca/cryptography) | 0.9.1 | provides cryptographic recipes and primitives to Python developers / Apache |
+     | [curl](http://curl.haxx.se/) | 7.43.0 | tool and library for transferring data with URL syntax / MIT/X derivate |
+     | [cython](http://www.cython.org/) | 0.22.1 | The Cython compiler for writing C extensions for the Python language / Apache |
+     | [cytoolz](https://github.com/pytoolz/cytoolz) | 0.7.3 | Cython implementation of Toolz, high performance functional utilities / BSD |
+     | [datashape](https://github.com/ContinuumIO/datashape) | 0.4.5 | A data description language / BSD |
+     | [decorator](http://pypi.python.org/pypi/decorator) | 3.4.2 | Better living through Python with decorators / BSD |
+     | [docutils](http://docutils.sourceforge.net) | 0.12 | Utilities for general- and special-purpose documentation / Public-Domain, PSF, 2-clause BSD, GPLv3 |
+     | [dynd-python](https://github.com/ContinuumIO/dynd-python) | 0.6.5 | Python exposure of the DyND dynamic multi-dimensional array library / BSD |
+     | [enum34](https://pypi.python.org/pypi/enum34) | 1.0.4 | Robust enumerated type support in Python / BSD |
+     | [fastcache](https://github.com/pbrady/fastcache) | 1.0.2 | C implementation of Python 3 functools.lru\_cache / MIT |
+     | [flask](http://flask.pocoo.org/) | 0.10.1 | A microframework based on Werkzeug, Jinja2 and good intentions / BSD |
+     | [fontconfig](http://www.freedesktop.org/wiki/Software/fontconfig/) Linux | 2.11.1 | Fontconfig is a library for configuring and customizing font access / BSD |
+     | [freetype](http://freetype.sourceforge.net/index2.html) Linux Mac | 2.5.2 | A Free, High-Quality, and Portable Font Engine / FreeType License |
+     | [funcsigs](http://funcsigs.readthedocs.org/) | 0.4 | Python function signatures from PEP362 for Python 2.6, 2.7 and 3.2+ / Apache |
+     | [gevent](http://www.gevent.org/) | 1.0.1 | Coroutine-based network library / MIT |
+     | [gevent-websocket](https://bitbucket.org/Jeffrey/gevent-websocket) | 0.9.3 | Websocket handler for the gevent pywsgi server, a Python network library / Apache |
+     | [greenlet](http://pypi.python.org/pypi/greenlet/) | 0.4.7 | Lightweight in-process concurrent programming / MIT |
+     | [grin](http://pypi.python.org/pypi/grin) | 1.2.1 | A grep program configured the way I like it / BSD |
+     | [h5py](http://code.google.com/p/h5py/) | 2.5.0 | Read and write HDF5 files from Python. / 3-clause BSD |
+     | [hdf5](http://www.hdfgroup.org/HDF5/) | 1.8.15.1 | HDF5 is a data model, library, and file format for storing and managing data / BSD-like |
+     | [idna](https://github.com/kjd/idna) | 2.0 | Internationalized Domain Names in Applications / BSD |
+     | [ipaddress](https://github.com/phihag/ipaddress) | 1.0.7 | IPv4/IPv6 manipulation library / PSF |
+     | [ipython](http://ipython.org/) | 3.2.0 | Productive Interactive Computing / BSD |
+     | [itsdangerous](http://github.com/mitsuhiko/itsdangerous) | 0.24 | Various helpers to pass trusted data to untrusted environments and back. / BSD |
+     | [jdcal](http://github.com/phn/jdcal) | 1.0 | Julian dates from proleptic Gregorian and Julian calendars. / BSD |
+     | [jedi](https://github.com/davidhalter/jedi) | 0.8.1 | / MIT |
+     | [jinja2](http://jinja.pocoo.org/docs/) | 2.7.3 | An easy to use stand-alone template engine written in pure python. / BSD |
+     | [jpeg](http://www.ijg.org/) Linux Mac | 8d | read/write jpeg COM, EXIF, IPTC medata / Custom free software license |
+     | [jsonschema](http://github.com/Julian/jsonschema) | 2.4.0 | An implementation of JSON Schema validation for Python / MIT |
+     | [launcher](None) Mac Windows | 1.0.0 | Anaconda’s application launcher / proprietary - Continuum Analytics, Inc. |
+     | [libdynd](https://github.com/libdynd/dynd-python) Linux Mac | 0.6.5 | Python exposure of DyND / BSD |
+     | [libffi](https://github.com/atgreen/libffi) Linux | 3.0.13 | A portable foreign-function interface library / MIT |
+     | [libpng](http://www.libpng.org/pub/png/libpng.html) Linux Mac | 1.6.17 | libpng is the official PNG reference library / libpng license |
+     | [libsodium](http://libsodium.org) Linux Mac | 0.4.5 | a modern software library for encryption, signatures, password hashing, etc. / MIT |
+     | [libtiff](http://www.libtiff.org/) Linux Mac | 4.0.2 | PyLibTiff: a Python tiff library / BSD-like |
+     | [libxml2](http://xmlsoft.org/) Linux Mac | 2.9.2 | The XML C parser and toolkit of Gnome / MIT |
+     | [libxslt](http://xmlsoft.org/) Linux Mac | 1.1.28 | Libxslt is the XSLT C library developed for the GNOME project / MIT |
+     | [llvmlite](https://github.com/numba/llvmlite) | 0.5.0 | lightweight wrapper around basic LLVM functionality / BSD |
+     | [lxml](http://lxml.de/) | 3.4.4 | XML processing library combining libxml2/libxslt with the ElementTree API / BSD |
+     | [markupsafe](http://github.com/mitsuhiko/markupsafe) | 0.23 | Implements a XML/HTML/XHTML Markup safe string for Python / BSD |
+     | [matplotlib](http://matplotlib.sourceforge.net/) | 1.4.3 | Python plotting package / PSF-based |
+     | [menuinst](https://github.com/ContinuumIO/menuinst) Windows | 1.0.4 | cross platform install of menu items / BSD |
+     | [mistune](https://github.com/lepture/mistune) | 0.5.1 | The fastest markdown parser in pure Python with renderer feature / BSD |
+     | [mock](http://www.voidspace.org.uk/python/mock/) | 1.0.1 | A Python Mocking and Patching Library for Testing / BSD |
+     | [multipledispatch](http://github.com/mrocklin/multipledispatch/) | 0.4.7 | Multiple dispatch / BSD |
+     | [networkx](http://networkx.lanl.gov/) | 1.9.1 | Python package for creating and manipulating graphs and networks / BSD |
+     | [nltk](http://nltk.org/) | 3.0.3 | Natural Language Toolkit / Apache |
+     | [node-webkit](https://github.com/rogerwang/node-webkit) Mac Windows | 0.10.1 | calls Node.js modules from DOM and enables a new way of writing applications / MIT |
+     | [nose](http://readthedocs.org/docs/nose/) | 1.3.7 | nose extends unittest to make testing easier / LGPL |
+     | [numba](http://continuum.io/developer-resources.html) | 0.19.1 | compiling Python code using LLVM / BSD |
+     | [numexpr](https://github.com/pydata/numexpr) | 2.4.3 | Fast numerical expression evaluator for NumPy / MIT |
+     | [numpy](http://numpy.scipy.org/) | 1.9.2 | array processing for numbers, strings, records, and objects. / BSD |
+     | [odo](http://odo.pydata.org/en/latest/) | 0.3.2 | Data Migration for Blaze Project / BSD |
+     | [openpyxl](http://openpyxl.readthedocs.org) | 1.8.5 | A Python library to read/write Excel 2007 xlsx/xlsm files / MIT |
+     | [openssl](http://www.openssl.org/) Linux Mac | 1.0.1k | OpenSSL is an open-source implementation of the SSL and TLS protocols / Apache-style |
+     | [pandas](http://pandas.pydata.org/) | 0.16.2 | Powerful data structures for data analysis, time series,and statistics / BSD |
+     | [patsy](https://github.com/pydata/patsy) | 0.3.0 | a library for describing statistical models and building design matrices. / BSD |
+     | [pep8](http://pep8.readthedocs.org/) | 1.6.2 | Python style guide checker / MIT |
+     | [pillow](http://python-pillow.github.io/) | 2.8.2 | Python Imaging Library (Fork) / PIL license |
+     | [pip](http://www.pip-installer.org/) | 7.0.3 | PyPA recommended tool for installing Python packages / MIT |
+     | [pixman](http://cgit.freedesktop.org/pixman/) Linux | 0.26.2 | a low-level software library for pixel manipulation / MIT |
+     | [ply](http://www.dabeaz.com/ply/) | 3.6 | Python Lex & Yacc / BSD |
+     | [psutil](https://github.com/giampaolo/psutil) | 2.2.1 | A cross-platform process and system utilities module for Python / BSD |
+     | [ptyprocess](https://github.com/pexpect/ptyprocess) Linux Mac | 0.4 | Run a subprocess in a pseudo terminal / ISC |
+     | [py](http://pylib.readthedocs.org/en/latest/) | 1.4.27 | library with cross-python path, ini-parsing, io, code, log facilities / MIT |
+     | [py2cairo](http://cairographics.org/pycairo/) Linux | 1.10.0 | Pycairo is a set of Python bindings for the cairo graphics library / LGPL 2.1, MPL 1.1 |
+     | [pyasn1](http://sourceforge.net/projects/pyasn1/) | 0.1.7 | Offline IP address to Autonomous System Number lookup module / BSD |
+     | [pyaudio](http://people.csail.mit.edu/hubert/pyaudio/) Mac | 0.2.7 | Bindings for PortAudio v19, the cross-platform audio stream library / MIT |
+     | [pycosat](https://github.com/ilanschnell/pycosat) | 0.6.1 | bindings to picosat (a SAT solver) / MIT |
+     | [pycparser](https://github.com/eliben/pycparser) | 2.14 | C parser in Python / BSD |
+     | [pycrypto](http://www.pycrypto.org/) | 2.6.1 | Cryptographic modules for Python. / Public-Domain |
+     | [pycurl](http://pycurl.sourceforge.net/) Linux Mac | 7.19.5.1 | PycURL – cURL library module for Python / LGPL, MIT |
+     | [pyflakes](https://launchpad.net/pyflakes) | 0.9.2 | passive checker of Python programs / MIT |
+     | [pygments](http://pygments.org/) | 2.0.2 | Pygments is a syntax highlighting package written in Python / BSD |
+     | [pyopenssl](https://github.com/pyca/pyopenssl) | 0.15.1 | Python wrapper module around the OpenSSL library / Apache |
+     | [pyparsing](http://pyparsing.wikispaces.com/) | 2.0.3 | Python parsing module / MIT |
+     | [pyqt](http://www.riverbankcomputing.co.uk/software/pyqt) | 4.11.3 | PyQt is a Python binding of the cross-platform GUI toolkit Qt / Commercial, GPLv2, GPLv3 |
+     | [pyreadline](http://ipython.org/pyreadline.html) Windows | 2.0 | A python implmementation of GNU readline. / BSD |
+     | [pytables](http://www.pytables.org) | 3.2.0 | brings together Python, HDF5 and NumPy to easily handle large amounts of data / BSD |
+     | [pytest](http://pytest.org/) | 2.7.1 | simple powerful testing with Python / MIT |
+     | [python](http://www.python.org/) | 2.7.10 | general purpose programming language / PSF |
+     | [python-dateutil](https://dateutil.readthedocs.org/) | 2.4.2 | Extensions to the standard Python datetime module / BSD |
+     | [pytz](http://pytz.sourceforge.net/) | 2015.4 | World timezone definitions, modern and historical / MIT |
+     | [pywin32](https://pypi.python.org/pypi/pywin32) Windows | 219 | Python extensions for Windows / PSF |
+     | [pyyaml](http://pyyaml.org/wiki/PyYAML) | 3.11 | YAML parser and emitter for Python / MIT |
+     | [pyzmq](https://github.com/zeromq/pyzmq) | 14.7.0 | zeromq bindings for Python / LGPL and BSD |
+     | [qt](http://qt-project.org) Linux Mac | 4.8.6 | Qt is a cross-platform application and UI framework / LGPL |
+     | [readline](http://cnswww.cns.cwru.edu/php/chet/readline/rltop.html) Linux Mac | 6.2 | provides line-editing and for programs with a command-line interface / GPL3 |
+     | [redis](http://redis.io/download/) Linux Mac | 2.6.9 | Redis is an open source, BSD licensed, advanced key-value cache and store / 3-clause BSD |
+     | [redis-py](https://github.com/andymccurdy/redis-py/) Linux Mac | 2.10.3 | Redis Python Client / MIT |
+     | [requests](http://docs.python-requests.org/en/latest/index.html) | 2.7.0 | Python HTTP for Humans / Apache |
+     | [rope](http://rope.sourceforge.net/) | 0.9.4 | a python refactoring library / GPL |
+     | [runipy](https://github.com/paulgb/runipy) | 0.1.3 | Run IPython notebooks from the command line / BSD |
+     | [scikit-image](http://scikit-image.org/) | 0.11.3 | Image processing routines for SciPy / 3-clause BSD |
+     | [scikit-learn](http://scikit-learn.org/stable/) | 0.16.1 | A set of python modules for machine learning and data mining / 3-clause BSD |
+     | [scipy](http://www.scipy.org/) | 0.15.1 | Scientific Library for Python / BSD |
+     | [setuptools](https://pypi.python.org/pypi/setuptools) | 17.1.1 | Easily download, build, install, upgrade, and uninstall Python packages / PSF or ZPL |
+     | [sip](http://www.riverbankcomputing.com/software/sip/intro) Linux Mac | 4.16.5 | / GPL3 |
+     | [six](http://pypi.python.org/pypi/six/) | 1.9.0 | Python 2 and 3 compatibility utilities / MIT |
+     | [snowballstemmer](https://github.com/shibukawa/snowball_py) | 1.2.0 | provides 16 stemmer algorithms generated from Snowball algorithms / BSD |
+     | [sockjs-tornado](http://github.com/mrjoes/sockjs-tornado/) | 1.0.1 | SockJS python server implementation on top of Tornado framework / MIT |
+     | [sphinx](http://sphinx-doc.org) | 1.3.1 | Python documentation generator / BSD |
+     | [sphinx\_rtd\_theme](https://github.com/snide/sphinx_rtd_theme/) | 0.1.7 | ReadTheDocs.org theme for Sphinx / BSD |
+     | [spyder](https://github.com/spyder-ide/spyder) | 2.3.5.2 | Scientific PYthon Development EnviRonment / MIT |
+     | [sqlalchemy](http://www.sqlalchemy.org/) | 1.0.5 | Database Abstraction Library / MIT |
+     | [sqlite](http://www.sqlite.org/) Linux Mac | 3.8.4.1 | implements a self-contained, zero-configuration, SQL database engine / Public-Domain |
+     | [ssl\_match\_hostname](http://bitbucket.org/brandon/backports.ssl_match_hostname) | 3.4.0.2 | The ssl.match\_hostname() function from Python 3.4 / PSF |
+     | [statsmodels](http://statsmodels.sourceforge.net/) | 0.6.1 | Statistical computations and models for use with SciPy / 3-clause BSD |
+     | [sympy](http://sympy.org) | 0.7.6 | SymPy is a Python library for symbolic mathematics / 3-clause BSD |
+     | [terminado](https://github.com/takluyver/terminado) Linux Mac | 0.5 | Terminals served to term.js using Tornado websockets / BSD |
+     | [theano](http://deeplearning.net/software/theano/) Linux | 0.7.0 | Optimizing compiler for evaluating mathematical expressions on CPUs and GPUs / BSD |
+     | [tk](http://www.tcl.tk/) Linux Mac | 8.5.18 | powerful but easy to learn dynamic programming language / BSD-like |
+     | [toolz](http://toolz.readthedocs.org/en/latest/) | 0.7.2 | List processing tools and functional utilities / BSD |
+     | [tornado](http://www.tornadoweb.org/) | 4.2 | Tornado is a Python web framework and asynchronous networking library / Apache |
+     | [ujson](http://www.esn.me/) | 1.33 | Ultra fast JSON encoder and decoder for Python / BSD |
+     | [unicodecsv](https://github.com/jdunck/python-unicodecsv) | 0.9.4 | The unicodecsv file reads and decodes byte strings for you / BSD |
+     | [util-linux](http://freecode.com/projects/util-linux) Linux | 2.21 | Util-linux is a suite of essential utilities for any Linux system / GPL2 |
+     | [werkzeug](http://werkzeug.pocoo.org/) | 0.10.4 | The Swiss Army knife of Python web development / BSD |
+     | [xlrd](http://www.lexicon.net/sjmachin/xlrd.htm) | 0.9.3 | Library for developers to extract data from Microsoft Excel spreadsheet files / BSD |
+     | [xlsxwriter](https://github.com/jmcnamara/XlsxWriter) | 0.7.3 | A Python module for creating Excel XLSX files / BSD |
+     | [xlwings](http://xlwings.org/) Mac Windows | 0.3.5 | Make Excel fly. Interact with Excel from Python and vice versa / 3-clause BSD |
+     | [xlwt](http://www.python-excel.org/) | 1.0.0 | writing data and formatting information to Excel files / BSD |
+     | [yaml](http://www.yaml.org/) Linux Mac | 0.1.6 | a human friendly data serialization standard for all programming languages / MIT |
+     | [zeromq](http://zeromq.org) Linux Mac | 4.0.5 | a messaging system, or “message-oriented middleware” / LGPL |
+     | [zlib](http://zlib.net/) | 1.2.8 | A Massively Spiffy Yet Delicately Unobtrusive Compression Library / zlib |
+     
+     
+     
+     </Tab>
+     </Tabs>
+    
+    
+    
+    </Accordion>
+</Update>
