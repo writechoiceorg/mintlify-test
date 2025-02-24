@@ -1,0 +1,167 @@
+export const CodeWithLinks = ({ title, params, type }) => {
+  const linkStyle =
+    "font-bold pb-px border-b text-sm border-primary-light hover:border-b-[2px]";
+
+   if (type === "react_destruct") {
+    const leftEntries = Object.entries(params).filter(
+      ([key]) => key !== "catchError"
+    );
+    const functionEntries = Object.entries(params).filter(
+      ([key]) => key === "catchError"
+    );
+
+    return (
+      <div className="rounded-lg not-prose px-6 py-4">
+        <p className="text-xs font-medium text-gray-500 mb-3">SIGNATURE</p>
+        <pre>
+          <code className="text-sm leading-6 font-mono">
+            {`const {`}
+            <br />
+            {leftEntries.map(([key, value], idx) => (
+              <div key={key} className="ml-2">
+                <a href={value.link} className={linkStyle}>
+                  {key}
+                </a>
+                {idx < leftEntries.length - 1 ? "," : ""}
+                <br />
+              </div>
+            ))}
+            {`} = ${title}({`}
+            <br />
+            {functionEntries.map(([key, value], idx) => (
+              <div key={key} className="ml-2">
+                <a href={value.link} className={linkStyle}>
+                  {key}
+                </a>
+                {idx < functionEntries.length - 1 ? "," : ""}
+                <br />
+              </div>
+            ))}
+            {`})`}
+          </code>
+        </pre>
+      </div>
+    );
+  }
+  if (type === "vue") {
+    return (
+      <div className="rounded-lg not-prose px-6 py-4">
+        <p className="text-xs font-medium text-gray-500 mb-3">SIGNATURE</p>
+        <pre>
+          <code className="text-sm leading-6 font-mono">
+            {`<${title}`}
+            <br />
+            {Object.entries(params).filter(([, value]) => !value.optional).map(([key, value]) => (
+              <div key={key} className="ml-4">
+                <a href={value.link} className={linkStyle}>
+                  {key.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase()}
+                </a>
+                {`="${value.type}"`}
+                ,<br />
+              </div>
+            ))}
+            {Object.entries(params).filter(([, value]) => value.optional).length > 0 && (
+              <>
+                <div className="ml-4">// Optional parameters</div>
+                {Object.entries(params).filter(([, value]) => value.optional).map(([key, value]) => (
+                  <div key={key} className="ml-4">
+                    <a href={value.link} className={linkStyle}>
+                      {key.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase()}
+                    </a>
+                    {`="${value.type}"`}
+                    ,<br />
+                  </div>
+                ))}
+              </>
+            )}
+            {`/>`}
+          </code>
+        </pre>
+      </div>
+    );
+  }
+  if (type === "react") {
+    return (
+      <div className="rounded-lg not-prose px-6 py-4">
+        <p className="text-xs font-medium text-gray-500 mb-3">SIGNATURE</p>
+        <pre>
+          <code className="text-sm leading-6 font-mono">
+            {`<${title}`}
+            <br />
+            {Object.entries(params).filter(([, value]) => !value.optional).map(([key, value]) => (
+              <div key={key} className="ml-4">
+                <a href={value.link} className={linkStyle}>
+                  {key}
+                  {value.optional ? '?' : ''}
+                </a>
+                {value.type ? `: {${value.type}}` : ""}
+                ,<br />
+              </div>
+            ))}
+            {Object.entries(params).filter(([, value]) => value.optional).length > 0 && (
+              <>
+                <div className="ml-4">// Optional props</div>
+                {Object.entries(params).filter(([, value]) => value.optional).map(([key, value]) => (
+                  <div key={key} className="ml-4">
+                    <a href={value.link} className={linkStyle}>
+                      {key}
+                      {value.optional ? '?' : ''}
+                    </a>
+                    {value.type ? `: {${value.type}}` : ""}
+                    ,<br />
+                  </div>
+                ))}
+              </>
+            )}
+            {`/>`}
+          </code>
+        </pre>
+      </div>
+    )
+  }
+  return ( 
+    <div className="rounded-lg not-prose px-6 py-4">
+      <p className="text-xs font-medium text-gray-500 mb-3">SIGNATURE</p>
+      <pre>
+        <code className="text-sm leading-6 font-mono">
+          {title}{`({`}
+          <div className="ml-4">
+            {Object.entries(params).map(([key, value]) => {
+              if (value.type === undefined) {
+                return (
+                  <>
+                    <a href={value.link} className={linkStyle}>
+                      {key}
+                    </a>: {`{`}
+                    <div className="ml-4">
+                      {Object.entries(value).map(([subKey, subValue], i, arr) => (
+                        <>
+                          <a href={subValue.link} className={linkStyle}>
+                            {subKey}
+                          </a>: <code>{subValue.type}</code>
+                          {i < arr.length - 1 && ','}
+                          <br />
+                        </>
+                      ))}
+                    </div>
+                    {`}`},
+                    <br />
+                  </>
+                );
+              }
+              return (
+                <>
+                  <a href={value.link} className={linkStyle}>
+                    {key}{value.optional ? '?' : ''}
+                  </a>: <code>{value.type}</code>,
+                  <br />
+                </>
+              );
+            })}
+          </div>
+          {`});`}
+        </code>
+      </pre>
+    </div>
+  );
+};

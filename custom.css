@@ -1,0 +1,48 @@
+.inline_icon {
+  display: inline-flex;
+}
+
+.card .px-6.py-5 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.px-6.py-5 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.h-6.w-6 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mt-4 {
+  margin-top: 1rem; /* Adjust spacing for the heading */
+}
+
+.mt-1 {
+  margin-top: 0.25rem; /* Adjust spacing for the paragraph */
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.danger-admonition {
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  background-color: rgba(254, 242, 242, 0.5);
+}
+
+@media (prefers-color-scheme: dark) {
+  .danger-admonition {
+    border-color: rgba(239, 68, 68, 0.3);
+    background-color: rgba(239, 68, 68, 0.1);
+  }
+}
