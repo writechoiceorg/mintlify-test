@@ -11,13 +11,3919 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "API Reference",
         "groups": [
           {
-            "group": "Get Started",
-            "pages": [
-              "introduction"
-            ]
+            "group": "API_Example2_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/API_Example2_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_4.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_5.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_6.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_7.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_8.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_9.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_10.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_11.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_12.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_13.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_14.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_15.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_16.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_17.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_18.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_19.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_20.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_21.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_22.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_23.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_24.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_25.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_26.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_27.json"
+            }
+          },
+          {
+            "group": "Aurora_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0_28.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_4.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_5.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_6.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_7.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_8.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_9.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_10.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_11.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_12.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_13.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_14.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_15.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_16.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_17.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_18.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_19.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_20.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_21.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_22.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_23.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_24.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_25.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_26.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_27.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_28.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_29.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_30.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_31.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_32.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_33.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_34.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_35.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_36.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_37.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_38.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_39.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_40.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_41.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_42.json"
+            }
+          },
+          {
+            "group": "BNB_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/BNB_Node_API/BNB_Node_API_-_v1.0_43.json"
+            }
+          },
+          {
+            "group": "Beacon_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Beacon_API/Beacon_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Chainstack_Labs_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Labs_API/Chainstack_Labs_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_4.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_5.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_6.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_7.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_8.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_9.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_10.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_11.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_12.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_13.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_14.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_15.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_16.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_17.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_18.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_19.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_20.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_21.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_22.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_23.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_24.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_25.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_26.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_27.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_28.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_29.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_30.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_31.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_32.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_33.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_34.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_35.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_36.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_37.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_38.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_39.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_40.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_41.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_42.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_43.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_44.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_45.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_46.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_47.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_48.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_49.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_50.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_51.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_52.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_53.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_54.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_55.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_56.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_57.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_58.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_59.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_60.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_61.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_62.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_63.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_64.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_65.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_66.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_67.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_68.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_69.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_70.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_71.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_72.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_73.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_74.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_75.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_76.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_77.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_78.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_79.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_80.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_81.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_82.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_83.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_84.json"
+            }
+          },
+          {
+            "group": "Chainstack_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Chainstack_Node_API/Chainstack_Node_API_-_v1.0_85.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_4.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_5.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_6.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_7.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_8.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_9.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_10.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_11.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_12.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_13.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_14.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_15.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_16.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_17.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_18.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_19.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_20.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_21.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_22.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_23.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_24.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_25.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_26.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_27.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_28.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_29.json"
+            }
+          },
+          {
+            "group": "Cronos_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Cronos_Node_API/Cronos_Node_API_-_v1.0_30.json"
+            }
+          },
+          {
+            "group": "Ethereum_Beacon_Block_Attestations_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Beacon_Block_Attestations_API/Ethereum_Beacon_Block_Attestations_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Ethereum_Beacon_Block_Root_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Beacon_Block_Root_API/Ethereum_Beacon_Block_Root_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Ethereum_Beacon_Blocks_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Beacon_Blocks_API/Ethereum_Beacon_Blocks_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Ethereum_Beacon_Chain_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Beacon_Chain_API/Ethereum_Beacon_Chain_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Ethereum_Beacon_Chain_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Beacon_Chain_API/Ethereum_Beacon_Chain_API_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "Ethereum_Beacon_Chain_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Beacon_Chain_API/Ethereum_Beacon_Chain_API_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "Ethereum_Beacon_Chain_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Beacon_Chain_API/Ethereum_Beacon_Chain_API_-_v1.0_4.json"
+            }
+          },
+          {
+            "group": "Ethereum_Beacon_Chain_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Beacon_Chain_API/Ethereum_Beacon_Chain_API_-_v1.0_5.json"
+            }
+          },
+          {
+            "group": "Ethereum_Beacon_Events_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Beacon_Events_API/Ethereum_Beacon_Events_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Ethereum_Beacon_Headers_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Beacon_Headers_API/Ethereum_Beacon_Headers_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Ethereum_Beacon_Headers_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Beacon_Headers_API/Ethereum_Beacon_Headers_API_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "Ethereum_Beacon_Pool_Attestations_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Beacon_Pool_Attestations_API/Ethereum_Beacon_Pool_Attestations_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Ethereum_Beacon_Pool_Attester_Slashings_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Beacon_Pool_Attester_Slashings_API/Ethereum_Beacon_Pool_Attester_Slashings_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Ethereum_Beacon_Pool_Proposer_Slashings_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Beacon_Pool_Proposer_Slashings_API/Ethereum_Beacon_Pool_Proposer_Slashings_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Ethereum_Beacon_Pool_Voluntary_Exits_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Beacon_Pool_Voluntary_Exits_API/Ethereum_Beacon_Pool_Voluntary_Exits_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Ethereum_Committee_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Committee_API/Ethereum_Committee_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Ethereum_Config_Deposit_Contract_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Config_Deposit_Contract_API/Ethereum_Config_Deposit_Contract_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Ethereum_Config_Fork_Schedule_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Config_Fork_Schedule_API/Ethereum_Config_Fork_Schedule_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Ethereum_Config_Spec_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Config_Spec_API/Ethereum_Config_Spec_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Ethereum_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Node_API/Ethereum_Node_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Ethereum_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Node_API/Ethereum_Node_API_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "Ethereum_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Node_API/Ethereum_Node_API_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "Ethereum_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Node_API/Ethereum_Node_API_-_v1.0_4.json"
+            }
+          },
+          {
+            "group": "Ethereum_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Node_API/Ethereum_Node_API_-_v1.0_5.json"
+            }
+          },
+          {
+            "group": "Ethereum_Sync_Committee_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Sync_Committee_API/Ethereum_Sync_Committee_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Ethereum_Trace_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Trace_API/Ethereum_Trace_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Ethereum_Validator_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Validator_API/Ethereum_Validator_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Ethereum_Validator_Attestation_Data_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Validator_Attestation_Data_API/Ethereum_Validator_Attestation_Data_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Ethereum_Validator_Balances_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Validator_Balances_API/Ethereum_Validator_Balances_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Ethereum_Validator_Produce_Blinded_Block_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Validator_Produce_Blinded_Block_API/Ethereum_Validator_Produce_Blinded_Block_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Ethereum_Validator_Produce_Block_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Validator_Produce_Block_API/Ethereum_Validator_Produce_Block_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Ethereum_Validator_Proposer_Duties_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Validator_Proposer_Duties_API/Ethereum_Validator_Proposer_Duties_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Ethereum_Validator_Sync_Committee_Contribution_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Ethereum_Validator_Sync_Committee_Contribution_API/Ethereum_Validator_Sync_Committee_Contribution_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_4.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_5.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_6.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_7.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_8.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_9.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_10.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_11.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_12.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_13.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_14.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_15.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_16.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_17.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_18.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_19.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_20.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_21.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_22.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_23.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_24.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_25.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_26.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_27.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_28.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_29.json"
+            }
+          },
+          {
+            "group": "Fantom_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Fantom_Node_API/Fantom_Node_API_-_v1.0_30.json"
+            }
+          },
+          {
+            "group": "Faucet_API_-_Transaction_History_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Faucet_API_-_Transaction_History/Faucet_API_-_Transaction_History_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Faucet_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Faucet_API/Faucet_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "JSON-RPC_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/JSON-RPC_API/JSON-RPC_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "JSON-RPC_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/JSON-RPC_API/JSON-RPC_API_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "JSON-RPC_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/JSON-RPC_API/JSON-RPC_API_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "JSON-RPC_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/JSON-RPC_API/JSON-RPC_API_-_v1.0_4.json"
+            }
+          },
+          {
+            "group": "JSON-RPC_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/JSON-RPC_API/JSON-RPC_API_-_v1.0_5.json"
+            }
+          },
+          {
+            "group": "JSON-RPC_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/JSON-RPC_API/JSON-RPC_API_-_v1.0_6.json"
+            }
+          },
+          {
+            "group": "JSON-RPC_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/JSON-RPC_API/JSON-RPC_API_-_v1.0_7.json"
+            }
+          },
+          {
+            "group": "JSON-RPC_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/JSON-RPC_API/JSON-RPC_API_-_v1.0_8.json"
+            }
+          },
+          {
+            "group": "JSON-RPC_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/JSON-RPC_API/JSON-RPC_API_-_v1.0_9.json"
+            }
+          },
+          {
+            "group": "JSON-RPC_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/JSON-RPC_API/JSON-RPC_API_-_v1.0_10.json"
+            }
+          },
+          {
+            "group": "JSON-RPC_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/JSON-RPC_API/JSON-RPC_API_-_v1.0_11.json"
+            }
+          },
+          {
+            "group": "JSON-RPC_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/JSON-RPC_API/JSON-RPC_API_-_v1.0_12.json"
+            }
+          },
+          {
+            "group": "JSON-RPC_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/JSON-RPC_API/JSON-RPC_API_-_v1.0_13.json"
+            }
+          },
+          {
+            "group": "JSON-RPC_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/JSON-RPC_API/JSON-RPC_API_-_v1.0_14.json"
+            }
+          },
+          {
+            "group": "NODE_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/NODE_API/NODE_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0_4.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0_5.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0_6.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0_7.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0_8.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0_9.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0_10.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0_11.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0_12.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0_13.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0_14.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0_15.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0_16.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0_17.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0_18.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0_19.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0_20.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0_21.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0_22.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0_23.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0_24.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0_25.json"
+            }
+          },
+          {
+            "group": "Polygon_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_Node_API/Polygon_Node_API_-_v1.0_26.json"
+            }
+          },
+          {
+            "group": "Polygon_ZKEVM_Node_API_5_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_ZKEVM_Node_API_5_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Polygon_ZKEVM_Node_API_5_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_ZKEVM_Node_API_5_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "Polygon_ZKEVM_Node_API_5_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_ZKEVM_Node_API_5_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "Polygon_ZKEVM_Node_API_5_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_ZKEVM_Node_API_5_-_v1.0_4.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0_4.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0_5.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0_6.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0_7.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0_8.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0_9.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0_10.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0_11.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0_12.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0_13.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0_14.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0_15.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0_16.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0_17.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0_18.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0_19.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0_20.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0_21.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0_22.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0_23.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0_24.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0_25.json"
+            }
+          },
+          {
+            "group": "Polygon_zkEVM_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Polygon_zkEVM_Node_API/Polygon_zkEVM_Node_API_-_v1.0_26.json"
+            }
+          },
+          {
+            "group": "TON_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/TON_API/TON_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "TON_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/TON_API/TON_API_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "TON_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/TON_API/TON_API_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "TON_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/TON_API/TON_API_-_v1.0_4.json"
+            }
+          },
+          {
+            "group": "TON_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/TON_API/TON_API_-_v1.0_5.json"
+            }
+          },
+          {
+            "group": "TON_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/TON_API/TON_API_-_v1.0_6.json"
+            }
+          },
+          {
+            "group": "TON_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/TON_API/TON_API_-_v1.0_7.json"
+            }
+          },
+          {
+            "group": "TON_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/TON_API/TON_API_-_v1.0_8.json"
+            }
+          },
+          {
+            "group": "TON_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/TON_API/TON_API_-_v1.0_9.json"
+            }
+          },
+          {
+            "group": "TON_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/TON_API/TON_API_-_v1.0_10.json"
+            }
+          },
+          {
+            "group": "TON_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/TON_API/TON_API_-_v1.0_11.json"
+            }
+          },
+          {
+            "group": "TON_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/TON_API/TON_API_-_v1.0_12.json"
+            }
+          },
+          {
+            "group": "TON_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/TON_API/TON_API_-_v1.0_13.json"
+            }
+          },
+          {
+            "group": "TON_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/TON_API/TON_API_-_v1.0_14.json"
+            }
+          },
+          {
+            "group": "TON_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/TON_API/TON_API_-_v1.0_15.json"
+            }
+          },
+          {
+            "group": "TON_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/TON_API/TON_API_-_v1.0_16.json"
+            }
+          },
+          {
+            "group": "TON_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/TON_API/TON_API_-_v1.0_17.json"
+            }
+          },
+          {
+            "group": "TON_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/TON_API/TON_API_-_v1.0_18.json"
+            }
+          },
+          {
+            "group": "TON_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/TON_API/TON_API_-_v1.0_19.json"
+            }
+          },
+          {
+            "group": "TON_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/TON_API/TON_API_-_v1.0_20.json"
+            }
+          },
+          {
+            "group": "TON_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/TON_API/TON_API_-_v1.0_21.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_4.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_5.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_6.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_7.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_8.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_9.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_10.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_11.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_12.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_13.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_14.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_15.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_16.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_17.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_18.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_19.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_20.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_21.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_22.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_23.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_24.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_25.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_26.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_27.json"
+            }
+          },
+          {
+            "group": "Upload_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Upload/Upload_-_v1.0_28.json"
+            }
+          },
+          {
+            "group": "_CHAINSTACK_PLATFORM_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/_CHAINSTACK_PLATFORM_API/_CHAINSTACK_PLATFORM_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "_Ethereum_Node_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/_Ethereum_Node_API/_Ethereum_Node_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "debug_getModifiedAccountsByHash_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/debug_getModifiedAccountsByHash_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "debug_getModifiedAccountsByHash_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/debug_getModifiedAccountsByHash_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "debug_getModifiedAccountsByNumber_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/debug_getModifiedAccountsByNumber_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "debug_getModifiedAccountsByNumber_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/debug_getModifiedAccountsByNumber_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "debug_storageRangeAt_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/debug_storageRangeAt_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "debug_storageRangeAt_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/debug_storageRangeAt_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "debug_traceBlockByHash_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/debug_traceBlockByHash/debug_traceBlockByHash_-_v1.0.json"
+            }
+          },
+          {
+            "group": "debug_traceBlockByHash_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/debug_traceBlockByHash_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "debug_traceBlockByHash_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/debug_traceBlockByHash_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "debug_traceBlockByNumber_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/debug_traceBlockByNumber/debug_traceBlockByNumber_-_v1.0.json"
+            }
+          },
+          {
+            "group": "debug_traceBlockByNumber_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/debug_traceBlockByNumber_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "debug_traceBlockByNumber_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/debug_traceBlockByNumber_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "debug_traceCallMany_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/debug_traceCallMany_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "debug_traceCallMany_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/debug_traceCallMany_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "debug_traceCall_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/debug_traceCall/debug_traceCall_-_v1.0.json"
+            }
+          },
+          {
+            "group": "debug_traceCall_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/debug_traceCall_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "debug_traceCall_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/debug_traceCall_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "debug_traceTransaction_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/debug_traceTransaction/debug_traceTransaction_-_v1.0.json"
+            }
+          },
+          {
+            "group": "debug_traceTransaction_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/debug_traceTransaction_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "debug_traceTransaction_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/debug_traceTransaction_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "debug_traceTransaction_example_with_stylusTracer_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/debug_traceTransaction_example_with_stylusTracer_-_v1.0.json"
+            }
+          },
+          {
+            "group": "decoderawtransaction_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/decoderawtransaction_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "decodescript_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/decodescript_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "detectAddress_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/detectAddress_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "estimatesmartfee_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/estimatesmartfee_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_accounts_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_accounts_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_blockNumber_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_blockNumber/eth_blockNumber_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_blockNumber_Optimism_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_blockNumber_Optimism_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_blockNumber_Optimism_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_blockNumber_Optimism_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_callMany_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_callMany_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_callMany_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_callMany_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_call_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_call/eth_call_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_call_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_call_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_call_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_call_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_call_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_call_example_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "eth_chainId_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_chainId/eth_chainId_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_chainId_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_chainId_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_chainId_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_chainId_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_chainId_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_chainId_example_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "eth_createAccessList_example_with_default_values_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_createAccessList_example_with_default_values_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_createAccessList_example_with_default_values_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_createAccessList_example_with_default_values_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_estimateGas_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_estimateGas/eth_estimateGas_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_estimateGas_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_estimateGas_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_estimateGas_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_estimateGas_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_estimateGas_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_estimateGas_example_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "eth_feeHistory_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_feeHistory_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_feeHistory_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_feeHistory_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_gasPrice_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_gasPrice/eth_gasPrice_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_gasPrice_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_gasPrice_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_gasPrice_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_gasPrice_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_gasPrice_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_gasPrice_example_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "eth_getBalance_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_getBalance/eth_getBalance_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getBalance_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getBalance_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getBalance_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getBalance_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_getBalance_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getBalance_example_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "eth_getBlockByHash_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_getBlockByHash/eth_getBlockByHash_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getBlockByHash_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_getBlockByHash/eth_getBlockByHash_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_getBlockByHash_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getBlockByHash_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getBlockByHash_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getBlockByHash_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_getBlockByNumber_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_getBlockByNumber/eth_getBlockByNumber_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getBlockByNumber_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getBlockByNumber_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getBlockByNumber_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getBlockByNumber_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_getBlockReceipts_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getBlockReceipts_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getBlockReceipts_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getBlockReceipts_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_getBlockTransactionCountByHash_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_getBlockTransactionCountByHash/eth_getBlockTransactionCountByHash_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getBlockTransactionCountByHash_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getBlockTransactionCountByHash_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getBlockTransactionCountByHash_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getBlockTransactionCountByHash_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_getBlockTransactionCountByNumber_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_getBlockTransactionCountByNumber/eth_getBlockTransactionCountByNumber_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getBlockTransactionCountByNumber_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getBlockTransactionCountByNumber_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getBlockTransactionCountByNumber_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getBlockTransactionCountByNumber_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_getCode_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_getCode/eth_getCode_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getCode_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getCode_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getCode_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getCode_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_getCode_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getCode_example_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "eth_getFilterChanges_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_getFilterChanges/eth_getFilterChanges_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getFilterChanges_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getFilterChanges_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getFilterChanges_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getFilterChanges_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_getFilterChanges_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getFilterChanges_example_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "eth_getFilterLogs_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getFilterLogs_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getFilterLogs_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getFilterLogs_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_getLogs_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_getLogs/eth_getLogs_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getLogs_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getLogs_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getLogs_example_with_specified_values_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getLogs_example_with_specified_values_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getLogs_example_with_specified_values_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getLogs_example_with_specified_values_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_getProof_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_getProof/eth_getProof_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getProof_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getProof_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getProof_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getProof_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_getRawTransactionByBlockHashAndIndex_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getRawTransactionByBlockHashAndIndex_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getRawTransactionByBlockHashAndIndex_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getRawTransactionByBlockHashAndIndex_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_getRawTransactionByBlockNumberAndIndex_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getRawTransactionByBlockNumberAndIndex_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getRawTransactionByBlockNumberAndIndex_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getRawTransactionByBlockNumberAndIndex_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_getRawTransactionByHash_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getRawTransactionByHash_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getRawTransactionByHash_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getRawTransactionByHash_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_getStorageAt_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_getStorageAt/eth_getStorageAt_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getStorageAt_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getStorageAt_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getStorageAt_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getStorageAt_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_getStorageAt_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getStorageAt_example_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "eth_getTransactionByBlockHashAndIndex_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_getTransactionByBlockHashAndIndex/eth_getTransactionByBlockHashAndIndex_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getTransactionByBlockHashAndIndex_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getTransactionByBlockHashAndIndex_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getTransactionByBlockHashAndIndex_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getTransactionByBlockHashAndIndex_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_getTransactionByBlockNumberAndIndex_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_getTransactionByBlockNumberAndIndex/eth_getTransactionByBlockNumberAndIndex_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getTransactionByBlockNumberAndIndex_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getTransactionByBlockNumberAndIndex_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getTransactionByBlockNumberAndIndex_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getTransactionByBlockNumberAndIndex_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_getTransactionByHash_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_getTransactionByHash/eth_getTransactionByHash_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getTransactionByHash_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getTransactionByHash_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getTransactionByHash_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getTransactionByHash_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_getTransactionCount_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_getTransactionCount/eth_getTransactionCount_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getTransactionCount_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getTransactionCount_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getTransactionCount_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getTransactionCount_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_getTransactionCount_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getTransactionCount_example_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "eth_getTransactionReceipt_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_getTransactionReceipt/eth_getTransactionReceipt_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getTransactionReceipt_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getTransactionReceipt_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getTransactionReceipt_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getTransactionReceipt_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_getUncleByBlockHashAndIndex_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getUncleByBlockHashAndIndex_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getUncleByBlockNumberAndIndex_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getUncleByBlockNumberAndIndex_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getUncleCountByBlockHash_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getUncleCountByBlockHash_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getUncleCountByBlockHash_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getUncleCountByBlockHash_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_getUncleCountByBlockNumber_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getUncleCountByBlockNumber_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_getUncleCountByBlockNumber_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_getUncleCountByBlockNumber_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_maxPriorityFeePerGas_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_maxPriorityFeePerGas/eth_maxPriorityFeePerGas_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_maxPriorityFeePerGas_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_maxPriorityFeePerGas_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_maxPriorityFeePerGas_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_maxPriorityFeePerGas_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_newBlockFilter_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_newBlockFilter/eth_newBlockFilter_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_newBlockFilter_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_newBlockFilter_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_newBlockFilter_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_newBlockFilter_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_newFilter_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_newFilter_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_newFilter_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_newFilter_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_newFilter_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_newFilter_example_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "eth_newFilter_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_newFilter_example_-_v1.0_4.json"
+            }
+          },
+          {
+            "group": "eth_newPendingTransactionFilter_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_newPendingTransactionFilter/eth_newPendingTransactionFilter_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_newPendingTransactionFilter_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_newPendingTransactionFilter_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_protocolVersion_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_protocolVersion_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_sendRawTransaction_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_sendRawTransaction/eth_sendRawTransaction_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_sendRawTransaction_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_sendRawTransaction_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_sendRawTransaction_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_sendRawTransaction_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_sendRawTransaction_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_sendRawTransaction_example_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "eth_simulateV1_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_simulateV1_API/eth_simulateV1_API_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_syncing_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_syncing/eth_syncing_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_syncing_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_syncing_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_syncing_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_syncing_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_uninstallFilter_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/eth_uninstallFilter/eth_uninstallFilter_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_uninstallFilter_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_uninstallFilter_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "eth_uninstallFilter_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_uninstallFilter_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "eth_uninstallFilter_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/eth_uninstallFilter_example_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "getAccountInfo_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getAccountInfo_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getAddressBalance_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getAddressBalance_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getAddressInformation_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getAddressInformation_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getAddressState_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getAddressState_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getBalance_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getBalance_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getBlockCommitment_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getBlockCommitment_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getBlockHeight_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getBlockHeight_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getBlockProduction_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getBlockProduction_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getBlockTime_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getBlockTime_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getBlockTransactionsExt_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getBlockTransactionsExt_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getBlockTransactions_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getBlockTransactions_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getBlocksWithLimit_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getBlocksWithLimit_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getBlocks_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getBlocks_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getClusterNodes_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getClusterNodes_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getConfigParam_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getConfigParam_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getConsensusBlock_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getConsensusBlock_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getEpochInfo_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getEpochInfo_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getEpochSchedule_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getEpochSchedule_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getExtendedAddressInformation_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getExtendedAddressInformation_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getFeeForMessage_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getFeeForMessage_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getFirstAvailableBlock_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getFirstAvailableBlock_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getGenesisHash_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getGenesisHash_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getHighestSnapshotSlot_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getHighestSnapshotSlot_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getIdentity_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getIdentity_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getInflationGovernor_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getInflationGovernor_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getInflationRate_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getInflationRate_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getInflationReward_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getInflationReward_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getLargestAccounts_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getLargestAccounts_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getLatestBlockhash_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getLatestBlockhash_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getLeaderSchedule_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getLeaderSchedule_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getMasterchainBlockSignatures_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getMasterchainBlockSignatures_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getMasterchainInfo_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getMasterchainInfo_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getMaxRetransmitSlot_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getMaxRetransmitSlot_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getMaxShredInsertSlot_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getMaxShredInsertSlot_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getMinimumBalanceForRentExemption_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getMinimumBalanceForRentExemption_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getMultipleAccounts_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getMultipleAccounts_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getProgramAccounts_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getProgramAccounts_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getRecentBlockhash_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getRecentBlockhash_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getRecentPerformanceSamples_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getRecentPerformanceSamples_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getRecentPrioritizationFees_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getRecentPrioritizationFees_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getShardBlockProof_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getShardBlockProof_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getSignatureStatuses_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getSignatureStatuses_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getSignaturesForAddress_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getSignaturesForAddress_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getSlotLeader_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getSlotLeader_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getSlot_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getSlot_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getStakeActivation_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getStakeActivation_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getStakeMinimumDelegation_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getStakeMinimumDelegation_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getSupply_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getSupply_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getTokenAccountBalance_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getTokenAccountBalance_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getTokenAccountsByOwner_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getTokenAccountsByOwner_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getTokenData_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getTokenData_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getTokenLargestAccounts_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getTokenLargestAccounts_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getTransaction_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getTransaction_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getTransactions_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getTransactions_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getWalletInformation_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getWalletInformation_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getbestblockhash_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getbestblockhash_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getblock_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getblock_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getblockchaininfo_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getblockchaininfo_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getblockfilter_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getblockfilter_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getblockhash_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getblockhash_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getblockheader_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getblockheader_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getblockstats_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getblockstats_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getblocktemplate_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getblocktemplate_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getchaintips_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getchaintips_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getchaintxstats_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getchaintxstats_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getconnectioncount_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getconnectioncount_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getdifficulty_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getdifficulty_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getmemoryinfo_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getmemoryinfo_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getmempoolancestors_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getmempoolancestors_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getmempooldescendants_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getmempooldescendants_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getmempoolentry_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getmempoolentry_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getmempoolinfo_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getmempoolinfo_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getmininginfo_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getmininginfo_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getnettotals_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getnettotals_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getnetworkhashps_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getnetworkhashps_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getnetworkinfo_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getnetworkinfo_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getnodeaddresses_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getnodeaddresses_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getpeerinfo_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getpeerinfo_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getrawmempool_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getrawmempool_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getrawtransaction_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getrawtransaction_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "getrpcinfo_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/getrpcinfo_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "gettxout_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/gettxout_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "gettxoutproof_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/gettxoutproof_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "gettxoutsetinfo_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/gettxoutsetinfo_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "isBlockhashValid_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/isBlockhashValid_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "listbanned_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/listbanned_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "lookupBlock_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/lookupBlock_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "net_listening_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/net_listening/net_listening_-_v1.0.json"
+            }
+          },
+          {
+            "group": "net_listening_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/net_listening_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "net_listening_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/net_listening_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "net_listening_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/net_listening_example_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "net_peerCount_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/net_peerCount/net_peerCount_-_v1.0.json"
+            }
+          },
+          {
+            "group": "net_peerCount_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/net_peerCount/net_peerCount_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "packAddress_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/packAddress_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "ping_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/ping_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "preciousblock_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/preciousblock_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "prioritisetransaction_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/prioritisetransaction_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "runGetMethod_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/runGetMethod_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "shards_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/shards_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "simulateTransaction_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/simulateTransaction_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "starknet_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/starknet/starknet_-_v1.0.json"
+            }
+          },
+          {
+            "group": "starknet_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/starknet/starknet_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "starknet_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/starknet/starknet_-_v1.0_3.json"
+            }
+          },
+          {
+            "group": "starknet_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/starknet/starknet_-_v1.0_4.json"
+            }
+          },
+          {
+            "group": "starknet_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/starknet/starknet_-_v1.0_5.json"
+            }
+          },
+          {
+            "group": "starknet_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/starknet/starknet_-_v1.0_7.json"
+            }
+          },
+          {
+            "group": "starknet_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/starknet/starknet_-_v1.0_8.json"
+            }
+          },
+          {
+            "group": "starknet_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/starknet/starknet_-_v1.0_9.json"
+            }
+          },
+          {
+            "group": "starknet_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/starknet/starknet_-_v1.0_10.json"
+            }
+          },
+          {
+            "group": "starknet_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/starknet/starknet_-_v1.0_11.json"
+            }
+          },
+          {
+            "group": "trace_block_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/trace_block_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "trace_call_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/trace_call_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "trace_get_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/trace_get/trace_get_-_v1.0.json"
+            }
+          },
+          {
+            "group": "trace_replayBlockTransactions_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/trace_replayBlockTransactions/trace_replayBlockTransactions_-_v1.0.json"
+            }
+          },
+          {
+            "group": "trace_replayTransaction_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/trace_replayTransaction/trace_replayTransaction_-_v1.0.json"
+            }
+          },
+          {
+            "group": "trace_transaction_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/trace_transaction_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "tryLocateResultTx_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/tryLocateResultTx_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "tryLocateSourceTx_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/tryLocateSourceTx_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "tryLocateTx_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/tryLocateTx_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "unpackAddress_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/unpackAddress_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "upload_section_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/upload_section/upload_section_-_v1.0.json"
+            }
+          },
+          {
+            "group": "uptime_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/uptime_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "validateaddress_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/validateaddress_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "verifychain_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/verifychain_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "verifytxoutproof_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/verifytxoutproof_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "web3_clientVersion_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/web3_clientVersion/web3_clientVersion_-_v1.0.json"
+            }
+          },
+          {
+            "group": "web3_clientVersion_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/web3_clientVersion/web3_clientVersion_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "web3_clientVersion_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/web3_clientVersion_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "web3_clientVersion_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/web3_clientVersion_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "web3_sha3_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/web3_sha3_example_-_v1.0.json"
+            }
+          },
+          {
+            "group": "web3_sha3_example_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/Examples/web3_sha3_example_-_v1.0_2.json"
+            }
+          },
+          {
+            "group": "zkSync_JSON-RPC_API_-_v1.0",
+            "openapi": {
+              "source": "/openAPI/zkSync_JSON-RPC_API/zkSync_JSON-RPC_API_-_v1.0.json"
+            }
           }
         ]
       }
