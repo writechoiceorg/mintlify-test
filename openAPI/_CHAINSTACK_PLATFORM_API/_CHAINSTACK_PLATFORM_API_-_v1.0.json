@@ -6150,9 +6150,5 @@
       "url": "https://api.chainstack.com",
       "description": "API endpoint"
     }
-  ],
-  "x-readme": {
-    "explorer-enabled": true,
-    "proxy-enabled": true
-  }
+  ]
 }
