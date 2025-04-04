@@ -101,17 +101,18 @@ if __name__ == "__main__":
     folder_to_search = "openAPI"  # where we look for existing JSON files
 
     # The three criteria
-    target_url = "https://nd-422-757-666.p2pify.com"
-    target_path = "/0a9d79d93fb2f4a4b1e04695da2b77a7"
+    target_url = "https://nd-828-700-214.p2pify.com"
+    target_path = "/a9bca2f0f84b54086ceebe590316fff3"
 
     param_values = [
-        "eth_getFilterChanges ",
-        "eth_uninstallFilter",
+        "web3_clientVersion",
+        "net_peerCount",
+        "net_listening",
     ]
 
-    folder_name = "configuration_info"
+    folder_name = "client_info"
 
-    output_folder = f"fixed/etherium_beacon_chain_api/{folder_name}"
+    output_folder = f"fixed/polygon_node_api/{folder_name}"
 
     failed_for = []
 

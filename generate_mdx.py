@@ -2,6 +2,8 @@ import os
 import json
 from collections import defaultdict
 
+current_folder = "polygon_node_api"
+
 
 def generate_mdx_and_reports(input_folder="fixed", output_folder="api-reference"):
     """
@@ -31,14 +33,14 @@ def generate_mdx_and_reports(input_folder="fixed", output_folder="api-reference"
     # Typical HTTP methods in OpenAPI
     possible_methods = ["get", "put", "post", "delete", "patch", "options", "head"]
 
-    for root, dirs, files in os.walk(input_folder):
+    for root, dirs, files in os.walk(f"{input_folder}/{current_folder}"):
         for filename in files:
             if filename.lower().endswith(".json"):
                 # Relative path of the JSON file (for openapi.json and the front matter)
                 rel_json_path = os.path.relpath(
                     os.path.join(root, filename), input_folder
                 )
-                json_paths.append(rel_json_path)
+                json_paths.append(f"/openapi/{rel_json_path}")
 
                 full_path = os.path.join(root, filename)
 
@@ -113,10 +115,14 @@ openapi: "/openapi/{rel_json_path} {chosen_method} {path_key}"
                 if rel_out_dir == ".":
                     # means no subfolder
                     group_name = "root"
-                    doc_path_no_ext = os.path.join("docs", base_name)
+                    doc_path_no_ext = os.path.join(
+                        f"api-reference/{current_folder}", base_name
+                    )
                 else:
                     group_name = rel_out_dir.replace("\\", "/")
-                    doc_path_no_ext = os.path.join("docs", group_name, base_name)
+                    doc_path_no_ext = os.path.join(
+                        f"api-reference/{current_folder}", group_name, base_name
+                    )
 
                 doc_path_no_ext = doc_path_no_ext.replace("\\", "/")
                 groups_dict[group_name].append(doc_path_no_ext)
