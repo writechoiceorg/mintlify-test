@@ -101,18 +101,74 @@ if __name__ == "__main__":
     folder_to_search = "openAPI"  # where we look for existing JSON files
 
     # The three criteria
-    target_url = "https://nd-828-700-214.p2pify.com"
-    target_path = "/a9bca2f0f84b54086ceebe590316fff3"
+    target_url = "https://base-mainnet.core.chainstack.com"
+    target_path = "/2fc1de7f08c0465f6a28e3c355e0cb14"
 
     param_values = [
+        "eth_blockNumber",
+        "eth_getBlockByHash",
+        "eth_getBlockByNumber",
+        "eth_getBlockTransactionCountByHash",
+        "eth_getBlockTransactionCountByNumber",
+        "eth_getUncleCountByBlockHash",
+        "eth_getUncleCountByBlockNumber",
+        "eth_getUncleByBlockNumberAndIndex",
+        "eth_getUncleByBlockHashAndIndex",
+        "eth_getBlockReceipts",
+        "eth_chainId",
+        "eth_syncing",
+        "eth_call",
+        "eth_callMany",
+        "eth_estimateGas",
+        "eth_createAccessList",
+        "eth_gasPrice",
+        "eth_feeHistory",
+        "eth_newFilter",
+        "eth_newBlockFilter",
+        "eth_uninstallFilter",
+        "eth_getFilterChanges",
+        "eth_getFilterLogs",
+        "eth_getLogs",
+        "eth_accounts",
+        "eth_getBalance",
+        "eth_getStorageAt",
+        "eth_getTransactionCount",
+        "eth_getCode",
+        "eth_getProof",
+        "eth_getTransactionByHash",
+        "eth_getRawTransactionByHash",
+        "eth_getTransactionByBlockHashAndIndex",
+        "eth_getRawTransactionByBlockHashAndIndex",
+        "eth_getTransactionByBlockNumberAndIndex",
+        "eth_getRawTransactionByBlockNumberAndIndex",
+        "eth_getTransactionReceipt",
+        "eth_maxPriorityFeePerGas",
+        "eth_sendRawTransaction",
+        "eth_newPendingTransactionFilter",
         "web3_clientVersion",
-        "net_peerCount",
+        "eth_protocolVersion",
+        "web3_sha3",
         "net_listening",
+        "debug_getModifiedAccountsByNumber",
+        "debug_getModifiedAccountsByHash",
+        "debug_storageRangeAt",
+        "debug_traceBlockByHash",
+        "debug_traceBlockByNumber",
+        "debug_traceTransaction",
+        "debug_traceCall",
+        "debug_traceCallMany",
+        "trace_call",
+        "trace_callMany method",
+        "trace_replayBlockTransactions",
+        "trace_replayTransaction",
+        "trace_transaction",
+        "trace_get",
+        "trace_block",
     ]
 
     folder_name = "client_info"
 
-    output_folder = f"fixed/polygon_node_api/{folder_name}"
+    output_folder = f"fixed/bnb_node_api"
 
     failed_for = []
 
