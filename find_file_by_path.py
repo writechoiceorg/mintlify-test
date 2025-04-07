@@ -92,16 +92,71 @@ def find_matching_files(folder_path: str, full_url: str, output_folder: str):
     return matched_files, new_full_paths
 
 
+pathsv2 = [
+    "getAddressInformation",
+    "getExtendedAddressInformation",
+    "getWalletInformation",
+    "getTransactions",
+    "getAddressBalance",
+    "getAddressState",
+    "packAddress",
+    "unpackAddress",
+    "getTokenData",
+    "detectAddress",
+    "getMasterchainInfo",
+    "getMasterchainBlockSignatures",
+    "getShardBlockProof",
+    "getConsensusBlock",
+    "lookupBlock",
+    "shards",
+    "getBlockTransactions",
+    "getBlockTransactionsExt",
+    "getBlockHeader",
+    "tryLocateTx",
+    "tryLocateResultTx",
+    "tryLocateSourceTx",
+    "getConfigParam",
+    "runGetMethod",
+]
+
+pathsv3 = [
+    "masterchainInfo",
+    "blocks",
+    "masterchainBlockShardState",
+    "addressBook",
+    "masterchainBlockShards",
+    "transactions",
+    "transactionsByMasterchainBlock",
+    "transactionsByMessage",
+    "adjacentTransactions",
+    "messages",
+    "nft/collections",
+    "nft/items",
+    "nft/transfers",
+    "jetton/masters",
+    "jetton/wallets",
+    "jetton/transfers",
+    "jetton/burns",
+    "runGetMethod",
+    "estimateFee",
+    "account",
+    "wallet",
+]
+
 if __name__ == "__main__":
     # Example usage
     folder_to_search = "openAPI"  # The folder containing .json files
-    output_folder = "fixed/etherium_beacon_chain_api/state"
-    full_url = "https://beacon-nd-422-757-666.p2pify.com/0a9d79d93fb2f4a4b1e04695da2b77a7/eth/v1/beacon/blob_sidecars/{blob_sidecar_root}"
+    output_folder = "fixed/ton_node_api/v3"
 
-    matched, renamed = find_matching_files(folder_to_search, full_url, output_folder)
-    if matched:
-        print("Matched & moved files:")
-        for old, new in zip(matched, renamed):
-            print("  ", old, "->", new)
-    else:
-        print("No matches found for:", full_url)
+    for path in pathsv3:
+        full_url = f"https://ton-mainnet.core.chainstack.com/f2a2411bce1e54a2658f2710cd7969c3/api/v3/{path}"
+
+        matched, renamed = find_matching_files(
+            folder_to_search, full_url, output_folder
+        )
+        if matched:
+            print("Matched & moved files:")
+            for old, new in zip(matched, renamed):
+                print("  ", old, "->", new)
+        else:
+            print("\n\nNo matches found for:", full_url, "\n\n")
