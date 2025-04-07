@@ -101,17 +101,34 @@ if __name__ == "__main__":
     folder_to_search = "openAPI"  # where we look for existing JSON files
 
     # The three criteria
-    target_url = "https://nd-418-459-126.p2pify.com"
-    target_path = "/8763cb5a211e1d4345acd51bde484c00/ext/bc/C/rpc"
+    target_url = "https://nd-000-364-211.p2pify.com"
+    target_path = "/5b8d22690a57f293b3a1ed8758014e35"
 
     param_values = [
-        "web3_clientVersion",
-        "net_listening",
+        "eth_blockNumber",
+        "eth_getBlockByHash",
+        "eth_getBlockByNumber",
+        "eth_getBlockTransactionCountByHash",
+        "eth_getBlockTransactionCountByNumber",
+        "eth_newBlockFilter",
     ]
 
-    folder_name = "client_info"
+    folders = {
+        1: "blocks_info",
+        2: "transaction_info",
+        3: "execute_transactions",
+        4: "debug_and_trace",
+        5: "chain_info",
+        6: "gas_data",
+        7: "accounts_info",
+        8: "logs_and_events",
+        9: "filter_handling",
+        10: "client_info",
+    }
 
-    output_folder = f"fixed/avalanche_node_api/{folder_name}"
+    folder_name = folders[1]
+
+    output_folder = f"fixed/arbitrum_node_api/{folder_name}"
 
     failed_for = []
 
