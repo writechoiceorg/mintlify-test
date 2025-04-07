@@ -2,7 +2,7 @@ import os
 import json
 from collections import defaultdict
 
-current_folder = "bnb_node_api"
+current_folder = "base_node_api"
 
 
 def generate_mdx_and_reports(input_folder="fixed", output_folder="api-reference"):

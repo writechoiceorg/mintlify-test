@@ -89,7 +89,7 @@ def find_matching_files(
                     with open(new_full_path, "w", encoding="utf-8") as out_f:
                         json.dump(data, out_f, indent=2)
 
-                    os.remove(full_path)  # Remove the original file
+                    os.remove(full_path)
 
                     file_counter += 1
 
@@ -101,58 +101,17 @@ if __name__ == "__main__":
     folder_to_search = "openAPI"  # where we look for existing JSON files
 
     # The three criteria
-    target_url = "https://bsc-mainnet.core.chainstack.com"
-    target_path = "/35848e183f3e3303c8cfeacbea831cab"
+    target_url = "https://nd-418-459-126.p2pify.com"
+    target_path = "/8763cb5a211e1d4345acd51bde484c00/ext/bc/C/rpc"
 
     param_values = [
-        "eth_blockNumber",
-        "eth_getBlockByNumber",
-        "eth_getBlockByHash",
-        "eth_getBlockTransactionCountByNumber",
-        "eth_getBlockTransactionCountByHash",
-        "eth_newBlockFilter",
-        "eth_getTransactionByHash",
-        "eth_getTransactionReceipt",
-        "eth_getTransactionByBlockNumberAndIndex",
-        "eth_getTransactionByBlockHashAndIndex",
-        "eth_getBlockReceipts",
-        "eth_newPendingTransactionFilter",
-        "eth_call",
-        "eth_sendRawTransaction",
-        "eth_getBalance",
-        "eth_getCode",
-        "eth_getStorageAt",
-        "eth_getTransactionCount",
-        "eth_getProof",
-        "eth_chainId",
-        "eth_syncing",
-        "net_listening",
-        "net_peerCount",
         "web3_clientVersion",
-        "eth_estimateGas",
-        "eth_gasPrice",
-        "eth_maxPriorityFeePerGas",
-        "eth_getLogs",
-        "eth_newFilter",
-        "eth_getFilterChanges",
-        "eth_uninstallFilter",
-        "Custom JS tracer",
-        "debug_traceBlockByHash",
-        "debug_traceBlockByNumber",
-        "debug_traceCall",
-        "debug_traceTransaction",
-        "trace_block",
-        "trace_transaction",
-        "trace_call",
-        "trace_callMany",
-        "trace_replayBlockTransactions",
-        "trace_replayTransaction",
-        "trace_get",
+        "net_listening",
     ]
 
     folder_name = "client_info"
 
-    output_folder = f"fixed/bnb_node_api"
+    output_folder = f"fixed/avalanche_node_api/{folder_name}"
 
     failed_for = []
 
