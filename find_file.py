@@ -136,54 +136,43 @@ if __name__ == "__main__":
     folder_to_search = "openAPI"  # folder containing JSON files
 
     # The criteria
-    target_url = "https://nd-326-444-187.p2pify.com"
-    target_path = "/9de47db917d4f69168e3fed02217d15b"
+    target_url = "https://ronin-mainnet.core.chainstack.com"
+    target_path = "/3997273fc956a67dc6982384500e669e"
 
     param_values = [
-        "getAccountInfo",
-        "getBalance",
-        "getBlockHeight",
-        "getBlock",
-        "getBlockProduction",
-        "getBlockCommitment",
-        "getBlocks",
-        "getBlocksWithLimit",
-        "getBlockTime",
-        "getClusterNodes",
-        "getEpochInfo",
-        "getEpochSchedule",
-        "getFeeForMessage",
-        "getFirstAvailableBlock",
-        "getGenesisHash",
-        "getHighestSnapshotSlot",
-        "getIdentity",
-        "getInflationGovernor",
-        "getInflationRate",
-        "getInflationReward",
-        "getLatestBlockhash",
-        "getLeaderSchedule",
-        "getMaxRetransmitSlot",
-        "getMaxShredInsertSlot",
-        "getMinimumBalanceForRentExemption",
-        "getMultipleAccounts",
-        "getProgramAccounts",
-        "getRecentBlockhash",
-        "getRecentPerformanceSamples",
-        "getRecentPrioritizationFees",
-        "getSignaturesForAddress",
-        "getSignatureStatuses",
-        "getSlot",
-        "getSlotLeader",
-        "getStakeActivation",
-        "getStakeMinimumDelegation",
-        "getSupply",
-        "getTokenAccountBalance",
-        "getTokenAccountsByOwner",
-        "getTokenLargestAccounts",
-        "getLargestAccounts",
-        "getTransaction",
-        "isBlockhashValid",
-        "simulateTransaction",
+        "eth_blockNumber",
+        "eth_getBlockByHash",
+        "eth_getBlockByNumber",
+        "eth_getBlockTransactionCountByHash",
+        "eth_getBlockTransactionCountByNumber",
+        "eth_newBlockFilter",
+        "eth_getTransactionByHash",
+        "eth_getTransactionReceipt",
+        "eth_getTransactionByBlockHashAndIndex",
+        "eth_getTransactionByBlockNumberAndIndex",
+        "eth_getFilterChanges",
+        "eth_call",
+        "eth_sendRawTransaction",
+        "debug_traceBlockByHash",
+        "debug_traceBlockByNumber",
+        "debug_traceTransaction",
+        "debug_traceCall",
+        "eth_chainId",
+        "eth_syncing",
+        "eth_estimateGas",
+        "eth_gasPrice",
+        "eth_maxPriorityFeePerGas",
+        "eth_getTransactionCount",
+        "eth_getBalance",
+        "eth_getCode",
+        "eth_getStorageAt",
+        "eth_getLogs",
+        "eth_newFilter",
+        "web3_clientVersion",
+        "net_listening",
+        "net_peerCount",
+        "eth_getFilterChanges",
+        "eth_uninstallFilter",
     ]
 
     # Example folder mapping (you can choose the one you need)
@@ -201,11 +190,11 @@ if __name__ == "__main__":
     }
     folder_name = folders[1]
 
-    output_folder = f"fixed/solana_node_api"
+    output_folder = f"fixed/ronin_node_api"
 
     failed_for = []
 
-    removing_files = True
+    removing_files = False
 
     for param_value in param_values:
         # Call the function to find matching files
