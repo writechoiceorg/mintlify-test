@@ -2,6 +2,45 @@ import os
 import json
 from typing import List
 
+group_param_values = {
+    1: [
+        "eth_blockNumber",
+        "eth_getBlockByHash",
+        "eth_getBlockByNumber",
+        "eth_getBlockTransactionCountByHash",
+        "eth_getBlockTransactionCountByNumber",
+        "eth_newBlockFilter",
+    ],
+    2: [
+        "eth_getTransactionByHash",
+        "eth_getTransactionReceipt",
+        "eth_getTransactionByBlockHashAndIndex",
+        "eth_getTransactionByBlockNumberAndIndex",
+        "eth_newPendingTransactionFilter",
+    ],
+    3: ["eth_call", "eth_sendRawTransaction"],
+    4: [],
+    5: ["eth_chainId", "eth_syncing"],
+    6: ["eth_estimateGas", "eth_gasPrice"],
+    7: ["eth_getTransactionCount", "eth_getBalance", "eth_getCode", "eth_getStorageAt"],
+    8: ["eth_getLogs", "eth_newFilter"],
+    9: ["eth_getFilterChanges", "eth_uninstallFilter"],
+    10: ["web3_clientVersion", "net_listening", "net_peerCount"],
+}
+
+folders = {
+    1: "blocks_info",
+    2: "transaction_info",
+    3: "execute_transactions",
+    4: "debug_and_trace",
+    5: "chain_info",
+    6: "gas_data",
+    7: "accounts_info",
+    8: "logs_and_events",
+    9: "filter_handling",
+    10: "client_info",
+}
+
 
 def resolve_reference(ref: str, data: dict) -> dict:
     """
@@ -136,61 +175,48 @@ if __name__ == "__main__":
     folder_to_search = "openAPI"  # folder containing JSON files
 
     # The criteria
-    target_url = "https://ronin-mainnet.core.chainstack.com"
-    target_path = "/3997273fc956a67dc6982384500e669e"
+    target_url = "https://nd-500-249-268.p2pify.com"
+    target_path = "/512e720763b369ed620657f84d38d2af"
 
+    # current_folder = 10
     param_values = [
         "eth_blockNumber",
-        "eth_getBlockByHash",
         "eth_getBlockByNumber",
-        "eth_getBlockTransactionCountByHash",
+        "eth_getBlockByHash",
         "eth_getBlockTransactionCountByNumber",
+        "eth_getBlockTransactionCountByHash",
         "eth_newBlockFilter",
         "eth_getTransactionByHash",
         "eth_getTransactionReceipt",
-        "eth_getTransactionByBlockHashAndIndex",
         "eth_getTransactionByBlockNumberAndIndex",
-        "eth_getFilterChanges",
+        "eth_getTransactionByBlockHashAndIndex",
+        "eth_newPendingTransactionFilter",
         "eth_call",
         "eth_sendRawTransaction",
-        "debug_traceBlockByHash",
-        "debug_traceBlockByNumber",
-        "debug_traceTransaction",
-        "debug_traceCall",
-        "eth_chainId",
-        "eth_syncing",
-        "eth_estimateGas",
-        "eth_gasPrice",
-        "eth_maxPriorityFeePerGas",
-        "eth_getTransactionCount",
         "eth_getBalance",
         "eth_getCode",
         "eth_getStorageAt",
-        "eth_getLogs",
-        "eth_newFilter",
+        "eth_getProof",
+        "eth_getTransactionCount",
+        "eth_chainId",
+        "eth_syncing",
         "web3_clientVersion",
         "net_listening",
         "net_peerCount",
+        "eth_estimateGas",
+        "eth_gasPrice",
+        "eth_maxPriorityFeePerGas",
+        "eth_getLogs",
+        "eth_newFilter",
         "eth_getFilterChanges",
         "eth_uninstallFilter",
     ]
 
     # Example folder mapping (you can choose the one you need)
-    folders = {
-        1: "blocks_info",
-        2: "transaction_info",
-        3: "execute_transactions",
-        4: "debug_and_trace",
-        5: "chain_info",
-        6: "gas_data",
-        7: "accounts_info",
-        8: "logs_and_events",
-        9: "filter_handling",
-        10: "client_info",
-    }
-    folder_name = folders[1]
 
-    output_folder = f"fixed/ronin_node_api"
+    # folder_name = folders[current_folder]
+
+    output_folder = f"fixed/cronos_node_api"
 
     failed_for = []
 
