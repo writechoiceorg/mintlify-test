@@ -174,51 +174,22 @@ if __name__ == "__main__":
     folder_to_search = "openAPI"
 
     # The criteria
-    target_url = "https://nd-202-842-353.p2pify.com"
-    target_path = "/788f110831fe13808302bd79796d55e8"
+    target_url = "https://starknet-mainnet.core.chainstack.com"
+    target_path = "/365cf697a3ad6d950b4c4a911e2e4f4d"
 
     # current_folder = 10
     param_values = [
-        "getbestblockhash",
-        "getblock",
-        "getblockchaininfo",
-        "getblockfilter",
-        "getblockhash",
-        "getblockheader",
-        "getblockstats",
-        "getchaintips",
-        "getchaintxstats",
-        "getdifficulty",
-        "getmempoolancestors",
-        "getmempooldescendants",
-        "getmempoolentry",
-        "getmempoolinfo",
-        "getrawmempool",
-        "gettxoutsetinfo",
-        "gettxout",
-        "verifychain",
-        "gettxoutproof",
-        "preciousblock",
-        "verifytxoutproof",
-        "uptime",
-        "getmemoryinfo",
-        "getrpcinfo",
-        "getblocktemplate",
-        "getmininginfo",
-        "getnetworkhashps",
-        "prioritisetransaction",
-        "getpeerinfo",
-        "getnetworkinfo",
-        "getconnectioncount",
-        "getnettotals",
-        "listbanned",
-        "ping",
-        "getnodeaddresses",
-        "decodescript",
-        "decoderawtransaction",
-        "getrawtransaction",
-        "estimatesmartfee",
-        "validateaddress",
+        "starknet_call",
+        "starknet_estimateFee",
+        "starknet_estimateMessageFee",
+        "starknet_simulateTransactions",
+        "starknet_traceBlockTransactions",
+        "starknet_getClassHashAt",
+        "starknet_getNonce",
+        "starknet_getStorageAt",
+        "starknet_getTransactionByBlockIdAndIndex",
+        "starknet_getTransactionByHash",
+        "starknet_getClassAt",
     ]
 
     # Example folder mapping (you can choose the one you need)
