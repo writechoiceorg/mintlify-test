@@ -11,13 +11,13 @@
     }
   ],
   "paths": {
-    "/b9b0fb92029d58b396139a9e89cf479b/": {
+    "/b9b0fb92029d58b396139a9e89cf479b": {
       "post": {
         "tags": [
-          "Blocks info"
+          "upload"
         ],
-        "summary": "eth_getBlockTransactionCountByNumber",
-        "operationId": "getBlockTransactionCountByNumber",
+        "summary": "eth_estimateGas",
+        "operationId": "estimateGas",
         "requestBody": {
           "required": true,
           "content": {
@@ -35,16 +35,28 @@
                   },
                   "method": {
                     "type": "string",
-                    "default": "eth_getBlockTransactionCountByNumber"
+                    "default": "eth_estimateGas"
                   },
                   "params": {
                     "type": "array",
                     "items": {
-                      "type": "string",
-                      "title": "Block identifier",
-                      "description": "The block number or tag."
+                      "type": "object",
+                      "properties": {
+                        "from": {
+                          "type": "string",
+                          "format": "byte"
+                        },
+                        "to": {
+                          "type": "string",
+                          "format": "byte"
+                        }
+                      }
                     },
                     "default": [
+                      {
+                        "from": "0x25aA97464F38a1506a16160bbc03cfC6DD863da3",
+                        "to": "0x2A39319dB98A3982F7C363380b72C66Ab1FFe228"
+                      },
                       "latest"
                     ]
                   }
@@ -55,7 +67,7 @@
         },
         "responses": {
           "200": {
-            "description": "The block transaction count information",
+            "description": "The estimated gas amount",
             "content": {
               "application/json": {
                 "schema": {
@@ -68,7 +80,8 @@
                       "type": "integer"
                     },
                     "result": {
-                      "type": "string"
+                      "type": "string",
+                      "format": "byte"
                     }
                   }
                 }

@@ -11,13 +11,13 @@
     }
   ],
   "paths": {
-    "/b9b0fb92029d58b396139a9e89cf479b/": {
+    "/b9b0fb92029d58b396139a9e89cf479b": {
       "post": {
         "tags": [
           "Transactions info"
         ],
-        "summary": "eth_getTransactionByHash",
-        "operationId": "getTransactionByHash",
+        "summary": "eth_getTransactionReceipt",
+        "operationId": "getTransactionReceipt",
         "requestBody": {
           "required": true,
           "content": {
@@ -35,7 +35,7 @@
                   },
                   "method": {
                     "type": "string",
-                    "default": "eth_getTransactionByHash"
+                    "default": "eth_getTransactionReceipt"
                   },
                   "params": {
                     "type": "array",
@@ -54,7 +54,7 @@
         },
         "responses": {
           "200": {
-            "description": "The transaction information",
+            "description": "The transaction receipt",
             "content": {
               "application/json": {
                 "schema": {

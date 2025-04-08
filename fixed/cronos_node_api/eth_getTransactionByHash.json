@@ -11,13 +11,13 @@
     }
   ],
   "paths": {
-    "/b9b0fb92029d58b396139a9e89cf479b/": {
+    "/b9b0fb92029d58b396139a9e89cf479b": {
       "post": {
         "tags": [
-          "Update"
+          "Transactions info"
         ],
-        "summary": "net_peerCount",
-        "operationId": "peerCount",
+        "summary": "eth_getTransactionByHash",
+        "operationId": "getTransactionByHash",
         "requestBody": {
           "required": true,
           "content": {
@@ -35,11 +35,17 @@
                   },
                   "method": {
                     "type": "string",
-                    "default": "net_peerCount"
+                    "default": "eth_getTransactionByHash"
                   },
                   "params": {
                     "type": "array",
-                    "default": []
+                    "items": {
+                      "type": "string",
+                      "title": "Transaction hash"
+                    },
+                    "default": [
+                      "0x07352b3cfc68b13f2e01b60f3edc6c6bb8bb1a3926f1055f9f6a2cde15eec01c"
+                    ]
                   }
                 }
               }
@@ -48,7 +54,7 @@
         },
         "responses": {
           "200": {
-            "description": "The number of peers connected to the client.",
+            "description": "The transaction information",
             "content": {
               "application/json": {
                 "schema": {
@@ -61,7 +67,7 @@
                       "type": "integer"
                     },
                     "result": {
-                      "type": "string"
+                      "type": "object"
                     }
                   }
                 }

@@ -11,13 +11,13 @@
     }
   ],
   "paths": {
-    "/b9b0fb92029d58b396139a9e89cf479b/": {
+    "/b9b0fb92029d58b396139a9e89cf479b": {
       "post": {
         "tags": [
           "Update"
         ],
-        "summary": "eth_chainId",
-        "operationId": "getChainId",
+        "summary": "net_peerCount",
+        "operationId": "peerCount",
         "requestBody": {
           "required": true,
           "content": {
@@ -35,7 +35,7 @@
                   },
                   "method": {
                     "type": "string",
-                    "default": "eth_chainId"
+                    "default": "net_peerCount"
                   },
                   "params": {
                     "type": "array",
@@ -48,7 +48,7 @@
         },
         "responses": {
           "200": {
-            "description": "The network Chain ID",
+            "description": "The number of peers connected to the client.",
             "content": {
               "application/json": {
                 "schema": {

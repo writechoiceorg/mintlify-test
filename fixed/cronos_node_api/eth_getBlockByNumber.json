@@ -11,13 +11,13 @@
     }
   ],
   "paths": {
-    "/b9b0fb92029d58b396139a9e89cf479b/": {
+    "/b9b0fb92029d58b396139a9e89cf479b": {
       "post": {
         "tags": [
-          "Transactions info"
+          "upload"
         ],
-        "summary": "eth_getTransactionByBlockNumberAndIndex",
-        "operationId": "getTransactionByBlockNumberAndIndex",
+        "summary": "eth_getBlockByNumber",
+        "operationId": "getBlockByNumber",
         "requestBody": {
           "required": true,
           "content": {
@@ -35,7 +35,7 @@
                   },
                   "method": {
                     "type": "string",
-                    "default": "eth_getTransactionByBlockNumberAndIndex"
+                    "default": "eth_getBlockByNumber"
                   },
                   "params": {
                     "type": "array",
@@ -43,17 +43,19 @@
                       "anyOf": [
                         {
                           "type": "string",
-                          "title": "Block number"
+                          "title": "Block identifier",
+                          "description": "The block number or tag."
                         },
                         {
-                          "type": "string",
-                          "title": "Transaction index"
+                          "type": "boolean",
+                          "title": "Transaction selector",
+                          "description": "True for the full transactions, false for only the transaction hashes."
                         }
                       ]
                     },
                     "default": [
-                      "0xd20ec4",
-                      "0x3"
+                      "latest",
+                      false
                     ]
                   }
                 }
@@ -63,7 +65,7 @@
         },
         "responses": {
           "200": {
-            "description": "The transaction information",
+            "description": "The block information",
             "content": {
               "application/json": {
                 "schema": {

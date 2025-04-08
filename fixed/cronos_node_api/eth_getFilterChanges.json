@@ -11,13 +11,10 @@
     }
   ],
   "paths": {
-    "/b9b0fb92029d58b396139a9e89cf479b/": {
+    "/b9b0fb92029d58b396139a9e89cf479b": {
       "post": {
-        "tags": [
-          "upload"
-        ],
-        "summary": "eth_getBalance",
-        "operationId": "getBalance",
+        "summary": "eth_getFilterChanges",
+        "operationId": "getFilterChanges",
         "requestBody": {
           "required": true,
           "content": {
@@ -25,38 +22,27 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "id": {
-                    "type": "integer",
-                    "default": 1
-                  },
                   "jsonrpc": {
                     "type": "string",
                     "default": "2.0"
                   },
                   "method": {
                     "type": "string",
-                    "default": "eth_getBalance"
+                    "default": "eth_getFilterChanges"
                   },
                   "params": {
                     "type": "array",
                     "items": {
-                      "anyOf": [
-                        {
-                          "type": "string",
-                          "title": "Address",
-                          "description": "The address identifier."
-                        },
-                        {
-                          "type": "string",
-                          "title": "Block identifier",
-                          "description": "The block identifier."
-                        }
-                      ]
+                      "type": "string",
+                      "title": "The filter ID"
                     },
                     "default": [
-                      "0x71F0cDb17454ad7EeB7e26242292fe0E0189645a",
-                      "pending"
+                      "0xbdc5b4b99ca699e1d734fc4202afee79"
                     ]
+                  },
+                  "id": {
+                    "type": "integer",
+                    "default": 1
                   }
                 }
               }
@@ -65,7 +51,7 @@
         },
         "responses": {
           "200": {
-            "description": "The account balance.",
+            "description": "The filter changes.",
             "content": {
               "application/json": {
                 "schema": {
@@ -78,7 +64,10 @@
                       "type": "integer"
                     },
                     "result": {
-                      "type": "object"
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
                     }
                   }
                 }

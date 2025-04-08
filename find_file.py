@@ -171,12 +171,11 @@ def find_matching_files(
 
 
 if __name__ == "__main__":
-    # Example usage
-    folder_to_search = "openAPI"  # folder containing JSON files
+    folder_to_search = "openAPI"
 
     # The criteria
-    target_url = "https://nd-500-249-268.p2pify.com"
-    target_path = "/512e720763b369ed620657f84d38d2af"
+    target_url = "https://nd-907-114-772.p2pify.com"
+    target_path = "/b9b0fb92029d58b396139a9e89cf479b"
 
     # current_folder = 10
     param_values = [

@@ -11,13 +11,13 @@
     }
   ],
   "paths": {
-    "/b9b0fb92029d58b396139a9e89cf479b/": {
+    "/b9b0fb92029d58b396139a9e89cf479b": {
       "post": {
         "tags": [
           "upload"
         ],
-        "summary": "eth_getStorageAt",
-        "operationId": "getStorageAt",
+        "summary": "eth_getProof",
+        "operationId": "getProof",
         "requestBody": {
           "required": true,
           "content": {
@@ -27,7 +27,7 @@
                 "properties": {
                   "method": {
                     "type": "string",
-                    "default": "eth_getStorageAt"
+                    "default": "eth_getProof"
                   },
                   "params": {
                     "type": "array",
@@ -35,13 +35,16 @@
                       "anyOf": [
                         {
                           "type": "string",
-                          "title": "Smart contract address",
-                          "description": "The address of the contract to query."
+                          "title": "Account address",
+                          "description": "The address of the account to query."
                         },
                         {
-                          "type": "string",
-                          "title": "Slot index",
-                          "description": "The index of the storage position to query."
+                          "type": "array",
+                          "title": "Storage keys",
+                          "description": "An array of storage keys to query.",
+                          "items": {
+                            "type": "string"
+                          }
                         },
                         {
                           "type": "string",
@@ -52,7 +55,9 @@
                     },
                     "default": [
                       "0x5C7F8A570d578ED84E63fdFA7b1eE72dEae1AE23",
-                      "0x2",
+                      [
+                        "0xf6e506a9cbe7546a796b187c40609a170ea8073e047129a3cae1c38e6d7559b7"
+                      ],
                       "latest"
                     ]
                   },
@@ -71,7 +76,7 @@
         },
         "responses": {
           "200": {
-            "description": "The value stored at the specified position.",
+            "description": "The account state proof.",
             "content": {
               "application/json": {
                 "schema": {
@@ -84,7 +89,35 @@
                       "type": "integer"
                     },
                     "result": {
-                      "type": "string"
+                      "type": "object",
+                      "properties": {
+                        "accountProof": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "storageProof": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string"
+                              },
+                              "value": {
+                                "type": "string"
+                              },
+                              "proof": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
                     }
                   }
                 }

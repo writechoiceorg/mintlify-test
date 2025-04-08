@@ -11,13 +11,13 @@
     }
   ],
   "paths": {
-    "/b9b0fb92029d58b396139a9e89cf479b/": {
+    "/b9b0fb92029d58b396139a9e89cf479b": {
       "post": {
         "tags": [
-          "Syncing"
+          "Blocks info"
         ],
-        "summary": "eth_syncing",
-        "operationId": "syncing",
+        "summary": "eth_getBlockTransactionCountByHash",
+        "operationId": "getBlockTransactionCountByHash",
         "requestBody": {
           "required": true,
           "content": {
@@ -35,11 +35,18 @@
                   },
                   "method": {
                     "type": "string",
-                    "default": "eth_syncing"
+                    "default": "eth_getBlockTransactionCountByHash"
                   },
                   "params": {
                     "type": "array",
-                    "default": []
+                    "items": {
+                      "type": "string",
+                      "title": "Block hash",
+                      "description": "The block hash identifier."
+                    },
+                    "default": [
+                      "0x2230d083edc1173cbc7a7ab977318d6a8fc53fec6f147efb0c6544a9c4fc18fd"
+                    ]
                   }
                 }
               }
@@ -48,7 +55,7 @@
         },
         "responses": {
           "200": {
-            "description": "Syncing information",
+            "description": "The block information",
             "content": {
               "application/json": {
                 "schema": {
@@ -61,7 +68,7 @@
                       "type": "integer"
                     },
                     "result": {
-                      "type": "object"
+                      "type": "string"
                     }
                   }
                 }

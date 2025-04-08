@@ -11,13 +11,13 @@
     }
   ],
   "paths": {
-    "/b9b0fb92029d58b396139a9e89cf479b/": {
+    "/b9b0fb92029d58b396139a9e89cf479b": {
       "post": {
         "tags": [
-          "Transactions info"
+          "Update"
         ],
-        "summary": "eth_getTransactionByBlockHashAndIndex",
-        "operationId": "getTransactionByBlockHashAndIndex",
+        "summary": "eth_chainId",
+        "operationId": "getChainId",
         "requestBody": {
           "required": true,
           "content": {
@@ -35,26 +35,11 @@
                   },
                   "method": {
                     "type": "string",
-                    "default": "eth_getTransactionByBlockHashAndIndex"
+                    "default": "eth_chainId"
                   },
                   "params": {
                     "type": "array",
-                    "items": {
-                      "anyOf": [
-                        {
-                          "type": "string",
-                          "title": "Block hash"
-                        },
-                        {
-                          "type": "string",
-                          "title": "Transaction index"
-                        }
-                      ]
-                    },
-                    "default": [
-                      "0x876920092375935114a506dbe0daa54018abd25091c4b34c4a2202fa4c485562",
-                      "0x2"
-                    ]
+                    "default": []
                   }
                 }
               }
@@ -63,7 +48,7 @@
         },
         "responses": {
           "200": {
-            "description": "The transaction information",
+            "description": "The network Chain ID",
             "content": {
               "application/json": {
                 "schema": {
@@ -76,7 +61,7 @@
                       "type": "integer"
                     },
                     "result": {
-                      "type": "object"
+                      "type": "string"
                     }
                   }
                 }

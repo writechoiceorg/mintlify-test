@@ -11,13 +11,13 @@
     }
   ],
   "paths": {
-    "/b9b0fb92029d58b396139a9e89cf479b/": {
+    "/b9b0fb92029d58b396139a9e89cf479b": {
       "post": {
         "tags": [
-          "Blocks info"
+          "upload"
         ],
-        "summary": "eth_getBlockTransactionCountByHash",
-        "operationId": "getBlockTransactionCountByHash",
+        "summary": "eth_gasPrice",
+        "operationId": "getGasPrice",
         "requestBody": {
           "required": true,
           "content": {
@@ -35,18 +35,11 @@
                   },
                   "method": {
                     "type": "string",
-                    "default": "eth_getBlockTransactionCountByHash"
+                    "default": "eth_gasPrice"
                   },
                   "params": {
                     "type": "array",
-                    "items": {
-                      "type": "string",
-                      "title": "Block hash",
-                      "description": "The block hash identifier."
-                    },
-                    "default": [
-                      "0x2230d083edc1173cbc7a7ab977318d6a8fc53fec6f147efb0c6544a9c4fc18fd"
-                    ]
+                    "default": []
                   }
                 }
               }
@@ -55,7 +48,7 @@
         },
         "responses": {
           "200": {
-            "description": "The block information",
+            "description": "The value of the current gas base fee in Wei.",
             "content": {
               "application/json": {
                 "schema": {

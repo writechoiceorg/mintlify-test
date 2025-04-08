@@ -11,13 +11,13 @@
     }
   ],
   "paths": {
-    "/b9b0fb92029d58b396139a9e89cf479b/": {
+    "/b9b0fb92029d58b396139a9e89cf479b": {
       "post": {
         "tags": [
-          "Update"
+          "Blocks info"
         ],
-        "summary": "web3_clientVersion",
-        "operationId": "clientVersion",
+        "summary": "eth_blockNumber",
+        "operationId": "eth_blockNumber",
         "requestBody": {
           "required": true,
           "content": {
@@ -35,7 +35,7 @@
                   },
                   "method": {
                     "type": "string",
-                    "default": "web3_clientVersion"
+                    "default": "eth_blockNumber"
                   },
                   "params": {
                     "type": "array",
@@ -48,7 +48,7 @@
         },
         "responses": {
           "200": {
-            "description": "The client running on this node.",
+            "description": "The latest block number.",
             "content": {
               "application/json": {
                 "schema": {
@@ -61,7 +61,7 @@
                       "type": "integer"
                     },
                     "result": {
-                      "type": "string"
+                      "type": "object"
                     }
                   }
                 }

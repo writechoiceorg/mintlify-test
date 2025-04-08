@@ -11,10 +11,10 @@
     }
   ],
   "paths": {
-    "/b9b0fb92029d58b396139a9e89cf479b/": {
+    "/b9b0fb92029d58b396139a9e89cf479b": {
       "post": {
-        "summary": "eth_getFilterChanges",
-        "operationId": "getFilterChanges",
+        "summary": "eth_newBlockFilter",
+        "operationId": "newBlockFilter",
         "requestBody": {
           "required": true,
           "content": {
@@ -28,17 +28,11 @@
                   },
                   "method": {
                     "type": "string",
-                    "default": "eth_getFilterChanges"
+                    "default": "eth_newBlockFilter"
                   },
                   "params": {
                     "type": "array",
-                    "items": {
-                      "type": "string",
-                      "title": "The filter ID"
-                    },
-                    "default": [
-                      "0xbdc5b4b99ca699e1d734fc4202afee79"
-                    ]
+                    "default": []
                   },
                   "id": {
                     "type": "integer",
@@ -51,7 +45,7 @@
         },
         "responses": {
           "200": {
-            "description": "The filter changes.",
+            "description": "The new filter ID.",
             "content": {
               "application/json": {
                 "schema": {

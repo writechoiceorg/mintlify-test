@@ -11,13 +11,13 @@
     }
   ],
   "paths": {
-    "/b9b0fb92029d58b396139a9e89cf479b/": {
+    "/b9b0fb92029d58b396139a9e89cf479b": {
       "post": {
         "tags": [
           "upload"
         ],
-        "summary": "eth_gasPrice",
-        "operationId": "getGasPrice",
+        "summary": "eth_getBalance",
+        "operationId": "getBalance",
         "requestBody": {
           "required": true,
           "content": {
@@ -35,11 +35,28 @@
                   },
                   "method": {
                     "type": "string",
-                    "default": "eth_gasPrice"
+                    "default": "eth_getBalance"
                   },
                   "params": {
                     "type": "array",
-                    "default": []
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "title": "Address",
+                          "description": "The address identifier."
+                        },
+                        {
+                          "type": "string",
+                          "title": "Block identifier",
+                          "description": "The block identifier."
+                        }
+                      ]
+                    },
+                    "default": [
+                      "0x71F0cDb17454ad7EeB7e26242292fe0E0189645a",
+                      "pending"
+                    ]
                   }
                 }
               }
@@ -48,7 +65,7 @@
         },
         "responses": {
           "200": {
-            "description": "The value of the current gas base fee in Wei.",
+            "description": "The account balance.",
             "content": {
               "application/json": {
                 "schema": {
@@ -61,7 +78,7 @@
                       "type": "integer"
                     },
                     "result": {
-                      "type": "string"
+                      "type": "object"
                     }
                   }
                 }

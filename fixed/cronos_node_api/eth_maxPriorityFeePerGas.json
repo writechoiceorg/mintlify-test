@@ -11,13 +11,13 @@
     }
   ],
   "paths": {
-    "/b9b0fb92029d58b396139a9e89cf479b/": {
+    "/b9b0fb92029d58b396139a9e89cf479b": {
       "post": {
         "tags": [
-          "transactions info"
+          "upload"
         ],
-        "summary": "eth_call",
-        "operationId": "ethCall",
+        "summary": "eth_maxPriorityFeePerGas",
+        "operationId": "maxPriorityFeePerGas",
         "requestBody": {
           "required": true,
           "content": {
@@ -25,41 +25,21 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "id": {
+                    "type": "integer",
+                    "default": 1
+                  },
                   "jsonrpc": {
                     "type": "string",
                     "default": "2.0"
                   },
                   "method": {
                     "type": "string",
-                    "default": "eth_call"
-                  },
-                  "id": {
-                    "type": "integer",
-                    "default": 1
+                    "default": "eth_maxPriorityFeePerGas"
                   },
                   "params": {
                     "type": "array",
-                    "items": {
-                      "type": "object",
-                      "title": "Call object",
-                      "properties": {
-                        "to": {
-                          "type": "string",
-                          "description": "The address of the contract to call."
-                        },
-                        "data": {
-                          "type": "string",
-                          "description": "The data to send with the call."
-                        }
-                      }
-                    },
-                    "default": [
-                      {
-                        "to": "0x5C7F8A570d578ED84E63fdFA7b1eE72dEae1AE23",
-                        "data": "0x313ce567"
-                      },
-                      "latest"
-                    ]
+                    "default": []
                   }
                 }
               }
@@ -68,7 +48,7 @@
         },
         "responses": {
           "200": {
-            "description": "The result of the call.",
+            "description": "The estimated max priority fee per gas",
             "content": {
               "application/json": {
                 "schema": {
@@ -81,7 +61,8 @@
                       "type": "integer"
                     },
                     "result": {
-                      "type": "string"
+                      "type": "string",
+                      "format": "byte"
                     }
                   }
                 }

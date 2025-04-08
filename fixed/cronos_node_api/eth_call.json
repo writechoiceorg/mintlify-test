@@ -11,13 +11,13 @@
     }
   ],
   "paths": {
-    "/b9b0fb92029d58b396139a9e89cf479b/": {
+    "/b9b0fb92029d58b396139a9e89cf479b": {
       "post": {
         "tags": [
-          "upload"
+          "transactions info"
         ],
-        "summary": "eth_getTransactionCount",
-        "operationId": "getTransactionCount",
+        "summary": "eth_call",
+        "operationId": "ethCall",
         "requestBody": {
           "required": true,
           "content": {
@@ -25,36 +25,39 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "id": {
-                    "type": "integer",
-                    "default": 1
-                  },
                   "jsonrpc": {
                     "type": "string",
                     "default": "2.0"
                   },
                   "method": {
                     "type": "string",
-                    "default": "eth_getTransactionCount"
+                    "default": "eth_call"
+                  },
+                  "id": {
+                    "type": "integer",
+                    "default": 1
                   },
                   "params": {
                     "type": "array",
                     "items": {
-                      "anyOf": [
-                        {
+                      "type": "object",
+                      "title": "Call object",
+                      "properties": {
+                        "to": {
                           "type": "string",
-                          "title": "Address",
-                          "description": "The address to check"
+                          "description": "The address of the contract to call."
                         },
-                        {
+                        "data": {
                           "type": "string",
-                          "title": "Block identifier",
-                          "description": "The block identifier"
+                          "description": "The data to send with the call."
                         }
-                      ]
+                      }
                     },
                     "default": [
-                      "0x71F0cDb17454ad7EeB7e26242292fe0E0189645a",
+                      {
+                        "to": "0x5C7F8A570d578ED84E63fdFA7b1eE72dEae1AE23",
+                        "data": "0x313ce567"
+                      },
                       "latest"
                     ]
                   }
@@ -65,7 +68,7 @@
         },
         "responses": {
           "200": {
-            "description": "The address nonce",
+            "description": "The result of the call.",
             "content": {
               "application/json": {
                 "schema": {
@@ -78,7 +81,7 @@
                       "type": "integer"
                     },
                     "result": {
-                      "type": "object"
+                      "type": "string"
                     }
                   }
                 }

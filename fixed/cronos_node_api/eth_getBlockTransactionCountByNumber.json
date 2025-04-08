@@ -11,10 +11,13 @@
     }
   ],
   "paths": {
-    "/b9b0fb92029d58b396139a9e89cf479b/": {
+    "/b9b0fb92029d58b396139a9e89cf479b": {
       "post": {
-        "summary": "eth_newPendingTransactionFilter",
-        "operationId": "newPendingTransactionFilter",
+        "tags": [
+          "Blocks info"
+        ],
+        "summary": "eth_getBlockTransactionCountByNumber",
+        "operationId": "getBlockTransactionCountByNumber",
         "requestBody": {
           "required": true,
           "content": {
@@ -22,21 +25,28 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "id": {
+                    "type": "integer",
+                    "default": 1
+                  },
                   "jsonrpc": {
                     "type": "string",
                     "default": "2.0"
                   },
                   "method": {
                     "type": "string",
-                    "default": "eth_newPendingTransactionFilter"
+                    "default": "eth_getBlockTransactionCountByNumber"
                   },
                   "params": {
                     "type": "array",
-                    "default": []
-                  },
-                  "id": {
-                    "type": "integer",
-                    "default": 1
+                    "items": {
+                      "type": "string",
+                      "title": "Block identifier",
+                      "description": "The block number or tag."
+                    },
+                    "default": [
+                      "latest"
+                    ]
                   }
                 }
               }
@@ -45,7 +55,7 @@
         },
         "responses": {
           "200": {
-            "description": "The new filter ID.",
+            "description": "The block transaction count information",
             "content": {
               "application/json": {
                 "schema": {
@@ -58,10 +68,7 @@
                       "type": "integer"
                     },
                     "result": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
+                      "type": "string"
                     }
                   }
                 }

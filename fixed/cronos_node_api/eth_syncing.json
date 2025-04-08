@@ -11,13 +11,13 @@
     }
   ],
   "paths": {
-    "/b9b0fb92029d58b396139a9e89cf479b/": {
+    "/b9b0fb92029d58b396139a9e89cf479b": {
       "post": {
         "tags": [
-          "Blocks info"
+          "Syncing"
         ],
-        "summary": "eth_blockNumber",
-        "operationId": "eth_blockNumber",
+        "summary": "eth_syncing",
+        "operationId": "syncing",
         "requestBody": {
           "required": true,
           "content": {
@@ -35,7 +35,7 @@
                   },
                   "method": {
                     "type": "string",
-                    "default": "eth_blockNumber"
+                    "default": "eth_syncing"
                   },
                   "params": {
                     "type": "array",
@@ -48,7 +48,7 @@
         },
         "responses": {
           "200": {
-            "description": "The latest block number.",
+            "description": "Syncing information",
             "content": {
               "application/json": {
                 "schema": {

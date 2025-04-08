@@ -11,13 +11,13 @@
     }
   ],
   "paths": {
-    "/b9b0fb92029d58b396139a9e89cf479b/": {
+    "/b9b0fb92029d58b396139a9e89cf479b": {
       "post": {
         "tags": [
-          "Update"
+          "upload"
         ],
-        "summary": "net_listening",
-        "operationId": "listening",
+        "summary": "eth_getStorageAt",
+        "operationId": "getStorageAt",
         "requestBody": {
           "required": true,
           "content": {
@@ -25,6 +25,37 @@
               "schema": {
                 "type": "object",
                 "properties": {
+                  "method": {
+                    "type": "string",
+                    "default": "eth_getStorageAt"
+                  },
+                  "params": {
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "title": "Smart contract address",
+                          "description": "The address of the contract to query."
+                        },
+                        {
+                          "type": "string",
+                          "title": "Slot index",
+                          "description": "The index of the storage position to query."
+                        },
+                        {
+                          "type": "string",
+                          "title": "Block ID",
+                          "description": "The block number or tag to use as a reference."
+                        }
+                      ]
+                    },
+                    "default": [
+                      "0x5C7F8A570d578ED84E63fdFA7b1eE72dEae1AE23",
+                      "0x2",
+                      "latest"
+                    ]
+                  },
                   "id": {
                     "type": "integer",
                     "default": 1
@@ -32,14 +63,6 @@
                   "jsonrpc": {
                     "type": "string",
                     "default": "2.0"
-                  },
-                  "method": {
-                    "type": "string",
-                    "default": "net_listening"
-                  },
-                  "params": {
-                    "type": "array",
-                    "default": []
                   }
                 }
               }
@@ -48,7 +71,7 @@
         },
         "responses": {
           "200": {
-            "description": "The boolean value that indicates whether or not a node is currently actively seeking peer connections.",
+            "description": "The value stored at the specified position.",
             "content": {
               "application/json": {
                 "schema": {

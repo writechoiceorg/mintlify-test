@@ -11,13 +11,13 @@
     }
   ],
   "paths": {
-    "/b9b0fb92029d58b396139a9e89cf479b/": {
+    "/b9b0fb92029d58b396139a9e89cf479b": {
       "post": {
         "tags": [
-          "upload"
+          "Update"
         ],
-        "summary": "eth_getBlockByHash",
-        "operationId": "getBlockByHash",
+        "summary": "web3_clientVersion",
+        "operationId": "clientVersion",
         "requestBody": {
           "required": true,
           "content": {
@@ -35,28 +35,11 @@
                   },
                   "method": {
                     "type": "string",
-                    "default": "eth_getBlockByHash"
+                    "default": "web3_clientVersion"
                   },
                   "params": {
                     "type": "array",
-                    "items": {
-                      "anyOf": [
-                        {
-                          "type": "string",
-                          "title": "Block Hash",
-                          "description": "The hash identifying the block."
-                        },
-                        {
-                          "type": "boolean",
-                          "title": "Transaction selector",
-                          "description": "True for the full transactions, false for only the transaction hashes."
-                        }
-                      ]
-                    },
-                    "default": [
-                      "0x2230d083edc1173cbc7a7ab977318d6a8fc53fec6f147efb0c6544a9c4fc18fd",
-                      false
-                    ]
+                    "default": []
                   }
                 }
               }
@@ -65,7 +48,7 @@
         },
         "responses": {
           "200": {
-            "description": "The block information",
+            "description": "The client running on this node.",
             "content": {
               "application/json": {
                 "schema": {
@@ -78,7 +61,7 @@
                       "type": "integer"
                     },
                     "result": {
-                      "type": "object"
+                      "type": "string"
                     }
                   }
                 }

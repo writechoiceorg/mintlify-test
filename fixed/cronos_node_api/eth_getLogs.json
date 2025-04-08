@@ -11,13 +11,13 @@
     }
   ],
   "paths": {
-    "/b9b0fb92029d58b396139a9e89cf479b/": {
+    "/b9b0fb92029d58b396139a9e89cf479b": {
       "post": {
         "tags": [
           "logs"
         ],
-        "summary": "eth_newFilter",
-        "operationId": "newFilter",
+        "summary": "eth_getLogs",
+        "operationId": "getLogs",
         "requestBody": {
           "required": true,
           "content": {
@@ -27,7 +27,7 @@
                 "properties": {
                   "method": {
                     "type": "string",
-                    "default": "eth_newFilter"
+                    "default": "eth_getLogs"
                   },
                   "params": {
                     "type": "array",
@@ -80,7 +80,7 @@
         },
         "responses": {
           "200": {
-            "description": "The filter ID.",
+            "description": "An array of log objects matching the specified filter.",
             "content": {
               "application/json": {
                 "schema": {
@@ -93,7 +93,10 @@
                       "type": "integer"
                     },
                     "result": {
-                      "type": "string"
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
                     }
                   }
                 }

@@ -11,13 +11,10 @@
     }
   ],
   "paths": {
-    "/b9b0fb92029d58b396139a9e89cf479b/": {
+    "/b9b0fb92029d58b396139a9e89cf479b": {
       "post": {
-        "tags": [
-          "upload"
-        ],
-        "summary": "eth_maxPriorityFeePerGas",
-        "operationId": "maxPriorityFeePerGas",
+        "summary": "eth_uninstallFilter",
+        "operationId": "uninstallFilter",
         "requestBody": {
           "required": true,
           "content": {
@@ -25,21 +22,27 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "id": {
-                    "type": "integer",
-                    "default": 1
-                  },
                   "jsonrpc": {
                     "type": "string",
                     "default": "2.0"
                   },
                   "method": {
                     "type": "string",
-                    "default": "eth_maxPriorityFeePerGas"
+                    "default": "eth_uninstallFilter"
                   },
                   "params": {
                     "type": "array",
-                    "default": []
+                    "items": {
+                      "type": "string",
+                      "title": "Filter ID"
+                    },
+                    "default": [
+                      "0xbdc5b4b99ca699e1d734fc4202afee79"
+                    ]
+                  },
+                  "id": {
+                    "type": "integer",
+                    "default": 1
                   }
                 }
               }
@@ -48,7 +51,7 @@
         },
         "responses": {
           "200": {
-            "description": "The estimated max priority fee per gas",
+            "description": "Boolean value indicating if the filter was removed or not.",
             "content": {
               "application/json": {
                 "schema": {
@@ -61,8 +64,7 @@
                       "type": "integer"
                     },
                     "result": {
-                      "type": "string",
-                      "format": "byte"
+                      "type": "boolean"
                     }
                   }
                 }

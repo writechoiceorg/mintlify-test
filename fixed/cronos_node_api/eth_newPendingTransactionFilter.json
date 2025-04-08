@@ -11,13 +11,10 @@
     }
   ],
   "paths": {
-    "/b9b0fb92029d58b396139a9e89cf479b/": {
+    "/b9b0fb92029d58b396139a9e89cf479b": {
       "post": {
-        "tags": [
-          "upload"
-        ],
-        "summary": "eth_estimateGas",
-        "operationId": "estimateGas",
+        "summary": "eth_newPendingTransactionFilter",
+        "operationId": "newPendingTransactionFilter",
         "requestBody": {
           "required": true,
           "content": {
@@ -25,40 +22,21 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "id": {
-                    "type": "integer",
-                    "default": 1
-                  },
                   "jsonrpc": {
                     "type": "string",
                     "default": "2.0"
                   },
                   "method": {
                     "type": "string",
-                    "default": "eth_estimateGas"
+                    "default": "eth_newPendingTransactionFilter"
                   },
                   "params": {
                     "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "from": {
-                          "type": "string",
-                          "format": "byte"
-                        },
-                        "to": {
-                          "type": "string",
-                          "format": "byte"
-                        }
-                      }
-                    },
-                    "default": [
-                      {
-                        "from": "0x25aA97464F38a1506a16160bbc03cfC6DD863da3",
-                        "to": "0x2A39319dB98A3982F7C363380b72C66Ab1FFe228"
-                      },
-                      "latest"
-                    ]
+                    "default": []
+                  },
+                  "id": {
+                    "type": "integer",
+                    "default": 1
                   }
                 }
               }
@@ -67,7 +45,7 @@
         },
         "responses": {
           "200": {
-            "description": "The estimated gas amount",
+            "description": "The new filter ID.",
             "content": {
               "application/json": {
                 "schema": {
@@ -80,8 +58,10 @@
                       "type": "integer"
                     },
                     "result": {
-                      "type": "string",
-                      "format": "byte"
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
                     }
                   }
                 }
