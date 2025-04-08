@@ -174,48 +174,58 @@ if __name__ == "__main__":
     folder_to_search = "openAPI"
 
     # The criteria
-    target_url = "https://fantom-mainnet.core.chainstack.com"
-    target_path = "/4ab982aa70a7baead515ffdb5915df3f"
+    target_url = "https://nd-202-842-353.p2pify.com"
+    target_path = "/788f110831fe13808302bd79796d55e8"
 
     # current_folder = 10
     param_values = [
-        "eth_blockNumber",
-        "eth_getBlockByNumber",
-        "eth_getBlockByHash",
-        "eth_getBlockTransactionCountByNumber",
-        "eth_getBlockTransactionCountByHash",
-        "eth_newBlockFilter",
-        "eth_getTransactionByHash",
-        "eth_getTransactionReceipt",
-        "eth_getTransactionByBlockNumberAndIndex",
-        "eth_getTransactionByBlockHashAndIndex",
-        "eth_newPendingTransactionFilter",
-        "eth_call",
-        "eth_sendRawTransaction",
-        "eth_getBalance",
-        "eth_getCode",
-        "eth_getStorageAt",
-        "eth_getProof",
-        "eth_getTransactionCount",
-        "eth_chainId",
-        "eth_syncing",
-        "web3_clientVersion",
-        "net_listening",
-        "net_peerCount",
-        "eth_estimateGas",
-        "eth_gasPrice",
-        "eth_maxPriorityFeePerGas",
-        "eth_getLogs",
-        "eth_newFilter",
-        "eth_getFilterChanges",
-        "eth_uninstallFilter",
+        "getbestblockhash",
+        "getblock",
+        "getblockchaininfo",
+        "getblockfilter",
+        "getblockhash",
+        "getblockheader",
+        "getblockstats",
+        "getchaintips",
+        "getchaintxstats",
+        "getdifficulty",
+        "getmempoolancestors",
+        "getmempooldescendants",
+        "getmempoolentry",
+        "getmempoolinfo",
+        "getrawmempool",
+        "gettxoutsetinfo",
+        "gettxout",
+        "verifychain",
+        "gettxoutproof",
+        "preciousblock",
+        "verifytxoutproof",
+        "uptime",
+        "getmemoryinfo",
+        "getrpcinfo",
+        "getblocktemplate",
+        "getmininginfo",
+        "getnetworkhashps",
+        "prioritisetransaction",
+        "getpeerinfo",
+        "getnetworkinfo",
+        "getconnectioncount",
+        "getnettotals",
+        "listbanned",
+        "ping",
+        "getnodeaddresses",
+        "decodescript",
+        "decoderawtransaction",
+        "getrawtransaction",
+        "estimatesmartfee",
+        "validateaddress",
     ]
 
     # Example folder mapping (you can choose the one you need)
 
     # folder_name = folders[current_folder]
 
-    output_folder = f"fixed/fantom_node_api"
+    output_folder = f"fixed/starknet_node_api"
 
     failed_for = []
 
