@@ -78,6 +78,7 @@ def find_matching_files(
     target_path: str,
     param_value: str,
     output_folder: str,
+    remove_files=False,
 ) -> List[str]:
     """
     Recursively searches `folder_path` for JSON files.
@@ -121,8 +122,9 @@ def find_matching_files(
                     with open(new_full_path, "w", encoding="utf-8") as out_f:
                         json.dump(data, out_f, indent=2)
 
-                    # Remove the original file
-                    # os.remove(full_path)
+                    if remove_files is True:
+                        # Remove the original file
+                        os.remove(full_path)
 
                     file_counter += 1
 
@@ -134,58 +136,54 @@ if __name__ == "__main__":
     folder_to_search = "openAPI"  # folder containing JSON files
 
     # The criteria
-    target_url = "https://optimism-mainnet.core.chainstack.com"
-    target_path = "/efb0a5eccd2caa5135eb54eba6f7f300"
+    target_url = "https://nd-326-444-187.p2pify.com"
+    target_path = "/9de47db917d4f69168e3fed02217d15b"
 
     param_values = [
-        "eth_blockNumber",
-        "eth_getBlockByHash",
-        "eth_getBlockByNumber",
-        "eth_getBlockTransactionCountByHash",
-        "eth_getBlockTransactionCountByNumber",
-        "eth_getUncleCountByBlockHash",
-        "eth_getUncleCountByBlockNumber",
-        "eth_getBlockReceipts",
-        "eth_chainId",
-        "eth_syncing",
-        "eth_call",
-        "eth_estimateGas",
-        "eth_createAccessList",
-        "eth_gasPrice",
-        "eth_feeHistory",
-        "eth_newFilter",
-        "eth_newBlockFilter",
-        "eth_uninstallFilter",
-        "eth_getFilterChanges",
-        "eth_getFilterLogs",
-        "eth_getLogs",
-        "eth_getBalance",
-        "eth_getStorageAt",
-        "eth_getTransactionCount",
-        "eth_getCode",
-        "eth_getProof",
-        "eth_getTransactionByHash",
-        "eth_getRawTransactionByHash",
-        "eth_getTransactionByBlockHashAndIndex",
-        "eth_getRawTransactionByBlockHashAndIndex",
-        "eth_getTransactionByBlockNumberAndIndex",
-        "eth_getRawTransactionByBlockNumberAndIndex",
-        "eth_getTransactionReceipt",
-        "eth_unsubscribe",
-        "eth_maxPriorityFeePerGas",
-        "eth_sendRawTransaction",
-        "web3_clientVersion",
-        "web3_sha3",
-        "net_listening",
-        "eth_callMany",
-        "debug_getModifiedAccountsByNumber",
-        "debug_getModifiedAccountsByHash",
-        "debug_storageRangeAt",
-        "debug_traceBlockByHash",
-        "debug_traceBlockByNumber",
-        "debug_traceTransaction",
-        "debug_traceCall",
-        "debug_traceCallMany",
+        "getAccountInfo",
+        "getBalance",
+        "getBlockHeight",
+        "getBlock",
+        "getBlockProduction",
+        "getBlockCommitment",
+        "getBlocks",
+        "getBlocksWithLimit",
+        "getBlockTime",
+        "getClusterNodes",
+        "getEpochInfo",
+        "getEpochSchedule",
+        "getFeeForMessage",
+        "getFirstAvailableBlock",
+        "getGenesisHash",
+        "getHighestSnapshotSlot",
+        "getIdentity",
+        "getInflationGovernor",
+        "getInflationRate",
+        "getInflationReward",
+        "getLatestBlockhash",
+        "getLeaderSchedule",
+        "getMaxRetransmitSlot",
+        "getMaxShredInsertSlot",
+        "getMinimumBalanceForRentExemption",
+        "getMultipleAccounts",
+        "getProgramAccounts",
+        "getRecentBlockhash",
+        "getRecentPerformanceSamples",
+        "getRecentPrioritizationFees",
+        "getSignaturesForAddress",
+        "getSignatureStatuses",
+        "getSlot",
+        "getSlotLeader",
+        "getStakeActivation",
+        "getStakeMinimumDelegation",
+        "getSupply",
+        "getTokenAccountBalance",
+        "getTokenAccountsByOwner",
+        "getTokenLargestAccounts",
+        "getLargestAccounts",
+        "getTransaction",
+        "isBlockhashValid",
+        "simulateTransaction",
     ]
 
     # Example folder mapping (you can choose the one you need)
@@ -203,14 +201,21 @@ if __name__ == "__main__":
     }
     folder_name = folders[1]
 
-    output_folder = f"fixed/optimism_node_api"
+    output_folder = f"fixed/solana_node_api"
 
     failed_for = []
+
+    removing_files = True
 
     for param_value in param_values:
         # Call the function to find matching files
         results = find_matching_files(
-            folder_to_search, target_url, target_path, param_value, output_folder
+            folder_to_search,
+            target_url,
+            target_path,
+            param_value,
+            output_folder,
+            remove_files=removing_files,
         )
 
         if results:
@@ -222,3 +227,14 @@ if __name__ == "__main__":
 
     if len(failed_for) > 0:
         print("\n\nFailed finding the following files:\n", failed_for)
+    elif len(failed_for) == 0 and removing_files is False:
+        print("\n\nAll files were found successfully.")
+        for param_value in param_values:
+            results = find_matching_files(
+                folder_to_search,
+                target_url,
+                target_path,
+                param_value,
+                output_folder,
+                remove_files=True,
+            )
