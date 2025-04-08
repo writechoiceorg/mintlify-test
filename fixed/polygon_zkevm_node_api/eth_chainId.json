@@ -1,46 +1,45 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "web3_clientVersion example",
+    "title": "Polygon zkEVM Node API",
     "version": "1.0.0",
-    "description": "This is an API example for web3_clientVersion, a method to get the version of the Ethereum client."
+    "description": "This is an API for interacting with a zkEVM node."
   },
   "servers": [
     {
-      "url": "https://optimism-mainnet.core.chainstack.com/efb0a5eccd2caa5135eb54eba6f7f300"
+      "url": "https://nd-363-550-219.p2pify.com"
     }
   ],
   "paths": {
-    "/": {
+    "/942aad90bb6a082676497030b81e40ba": {
       "post": {
         "tags": [
-          "Ethereum Client Information"
+          "Update"
         ],
-        "summary": "web3_clientVersion",
-        "operationId": "clientVersion",
+        "summary": "eth_chainId",
+        "operationId": "getChainId",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
               "schema": {
                 "type": "object",
-                "required": [
-                  "jsonrpc",
-                  "method",
-                  "id"
-                ],
                 "properties": {
+                  "id": {
+                    "type": "integer",
+                    "default": 1
+                  },
                   "jsonrpc": {
                     "type": "string",
                     "default": "2.0"
                   },
                   "method": {
                     "type": "string",
-                    "default": "web3_clientVersion"
+                    "default": "eth_chainId"
                   },
-                  "id": {
-                    "type": "integer",
-                    "default": 1
+                  "params": {
+                    "type": "array",
+                    "default": []
                   }
                 }
               }
@@ -49,7 +48,7 @@
         },
         "responses": {
           "200": {
-            "description": "The version of the Ethereum client",
+            "description": "The network Chain ID",
             "content": {
               "application/json": {
                 "schema": {
@@ -62,8 +61,7 @@
                       "type": "integer"
                     },
                     "result": {
-                      "type": "string",
-                      "description": "The client version string."
+                      "type": "string"
                     }
                   }
                 }
