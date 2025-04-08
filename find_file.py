@@ -174,8 +174,8 @@ if __name__ == "__main__":
     folder_to_search = "openAPI"
 
     # The criteria
-    target_url = "https://nd-907-114-772.p2pify.com"
-    target_path = "/b9b0fb92029d58b396139a9e89cf479b"
+    target_url = "https://fantom-mainnet.core.chainstack.com"
+    target_path = "/4ab982aa70a7baead515ffdb5915df3f"
 
     # current_folder = 10
     param_values = [
@@ -215,7 +215,7 @@ if __name__ == "__main__":
 
     # folder_name = folders[current_folder]
 
-    output_folder = f"fixed/cronos_node_api"
+    output_folder = f"fixed/fantom_node_api"
 
     failed_for = []
 
