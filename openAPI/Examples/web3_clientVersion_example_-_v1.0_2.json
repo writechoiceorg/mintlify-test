@@ -7,11 +7,11 @@
   },
   "servers": [
     {
-      "url": "https://optimism-mainnet.core.chainstack.com/efb0a5eccd2caa5135eb54eba6f7f300"
+      "url": "https://optimism-mainnet.core.chainstack.com"
     }
   ],
   "paths": {
-    "/": {
+    "/efb0a5eccd2caa5135eb54eba6f7f300": {
       "post": {
         "tags": [
           "Ethereum Client Information"

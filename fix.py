@@ -81,18 +81,21 @@ def find_and_fix_json(folder_path, search_url, new_path_value, original_path_val
 if __name__ == "__main__":
     # Example usage:
     folder_to_search = "openAPI"
+    folder_to_search2 = "openAPI_backup"
 
     # For example, something like:
-    search_url = (
-        "https://zksync-sepolia.core.chainstack.com/da5f4c6274cd225217d352308a952d2f"
-    )
+    search_url = "https://nd-326-444-187.p2pify.com/9de47db917d4f69168e3fed02217d15b"
     original_path_value = "/"
-    new_path_value = f"da5f4c6274cd225217d352308a952d2f{original_path_value}".rstrip(
+    new_path_value = f"9de47db917d4f69168e3fed02217d15b{original_path_value}".rstrip(
         "/"
     )
 
     results = find_and_fix_json(
         folder_to_search, search_url, new_path_value, original_path_value
+    )
+
+    find_and_fix_json(
+        folder_to_search2, search_url, new_path_value, original_path_value
     )
     print("Updated files:")
     for f in results:
