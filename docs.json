@@ -14,12 +14,6 @@
         "tab": "API Reference",
         "groups": [
           {
-            "group": "API_Example2_-_v1.0",
-            "openapi": {
-              "source": "/openAPI/Examples/API_Example2_-_v1.0.json"
-            }
-          },
-          {
             "group": "Aurora_Node_API_-_v1.0",
             "openapi": {
               "source": "/openAPI/Aurora_Node_API/Aurora_Node_API_-_v1.0.json"
