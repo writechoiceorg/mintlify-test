@@ -1,0 +1,102 @@
+export const SchemaParamFields = ({ schema }) => {
+  const { description, properties = {}, required: requiredProps = [] } = schema;
+  const sanitize = (str) => (typeof str === "string" ? str.replace(/"/g, "'") : str);
+  const formatDescription = (str) => {
+    const s = sanitize(str);
+    return /[.!?]\)*$/.test(s) ? s : `${s}.`;
+  };
+
+  return (
+    <div>
+      {description && <p>{formatDescription(description)}</p>}
+
+      {Object.entries(properties).map(([name, prop]) => {
+        const isRequired = requiredProps.includes(name);
+        const defaultValue = prop.default;
+        const hasDefault = defaultValue !== undefined;
+        const isJsonDefault =
+          hasDefault && typeof defaultValue === "string" && defaultValue.trim().startsWith("{");
+
+        const fieldProps = {
+          key: name,
+          body: name,
+          type: prop.type,
+          ...(isRequired && { required: true }),
+          ...(!isJsonDefault && hasDefault ? { default: sanitize(String(defaultValue)) } : {}),
+        };
+
+        const isArrayOfObjects = prop.type === "array" && prop.items && prop.items.type === "object";
+        const hasObjectProps = prop.type === "object" && prop.properties && Object.keys(prop.properties).length > 0;
+
+        return (
+          <ParamField {...fieldProps}>
+            {prop.description && <p>{formatDescription(prop.description)}</p>}
+            {prop.minLength !== undefined && <p><code>{`>= ${prop.minLength} characters`}</code></p>}
+            {prop.maxLength !== undefined && <p><code>{`<= ${prop.maxLength} characters`}</code></p>}
+            {prop.pattern && (
+              <p>
+                Match pattern: <code>{sanitize(prop.pattern)}</code>
+              </p>
+            )}
+
+            {prop.enum && (
+              <p>
+                Allowed values: {' '}
+                {prop.enum.map((v, i) => (
+                  <>
+                    <code key={v}>{sanitize(v)}</code>
+                    {i < prop.enum.length - 1 && ', '}
+                  </>
+                ))}
+              </p>
+            )}
+            
+            {isJsonDefault && <p><strong>default:</strong></p>}
+            {isJsonDefault && (
+              <pre>
+                <code>{sanitize(String(defaultValue))}</code>
+              </pre>
+            )}
+
+            {isArrayOfObjects && (
+              <pre>
+                <code>
+                  {'{\n'}
+                  {Object.entries(prop.items.properties).map(([iname, iprop]) => (
+                    <>
+                      {`  ${iname}`}
+                      {prop.items?.required?.includes(iname) && (
+                        <span style={{ color: 'red' }}> required</span>
+                      )}
+                      {`: {\n    display name: ${sanitize(iprop.title || '')}\n    type: ${iprop.type}\n  }\n`}
+                    </>
+                  ))}
+                  {'}'}
+                </code>
+              </pre>
+            )}
+            {hasObjectProps && (
+              <Expandable title="properties">
+                {Object.entries(prop.properties).map(([oname, oprop]) => {
+                  const oIsRequired = (prop.required || []).includes(oname);
+                  const oFieldProps = {
+                    key: oname,
+                    body: oname,
+                    type: oprop.type,
+                    ...(oIsRequired && { required: true }),
+                    ...(oprop.default !== undefined && { default: sanitize(String(oprop.default)) }),
+                  };
+                  return (
+                    <ParamField {...oFieldProps}>
+                      {oprop.description && <p>{sanitize(oprop.description)}</p>}
+                    </ParamField>
+                  );
+                })}
+              </Expandable>
+            )}
+          </ParamField>
+        );
+      })}
+    </div>
+  );
+};
