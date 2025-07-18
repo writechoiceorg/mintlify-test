@@ -1,0 +1,29 @@
+export const SchemaToTable = ({ schema }) => {
+  const columns = schema.models[0].columns;
+  const description = schema.models[0].description;
+
+  return (
+    <>
+      <p>{description.trim()}</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Field</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {columns.map((col) => (
+            <tr key={col.name}>
+              <td>{col.name}</td>
+              <td>
+                <strong>{col.name.replace(/([A-Z])/g, " $1").replace(/^./, (str) => str.toUpperCase())}:</strong>{" "}
+                {col.description.trim()}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </>
+  );
+};

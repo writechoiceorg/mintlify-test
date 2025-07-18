@@ -1,44 +1,58 @@
 const fs = require("fs");
 const path = require("path");
+const yaml = require("js-yaml");
 
 /**
- * Recursively walks a folder and converts all JSON files to MDX format
- * @param {string} inputDir - base input folder
- * @param {string} outputDir - base output folder
+ * Recursively walks `inputDir`, parses every .yml/.yaml file,
+ * and writes a .mdx file under `outputDir`, preserving folder structure.
+ *
+ * @param {string} inputDir
+ * @param {string} outputDir
  */
-function convertJsonToMdx(inputDir, outputDir) {
+function convertYamlToMdx(inputDir, outputDir) {
   const entries = fs.readdirSync(inputDir, { withFileTypes: true });
 
   for (const entry of entries) {
     const inputPath = path.join(inputDir, entry.name);
-    const outputPath = path.join(outputDir, entry.name.replace(/\.json$/, ".mdx"));
+
+    // change .yml/.yaml → .mdx
+    const outputName = entry.name.replace(/\.ya?ml$/i, ".mdx");
+    const outputPath = path.join(outputDir, outputName);
 
     if (entry.isDirectory()) {
-      convertJsonToMdx(inputPath, path.join(outputDir, entry.name));
-    } else if (entry.isFile() && entry.name.endsWith(".json")) {
-      const json = fs.readFileSync(inputPath, "utf-8");
-      const parsed = JSON.parse(json);
+      // recurse into sub‑folders
+      convertYamlToMdx(inputPath, path.join(outputDir, entry.name));
+    } else if (entry.isFile() && /\.ya?ml$/i.test(entry.name)) {
+      // load and parse the YAML
+      const yamlText = fs.readFileSync(inputPath, "utf-8");
+      const parsed = yaml.load(yamlText);
 
-      const mdxContent = `export const schema = ${JSON.stringify(parsed, null, 2)}\n`;
+      // stringify to nice JSON
+      const jsonString = JSON.stringify(parsed, null, 2);
 
+      // wrap in an MDX export
+      const mdxContent = `export const schema = ${jsonString};\n`;
+
+      // ensure destination folder exists
       fs.mkdirSync(path.dirname(outputPath), { recursive: true });
       fs.writeFileSync(outputPath, mdxContent, "utf-8");
-
-      console.log(`✅ Created: ${outputPath}`);
+      console.log(`✅ ${inputPath} → ${outputPath}`);
     }
   }
 }
 
 function main() {
-  const baseInput = path.join(process.cwd(), "configuration-schema");
-  const baseOutput = path.join(process.cwd(), "snippets", "configuration-schema");
+  // adjust these as needed:
+  const filepath = "arcadia-yaml";
+  const baseInput = path.join(process.cwd(), filepath);
+  const baseOutput = path.join(process.cwd(), "snippets", filepath);
 
   if (!fs.existsSync(baseInput)) {
     console.error(`❌ Input folder "${baseInput}" does not exist.`);
     process.exit(1);
   }
 
-  convertJsonToMdx(baseInput, baseOutput);
+  convertYamlToMdx(baseInput, baseOutput);
 }
 
 main();

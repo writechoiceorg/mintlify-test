@@ -3,7 +3,7 @@ version: 2
 models:
   - name: assessmentResults
     description: >
-     This table displays results from submitted care assessment forms in a tabular format. There is one record per response result, so multi-select questions may have multiple records for the same question, and questions that were not answered may not appear in the table. Each result group is associated with a task in [cm].[userActivity] and with a single assessment version, the content of which can be referenced in [cm].[assessments].
+      This table displays results from submitted care assessment forms in a tabular format. There is one record per response result, so multi-select questions may have multiple records for the same question, and questions that were not answered may not appear in the table. Each result group is associated with a task in [cm].[userActivity] and with a single assessment version, the content of which can be referenced in [cm].[assessments].
     config:
       tags: [ 'care_management' ]
       frequencyDomain: 'CARE MANAGEMENT'
