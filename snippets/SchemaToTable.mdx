@@ -1,10 +1,16 @@
 export const SchemaToTable = ({ schema }) => {
+  if (!schema.models[0].columns) {
+    return <p>Missing Columns</p>
+  }
+
   const columns = schema.models[0].columns;
   const description = schema.models[0].description;
 
   return (
     <>
-      <p>{description.trim()}</p>
+      {
+        description && <p>{description.trim()}</p>
+      }
       <table>
         <thead>
           <tr>
@@ -18,7 +24,9 @@ export const SchemaToTable = ({ schema }) => {
               <td>{col.name}</td>
               <td>
                 <strong>{col.name.replace(/([A-Z])/g, " $1").replace(/^./, (str) => str.toUpperCase())}:</strong>{" "}
-                {col.description.trim()}
+                {
+                  col.description && col.description.trim()
+                }
               </td>
             </tr>
           ))}
