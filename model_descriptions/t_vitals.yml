@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: t_vitals
+    description: > 
+      Vitals represent the measurement of common vital signs, as observed and documented with special vocabulary constraints for type and unit applied. Arcadia Analytics will integrate at least the following vitals with appropriate units: Height, weight, temperature, blood pressure (discrete systolic and diastolic readings), and BMI. 
+      Preferably, all vitals taken in a single reading or point in time can be captured in a single record; however, multiple records can be used to capture each individual vital sign if necessary. 
+      Note that BMI can be captured as a raw value and percentile; by law, Arcadia Analytics may only capture BMI values and percentiles directly from data feeds, and may not calculate and store BMI values for the purposes of measure calculations or reporting.
+    config:
+      tags: [ 'care_quality_and_program_data' ]
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: ['FDR-1514']
+
+      - dbt_utils.unique_combination_of_columns:
+          meta:
+            requirement: [ 'FDR-1745' ]
+          combination_of_columns:
+            - id
+            - person_id
+
+    columns:
+      - name: id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-754' ]
+      - name: arc_encounter_id
+        data_tests:
+          - relationships:
+              to: ref('t_encounter')
+              field: id
+              meta:
+                requirement: [ 'FDR-754' ]

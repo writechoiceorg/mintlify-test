@@ -1,0 +1,148 @@
+version: 2
+
+models:
+  - name: personFormSummary
+    description: > 
+     This table contains a summary of all profiles and forms with statistics, status, program details, and modified dates of persons present in the Arcadia Assess/Audit product. 
+     There is a record for every opened form plus any not-yet-started forms of profiles with outstanding gaps Also included are provider and plan details as recorded in Assess.  
+    config:
+      frequencyDomain: 'ASSESS'
+    columns:
+      - name: programId 
+        description: >
+          GUID for the Assess program.
+      - name: programName  
+        description: >
+          Name of the program. 
+      - name: programInstanceId 
+        description: >
+          GUID for the program instance, which usually indicates a single period within a program that spans multiple years.
+      - name: programInstanceName  
+        description: >
+          Name of the program instance. 
+      - name: personId  
+        description: >
+          Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.  
+      - name: memberId  
+        description: >
+          Arcadia's internal member identifier. This identifier is subject to change over time.  
+      - name: memberNo  
+        description: >
+          The member number for the person.
+      - name: profileId 
+        description: >
+          GUID for the Assess profile - a combination of person, program, instance, period, provider, and insurance product.
+      - name: period 
+        description: >
+          The program period of the program and instance.
+      - name: providerNPI 
+        description: >
+          National Provider Identifier of the provider to which the profile is attributed.
+      - name: providerName 
+        description: >
+          Full name of the provider to which the profile is attributed.  
+      - name: providerClassification 
+        description: >
+          The classification of the provider, from the NPPES primary taxonomy code. 
+      - name: providerSpecialty 
+        description: >
+          Specialty of the provider to which the profile is attributed.
+      - name: providerGrouper1-6 
+        description: >
+          Up to 6 'groupers' associated with the provider, if available in the provider hierarchy.
+      - name: planSource 
+        description: >
+          The Payer to which the profile is attributed. 
+      - name: planProduct 
+        description: >
+          The Product to which the profile is attributed. 
+      - name: planFundingSource 
+        description: >
+          The Funding Source to which the profile is attributed. 
+      - name: profileInactiveInd 
+        description: >
+          A 0/1 indicator that the Assess profile is inactive. Inactive profiles will only appear if a form was attached to them.
+      - name: profileCreatedDate  
+        description: >
+          Date at which the profile was first generated from the Arcadia profile creation engine. 
+      - name: profileModifiedDate  
+        description: >
+          Date at which the profile was last updated from the profile creation engine. 
+      - name: formId 
+        description: >
+          GUID for the form created for the associated profile. One profile may have multiple forms. A NULL formId indicates a not-yet-started form with outstanding gaps.
+      - name: formCreatedDate 
+        description: >
+          Date at which the form was created in the Arcadia Assess application. 
+      - name: formModifiedDate 
+        description: >
+          Date at which the form was last modified in the Arcadia Assess application. 
+      - name: formStatus 
+        description: >
+          Latest workflow status of the form. May differ from the configured display status in the UI.
+      - name: formStatusDate 
+        description: >
+          Date at which the status of the form was last updated.
+      - name: formMeasuresTotal 
+        description: >
+          Number of measures present in the form.
+      - name: formMeasuresAddressed 
+        description: >
+          Number of form measures for which the user supplied evidence.
+      - name: formRisksTotal 
+        description: >
+          Number of risk gaps associated with a risk model present in the form. 
+      - name: formsRisksConfirmed 
+        description: >
+          Number of form risk gaps confirmed by a user.  
+      - name: formRiskDenied 
+        description: >
+          Number of form risk gaps denied by a user.
+      - name: formRisksUnknown 
+        description: >
+          Number of form risk gaps with 'Unknown' status. 
+      - name: formMiscFieldsAddressed  
+        description: >
+          Number of custom form fields with a user interaction in the form. Not captured in this version.
+      - name: formSubmitDate  
+        description: >
+          Date on which the form was last submitted. 
+      - name: formSubmitterId 
+        description: >
+          Arcadia's internal numeric identifier for the user who most recently submitted the form. This can be used to join to any [web] or [cm] table with a userId like field. 
+      - name: formSubmitterUID  
+        description: >
+          Assess UID for the user who most recently submitted the form. This can be used to join to the [web].[users] table [identityProviderUID] field.
+      - name: formSubmittedUsername  
+        description: >
+          Username of the most recent submitter of the form.
+      - name: formSubmitterFullName 
+        description: >
+          Full name of the most recent submitter of the form. 
+      - name: formAuditStatus 
+        description: >
+          The most recent audit workflow status of the form. May differ from the configured display status in the UI.
+      - name: formAuditDate   
+        description: >
+          Date at which the form status was last updated by an auditor. 
+      - name: formAuditorId  
+        description: >
+          Arcadia's internal numeric identifier for the user who most recently audited the form. This can be used to join to any [web] or [cm] table with a userId like field. 
+      - name: formAuditorUID  
+        description: >
+          Assess UID for the user who most recently audited the form. This can be used to join to the [web].[users] table [identityProviderUID] field.
+      - name: formAuditorUsername  
+        description: >
+          Username of the most recent auditor of the form. 
+      - name: formAuditorFullName  
+        description: >
+          Username of the most recent auditor of the form.
+      - name: formStatusLabel  
+        description: >
+          The configured display status of the form.
+      - name: formsAuditStatusLabel  
+        description: >
+          The configured display status of the form as visible in the auditor view.
+      - name: formCompleteDate  
+        description: >
+          formCompleteDate

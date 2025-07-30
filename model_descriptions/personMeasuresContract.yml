@@ -1,0 +1,215 @@
+version: 2
+
+models:
+  - name: personMeasuresContract
+    config:
+      tags: [ 'care_quality_and_program_data' ]
+      statusDomain: 'Measure Calculations'
+      frequencyDomain: 'QUALITY MEASURES'
+    description: >
+      Contain the results of all quality measures enabled in Analytics. The [personMeasures] view
+      contains one record per person/period/measure for the entire population, while the [personMeasuresContract] table
+      contains one record per person/payer/measure for each year period in which a person was enrolled with a plan.
+      ote the “person” is the post-MPI record, so it is possible that these results contain data from multiple member
+      records (duals or churn) and multiple patient records (specialty/hospital and primary care) per person. Note the
+      Denominator and Numerator fields contain more detailed breakouts, with Exclusions and Exceptions called out
+      separately
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: ['FDR-1514']
+
+    columns:
+      - name: memberId
+        description: >
+          Arcadia internal member_id, which can be used to join
+          to [dbo].[v_plan_member] or
+          [dbo].[personAttribution]. This identifier is subject to
+          change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-719' ]
+      - name: personId
+        description: >
+          Arcadia's universal identifier for the patient/member
+          record. This identifier is subject to change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-719' ]
+          - relationships:
+              to: ref('v_patient')
+              field: person_id
+              meta:
+                requirement: [ 'FDR-719' ]
+      - name: EligYear
+        description: >
+          The contract year in which the person has eligibility.
+      - name: AtRiskFlag
+        description: >
+          A 0/1 indicator that this member is considered "At
+          Risk" for the given payer contract. This column can be
+          used as a filter when calculating performance.
+      - name: memberNo
+        description: >
+          The payer-supplied member identifier, useful for cross
+          referencing against payer-supplied data sources.
+      - name: planPayer
+        description: >
+          The Payer for which the person is eligible most
+          recently in the eligYear.
+      - name: planProduct
+        description: >
+          The Product for which the person is eligible most
+          recently in the eligYear.
+      - name: planFundingSource
+        description: >
+          The Funding Source for which the person is eligible
+          most recently in the eligYear.
+      - name: pcpNPI
+        description: >
+          The NPI of the most recently attributed PCP in the
+          eligYear.
+      - name: pcpName
+        description: >
+          The full name of the most recently attributed PCP in
+          the eligYear.
+      - name: pcpGrouper1
+        description: >
+          Up to "grouper" attributes of the PCP e.g.
+          ("Practice", "Pod", "Market”).
+      - name: pcpGrouper2
+        description: >
+          Up to "grouper" attributes of the PCP e.g.
+          ("Practice", "Pod", "Market”).
+      - name: pcpGrouper3
+        description: >
+          Up to "grouper" attributes of the PCP e.g.
+          ("Practice", "Pod", "Market”).
+      - name: pcpGrouper4
+        description: >
+          Up to "grouper" attributes of the PCP e.g.
+          ("Practice", "Pod", "Market”).
+      - name: pcpGrouper5
+        description: >
+          Up to "grouper" attributes of the PCP e.g.
+          ("Practice", "Pod", "Market”).
+      - name: pcpGrouper6
+        description: >
+          Up to "grouper" attributes of the PCP e.g.
+          ("Practice", "Pod", "Market”).
+      - name: InitiativeId
+        description: >
+          Arcadia's internal identifier for the initiative that
+          contains the given measure.
+      - name: InitiativeName
+        description: >
+          The name of the initiative that contains the given
+          measure as it appears in the Arcadia Analytics front
+          end.
+      - name: MeasureId
+        description: >
+          Arcadia's internal identifier for the given measure.
+      - name: MeasureUniqueName
+        description: >
+          Arcadia's universal identifier for the given measure.
+          Various initiatives may have the same measure with
+          different configurations or display names, but the
+          base calculation is the same.
+      - name: MeasureRate
+        description: >
+          Rate associated with the measure.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2060' ]
+      - name: MeasureDisplayName
+        description: >
+          The name of the given measure as it appears in the
+          Arcadia Analytics front end.
+      - name: MeasureDescription
+        description: >
+          The description that appears when hovering over the
+          given measure in the Arcadia Analytics front end.
+      - name: ReportingYear
+        description: >
+          The year period for which the measure values are
+          calculated. This is the same value as eligYear.
+      - name: PeriodStart
+        description: >
+          The first day of the calculated period.
+      - name: PeriodEnd
+        description: >
+          The last day of the calculated period.
+      - name: ArcadiaNumerator
+        description: >
+          A 0/1 indicator that the person qualifies for the
+          numerator of the given measure in the given period
+          before exclusions or exceptions by Arcadia's
+          calculation.
+      - name: ArcadiaDenominator
+        description: >
+          A 0/1 indicator that the person qualifies for the
+          denominator of the given measure in the given period
+          before exclusions or exceptions by Arcadia's
+          calculation. *May be NULL in payer-supplied
+          measures when the person is in the payer file but not
+          in arcadia calculations.
+      - name: ArcadiaExclusions
+        description: >
+          A 0/1 indicator that the person is excluded from the
+          denominator of the given measure in the given period
+          by Arcadia's calculation. *May be NULL in payersupplied
+          measures when the person is in the payer file
+          but not in arcadia calculations.
+      - name: ArcadiaExceptions
+        description: >
+          A 0/1 indicator that the person should be excluded
+          from the denominator of the given measure if the
+          numerator criteria is not met by Arcadia's calculation.
+          *May be NULL in payer-supplied measures when the
+          person is in the payer file but not in arcadia
+          calculations.
+      - name: ArcadiaCalcNumerator
+        description: >
+          The final numerator calculation for the given measure
+          and period with exclusions and exceptions by
+          Arcadia's calculation. This is the numerator result that
+          is used in Arcadia's performance module.
+      - name: ArcadiaCalcDenominator
+        description: >
+          The final denominator calculation for the given
+          measure and period with exclusions and exceptions by
+          Arcadia's calculation. This is the numerator result that
+          is used in Arcadia's performance module. *May be
+          NULL in payer-supplied measures when the person is
+          in the payer file but not in arcadia calculations.
+      - name: PayerNumerator
+        description: >
+          A 0/1 indicator that the person qualifies for the
+          numerator of the given payer-supplied measure in the
+          given period according to the payer file. NULL if the
+          measure is not payer-supplied.
+      - name: PayerDenominator
+        description: >
+          A 0/1 indicator that the person qualifies for the
+          denominator of the given payer-supplied measure in
+          the given period according to the payer file. NULL if
+          the measure is not payer-supplied.
+      - name: Threshold
+        description: >
+          The target rate of performance for the given measure
+          as a decimal.
+      - name: ThresholdDirection
+        description: >
+          A 0/1 indicator that the measure is inverse.
+      - name: PayerSuppliedInd
+        description: >
+          A 0/1 indicator that the measure is payer-supplied.
+      - name: origSourceId
+        description: >
+          The field represents an identifier for the original source of the data from the connector.
+      - name: contractInitiativeInd
+        description: >
+          A 0/1 indicator that the measure is configured for the plan/LOB contract, per the measure "initativeLobMap" configuration.

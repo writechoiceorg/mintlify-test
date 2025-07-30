@@ -1,0 +1,70 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "t_immunization",
+      "description": "The immunization list describes patients' immunization record/status, either through administration at the point of care, or as reported by the patient, clinician, or another party. This entity may also include vaccine reaction information and the vaccination protocol that was followed. Immunizations must have an indication of vaccinations administered by the recording provider differentiated from those reported by the patient themselves. Furthermore, all vaccination information must be consolidated onto the source systems defined immunization workflow and encoded with SNOMED, CPT, or CVX code sets.\n",
+      "config": {
+        "tags": [
+          "care_quality_and_program_data"
+        ]
+      },
+      "data_tests": [
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "FDR-1514"
+              ]
+            }
+          }
+        },
+        {
+          "dbt_utils.unique_combination_of_columns": {
+            "meta": {
+              "requirement": [
+                "FDR-1745"
+              ]
+            },
+            "combination_of_columns": [
+              "id",
+              "person_id"
+            ]
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "id",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-747"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "arc_encounter_id",
+          "data_tests": [
+            {
+              "relationships": {
+                "to": "ref('t_encounter')",
+                "field": "id",
+                "meta": {
+                  "requirement": [
+                    "FDR-747"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};

@@ -1,0 +1,149 @@
+version: 2
+
+models:
+  - name: conditionRiskWorkflowV6
+    description: >
+      A report of changes to risk condition status, including confirmation, denial, and supplemental or alternative evidence, as well as the user that took these actions. Only actions taken in V6.0+ Arcadia applications will surface here. 
+    config:
+      tags: [ 'application_usage_auditing' ]
+      frequencyDomain: 'WEB'
+    columns:
+      - name: riskYear
+        description: >
+          The year treated as the current year against which risk
+          calculations are run. Events that occur prior to this year
+          contribute to open gaps and events that occur curing this
+          year contribute to gap closure.
+      - name: personId
+        description: >
+          Arcadia's universal identifier for the patient/member record.
+          This identifier is subject to change over time.
+      - name: memberId
+        description: >
+          Arcadia internal member_id, which can be used to join to
+          [dbo].[v_plan_member] or [dbo].[personAttribution]. This
+          identifier is subject to change over time.
+      - name: pcpNPI
+        description: >
+          The NPI of the person's attributed PCP for the most recent
+          attribution in the risk year.
+      - name: pcpName
+        description: >
+          The full name of the person's attributed for the most
+          recent attribution in the risk year.
+      - name: pcpGrouper1
+        description: >
+          The health system-defined first-level of the person's
+          attributed PCP for the most recent attribution in the risk
+          year. This could be a practice, medical group, department,
+          etc.
+      - name: pcpGrouper2
+        description: >
+          The health system-defined second-level grouper of the
+          attributed PCP for the most recent attribution in the risk
+          year. This may be an ACO, region or market, or pod.
+      - name: pcpGrouper3
+        description: >
+          The health system -defined isk Unit of the person's
+          attributed PCP for the most recent attribution in the risk
+          year. This may be an ACO, region or market, or pod.
+      - name: pcpGrouper4
+        description: >
+          Additional groupers or provider attributes, as needed.
+      - name: pcpGrouper5
+        description: >
+          Additional groupers or provider attributes, as needed.
+      - name: pcpGrouper6
+        description: >
+          Additional groupers or provider attributes, as needed.
+      - name: planPayer
+        description: >
+          The Payer for which the person is most recently eligible in
+          the risk year.
+      - name: planProduct
+        description: >
+          The Product for which the person is eligible most recently
+          in the risk year.
+      - name: planFundingSource
+        description: >
+          If applicable, the Funding Source associated with the
+          person's most recent eligibility span in the risk year.
+      - name: atRiskFlag
+        description: >
+          A 0/1 indicator that the person is at risk for a payer contract
+          during the most recent eligibility span in the risk year.
+      - name: riskAlgorithm
+        description: >
+          The risk algorithm applied.
+      - name: riskGroup
+        description: >
+          The risk group for the risk condition, as defined by the risk algorithm. 
+      - name: condition
+        description: >
+          A description of the risk condition that applies to the given
+          risk algorithm.
+      - name: conditionCategory
+        description: >
+          Category for the risk condition, as defined by the risk
+          algorithm.
+      - name: riskGapOpen
+        description: >
+          Y/N indicator that the risk gap described has not been coded
+          on a claim or in a connected EHR in the risk year.
+      - name: riskStatus
+        description: >
+          The status of the risk gap as determined by user input from
+          the Arcadia Analytics Risk Navigator.
+      - name: riskStatusPrimary
+        description: >
+          A 0/1 indicator that the risk evidence is considered authoritative (primary) for the risk gap. 
+      - name: workflowApp
+        description: >
+          Source application of the risk condition record.
+      - name: riskDataSource
+        description: >
+          The source of evidence for this condition. Possible sources
+          include:
+              Current/Historical RAPS
+              Current/Historical Claim
+              Current/Historical Encounter
+              Problem List
+              Medications and Prescription
+              Labs and Observation
+            Not all sources are available in all configurations.
+      - name: riskDataSourceRank
+        description: >
+          The rank of the data source, as presented in riskDataSource,
+          above. Sources with lower rank supersede sources with
+          higher rank.
+      - name: riskNotes
+        description: >
+          The notes associated with the risk status as determined by
+          user input from the Arcadia Analytics Risk Navigator.
+      - name: riskAlternateCode
+        description: >
+          The code used to substantiate identified or imputed risk, if available.
+      - name: riskAlternateCodeType
+        description: >
+          The code set of the code used to substantiate the identified or imputed risk, if available.
+      - name: riskAlternateCodeDescription
+        description: >
+          The description of the code used to substantiate identified or imputed risk, if available.
+      - name: riskAlternateDate
+        description: >
+          Date of the event substantiating the risk; if the event is from a longitudinal list (e.g. Problem or Medication List), this date represents the onset date.
+      - name: updatedDate
+        description: >
+          The date risk status was last updated.
+      - name: userId
+        description: > 
+          Arcadia's internal identifier for the user.
+      - name: userUID
+        description: > 
+          UID of the user. 
+      - name: username
+        description: > 
+          User's username typically email for legacy accounts).
+      - name: userFullName
+        description: > 
+          User's full name (Last, First).

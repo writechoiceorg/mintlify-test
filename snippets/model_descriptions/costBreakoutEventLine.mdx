@@ -1,0 +1,168 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "costBreakoutEventLine",
+      "config": {
+        "tags": [
+          "utilization_and_expense_data"
+        ],
+        "statusDomain": "Medical Claim",
+        "frequencyDomain": "MEDICAL ECONOMICS"
+      },
+      "description": "This table holds one record per claim line, with supplementary cost breakouts beyond what is available in [eventLineDetails]. \n",
+      "data_tests": [
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "FDR-1514"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "detailEventId",
+          "description": "The Arcadia internal ID of the line-level event. This identifier is subject to change over time.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-717"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "rollupEventId",
+          "description": "The Arcadia internal ID of the IP or OP event after roll-up. Join to [dbo].[inpatientEvents] or [dbo].[outpatientEvents] for the rolled up event record. This identifier is subject to change over time.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-717"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "triggerInd",
+          "description": "A 0/1 indicator for whether the detail event was the trigger line for either inpatient or outpatient event rollup.\n"
+        },
+        {
+          "name": "claimLineId",
+          "description": "The Arcadia internal Claim Line ID, which can be used to link to [dbo].[v_plan_claim_line].\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-717"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "sourceId",
+          "description": "The Arcadia internal ID for the claims data-source, which can be used to link to [dbo].[v_plan_source].\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-717"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "claimHeaderId",
+          "description": "The Arcadia internal Claim Header ID, which can be used to link to [dbo].[v_plan_claim_header] or [dbo].[v_plan_claim_line].\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-717"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "units",
+          "description": "The total number of units of the corresponding service billed on that claim line.  This is typically 1 except in the case where billing for multiple instances of a service on the same claim line are allowed.\n"
+        },
+        {
+          "name": "ffsEquivalentAmount",
+          "description": "The amount that would be paid in a fee for service contract.\n"
+        },
+        {
+          "name": "billedAmount",
+          "description": "The amount that was billed by the entity that rendered the services.\n"
+        },
+        {
+          "name": "allowedAmount",
+          "description": "The reimbursement amount negotiated between the payer and provider for the services rendered.\n"
+        },
+        {
+          "name": "copayAmount",
+          "description": "The amount that was paid by the patient as copayment for services rendered. When available, this is taken directly from the submitted claim, not derived based on additional information.\n"
+        },
+        {
+          "name": "couinsuranceAmount",
+          "description": "The amount that was paid by the patient as coinsurance for services rendered. This is typically a percentage of the entire service as dictated by the patient's benefit package. When available, this is taken directly from the submitted claim, not derived based on additional information.\n"
+        },
+        {
+          "name": "deductibleAmount",
+          "description": "The amount that was paid by the patient as a deductible for services rendered per their benefit package. When available, this is taken directly from the submitted claim, not derived based on additional information.\n"
+        },
+        {
+          "name": "patientLiabilityAmount",
+          "description": "The total patient liability for services rendered and is the summation of copay, coinsurance and deductible amounts.\n"
+        },
+        {
+          "name": "witholdAmount",
+          "description": "The amount withheld by the payer for the services rendered. This amount is negotiated between the physician organization and the payer and is paid back to the physician group dependent on an end of year reconciliation process\n"
+        },
+        {
+          "name": "cobAmount",
+          "description": "The Coordination of Benefits amount is the amount that was paid by a different payer for these services based on a coordination of benefits agreement.\n"
+        },
+        {
+          "name": "paidAmount",
+          "description": "The amount that your organization paid for the services rendered.\n"
+        },
+        {
+          "name": "contractAmount",
+          "description": "The amount that your organization is contractually managing your population against and that you use to reconcile the total cost of care against on an annual basis. (Deprecated as of 2020.1.0)\n"
+        },
+        {
+          "name": "tcocAmount",
+          "description": "The Total Cost of Care Amount that is the configured cost prior to the application of at-Risk and stop loss rules. The application of these rules produces the final contractual reconciliation amount.\n"
+        },
+        {
+          "name": "atRiskAmount",
+          "description": "The amount that is considered 'At Risk' as configured by member and service line at risk rules after at risk rules have been applied. This amount forms the basis of stop loss cost calculation.\n"
+        },
+        {
+          "name": "slProtectedAmount",
+          "description": "The amount that is considered stop loss protected after stop loss rules have been applied.\n"
+        }
+      ]
+    }
+  ]
+};

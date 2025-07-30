@@ -1,0 +1,30 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "eventCrosswalk",
+      "config": {
+        "tags": [
+          "utilization_and_expense_data"
+        ],
+        "statusDomain": "Medical Claim",
+        "frequencyDomain": "MEDICAL ECONOMICS"
+      },
+      "description": "Note: This information is also on the [eventLineDetails] table and IP/OP events can be cross-walked directly. As Arcadia 'Events' can summarize multiple claim lines, this table holds a one-to-many crosswalk between an Arcadia rollup event ID (from [inpatientEvents] and [outpatientEvents]) and the corresponding detailed ID from [eventLineDetails]. Use this to find all corresponding claims for a given event. \n",
+      "columns": [
+        {
+          "name": "detailEventId",
+          "description": "The Arcadia internal ID of the line-level event included in the roll-up. Join to [dbo].[eventLineDetails] for the individual line details. This identifier is subject to change over time.\n"
+        },
+        {
+          "name": "rollupEventId",
+          "description": "The Arcadia internal ID of the IP or OP event after rollup. Join to [dbo].[inpatientEvents] or [dbo].[outpatientEvents] for the rolled up event record. This identifier is subject to change over time.\n"
+        },
+        {
+          "name": "triggerInd",
+          "description": "A 0/1 indicator for whether the detail event was the trigger line for either inpatient or outpatient event rollup.\n"
+        }
+      ]
+    }
+  ]
+};

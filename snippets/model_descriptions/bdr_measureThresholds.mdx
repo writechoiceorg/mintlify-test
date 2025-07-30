@@ -1,0 +1,55 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "bdr_measureThresholds",
+      "config": {
+        "tags": [
+          "bdr"
+        ],
+        "frequencyDomain": "BINDERY"
+      },
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "FDR-1402"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "measureId",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1402"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "initiativeId",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1402"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};

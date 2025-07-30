@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: plan_member_elig
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: ['FDR-1514']
+
+    description: > 
+      This table contains information about member enrollment in health plans. Each record in this table relates to a specific member and product ID and date range (bound by start and end dates) during which the member is enrolled in the product. This data drives a range of Arcadia Analytics functionality, including security settings for plan users, constraining the list of members whose information they may view to those with current eligibility in their plan.
+    columns:
+      - name: id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-763' ]
+
+      - name: member_elig_id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-763' ]
+      - name: delete_ind
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-763' ]
+      - name: member_id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-763' ]
+      - name: source_id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-763' ]

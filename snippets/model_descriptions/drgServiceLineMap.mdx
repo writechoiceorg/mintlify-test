@@ -1,0 +1,40 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "drgServiceLineMap",
+      "description": "This is a lookup table which maps DRG codes to service line descriptions.\n",
+      "config": {
+        "tags": [
+          "lookup"
+        ]
+      },
+      "columns": [
+        {
+          "name": "drgType",
+          "description": "Code representing the type of diagnostic related group (DRG) specified in the drg column.\n"
+        },
+        {
+          "name": "drgVersion",
+          "description": "Version of the DRG code.\n"
+        },
+        {
+          "name": "drgCode",
+          "description": "Number representing the diagnosis related group (DRG).\n"
+        },
+        {
+          "name": "serviceLineMajor",
+          "description": "Top-level service line.\n"
+        },
+        {
+          "name": "serviceLineMinor",
+          "description": "Low-level service line.\n"
+        },
+        {
+          "name": "medSurg",
+          "description": "Indicates whether this DRG is medical (M) or surgical (S).\n"
+        }
+      ]
+    }
+  ]
+};

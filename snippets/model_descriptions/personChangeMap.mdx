@@ -1,0 +1,19 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "personChangeMap",
+      "description": "As a user reporting on patient risk score outcomes driven by user action in applications, I must link old application data from Assess, Chart, and Engage to current risk adjustment data by personId. The current personId on the risk data may have been updated since the application data was loaded to Foundry. I need to be able to find the current personId for patient-specific app data at any time after it loads.\n",
+      "columns": [
+        {
+          "name": "PersonID",
+          "description": "The outdated personId on the risk data.\n"
+        },
+        {
+          "name": "NewPersonId",
+          "description": "Current personId for patient-specific app data at any time after it loads.\n"
+        }
+      ]
+    }
+  ]
+};

@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: t_appointment
+    columns:
+      - name: id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-768' ]
+      - name: person_id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-768' ]
+          - relationships:
+              to: ref('v_patient')
+              field: person_id
+              meta:
+                requirement: [ 'FDR-768' ]
+      - name: arc_encounter_id
+        data_tests:
+          - relationships:
+              to: ref('t_encounter')
+              field: id
+              meta:
+                requirement: [ 'FDR-768' ]

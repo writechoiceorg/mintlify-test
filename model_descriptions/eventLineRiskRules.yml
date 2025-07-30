@@ -1,0 +1,81 @@
+version: 2
+
+models:
+  - name: eventLineRiskRules
+    description: >
+      This table surfaces details for the line level 'At Risk Flag.' Rules can be added to reflect a given contract's rules for line level claim risk flagging.
+    config:
+      tags: [ 'lookup' ]
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: ['FDR-1521', 'FDR-1785']
+    columns:
+      - name: cpt
+        description: >
+          The CPT code associated with the immunization.
+      - name: revenueCode
+        description: >
+          The Revenue code from the episode trigger event.
+      - name: placeOfService
+        description: >
+          The POS code from the episode trigger event.
+      - name: drg
+        description: >
+          The DRG code from the episode trigger event.
+      - name: icd
+        description: >
+          The ICD code from the episode trigger event.
+      - name: providerSpecialty
+        description: >
+          The immunization provider's specialty.
+      - name: cptModifier
+        description: >
+          Not Applicable
+      - name: ndc
+        description: >
+          NDC code for medication
+      - name: theraGroup1
+        description: >
+          Highest-level therapeutic group used to classify drugs
+          based on NDC code. This column is only populated with an
+          active Medispan license.
+      - name: theraGroup2
+        description: >
+          Second-level therapeutic group used to classify drugs
+          based on NDC code. This column is only populated with an
+          active Medispan license.
+      - name: theraGroup3
+        description: >
+          Third-level therapeutic group used to classify drugs based
+          on NDC code. This column is only populated with an active
+          Medispan license.
+      - name: theraGroup4
+        description: >
+          Lowest level therapeutic group used to classify drugs
+          based on NDC code. This column is only populated with an
+          active Medispan license.
+      - name: origSourceId
+        description: >
+          Not Applicable
+      - name: origProductId
+        description: >
+          Not Applicable
+      - name: startDate
+        description: >
+          The first date/hour/minute of the given month.
+      - name: endDate
+        description: >
+          The last date/hour/minute of the given month.
+      - name: customRule1
+        description: >
+          Not Applicable
+      - name: customRule2
+        description: >
+          Not Applicable
+      - name: customRule3
+        description: >
+          Not Applicable
+      - name: notes
+        description: >
+          Any additional metadata or content specific to the score.

@@ -1,0 +1,29 @@
+version: 2
+
+models:
+  - name: rsk_PersonRiskCohort
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'FDR-1985' ]
+    columns:
+      - name: period
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1985' ]
+      - name: PersonID
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1985' ]
+      - name: codeType
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1985' ]
+      - name: cohort
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1985' ]

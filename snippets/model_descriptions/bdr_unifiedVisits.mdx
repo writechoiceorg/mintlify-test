@@ -1,0 +1,181 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "bdr_unifiedVisits",
+      "description": "A table containing one row per patient visit to a PCP or specialist, from either a clinical or claims data source. This allows customers to easily identify last visit date and determine the number of visits between a patient and provider. Clinical and claims data are combined when possible, and claims data typically takes precedence over clinical data when the sources differ.",
+      "config": {
+        "tags": [
+          "bdr"
+        ],
+        "frequencyDomain": "BINDERY"
+      },
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "FDR-2031"
+              ]
+            }
+          }
+        },
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "ETL-1630"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "PersonID",
+          "description": "Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.\n"
+        },
+        {
+          "name": "memberId",
+          "description": "Arcadia internal member identifier, which can be used to join to raw plan views or [dbo].[personAttribution]. This identifier is subject to change over time. This field is null for records based only on clinical data.\n"
+        },
+        {
+          "name": "patientId",
+          "description": "QDW patient ID for the patient whose encounter is recorded. This field is null for records based only on claims data.\n"
+        },
+        {
+          "name": "eventDate",
+          "description": "Date of the visit.\n"
+        },
+        {
+          "name": "clinicalEncTime",
+          "description": "The earliest time of the encounter listed in the t_encounter table. This field depends on timestamps in the enc_timestamp field.\n"
+        },
+        {
+          "name": "providerNPI",
+          "description": "NPI of provider.\n"
+        },
+        {
+          "name": "providerName",
+          "description": "Most relevant provider name. This is sourced from the outpatient events table, or if this data is null, the clinical tables.\n"
+        },
+        {
+          "name": "providerSpecialty",
+          "description": "Specialty of provider.\n"
+        },
+        {
+          "name": "providerGrouper1",
+          "description": "Up to 6 \"grouper\" attributes of the provider (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "providerGrouper2",
+          "description": "Up to 6 \"grouper\" attributes of the provider (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "providerGrouper3",
+          "description": "Up to 6 \"grouper\" attributes of the provider (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "providerGrouper4",
+          "description": "Up to 6 \"grouper\" attributes of the provider (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "providerGrouper5",
+          "description": "Up to 6 \"grouper\" attributes of the provider (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "providerGrouper6",
+          "description": "Up to 6 \"grouper\" attributes of the provider (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "cpt",
+          "description": "The most relevant CPT code. This field is sourced from the outpatient events table, or if this data is null, the clinical tables.\n"
+        },
+        {
+          "name": "cptDescription",
+          "description": "Text description of the most relevant CPT code.\n"
+        },
+        {
+          "name": "ccsCptMinor",
+          "description": "Low-level AHRQ CCS grouping of relevant CPT code.\n"
+        },
+        {
+          "name": "ccsCptMajor",
+          "description": "High-level AHRQ CCS grouping of relevant CPT code.\n"
+        },
+        {
+          "name": "planPayer",
+          "description": "Either the payer on the claim from the outpatient events table, or if there is no claims data for this record, the plan payer to whom the member was attributed at the time of the event.\n"
+        },
+        {
+          "name": "planProduct",
+          "description": "The insurance Product the patient was eligible for during the visit. This field is sourced from the outpatient events table, or if this data is null, it is the plan product from the person attribution table at the time of the event.\n"
+        },
+        {
+          "name": "planFundingSource",
+          "description": "The insurance Funding Source or business line associated to that eligibility. This field is sourced from the outpatient events table, or if this data is null, it is the plan funding source from the person attribution table at the time of the event.\n"
+        },
+        {
+          "name": "claimServiceFacility",
+          "description": "Most  relevant  service  facility.  See  Outpatient Event Details for rules on how this is determined. This field is only populated for records containing claims data.\n"
+        },
+        {
+          "name": "clinicalSiteName",
+          "description": "Name of this source.  This is the column typically used on reports to identify the entity being reported on.  This field is only populated for records containing clinical data.\n"
+        },
+        {
+          "name": "clinicalLocationName",
+          "description": "Name of the location.  This is the name that is displayed in the front end.  More than one location row could share the same display name, but it's best to ensure that location display names are unique. This field is only populated for records containing clinical data.\n"
+        },
+        {
+          "name": "pcpNPI",
+          "description": "The PCP that the member was assigned to at the time of this event.\n"
+        },
+        {
+          "name": "pcpName",
+          "description": "The name of the assigned PCP.\n"
+        },
+        {
+          "name": "pcpGrouper1",
+          "description": "Up to 6 \"grouper\" attributes of the PCP (e.g., \"Practice\", \"Pod\", \"Market”).\n"
+        },
+        {
+          "name": "pcpGrouper2",
+          "description": "Up to 6 \"grouper\" attributes of the PCP (e.g., \"Practice\", \"Pod\", \"Market”).\n"
+        },
+        {
+          "name": "pcpGrouper3",
+          "description": "Up to 6 \"grouper\" attributes of the PCP (e.g., \"Practice\", \"Pod\", \"Market”).\n"
+        },
+        {
+          "name": "pcpGrouper4",
+          "description": "Up to 6 \"grouper\" attributes of the PCP (e.g., \"Practice\", \"Pod\", \"Market”).\n"
+        },
+        {
+          "name": "pcpGrouper5",
+          "description": "Up to 6 \"grouper\" attributes of the PCP (e.g., \"Practice\", \"Pod\", \"Market”).\n"
+        },
+        {
+          "name": "pcpGrouper6",
+          "description": "Up to 6 \"grouper\" attributes of the PCP (e.g., \"Practice\", \"Pod\", \"Market”).\n"
+        },
+        {
+          "name": "clinicalInd",
+          "description": "Indicates whether the record contains data from claims.\n"
+        },
+        {
+          "name": "claimInd",
+          "description": "Indicates whether the record contains data from clinical tables.\n"
+        },
+        {
+          "name": "claimEventId",
+          "description": "The Arcadia internal ID of the outpatient event, which can be mapped to contributing line events in [dbo].[eventLineDetails] with rollupEventId. This identifier is subject to change over time.\n"
+        },
+        {
+          "name": "clinicalEncID",
+          "description": "QDW encounter ID; primary key for the t_encounter table.  This is generated by Arcadia.\n"
+        }
+      ]
+    }
+  ]
+};

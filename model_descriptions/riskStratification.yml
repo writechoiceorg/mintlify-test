@@ -1,0 +1,228 @@
+version: 2
+
+models:
+  - name: riskStratification
+    config:
+      tags: [ 'care_quality_and_program_data' ]
+      statusDomain: 'Person IDs'
+      frequencyDomain: 'PERSON ID & REGISTRY'
+    description: >
+      This table presents the output of Arcadia’s configurable risk stratification models. These include the Transition Risk
+      Readmission Score, ED Propensity Score, and Coordinated Care Management Impactability Score, or CMM Impact
+      Score. (This model has been colloquially known as “Arc core” or “Impact core.”) Included here are underlying factors
+      like ED/IP utilization, Polypharmacy, and social statistics sourced from the US Census ACS, as well as some thirdparty
+      stratification models
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: ['FDR-1514']
+    columns:
+      - name: personId
+        description: >
+          Arcadia's universal identifier for the patient/member. This
+          identifier is subject to change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-729' ]
+          - relationships:
+              to: ref('v_patient')
+              field: person_id
+              meta:
+                requirement: [ 'FDR-729' ]
+      - name: name
+        description: >
+          The person's full name (Last, First).
+      - name: dob
+        description: >
+          The person's date of birth.
+      - name: sex
+        description: >
+          The person's sex.
+      - name: pmpy
+        description: >
+          The total cost incurred by the person in inpatient, outpatient,
+          and pharmacy events within the past 12 months with
+          eligibility lag.
+          The total medical cost for the year, annualized over eligible
+          months.
+      - name: morbidityScore
+        description: >
+          The morbidity risk score value.
+      - name: morbidityAlgorithm
+        description: >
+          The morbidity risk model used (e.g., HCC, ACG, etc.), as
+          determined by the warehouse default.
+        data_tests:
+          - not_null
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2058' ]
+      - name: impactScore
+        description: >
+          The Impact Score calculated for the patient.
+      - name: impactScorePct
+        description: >
+          The Impact Score percentile of the patient against all other
+          patients in the entire population.
+      - name: impactScoreProgram
+        description: >
+          The classification or actual program assignment of the
+          patient based on a combination of the Arcadia Impact Score
+          and other patient or organizational data.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2059' ]
+      - name: impactScoreEvidence
+        description: >
+          A string describing factors and domains of factors having a
+          substantial contribution to calculation of the Impact Score.
+          Actual structure may differ by algorithm version.
+      - name: impactScoreVersion
+        description: >
+          The version of the Arcadia Impact Score algorithm used to
+          calculate the Impact Score presented.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2059' ]
+      - name: readmissionScore
+        description: >
+          The Readmission Score calculated for the patient.
+      - name: readmissionScoreProgram
+        description: >
+          The classification or actual program assignment of the
+          patient based on a combination of the Arcadia Readmission
+          Score and other patient or organizational data.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2059' ]
+      - name: readmissionScoreEvidence
+        description: >
+          A string describing factors and domains of factors having a
+          substantial contribution to calculation of the Readmission
+          Score. Actual structure may differ by algorithm version.
+      - name: readmissionScoreVersion
+        description: >
+          The version of the Arcadia Readmission Score algorithm used
+          to calculate the Readmission Score presented.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2059' ]
+      - name: EDPropensityScore
+        description: >
+          The ED Propensity Score calculated for the patient.
+      - name: EDPropensityScoreProgram
+        description: >
+          The classification or actual program assignment of the
+          patient based on a combination of the Arcadia ED Propensity
+          Score and other patient or organizational data.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2059' ]
+      - name: EDPropensityScoreEvidence
+        description: >
+          A string describing factors and domains of factors having a
+          substantial contribution to calculation of the ED Propensity
+          Score. Actual structure may differ by algorithm version.
+      - name: EDPropensityScoreVersion
+        description: >
+          The version of the Arcadia ED Propensity Score algorithm
+          used to calculate the ED Propensity Score presented.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2059' ]
+      - name: ed12Mo
+        description: >
+          The number of ED visits in the past 12 months.
+      - name: lastED
+        description: >
+          Date of the person's most recent admission or visit.
+      - name: ip12Mo
+        description: >
+          The number of IP stays in the past 12 months.
+      - name: lastInpatient
+        description: >
+          Date of the person's most recent inpatient admission.
+      - name: ipLikelihood
+        description: >
+          An output of the ACG system, the likelihood of an IP Stay in
+          the near future.
+      - name: medicationCount
+        description: >
+          The number of medications recently filled by the patient.
+      - name: frailtyInd
+        description: >
+          An output of the ACG system, a Yes/No indicator of frailty.
+      - name: cancerInd
+        description: >
+          An indicator of whether the patient has High Impact Cancer.
+      - name: hospiceInd
+        description: >
+          An indicator of whether the patient is currently in Hospice.
+      - name: careCoordinationRisk
+        description: >
+          An output of the ACG system, a risk of care coordination
+          issues, based on the number of specialists seen in recent
+          history.
+      - name: careDensityRatio
+        description: >
+          An output of the ACG system, care density ratio is a metric of
+          patient sharing across providers. The care density ratio
+          ranges from 1.0 (no patient sharing) to 10.0 (identical patient
+          sharing).
+      - name: nss7Score
+        description: >
+          A weight applied based on 7 social determinants sourced
+          from US Census data determined by the patient's address.
+          NSS7 metric was defined and described by Ash and
+          colleagues.
+      - name: topDegHS
+        description: >
+          The percentage of people in the patients' Census Block Group
+          without more than a High School Degree.
+      - name: belowPovertyLine
+        description: >
+          The percentage of people in the patients' Census Block Group
+          living below the poverty line.
+      - name: unemployment
+        description: >
+          The percentage of people in the patients' Census Block Group
+          reporting to be unemployed
+      - name: publicAssistance
+        description: >
+          The percentage of people in the patients' Census Block Group
+          on public assistance.
+      - name: noCar
+        description: >
+          The percentage of people in the patients' Census Block Group
+          without access to a car
+      - name: singleParent
+        description: >
+          The percentage of households with children in the patient's
+          Census Block Group with only a single live-in parent.
+      - name: vacancyRate
+        description: >
+          The percentage of households in the patient's Census Block Group
+          Group with vacancy.
+      - name: daysInHospice
+        description: >
+          Days spent in hospice prior to death.
+      - name: final30Cost
+        description: >
+          Total cost of care in 30 days prior to death.
+      - name: final10Cost
+        description: >
+          Total cost of care in 10 days prior to death.
+      - name: LevineHospiceInd
+        description: >
+          1/0 indicator if person had Levine score greater than 4 greater
+          than 30 days prior to death.
+      - name: riskLevineScore
+        description: >
+          Relocated to [dbo].[inpatientEvents].

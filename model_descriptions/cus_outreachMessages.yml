@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: outreachMessages
+    config:
+      tags: [ 'cus' ]
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: [ 'ETL-1574' ]
+    columns:
+      - name: Task ID
+        description: >
+          The unique identifier for a text or call.
+      - name: Person ID
+        description: >
+          The personId associated with the task.
+      - name: Phone Number
+        description: >
+          The phone number associated with the task.
+      - name: Campaign
+        description: >
+          The outreach campaign associated with the task.
+      - name: Template
+        description: >
+          The message template associated with the task.
+      - name: Message Text
+        description: >
+          The message text sent out to the patient.
+      - name: Delivery Status
+        description: >
+          Determining if a message was delivered to a patient by checking the error description field.
+      - name: Message Date
+        description: >
+          The date and time that the message was sent.
+      - name: Error Description
+        description: >
+          The type of error recorded for the message.  Error description is null if there was no error.

@@ -1,0 +1,19 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "dbo_PersonLastPCPVisit",
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "FDR-2297"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+};

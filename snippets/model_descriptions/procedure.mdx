@@ -1,0 +1,47 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "procedure",
+      "description": "This view provides a central lookup for procedure codes. \n",
+      "config": {
+        "tags": [
+          "lookup"
+        ]
+      },
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "FDR-1597"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "CodeValue",
+          "description": "The ccs code value\n"
+        },
+        {
+          "name": "CodeType",
+          "description": "The ccs code set version of CPT code set for relevant CPT code.\n"
+        },
+        {
+          "name": "description",
+          "description": "A text description of the CPT code.\n"
+        },
+        {
+          "name": "ccsminordescription",
+          "description": "Low-level CCS grouping of CPT code.\n"
+        },
+        {
+          "name": "CCSMajorDescription",
+          "description": "High-level CCS grouping of CPT code.\n"
+        }
+      ]
+    }
+  ]
+};

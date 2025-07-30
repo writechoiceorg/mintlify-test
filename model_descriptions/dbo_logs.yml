@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: dbo_logs
+    columns:
+      - name: url
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2065' ]

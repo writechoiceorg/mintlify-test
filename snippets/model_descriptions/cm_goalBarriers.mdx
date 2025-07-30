@@ -1,0 +1,101 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "cm_goalBarriers",
+      "description": "This table contains any barriers to completion an application user has added to an instance  of a care plan goal. Each goal can have multiple barriers, and barriers have a title,  a category, and an optional description. \n",
+      "config": {
+        "tags": [
+          "cm"
+        ],
+        "frequencyDomain": "CARE MANAGEMENT"
+      },
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "FDR-1466"
+              ]
+            }
+          }
+        },
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "ETL-1239"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "personId",
+          "description": "Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time..\n"
+        },
+        {
+          "name": "carePlanId",
+          "description": "Arcadia’s internal identifier for the care plan.\n"
+        },
+        {
+          "name": "carePlanGoalId",
+          "description": "Numeric identifier for the instance of the care goal in  the care plan.\n"
+        },
+        {
+          "name": "goalId",
+          "description": "TArcadia’s internal identifier for the care goal. \n"
+        },
+        {
+          "name": "goalTitle",
+          "description": "Title of the care goal.\n"
+        },
+        {
+          "name": "barrierTitle",
+          "description": "Title of the barrier to care goal.\n"
+        },
+        {
+          "name": "barrierDescription",
+          "description": "Brief description of the barrier to the care goal.\n"
+        },
+        {
+          "name": "barrierCategory",
+          "description": "Category of the barrier to care goal.\n"
+        },
+        {
+          "name": "barrierCreatorId",
+          "description": "Arcadia’s internal identifier for the user who created  the goal barrier.\n"
+        },
+        {
+          "name": "barrierCreatorName",
+          "description": "Name of the creator of the barrier record (Last, First).\n"
+        },
+        {
+          "name": "barrierCreatorEmail",
+          "description": "Email of the creator of the barrier record.\n"
+        },
+        {
+          "name": "barrierCreatedTimestamp",
+          "description": "Date and time the goal barrier was created.\n"
+        },
+        {
+          "name": "barrierUpdaterId",
+          "description": "Arcadia’s  internal  identifier  for  the  user  who  last  updated the goal barrier.\n"
+        },
+        {
+          "name": "barrierUpdaterName",
+          "description": "Name  of  the user who  last  updated  the  goal  barrier  (Last, First).\n"
+        },
+        {
+          "name": "barrrierUpdaterEmail",
+          "description": "Email of the user who last updated the goal barrier.\n"
+        },
+        {
+          "name": "barrierUpdatedTimestamp",
+          "description": "Date and time the goal barrier was updated.\n"
+        }
+      ]
+    }
+  ]
+};

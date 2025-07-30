@@ -1,0 +1,27 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "web_CustomReports",
+      "description": "A list of all generic columns (like IntCol1, IntCol2, StringCol1, etc) used by each custom report. A map of generic column names to the actual names we want to show on the UI for those columns. Should include a row for each column in each custom report.\n",
+      "columns": [
+        {
+          "name": "ReportName",
+          "description": "Report display name in UI.\n"
+        },
+        {
+          "name": "GenericColumnName",
+          "description": "The name of the corresponding column in CustomReportData table.\n"
+        },
+        {
+          "name": "ColumnDisplayName",
+          "description": "Should reference the data type. e.g. Outpatient$Count__int, ED$Count__int', npatient$Count__int. Fields will be turned into display names using the following rules:\n  _ will be a space\n  $ will be a new line\n  _Ind fields used for conditional formatting\n  __int will be displayed as Number with no decimals (return data type int)\n  __cur will be displayed as $ with no decimals (return data type int)\n  __flt will be displayed as Number with 1 decimals (return data type numeric(18,1)\n  __flt2 will be displayed as Number with 2 decimals (return data type numeric(18,2)\n  __pct will be displayed as Pct with no decimals e.g. 70% or .70 (return data type numeric(18,2)\n  __pct2 will be displayed as Pct with 2 decimals e.g. 70.00% or .7000 (return data type numeric(18,4)\n  __dt will be displayed as a date (data type date)\n  patinfo- prefix will be hidden by default\n  patient_name to be clickable needs to have the title \"Name\"\n  Note: '.' is a safe character\n\nIf the above naming convention is not followed for declaring column types, those columns will be treated as string data, and will not be filterable.\n"
+        },
+        {
+          "name": "DisplayOrder",
+          "description": "Column Order on Report.\n"
+        }
+      ]
+    }
+  ]
+};

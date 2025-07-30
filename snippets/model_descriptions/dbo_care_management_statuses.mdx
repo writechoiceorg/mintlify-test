@@ -1,0 +1,24 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "dbo_care_management_statuses",
+      "columns": [
+        {
+          "name": "description",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2065"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};

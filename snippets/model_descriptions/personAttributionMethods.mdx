@@ -1,0 +1,137 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "personAttributionMethods",
+      "config": {
+        "tags": [
+          "patient_information"
+        ],
+        "statusDomain": "Person IDs",
+        "frequencyDomain": "PERSON ID & REGISTRY"
+      },
+      "description": "This view holds one record per PCP assignment from a source other than the health plan. This includes PCP assignments from all EHR data (Clinical PCPs) and via one of the Arcadia attribution methods (Functional, Cost- Derived, Event-Derived). Unlike the health plan-defined attribution in [personAttribution], these attribution methods are not periodical and only the current attribution is available. Join with [personDemographics] for a full list of clinical and derived attributions with patient information.\n",
+      "data_tests": [
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "FDR-1514"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "personId",
+          "description": "Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-724"
+                  ]
+                }
+              }
+            },
+            {
+              "relationships": {
+                "to": "ref('v_patient')",
+                "field": "person_id",
+                "meta": {
+                  "requirement": [
+                    "FDR-724"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "pcpType",
+          "description": "The attribution method by which the PCP is assigned.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-724"
+                  ]
+                }
+              }
+            },
+            {
+              "accepted_values": {
+                "values": [
+                  "EVENT-DERIVED",
+                  "CLINICAL",
+                  "COST-DERIVED",
+                  "FUNCTIONAL"
+                ],
+                "meta": {
+                  "requirement": [
+                    "FDR-724"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "pcpSource",
+          "description": "The source data system in which the provider is assigned. This is either the site of the EHR or \"Derived\" for calculated attributions.\n"
+        },
+        {
+          "name": "pcpNPI",
+          "description": "The NPI of the attributed PCP.\n"
+        },
+        {
+          "name": "pcpName",
+          "description": "The full name of the attributed PCP.\n"
+        },
+        {
+          "name": "pcpGrouper1",
+          "description": "Up to \"grouper\" attributes of the e.g. \"Practice\", \"Pod\", \"Market\".\n"
+        },
+        {
+          "name": "pcpGrouper2",
+          "description": "Up to \"grouper\" attributes of the e.g. \"Practice\", \"Pod\", \"Market\".\n"
+        },
+        {
+          "name": "pcpGrouper3",
+          "description": "Up to \"grouper\" attributes of the e.g. \"Practice\", \"Pod\", \"Market\".\n"
+        },
+        {
+          "name": "pcpGrouper4",
+          "description": "Up to \"grouper\" attributes of the e.g. \"Practice\", \"Pod\", \"Market\".\n"
+        },
+        {
+          "name": "pcpGrouper5",
+          "description": "Up to \"grouper\" attributes of the e.g. \"Practice\", \"Pod\", \"Market\".\n"
+        },
+        {
+          "name": "pcpGrouper6",
+          "description": "Up to \"grouper\" attributes of the e.g. \"Practice\", \"Pod\", \"Market\".\n"
+        },
+        {
+          "name": "listId",
+          "description": "Arcadia internal ID for the patient list.\n"
+        },
+        {
+          "name": "listName",
+          "description": "Name of the patient list as it appears in the application.\n"
+        },
+        {
+          "name": "personName",
+          "description": "Patient's name.\n"
+        },
+        {
+          "name": "addedTimestamp",
+          "description": "Date and time that patient was added to the list.\n"
+        }
+      ]
+    }
+  ]
+};

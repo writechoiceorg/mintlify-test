@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: v_sh_personattribution
+    config:
+      tags: [ 'dbo' ]
+    columns:
+      - name: memberid
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1311' ]
+      - name: personid
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1311' ]
+      - name: memberno
+        description: >               
+          The health plan assigned Member/Subscriber Number, useful to cross reference against payer-supplied data sources.
+      - name: name
+        description: >               
+          The name of assigned Member/Subscriber.
+      - name: dob
+        description: >               
+          The date of birth of assigned Member/Subscriber.
+      - name: sex
+        description: >               
+          The gender of assigned Member/Subscriber.
+      - name: age
+        description: >               
+          The age of assigned Member/Subscriber.

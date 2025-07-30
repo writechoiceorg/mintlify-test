@@ -1,0 +1,96 @@
+version: 2
+
+models:
+  - name: nppes
+    description: >
+      This is a download of the national provider directory from NPPES, and holds NPIs, Names, Taxonomies and Contact Information for every provider, facility, pharmacy, or supplier in the country. This is used to infer a provider's specialty and to supply certain reports with addresses (e.g., Pharmacy Address on the medications reports). 
+    config:
+      tags: [ 'master_data' ]
+
+    columns:
+      - name: NPI
+        description: >
+          The provider/organization NPI.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-737' ]
+      - name: EntityType
+        description: >
+          The type of entity the NPI identifies. This is
+          "Individual" for providers or "Organization" for
+          facilities.
+      - name: NpiDeactivationReason
+        description: >
+          If applicable, NPI Deactivation Reason Code.
+      - name: ProviderOrgName
+        description: >
+          If applicable, the name of the organization.
+      - name: ProviderLastName
+        description: >
+          If applicable, the last name of the provider.
+      - name: ProviderFirstName
+        description: >
+          If applicable, the first name of the provider.
+      - name: ProviderFullName
+        description: >
+          If applicable, the full name of the provider (Last,
+          First).
+      - name: ProviderMiddleName
+        description: >
+          If applicable, the middle name of the provider.
+      - name: ProviderCredential
+        description: >
+          If applicable, the credential or degree of the
+          provider.
+      - name: ProviderGender
+        description: >
+          If applicable, the gender of the provider.
+      - name: ProviderPracticeLocationAddress1
+        description: >
+          The street address of the facility or the provider's
+          practice.
+      - name: ProviderPracticeLocationAddress2
+        description: >
+          If applicable, the second line of the street address of
+          the facility or the provider's practice.
+      - name: ProviderPracticeLocationCity
+        description: >
+          The city of the facility or the provider's practice.
+      - name: ProviderPracticeLocationState
+        description: >
+          The state abbreviation of the facility or the
+          provider's practice.
+      - name: ProviderPracticeLocationZip
+        description: >
+          The 5 or 9-digit zip of the facility or the provider's
+          practice.
+      - name: ProviderPracticePhone
+        description: >
+          The primary phone number of the facility or the
+          provider's practice.
+      - name: ProviderPracticeFax
+        description: >
+          If applicable, the fax number of the facility or the
+          provider's practice.
+      - name: ProviderPrimaryTaxonomyCode
+        description: >
+          The taxonomy code of the organization or provider,
+          which defines their license and specialty. Join
+          against the [dbo].[providerTaxonomies] table to get
+          the descriptions of the specialty and subspecialty.
+      - name: TaxonomyGroup
+        description: >
+          The "Group" descriptor of the taxonomy code.
+      - name: TaxonomyClassification
+        description: >
+          The "Classification" descriptor of the taxonomy
+          code.
+      - name: TaxonomySpecialization
+        description: >
+          The "Specialization" descriptor of the taxonomy
+          code.
+      - name: ProviderOtherOrgName
+        description: >
+          "Provider Other Organization Name" is also-known-as 
+          Doing Business As (DBA) name 

@@ -1,0 +1,114 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "cm_goalDocumentation",
+      "description": "This table contains any notes an application user has added to an instance of a care plan goal,  as well as timestamps for care plan goal status updates, assignee contact information, and contact  information of the user who authored the goal intervention notes. \n",
+      "config": {
+        "tags": [
+          "cm"
+        ],
+        "frequencyDomain": "CARE MANAGEMENT"
+      },
+      "data_tests": [
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "ETL-1239"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "personId",
+          "description": "Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1467"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "taskId",
+          "description": "Arcadia’s internal identifier for the care management task.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1467"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "goalId",
+          "description": "Arcadia's internal identifier for the care goal.\n"
+        },
+        {
+          "name": "carePlanGoalId",
+          "description": "Numeric identifier for the instance of the care goal in the care plan.\n"
+        },
+        {
+          "name": "goalTitle",
+          "description": "Title of the care goal.\n"
+        },
+        {
+          "name": "goalAssigneeId",
+          "description": "Arcadia's internal identifier for the user to whom the care goal is assigned.\n"
+        },
+        {
+          "name": "goalAssignee",
+          "description": "Assigned user's full name (Last, First).\n"
+        },
+        {
+          "name": "goalAddedTimestamp",
+          "description": "Date the enrollment record was created.\n"
+        },
+        {
+          "name": "goalAssignedTimestamp",
+          "description": "Date and time the goal was assigned.\n"
+        },
+        {
+          "name": "goalCompletedTimestamp",
+          "description": "Date and time the goal was completed.\n"
+        },
+        {
+          "name": "goalOptOutDate",
+          "description": "goal opted out date and time.\n"
+        },
+        {
+          "name": "goalInactiveDate",
+          "description": "Date and time the goal was Inactive.\n"
+        },
+        {
+          "name": "goalNoteAuthorId",
+          "description": "Goal completed by author Id.\n"
+        },
+        {
+          "name": "goalNoteAuthor",
+          "description": "Assigned user's full name (Last, First).\n"
+        },
+        {
+          "name": "goalNoteDate",
+          "description": "Date and time the goal note created.\n"
+        },
+        {
+          "name": "goalNote",
+          "description": "one record per note on care management goals.\n"
+        }
+      ]
+    }
+  ]
+};

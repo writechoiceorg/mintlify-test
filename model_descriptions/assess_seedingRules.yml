@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: assess_seedingRules
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'F2UPGRADE-1314' ]

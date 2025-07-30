@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: dbo_CalendarMonthStartEnd
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'ETL-834' ]

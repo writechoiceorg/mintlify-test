@@ -1,0 +1,23 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "patientIdentity_patients",
+      "data_tests": [
+        {
+          "dbt_utils.unique_combination_of_columns": {
+            "combination_of_columns": [
+              "pat_original_id",
+              "pat_orig_site_id"
+            ],
+            "meta": {
+              "requirement": [
+                "ETL-1332"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+};

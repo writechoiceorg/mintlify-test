@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: riskModels_wrk
+    columns:
+      - name: riskAlgorithm
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2058' ]
+      - name: riskModel
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2058' ]

@@ -1,0 +1,120 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "providerHierarchy",
+      "description": "Also known as the Patient Assignment Hierarchy, this lists the set of providers known to the organization relative to the practices, pods, and teams at which they are assigned patient panels or otherwise render services to patients. The hierarchy can be configured to reflect the understood structure of a provider network, allowing the grouping of providers into practices, groups, chapters, pods, regions, and other physical or logical divisions. \n",
+      "config": {
+        "tags": [
+          "master_data"
+        ]
+      },
+      "columns": [
+        {
+          "name": "ProvFirstName",
+          "description": "The first name of the provider.\n"
+        },
+        {
+          "name": "ProvLastName",
+          "description": "The last name of the provider.\n"
+        },
+        {
+          "name": "ProvFullName",
+          "description": "The full name of the provider (Last, First).\n"
+        },
+        {
+          "name": "ProvSpecialty1",
+          "description": "An optional Primary Specialty field.\n"
+        },
+        {
+          "name": "ProvSpecialty2",
+          "description": "An optional Secondary Specialty field.\n"
+        },
+        {
+          "name": "ProvType",
+          "description": "An optional Provider Type field (can be Specialist vs PCP distinction).\n"
+        },
+        {
+          "name": "ProvNPI",
+          "description": "The provider NPI.\n"
+        },
+        {
+          "name": "Grouper1Name",
+          "description": "The name of the Grouper.\n"
+        },
+        {
+          "name": "Grouper1IDType",
+          "description": "An optional ID Type name of the Grouper (e.g., \"TIN\")\n"
+        },
+        {
+          "name": "Grouper1Id",
+          "description": "An optional ID of the Grouper.\n"
+        },
+        {
+          "name": "Grouper2Name",
+          "description": "The name of the Grouper.\n"
+        },
+        {
+          "name": "Grouper2IDType",
+          "description": "An optional ID Type name of the Grouper (e.g., \"TIN\")\n"
+        },
+        {
+          "name": "Grouper2Id",
+          "description": "An optional ID of the Grouper.\n"
+        },
+        {
+          "name": "Grouper3Name",
+          "description": "The name of the Grouper.\n"
+        },
+        {
+          "name": "Grouper3IDType",
+          "description": "An optional ID Type name of the Grouper (e.g., \"TIN\")\n"
+        },
+        {
+          "name": "Grouper3Id",
+          "description": "An optional ID of the Grouper.\n"
+        },
+        {
+          "name": "Grouper4Name",
+          "description": "The name of the Grouper.\n"
+        },
+        {
+          "name": "Grouper4IDType",
+          "description": "An optional ID Type name of the Grouper (e.g., \"TIN\")\n"
+        },
+        {
+          "name": "Grouper4Id",
+          "description": "An optional ID of the Grouper.\n"
+        },
+        {
+          "name": "Grouper5Name",
+          "description": "The name of the Grouper.\n"
+        },
+        {
+          "name": "Grouper5IDType",
+          "description": "An optional ID Type name of the Grouper (e.g., \"TIN\")\n"
+        },
+        {
+          "name": "Grouper5Id",
+          "description": "An optional ID of the Grouper.\n"
+        },
+        {
+          "name": "Grouper6Name",
+          "description": "The name of the Grouper.\n"
+        },
+        {
+          "name": "Grouper6IDType",
+          "description": "An optional ID Type name of the Grouper (e.g., \"TIN\")\n"
+        },
+        {
+          "name": "Grouper6Id",
+          "description": "An optional ID of the Grouper.\n"
+        },
+        {
+          "name": "UpdateTimestamp",
+          "description": "Date at which the provider's records was most recently modified.\n"
+        }
+      ]
+    }
+  ]
+};

@@ -1,0 +1,118 @@
+version: 2
+
+models:
+  - name: v_adt
+    config:
+      tags: [ 'care_quality_and_program_data' ]
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'FDR-1849' ]
+    description: > 
+      ADT data refers to admission, discharge, and transfer information captured for a specified patient. This includes patient identification information, event details, admission details, diagnosis code, discharge details, and attending provider information. 
+    columns:
+    - name: person_id		
+      description: >
+          Unique QDW identifier for patient.
+    - name: adt_last_name		
+      description: >
+          Patient's Last Name.
+    - name: adt_first_name		
+      description: >
+          Patient's First Name.
+    - name: adt_dob		
+      description: >
+          Patient's date of birth.
+    - name: adt_sex		
+      description: >
+          Patient Sex
+      data_tests:
+        - column_values_are_in_uppercase:
+            meta:
+              requirement: [ 'FDR-2061' ]
+    - name: adt_address 		
+      description: >
+          Patient's Address
+    - name: adt_city 		
+      description: >
+          City of the patient's address.
+      data_tests:
+        - column_values_are_in_uppercase:
+            meta:
+              requirement: [ 'FDR-2062' ]
+    - name: adt_state 		
+      description: >
+          State of the patient's address.
+      data_tests:
+        - column_values_are_in_uppercase:
+            meta:
+              requirement: [ 'FDR-2062' ]
+    - name: adt_zip		
+      description: >
+          Zip code of the patient's address.
+    - name: adt_MRN		
+      description: >
+          Patient's Medical Record Number (MRN).
+    - name: adt_member_id		
+      description: >
+          Patient Member ID
+    - name: sending_source	
+      description: >
+          Message Source
+    - name: event_type		
+      description: >
+          Message Type eg. A01-Admit
+    - name: event_location		
+      description: >
+          Facility where event took place.
+    - name: patient_class		
+      description: >
+          Class of patient. (e.g. inpatient, outpatient, or emergency)
+    - name: patient_type 		
+      description: >
+          Type of patient. (e.g. inpatient, outpatient)
+    - name: admit_type		
+      description: >
+          Event type of patient admission. (e.g. Elective, Emergent, Urgent) 
+    - name: admit_source		
+      description: >
+          Source of admission. (eg. MD Referral, Transfer from Hospital)
+    - name: admit_date		
+      description: >
+          Date of admission.
+    - name: dx_code		
+      description: >
+          Diagnosis ICD Code
+    - name: dx_description		
+      description: >
+          ICD description
+    - name: dx_date		
+      description: >
+          Date of diagnosis. 
+    - name: service_type		
+      description: >
+          Type of service. (eg. Cardiology, ENT, Dental)
+    - name: discharge_date		
+      description: >
+          Date of discharge.
+    - name: discharge_disposition		
+      description: >
+          Not in Use.
+    - name: discharge_location		
+      description: >
+          Discharged From.
+    - name:  attending_provider_npi		
+      description: >
+          NPI of Provider.
+    - name: attending_provider_last_name 		
+      description: >
+          Provider Last Name.
+    - name:  attending_provider_first_name		
+      description: >
+          Provider First Name. 
+    - name:  message_timestamp		
+      description: >
+          Timestamp for message origination
+    - name: insert_timestamp		
+      description: >
+          Timestamp for when row was inserted into QDW

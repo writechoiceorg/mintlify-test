@@ -1,0 +1,98 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "t_plan_member_month",
+      "description": "This table contains the same member enrollment data that is in v_plan_member_elig but split into per month records. For example, a six month eligibility span that is contained in a single record in v_plan_member_elig will be split into six distinct records in v_plan_member_month.\n",
+      "data_tests": [
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "FDR-1514"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "person_id",
+          "description": "QDW person ID for the person whose monthly eligibility is represented in this row. This table is populated with rows automatically derived from plan_member_elig.\n"
+        },
+        {
+          "name": "elig_year",
+          "description": "Year in which the member was eligible.  A four-digit integer.    This table is populated with rows automatically derived from plan_member_elig.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-775"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "elig_month",
+          "description": "Month in which the member was eligible.  An integer between 1 and 12.    This table is populated with rows automatically derived from plan_member_elig.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-775"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "StartDate",
+          "description": "The first date of the month specified in elig_year and elig_month.    This table is populated with rows automatically derived from plan_member_elig.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-775"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "EndDate",
+          "description": "The last date of the month specified in elig_year and elig_month.    This table is populated with rows automatically derived from plan_member_elig.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-775"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "create_timestamp",
+          "description": "Date and time when the row was first inserted into the QDW.  This table is populated with rows automatically derived from plan_member_elig.\n"
+        },
+        {
+          "name": "delete_ind",
+          "description": "Indicates if the record is marked as deleted, either because it was deleted in the plan data source, or because the connector query changed in a way that makes the record no longer valid.  Values are 'Y' (deleted) and 'N' (not deleted).  If the value is 'Y' then the row should be excluded from all queries. This table is populated with rows automatically derived from plan_member_elig.\n"
+        },
+        {
+          "name": "modify_timestamp",
+          "description": "Date and time when the row was last updated in the QDW.    This table is populated with rows automatically derived from plan_member_elig.\n"
+        }
+      ]
+    }
+  ]
+};

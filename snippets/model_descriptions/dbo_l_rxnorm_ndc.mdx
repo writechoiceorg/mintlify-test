@@ -1,0 +1,19 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "dbo_l_rxnorm_ndc",
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "F2UPGRADE-5091"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+};

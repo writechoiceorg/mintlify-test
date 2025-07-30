@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: userInitiative
+    description: >
+     This table contains the map of Arcadia application users and the expanded details of initiatives they have access to.
+     This table is deprecated so all fields are now NULL.  
+    config:
+      tags: [ 'application_usage_auditing' ]
+      frequencyDomain: 'WEB'
+    columns:
+      - name: userId
+        description: >
+          Arcadia's internal identifier for the user.
+      - name: initiativeId
+        description: >
+          Arcadia's internal identifier for the quality initiative.
+          This can be used to join to the three
+          [dbo].[personMeasure...] tables.
+      - name: initiativeName
+        description: >
+          The name of the quality initiative as it appears in
+          Arcadia Analytics.
+      - name: PayerSuppliedInd
+        description: >
+          0/1 indicator that initiative has been configured to
+          surface payer supplied measure results.

@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: addenda
+    description: >
+      This table contains addenda associated with care management tasks.
+    config:
+      tags: [ 'cm' ]
+      frequencyDomain: 'CARE MANAGEMENT'
+    columns:
+      - name: addendaId
+        description: >
+          Arcadia's internal identifier for the care management plan addendum.
+      - name: taskId
+        description: >
+          Arcadia's internal identifier for the care management task.
+      - name: noteContent
+        description: >
+          Full text of note task.
+      - name: userId
+        description: >
+          Arcadia's internal identifier for the user who completed the note.
+      - name: userFullName
+        description: >
+          User's full name (Last, First).
+      - name: userEmail
+        description: >
+          User's email address.
+      - name: createdAt
+        description: >
+          Date and time addendum was created.
+      - name: updatedAt
+        description: >
+          Date and time addendum was updated.
+      - name: completedAt
+        description: >
+          Date and time addendum was completed.

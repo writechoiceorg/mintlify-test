@@ -1,0 +1,86 @@
+version: 2
+
+models:
+  - name: cm_interventionDocumentation
+    description: >
+     This table contains any notes an application user has added to an instance of a care plan intervention, as well as timestamps for care plan intervention status updates, assignee contact information, 
+     and contact information of the user who authored the intervention notes. 
+    config:
+      tags: ['care_management']
+      frequencyDomain: 'CARE MANAGEMENT'
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'FDR-1468' ]
+      - has_rls:
+          meta:
+            requirement: [ 'ETL-1239' ]
+    columns:          
+      - name: personId
+        description: >
+          Arcadia's universal identifier for the patient/member record. This
+          identifier is subject to change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1468' ]            
+          - relationships:
+              to: ref('v_patient')
+              field: person_id
+              meta:
+                requirement: [ 'FDR-1468' ]                
+      - name: taskId
+        description: >
+          Arcadia's internal identifier for the care management task.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1468' ]  
+      - name: interventionId	
+        description: >
+          Numeric identification of the intervention. 
+      - name: carePlanInterventionId 	
+        description: >
+          Numeric identifier of the instance of the intervention in the care plan. 
+      - name: interventionTitle	
+        description: >
+          Brief description of intervention. 
+      - name: interventionType 	
+        description: >
+          The scheduling type of the task: 'One-time' or 'Recurring.'
+      - name: interventionAssigneeId	
+        description: >
+          Arcadia's internal identifier for the user to whom the intervention is assigned.
+      - name: interventionAssignee	
+        description: >
+          Assigned user's full name (Last, First).
+      - name: interventionAddedTimestamp	
+        description: >
+          Date and time the intervention was added to the care plan. 
+      - name: interventionAssignedTimestamp	
+        description: >
+          Date and time the intervention was assigned to the care plan. 
+      - name: interventionCompletedTimestamp	
+        description: >
+          Date and time the intervention was completed. 
+      - name: interventionOptOutDate	
+        description: >
+          Date and time the intervention was marked opted out. 
+      - name: interventionInactiveDate	
+        description: >
+          ate and time the intervention was marked as inactive.
+      - name: interventionNoteDate	
+        description: >
+          Date and time the intervention note was submitted. 
+      - name: interventionNoteAuthorId	
+        description: >
+          Arcadia's internal identifier for the user who authored the intervention note.
+      - name: interventionNoteAuthor	
+        description: >
+          Intervention note author's full name (Last, First).
+      - name: interventonProgressing	
+        description: >
+          Indicator of initiative adherence.
+      - name: interventionNote	
+        description: >
+          Note authored by interventionNoteAuthor on the intervention.

@@ -1,0 +1,100 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "t_medicationlist",
+      "description": "The medication list describes all current and historical medications the patient is intended to take or has reported taking. The entity can include a patient's prescription history as well as self-reported medications the patient is taking. Elements on the medication list should have an indicator as to the patient's status and whether they are continuing to remain under the treatment of the medication. All medications must be encoded with either an NDC or RxNorm code.\n",
+      "config": {
+        "tags": [
+          "care_quality_and_program_data"
+        ]
+      },
+      "data_tests": [
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "FDR-1514"
+              ]
+            }
+          }
+        },
+        {
+          "dbt_utils.unique_combination_of_columns": {
+            "meta": {
+              "requirement": [
+                "FDR-1745"
+              ]
+            },
+            "combination_of_columns": [
+              "id",
+              "person_id"
+            ]
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "id",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-755"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "patient_id",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-755"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "arc_originating_enc_id",
+          "data_tests": [
+            {
+              "relationships": {
+                "to": "ref('t_encounter')",
+                "field": "id",
+                "meta": {
+                  "requirement": [
+                    "FDR-755"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "arc_updated_enc_id",
+          "data_tests": [
+            {
+              "relationships": {
+                "to": "ref('t_encounter')",
+                "field": "id",
+                "meta": {
+                  "requirement": [
+                    "FDR-755"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};

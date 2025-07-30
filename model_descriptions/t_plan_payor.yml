@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: plan_payor
+    description: > 
+      This table contains a master list of payers referred to in the plan tables. In QDW plan data, there is an implied hierarchy: Source>Payor>LOB>Product. However, it is a loose hierarchy and not all plan sources define payors; in some products and perhaps lines of business are defined. The term 'payor' represents the entity that is responsible for processing of the claim or eligibility or enrollment data. In most cases, this term refers to insurance carriers, other third-party payers, or health plan sponsors (employers or unions). Note that the table v_payer in the clinical data is a completely different entity with patient-specific rows, whereas v_plan_payor is a master table and contains no member-specific data.
+    columns:
+      - name: id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-772' ]
+          - unique:
+              meta:
+                requirement: [ 'FDR-1745' ]
+      - name: payor_id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-772' ]

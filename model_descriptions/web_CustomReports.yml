@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: web_CustomReports
+    description: >
+      A list of all generic columns (like IntCol1, IntCol2, StringCol1, etc) used by each custom report.
+      A map of generic column names to the actual names we want to show on the UI for those columns.
+      Should include a row for each column in each custom report.
+
+    columns:
+      - name: ReportName
+        description: >
+          Report display name in UI.
+      - name: GenericColumnName
+        description: >
+          The name of the corresponding column in CustomReportData table.
+      - name: ColumnDisplayName
+        description: >
+          Should reference the data type.
+          e.g. Outpatient$Count__int, ED$Count__int', npatient$Count__int.
+          Fields will be turned into display names using the following rules:
+            _ will be a space
+            $ will be a new line
+            _Ind fields used for conditional formatting
+            __int will be displayed as Number with no decimals (return data type int)
+            __cur will be displayed as $ with no decimals (return data type int)
+            __flt will be displayed as Number with 1 decimals (return data type numeric(18,1)
+            __flt2 will be displayed as Number with 2 decimals (return data type numeric(18,2)
+            __pct will be displayed as Pct with no decimals e.g. 70% or .70 (return data type numeric(18,2)
+            __pct2 will be displayed as Pct with 2 decimals e.g. 70.00% or .7000 (return data type numeric(18,4)
+            __dt will be displayed as a date (data type date)
+            patinfo- prefix will be hidden by default
+            patient_name to be clickable needs to have the title "Name"
+            Note: '.' is a safe character
+          
+          If the above naming convention is not followed for declaring column types, those columns will be treated
+          as string data, and will not be filterable.
+      - name: DisplayOrder
+        description: >
+          Column Order on Report.

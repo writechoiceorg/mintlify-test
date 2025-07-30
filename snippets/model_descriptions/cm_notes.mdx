@@ -1,0 +1,122 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "cm_notes",
+      "description": "This table contains any instances of the care management task type of notes submitted in the  care management application. The description and content of the note is surfaced here, as well  as the associated task, person, and application user. \n",
+      "config": {
+        "tags": [
+          "care_management"
+        ],
+        "frequencyDomain": "CARE MANAGEMENT"
+      },
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "FDR-1469"
+              ]
+            }
+          }
+        },
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "ETL-1239"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "personId",
+          "description": "Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1469"
+                  ]
+                }
+              }
+            },
+            {
+              "relationships": {
+                "to": "ref('v_patient')",
+                "field": "person_id",
+                "meta": {
+                  "requirement": [
+                    "FDR-1469"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "taskId",
+          "description": "Arcadia's internal identifier for the care management task.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1469"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "scheduledDate",
+          "description": "Date and time note task scheduled.\n"
+        },
+        {
+          "name": "completedTimestamp",
+          "description": "Date and time note task completed.\n"
+        },
+        {
+          "name": "title",
+          "description": "Title of the note. \n"
+        },
+        {
+          "name": "noteDescription",
+          "description": "Brief description of the content of the note. \n"
+        },
+        {
+          "name": "noteContent",
+          "description": "Full text of note task.\n"
+        },
+        {
+          "name": "updatedTimeStamp",
+          "description": "Date and time the note task was updated. \n"
+        },
+        {
+          "name": "userId",
+          "description": "Arcadia's internal identifier for the user who completed the note.\n"
+        },
+        {
+          "name": "userFullName",
+          "description": "User's full name (Last, First).\n"
+        },
+        {
+          "name": "userEmail",
+          "description": "User's email address.\n"
+        },
+        {
+          "name": "minutesSpent",
+          "description": "User reported logging of time spent on task. \n"
+        },
+        {
+          "name": "attachmentFileName",
+          "description": "Filename of attachments that have been included as a part of an assessment. \n"
+        }
+      ]
+    }
+  ]
+};

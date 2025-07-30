@@ -1,0 +1,54 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "outreachResponses",
+      "config": {
+        "tags": [
+          "cus"
+        ]
+      },
+      "data_tests": [
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "ETL-1574"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "Phone Number",
+          "description": "The phone number that replied with the recorded message.\n"
+        },
+        {
+          "name": "Person ID",
+          "description": "The personId associated with the most recent outreach task that was sent to the phone number above.\n"
+        },
+        {
+          "name": "Campaign",
+          "description": "The outreach campaign associated with the most recent outreach task that was sent to the phone number above.\n"
+        },
+        {
+          "name": "Template",
+          "description": "The message template associated with the most recent outreach task that was sent to the phone number above.\n"
+        },
+        {
+          "name": "Date/Time of Send",
+          "description": "The date and time that the message reply was sent.\n"
+        },
+        {
+          "name": "Response Text",
+          "description": "The content of the message reply that was sent.\n"
+        },
+        {
+          "name": "Channel",
+          "description": "The outreach channel (auto call or auto text) of the most recent outreach task that was sent to the phone number above.\n"
+        }
+      ]
+    }
+  ]
+};

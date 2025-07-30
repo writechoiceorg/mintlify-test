@@ -1,0 +1,52 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "t_charge",
+      "description": "This table contains charge capture records drawn from the clinical source's billing system.  The main information of interest on this table is the coded information about procedures.  A procedure is an activity that is performed with or on a patient as part of the provision of care in the documented encounter/interaction. This can be a physical intervention like an operation, or less invasive like counseling or hypnotherapy. The procedure entity should not be used to capture an event if a more specific resource already exists i.e. immunization.  All procedures should be encoded with SNOMED or HCPCS, and should include clinical context as to the site, performer and outcome of the procedure.\n",
+      "data_tests": [
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "FDR-1514"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "id",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-771"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "arc_encounter_id",
+          "data_tests": [
+            {
+              "relationships": {
+                "to": "ref('t_encounter')",
+                "field": "id",
+                "meta": {
+                  "requirement": [
+                    "FDR-771"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};

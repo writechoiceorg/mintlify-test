@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: rpt_singlepatient_group
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'F2UPGRADE-4728' ]

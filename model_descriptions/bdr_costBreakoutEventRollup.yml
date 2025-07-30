@@ -1,0 +1,107 @@
+version: 2
+
+models:
+  - name: bdr_costBreakoutEventRollup
+    config:
+      tags: ['bdr']
+      frequencyDomain: 'BINDERY'
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'FDR-1395' ]
+      - has_rls:
+          meta:
+            requirement: [ 'ETL-1630' ]
+    columns:
+      - name: rollupEventId
+        description: >
+          The Arcadia internal ID of the IP or OP event after roll-up. Join
+          to [bdr].[inpatientEvents] or [bdr].[outpatientEvents] for the
+          rolled up event record. This identifier is subject to change over
+          time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1395' ]
+      - name: ffsEquivalentAmount
+        description: >
+          The amount that would be paid in a fee for service
+          contract.
+      - name: billedAmount
+        description: >
+          The amount that was billed by the entity that rendered the
+          services.
+      - name: allowedAmount
+        description: >
+          The reimbursement amount negotiated between the
+          payer and provider for the services rendered.
+      - name: copayAmount
+        description: >
+          The amount that was paid by the patient as copayment
+          for services rendered.  When  available, this is taken
+          directly from the submitted claim, not derived based on
+          additional information.
+      - name: couinsuranceAmount
+        description: >
+          The amount that was paid by the patient as coinsurance
+          for services rendered. This is typically a percentage of the
+          entire service as dictated by the patient's benefit package.
+          When available, this is taken directly from the submitted
+          claim, not derived based on additional information.
+      - name: deductibleAmount
+        description: >
+          The amount that was paid by the patient as a deductible
+          for services rendered per their benefit package. When
+          available, this is taken directly from the submitted claim,
+          not derived based on additional information.
+      - name: patientLiabilityAmount
+        description: >
+          The total patient liability for services rendered and is the
+          summation of copay, coinsurance and deductible amounts.
+      - name: witholdAmount
+        description: >
+          The amount withheld by the payer for the services
+          rendered. This amount is negotiated between the
+          physician organization and the payer and is paid back to
+          the physician group dependent on an end of year
+          reconciliation process
+      - name: cobAmount
+        description: >
+          The Coordination of Benefits amount is the amount that
+          was paid by a different payer for these services based on
+          a coordination of benefits agreement.
+      - name: paidAmount
+        description: >
+          The amount that your organization paid for the services
+          rendered.
+      - name: tcocAmount
+        description: >
+          The Total Cost of Care Amount that is the configured cost prior
+          to the application of at-Risk and stop loss rules. The application
+          of these rules produces the final contractual reconciliation
+          amount.
+      - name: atRiskAmount
+        description: >
+          The Total Cost of Care Amount that is the configured cost prior
+          to the application of at-Risk and stop loss rules. The application
+          of these rules produces the final contractual reconciliation
+          amount.
+      - name: slProtectedAmount
+        description: >
+          The Total Cost of Care Amount that is the configured cost prior
+          to the application of at-Risk and stop loss rules. The application
+          of these rules produces the final contractual reconciliation
+          amount.
+      - name: personId
+        description: >
+          Arcadia's universal identifier for the patient/member record. This
+          identifier is subject to change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1395' ]
+          - relationships:
+              to: ref('v_patient')
+              field: person_id
+              meta:
+                requirement: [ 'FDR-1395' ]

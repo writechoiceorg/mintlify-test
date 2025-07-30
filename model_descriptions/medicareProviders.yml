@@ -1,0 +1,81 @@
+version: 2
+
+models:
+  - name: medicareProviders
+    description: >
+      This is a lookup table with information about Medicare providers
+    config:
+      tags: [ 'lookup' ]
+    columns:
+      - name: providerCCN
+        description: >
+          The CMS Certification Number of the facility.
+      - name: facilityName
+        description: >
+          The name of the facility.
+      - name: providerType
+        description: >
+          The type of the facility.
+      - name: providerSubtype
+        description: >
+          The sub-type of the facility.
+      - name: addressStreet
+        description: >
+          The street address of the facility.
+      - name: addressCity
+        description: >
+          The city of the facility.
+      - name: addressState
+        description: >
+          The state of the facility.
+      - name: addressZip
+        description: >
+          The ZIP code of the facility.
+      - name: addressFips
+        description: >
+          The Federal Information Processing Standards 3-digit code for the county of the organization address.
+      - name: phone
+        description: >
+          The phone number for the facility.
+      - name: fax
+        description: >
+          The fax number for the facility.
+      - name: certificationDate
+        description: >
+          Date of issue for the CCN, when the facility was CMS certified.
+      - name: eligible
+        description: >
+          A Y/N indicator for whether the facility is currently a Medicare eligible organization.
+      - name: intermediary
+        description: >
+          The fiscal intermediary for the organization.
+      - name: cmsRegion
+        description: >
+          The CMS region with which the facility is affiliated.
+      - name: ownershipType
+        description: >
+          Whether the facility privately, publicly, or otherwise funded and owned.
+      - name: urbanRural
+        description: >
+          An indicator for whether the facility is in a rural or urban area.
+      - name: bedCount
+        description: >
+          The number of beds in the facility.
+      - name: operatingRoomCount
+        description: >
+          The number of operating rooms in the facility.
+      - name: swingBeds
+        description: >
+          A description of the number of swing beds in the facility.
+      - name: provCountNP
+        description: >
+          The number of nurse practitioners at the facility.
+      - name: provCountMD
+        description: >
+          The number of physicians at the facility.
+      - name: provCountPA
+        description: >
+          The number of physicians’ assistants at the facility.
+      - name: provCountRN
+        description: >
+          The number of registered nurses at the facility.

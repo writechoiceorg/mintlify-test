@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: specialtyRx
+    description: >
+      This is a lookup table containing NDCs and effecitve dates for specialty drugs. Drugs with an NDC code in this table are flagged as specialty drugs in the pharmacyEvents table.
+    config:
+      tags: [ 'lookup' ]
+    columns:
+      - name: ndc
+        description: >
+          NDC code that is considered a ‘specialty’ drug. 
+      - name: updateDate
+        description: >
+          Date of when the specialty status of the NDC code was updated. 
+      - name: startDate
+        description: >
+          Start date of period where NDC is considered a ‘specialty’ drug.
+      - name: endDate
+        description: >
+          End date of period where NDC is considered a ‘specialty’ drug.
+      - name: category
+        description: >
+          The category of the NDC code, where available. 

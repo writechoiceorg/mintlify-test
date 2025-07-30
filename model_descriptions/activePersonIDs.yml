@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: activePersonIDs
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: ['FDR-717']
+    columns:
+      - name: personId
+        data_tests:
+          - not_null:
+              meta:
+                requirement: ['FDR-717']

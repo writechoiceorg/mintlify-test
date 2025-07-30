@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: rpt_calendar
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'ETL-822' ]

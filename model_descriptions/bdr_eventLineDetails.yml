@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: bdr_eventLineDetails
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: [ 'ETL-1630' ]
+
+
+    columns:
+      - name: serviceCategory
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2063' ]
+      - name: rptGrouper
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2063' ]
+      - name: rptGrouper2
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2063' ]

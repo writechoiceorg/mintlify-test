@@ -1,0 +1,25 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "dischargeStatuses",
+      "description": "This is a lookup table which associates discharge status codes to descriptions.\n",
+      "config": {
+        "tags": [
+          "lookup"
+        ]
+      },
+      "columns": [
+        {
+          "name": "statusCode"
+        },
+        {
+          "name": "statusDescription"
+        },
+        {
+          "name": "statusShort"
+        }
+      ]
+    }
+  ]
+};

@@ -1,0 +1,13 @@
+version: 2
+
+models:
+  - name: dbo_adt
+    config:
+      tags: [ 'care_quality_and_program_data' ]
+
+    columns:
+      - name: id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-769' ]

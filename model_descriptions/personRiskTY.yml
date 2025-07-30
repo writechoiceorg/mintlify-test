@@ -1,0 +1,75 @@
+version: 2
+
+models:
+  - name: personRiskTY
+    config:
+      tags: [ 'care_quality_and_program_data' ]
+      frequencyDomain: 'RISK SCORE PERIODS'
+    description: >
+      This table presents a trailing year retrospective of risk values calculated over a 12-month period. It contains one
+      record per person/algorithm/period end month. It reports the Closed, Claims-based Closed, Demographic, and
+      Total/Suggested risk at the end of each trailing year.
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: ['FDR-1514']
+    columns:
+      - name: personId
+        description: >
+          Arcadia's universal identifier for the patient/member record.
+          This identifier is subject to change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-731' ]
+          - relationships:
+              to: ref('v_patient')
+              field: person_id
+              meta:
+                requirement: [ 'FDR-731' ]
+      - name: startDate
+        description: >
+          Start date of the risk calculation.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-731' ]
+      - name: endDate
+        description: >
+          End date of the risk calculation.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-731' ]
+      - name: riskAlgorithm
+        description: >
+          The risk algorithm applied.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-731' ]
+          - accepted_values:
+              values: [ 'HCC' ]
+              meta:
+                requirement: [ 'FDR-731' ]
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2058' ]
+      - name: claimsRisk
+        description: >
+          The sum of all risk associated with risk closure events from
+          claims sources only that occurred during the trailing year.
+      - name: closedRisk
+        description: >
+          The sum of all risk associated with demographic factors and
+          risk closure events from claims or clinical sources that occurred
+          during the trailing year.
+      - name: totalRisk
+        description: >
+          The sum of all risk associated with demographic factors, risk
+          closure events, and other risk suspecting sources for the person
+          during the trailing year, including historical risk.
+      - name: demographicRisk
+        description: >
+          The sum of all risk associated with demographic factors for the
+          person during the trailing year, including historical risk.

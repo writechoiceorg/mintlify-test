@@ -1,0 +1,27 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "riskAdjustment",
+      "columns": [
+        {
+          "name": "PersonId",
+          "data_tests": [
+            "not_null",
+            {
+              "relationships": {
+                "to": "ref('v_patient')",
+                "field": "person_id",
+                "meta": {
+                  "requirement": [
+                    "FDR-1046"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};

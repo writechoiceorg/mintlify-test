@@ -1,0 +1,71 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "rpt_v_Event_Med",
+      "columns": [
+        {
+          "name": "personId",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1118"
+                  ]
+                }
+              }
+            },
+            {
+              "relationships": {
+                "to": "ref('v_patient')",
+                "field": "person_id",
+                "meta": {
+                  "requirement": [
+                    "FDR-1118"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "EventCodeID",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1118"
+                  ]
+                }
+              }
+            },
+            {
+              "relationships": {
+                "to": "ref('rpt_EventCode')",
+                "field": "EventCodeID",
+                "meta": {
+                  "requirement": [
+                    "FDR-1118"
+                  ]
+                }
+              }
+            },
+            {
+              "relationships": {
+                "to": "ref('rpt_EventGroupForLoad')",
+                "field": "EventCodeID",
+                "meta": {
+                  "requirement": [
+                    "FDR-1118"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};

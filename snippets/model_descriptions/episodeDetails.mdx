@@ -1,0 +1,627 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "episodeDetails",
+      "config": {
+        "tags": [
+          "utilization_and_expense_data"
+        ],
+        "statusDomain": "Medical Claim",
+        "frequencyDomain": "MEDICAL ECONOMICS"
+      },
+      "description": "This table contains one record per event included in the aggregate cost of an episode. These events are drawn from [outpatientEvents], [inpatientEvents], [eventLineDetails], and [pharmacyEvents] according to the inclusion rules of the episode. The [episodeDetails] table lists the full set of event metadata – codes, dates, costs, and categorizations – from its underlying event table, its chronology relative to the episode trigger, and which inclusion criterion it satisfies for the episode.\n",
+      "data_tests": [
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "FDR-1514"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "episodeName",
+          "description": "The episode label.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-721"
+                  ]
+                }
+              }
+            },
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2062"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "episodeId",
+          "description": "The Arcadia internal ID for an episode instance. This identifier is subject to change over time.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-721"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "personId",
+          "description": "Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-721"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "eventAlias",
+          "description": "The episode inclusion criterion met by the event.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-721"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "windowAlias",
+          "description": "The alias for the episode window describing a relative time period of the event within the episode.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-721"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "eventType",
+          "description": "The type of event: \"rollup\" for grouped I medical event \"detail event\" for medical line-level detail, \"rxEvent\" for retail pharmacy.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-721"
+                  ]
+                }
+              }
+            },
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2060"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "eventId",
+          "description": "The Arcadia internal ID for the event. This identifier is subject to change over time.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-721"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "eventDate",
+          "description": "The service date of the event.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-721"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "admitDate",
+          "description": "If the event has duration, the admit date from Arcadia's inpatient chaining ruleset or the admit from the header.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-721"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "dischargeDate",
+          "description": "If the event has duration, the discharge date from Arcadia's inpatient chaining ruleset or the discharge from the header.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-721"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "daysFromTrigger",
+          "description": "The difference between the event date and the episode trigger date in days.\n"
+        },
+        {
+          "name": "memberId",
+          "description": "Arcadia internal member id, which can be used to join to [dbo].[v_plan_member] or [dbo].[personAttribution]. This identifier is subject to change over time.\n"
+        },
+        {
+          "name": "memberNo",
+          "description": "The payer-supplied member identifier.\n"
+        },
+        {
+          "name": "planPayer",
+          "description": "The payer for the event\n"
+        },
+        {
+          "name": "los",
+          "description": "The length of the event in days.\n"
+        },
+        {
+          "name": "paidDate",
+          "description": "The paid date from the claim header.\n"
+        },
+        {
+          "name": "monthsRunout",
+          "description": "Claims lag: months between the maximum paid date of claims from this payer and the event date.\n"
+        },
+        {
+          "name": "rptGrouper",
+          "description": "Arcadia's reporting grouper.\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2063"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "rptGrouper2",
+          "description": "Optional lower-level reporting groups.\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2063"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "claimHeaderId",
+          "description": "The claim header ID for the stay.\n"
+        },
+        {
+          "name": "cost",
+          "description": "The sum of all costs for the event.\n"
+        },
+        {
+          "name": "costFacility",
+          "description": "The sum of all costs from facility charges for the event.\n"
+        },
+        {
+          "name": "costProfessional",
+          "description": "The sum of all costs from professional charges for the event.\n"
+        },
+        {
+          "name": "costOther",
+          "description": "The sum of all other/ancillary charges for the stay.\n"
+        },
+        {
+          "name": "placeOfService",
+          "description": "The POS code on the claim. These are often mapped from the UB-04 Type of Bill code for facility claims.\n"
+        },
+        {
+          "name": "placeOfServiceDescription",
+          "description": "The text description of the CMS POS code.\n"
+        },
+        {
+          "name": "revenueCode",
+          "description": "For inpatient claims, the Revenue Code.\n"
+        },
+        {
+          "name": "revenueCodeDescription",
+          "description": "A description of the Revenue Code.\n"
+        },
+        {
+          "name": "drg",
+          "description": "For inpatient claims, the DRG code. Set to \"999\" when it does not apply. If MS-DRG, only the DRG is displayed. If APR-DRG an \"A-\" is prepended to the code.\n"
+        },
+        {
+          "name": "drgDescription",
+          "description": "A description of the DRG.\n"
+        },
+        {
+          "name": "drgSeverityLevel",
+          "description": "A 0/1 indicator of severity in APR DRG coding (1-4).\n"
+        },
+        {
+          "name": "mdc",
+          "description": "Higher-level MDC Code (from DRG)\n"
+        },
+        {
+          "name": "mdcDescription",
+          "description": "A description of MDC code.\n"
+        },
+        {
+          "name": "cpt",
+          "description": "The CPT code on the claim.\n"
+        },
+        {
+          "name": "cptDescription",
+          "description": "A text description of the CPT code.\n"
+        },
+        {
+          "name": "ccsCptMinor",
+          "description": "The bottom-level categorization of the of the procedure code, based on the AHRQ CCS classification system.\n"
+        },
+        {
+          "name": "ccsCptMajor",
+          "description": "The top-level categorization of the procedure code, based on the AHRQ CCS classification system.\n"
+        },
+        {
+          "name": "icd",
+          "description": "The primary diagnosis code on the event.\n"
+        },
+        {
+          "name": "icdCodeSet",
+          "description": "The code set of the primary diagnosis code.\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2063"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "icdDescription",
+          "description": "A text description of the diagnosis code.\n"
+        },
+        {
+          "name": "ccsDxMinor",
+          "description": "The bottom-level categorization of the of the primary diagnosis code, based on the AHRQ CCS classification system.\n"
+        },
+        {
+          "name": "ccsDxMajor",
+          "description": "The  top-level  categorization  of  the  primary  diagnosis code, based on the AHRQ CCS classification system.\n"
+        },
+        {
+          "name": "acgEdcMinor",
+          "description": "The ACG Expanded Diagnosis Cluster (EDC) code that categorize cases with similar diseases or conditions that are treated in ambulatory and inpatient settings.\n"
+        },
+        {
+          "name": "acgEdcMajor",
+          "description": "The ACG Major Expanded Diagnoses Cluster (MEDC) code assigned to this patient. The EDC taxonomy is structured into broad clinical categories called MEDCs.\n"
+        },
+        {
+          "name": "serviceLineMinor",
+          "description": "Low-level service line, based on DRG code.\n"
+        },
+        {
+          "name": "serviceLineMajor",
+          "description": "Top-level service line, based on DRG code.\n"
+        },
+        {
+          "name": "providerName",
+          "description": "The servicing provider's full name.\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2345"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "providerNPI",
+          "description": "The servicing provider's full name.\n"
+        },
+        {
+          "name": "providerSpecialty",
+          "description": "The servicing provider's specialty.\n"
+        },
+        {
+          "name": "providerGrouper1",
+          "description": "Up to 6 \"grouper\" attributes of the servicing provider (e.g. \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "providerGrouper2",
+          "description": "Up to 6 \"grouper\" attributes of the servicing provider (e.g. \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "providerGrouper3",
+          "description": "Up to 6 \"grouper\" attributes of the servicing provider (e.g. \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "providerGrouper4",
+          "description": "Up to 6 \"grouper\" attributes of the servicing provider (e.g. \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "providerGrouper5",
+          "description": "Up to 6 \"grouper\" attributes of the servicing provider (e.g. \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "providerGrouper6",
+          "description": "Up to 6 \"grouper\" attributes of the servicing provider (e.g. \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "inNetwork",
+          "description": "A 0/1 indicator that the event is in Network.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-721"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "inNetworkFacility",
+          "description": "A 0/1 indicator that the Service Facility on the event was considered \"In Network\" at the time of the event.\n"
+        },
+        {
+          "name": "inNetworkProvider",
+          "description": "A 0/1 indicator that the Provider on the event was considered \"In Network\" at the time of the event.\n"
+        },
+        {
+          "name": "serviceFacility",
+          "description": "The most relevant service facility.\n"
+        },
+        {
+          "name": "serviceFacilityNPI",
+          "description": "The NPI of the service facility, if available.\n"
+        },
+        {
+          "name": "serviceFacilityGrouper1",
+          "description": "Up to \"grouper\" attributes of the service facility (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "serviceFacilityGrouper2",
+          "description": "Up to \"grouper\" attributes of the service facility (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "serviceFacilityGrouper3",
+          "description": "Up to \"grouper\" attributes of the service facility (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "serviceFacilityGrouper4",
+          "description": "Up to \"grouper\" attributes of the service facility (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "serviceFacilityGrouper5",
+          "description": "Up to \"grouper\" attributes of the service facility (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "serviceFacilityGrouper6",
+          "description": "Up to \"grouper\" attributes of the service facility (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "edAvoidableInd",
+          "description": "A 0/1 indicator that the ED event qualifies for the NYU Avoidable ED category. Will be empty if the event is not an ED event.\n"
+        },
+        {
+          "name": "plannedStay",
+          "description": "A 0/1 indicator that the stay was planned, based on HEDIS code sets.\n"
+        },
+        {
+          "name": "readmission",
+          "description": "A 0/1 indicator that the stay was a readmission (i.e., a discharge  occurred  fewer  than  30  days  prior  to  this admission and met HEDIS readmit specs).\n"
+        },
+        {
+          "name": "readmissionIndex",
+          "description": "Using the same logic as the Readmission flag, this is set if the stay contained the discharge that *preceded* the readmission. This is typically used to attribute readmission rates.\n"
+        },
+        {
+          "name": "ascInd",
+          "description": "A 0/1 indicator that the stay meets CMS Ambulatory Sensitive Conditions (ASC) admission criteria.\n"
+        },
+        {
+          "name": "isEmergent",
+          "description": "A 0/1 indicator that the stay was emergent.\n"
+        },
+        {
+          "name": "edAdmitInd",
+          "description": "A 0/1 indicator that the stay was preceded by an ED visit.\n"
+        },
+        {
+          "name": "ambulanceInd",
+          "description": "A 0/1 indicator that the stay included an Ambulance bill on the first day of the admission\n"
+        },
+        {
+          "name": "ambulanceName",
+          "description": "The name of the Ambulance provider.\n"
+        },
+        {
+          "name": "ambulanceCost",
+          "description": "The cost associated to the Ambulance event.\n"
+        },
+        {
+          "name": "dischargeDisposition",
+          "description": "Place to which the patient was discharged (e.g., SNF, IP Adult Med, Home).\n"
+        },
+        {
+          "name": "dischargeToFacility",
+          "description": "The  name  of  the  facility  to  which  the  person  was discharged, if applicable.\n"
+        },
+        {
+          "name": "dischargeToFacilityNPI",
+          "description": "The NPI of the discharge facility, if applicable.\n"
+        },
+        {
+          "name": "dischargeToCost",
+          "description": "The sum of all costs at the discharge facility, if applicable.\n"
+        },
+        {
+          "name": "pcpNPI",
+          "description": "The NPI of the attributed PCP.\n"
+        },
+        {
+          "name": "pcpName",
+          "description": "The full name of the attributed PCP.\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2345"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "pcpGrouper1",
+          "description": "Up to 6 \"grouper\" attributes of the PCP (e.g. \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "pcpGrouper2",
+          "description": "Up to 6 \"grouper\" attributes of the PCP (e.g. \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "pcpGrouper3",
+          "description": "Up to 6 \"grouper\" attributes of the PCP (e.g. \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "pcpGrouper4",
+          "description": "Up to 6 \"grouper\" attributes of the PCP (e.g. \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "pcpGrouper5",
+          "description": "Up to 6 \"grouper\" attributes of the PCP (e.g. \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "pcpGrouper6",
+          "description": "Up to 6 \"grouper\" attributes of the PCP (e.g. \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "planProduct",
+          "description": "The insurance Product for which the person is eligible during the given episode.\n"
+        },
+        {
+          "name": "planFundingSource",
+          "description": "If applicable, the insurance Funding Source for which the person is eligible during the given episode.\n"
+        },
+        {
+          "name": "claimAtRisk",
+          "description": "A 0/1 indicator that the event should be considered in financial reporting on the risk-based contract. When both the claimant and the service are \"at-risk\" this is 1.\n"
+        },
+        {
+          "name": "claimMemberAtRisk",
+          "description": "A 0/1 indicator that the claimant is in a risk contract during the event.\n"
+        },
+        {
+          "name": "claimServiceAtRisk",
+          "description": "Same definition as claimAtRisk.\n"
+        },
+        {
+          "name": "providerTIN",
+          "description": "The Federal Tax Identification Number of the provider, if applicable.\n"
+        },
+        {
+          "name": "providerCCN",
+          "description": "The CMS Certification Number of the facility, if applicable.\n"
+        },
+        {
+          "name": "ndc",
+          "description": "NDC code for medication.\n"
+        },
+        {
+          "name": "medicationName",
+          "description": "Name of medication associated with claim.\n"
+        },
+        {
+          "name": "theraGroup1",
+          "description": "Highest-level therapeutic group used to classify drugs based on NDC code. This column is only populated with an active Medispan license.\n"
+        },
+        {
+          "name": "theraGroup2",
+          "description": "Second-level therapeutic group used to classify drugs based on NDC code. This column is only populated with an active Medispan license.\n"
+        },
+        {
+          "name": "theraGroup3",
+          "description": "Third-level therapeutic group used to classify drugs based on NDC code. This column is only populated with an active Medispan license.\n"
+        },
+        {
+          "name": "theraGroup4",
+          "description": "Lowest level therapeutic group used to classify drugs based on NDC code. This column is only populated with an active Medispan license.\n"
+        }
+      ]
+    }
+  ]
+};

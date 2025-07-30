@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: formCustomFlattened
+    data_tests:
+      - has_size:
+          size: 110
+          meta:
+            requirement: [ 'FDR-2128' ]

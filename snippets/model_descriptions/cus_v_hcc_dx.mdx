@@ -1,0 +1,57 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "cus_v_hcc_dx",
+      "config": {
+        "tags": [
+          "cus"
+        ]
+      },
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "FDR-1310"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "HCC_Version",
+          "description": "Risk Model\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1924"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "ICD10_Code",
+          "description": "Diagnosis code.\n"
+        },
+        {
+          "name": "HCC_Category",
+          "description": "Diagnosis/Risk Category.\n"
+        },
+        {
+          "name": "CoefName",
+          "description": "chief diagnoist name.\n"
+        },
+        {
+          "name": "Risk_Score",
+          "description": "Total Risk score of the diagnosis.\n"
+        }
+      ]
+    }
+  ]
+};

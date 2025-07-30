@@ -1,0 +1,38 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "bdr_risk_wrk",
+      "columns": [
+        {
+          "name": "riskalgorithm",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2058"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "riskDataSource",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2058"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};

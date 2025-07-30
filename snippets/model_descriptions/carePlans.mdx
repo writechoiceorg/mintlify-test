@@ -1,0 +1,189 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "carePlans",
+      "description": "This table contains a record for each care goal/intervention added to a patient's care plan. Timestamps for all goal and intervention status updates as well as assignee contact information are included in each record for efficient workflow analysis\n",
+      "config": {
+        "tags": [
+          "care_management"
+        ],
+        "frequencyDomain": "CARE MANAGEMENT"
+      },
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "FDR-1064"
+              ]
+            }
+          }
+        },
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "ETL-1239"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "personId",
+          "description": "Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1064"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "carePlanId",
+          "description": "Arcadia's internal identifier for the care plan.\n"
+        },
+        {
+          "name": "goalId",
+          "description": "Arcadia's internal identifier for the care goal.\n"
+        },
+        {
+          "name": "carePlanGoalId",
+          "description": "Numeric identifier for the instance of the care goal in the care plan.\n"
+        },
+        {
+          "name": "goalTitle",
+          "description": "Title of the care goal.\n"
+        },
+        {
+          "name": "goalAssigneeId",
+          "description": "Arcadia's internal identifier for the user to whom the care goal is assigned.\n"
+        },
+        {
+          "name": "goalAssignee",
+          "description": "Assigned user's full name (Last, First).\n"
+        },
+        {
+          "name": "goalAddedTimestamp",
+          "description": "Date and time the goal was added to the care plan.\n"
+        },
+        {
+          "name": "goalAssignedTimestamp",
+          "description": "Date and time the goal was assigned.\n"
+        },
+        {
+          "name": "goalCompletedTimestamp",
+          "description": "Date and time the goal was completed.\n"
+        },
+        {
+          "name": "goalOptOutDate",
+          "description": "Date and time the goal was marked opted out.\n"
+        },
+        {
+          "name": "goalInactiveDate",
+          "description": "Date and time the goal was marked inactive.\n"
+        },
+        {
+          "name": "interventionId",
+          "description": "Numeric identification of the intervention.\n",
+          "data_tests": [
+            {
+              "relationships": {
+                "to": "ref('carePlansInterventionType_tmp')",
+                "field": "interventionId",
+                "meta": {
+                  "requirement": [
+                    "FDR-1064"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "carePlanInterventionId",
+          "description": "Numeric identifier of the instance of the intervention in the care plan.\n"
+        },
+        {
+          "name": "interventionTitle",
+          "description": "Brief description of intervention.\n"
+        },
+        {
+          "name": "interventionType",
+          "description": "The scheduling type of the task: \"One-time\" or \"Recurring.\"\n",
+          "data_tests": [
+            {
+              "accepted_values": {
+                "values": [
+                  "One-Time",
+                  "Referral",
+                  "Recurring"
+                ],
+                "meta": {
+                  "requirement": [
+                    "FDR-1064"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "interventionAssigneeId",
+          "description": "Arcadia's internal identifier for the user to whom the intervention is assigned.\n"
+        },
+        {
+          "name": "interventionAssignee",
+          "description": "Assigned user's full name (Last, First).\n"
+        },
+        {
+          "name": "interventionAddedTimestamp",
+          "description": "Date and time the intervention was added to the care plan.\n"
+        },
+        {
+          "name": "interventionAssignedTimestamp",
+          "description": "Date and time the intervention was assigned to the care plan.\n"
+        },
+        {
+          "name": "interventionCompletedTimestamp",
+          "description": "Date and time the intervention was completed.\n"
+        },
+        {
+          "name": "interventionOptOutDate",
+          "description": "Date and time the intervention was marked opted out.\n"
+        },
+        {
+          "name": "interventionInactiveDate",
+          "description": "Date and time the intervention was marked inactive.\n"
+        },
+        {
+          "name": "goalPriority",
+          "description": "Priority of level of goal.\n"
+        },
+        {
+          "name": "goalStartDate",
+          "description": "Start date of goal.\n"
+        },
+        {
+          "name": "goalTargetDate",
+          "description": "Target date of goal completion.\n"
+        },
+        {
+          "name": "phone",
+          "description": "If available, the phone number associated with the referral status.\n"
+        },
+        {
+          "name": "referralStatus",
+          "description": "Status of the referral intervention associated with the care plan, if applicable.\n"
+        }
+      ]
+    }
+  ]
+};

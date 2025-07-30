@@ -1,0 +1,78 @@
+version: 2
+
+models:
+  - name: atRiskRules
+    description: > 
+       This table surfaces details for the person “At Risk Flag.” Rules in this table can be modified from the default (members of any plan with a known PCP are/were “At Risk” in the contract) to reflect a given contract’s rules. 
+    config:
+      tags: [ 'lookup' ]
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: ['FDR-1521', 'FDR-1785']
+    columns:
+      - name: type
+        description: >
+          Not Applicable
+      - name: origSourceId
+        description: >
+          Not Applicable
+      - name: sourceId
+        description: >
+          The Arcadia interal ID for the claims data-source, which
+          can be used to link to [dbo].[v_plan_source].
+      - name: origLobId
+        description: >
+          Not Applicable
+      - name: lobId
+        description: >
+          Not Applicable
+      - name: origProductId
+        description: >
+          Not Applicable
+      - name: productId
+        description: >
+          Not Applicable
+      - name: pcpGrouper1
+        description: >
+          The health system-defined first-level of the person’s
+          attributed PCP for the most recent attribution in the
+          risk year. This could be a practice, medical group,
+          department, etc.
+      - name: pcpGrouper2
+        description: >
+          The health system-defined second-level grouper of
+          the attributed PCP for the most recent attribution in
+          the risk year. This may be an ACO, region or market,
+          or pod.
+      - name: pcpGrouper3
+        description: >
+          The health system -defined isk Unit of the person’s
+          attributed PCP for the most recent attribution in the
+          risk year. This may be an ACO, region or market, or
+          pod.
+      - name: pcpGrouper4
+        description: >
+          Additional groupers or provider attributes, as
+          needed.
+      - name: pcpGrouper5
+        description: >
+          Additional groupers or provider attributes, as
+          needed.
+      - name: InNetworkPCP
+        description: >
+          Not Applicable
+      - name: startDate
+        description: >
+          The first date for which the provider is considered in the health system network.
+          If the provider has been in the network a sufficiently long time, a NULL value can
+          be specified.
+      - name: endDate
+        description: >
+          The last date for which the provider is considered in the health system network.
+          This can be NULL if the provider is still currently in the health system network.
+      - name: riskFlag
+        description: >
+          A 0/1 indicator that, in the given month, this member is
+          considered "At Risk" for a payer contract. This column can be summed to generate 
+          aggregate numbers of at-risk patients, or used as a filter.

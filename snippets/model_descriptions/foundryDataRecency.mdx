@@ -1,0 +1,33 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "foundryDataRecency",
+      "config": {
+        "tags": [
+          "utilization_and_expense_data"
+        ],
+        "frequencyDomain": "QC"
+      },
+      "description": "This table surfaces the current data update statistics from Foundry tables. Information surfaced includes the name of the table, the time of last update, and the frequency domain description used for orchestration and data recency logging. \n",
+      "columns": [
+        {
+          "name": "tableName",
+          "description": "Name of table.\n"
+        },
+        {
+          "name": "updateTimestamp",
+          "description": "Date table last updated.\n"
+        },
+        {
+          "name": "frequencyDomain",
+          "description": "Domain name of the table. \n"
+        },
+        {
+          "name": "statusDomain",
+          "description": "The status domain of Foundry data in the table. Tables within a status domain are refreshed together.\n"
+        }
+      ]
+    }
+  ]
+};

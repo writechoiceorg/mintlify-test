@@ -1,0 +1,232 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "bdr_CMOutcomesSNF",
+      "config": {
+        "tags": [
+          "bdr"
+        ],
+        "frequencyDomain": "BINDERY"
+      },
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "FDR-1390"
+              ]
+            }
+          }
+        },
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "ETL-1630"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "eventId",
+          "description": "The Arcadia internal ID of the inpatient event, which can be mapped to contributing line events in [dbo].[eventLineDetails] with rollupEventId. This identifier is subject to change over time.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1390"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "admitDate",
+          "description": "Arcadia's admit date, after running an inpatient chaining ruleset.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1390"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "dischargeDate",
+          "description": "Arcadia's discharge date, after running an inpatient chaining ruleset.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1390"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "personId",
+          "description": "Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1390"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "planPayer",
+          "description": "The payer on the claim.\n"
+        },
+        {
+          "name": "planProduct",
+          "description": "The insurance Product the patient was eligible for during the visit.\n"
+        },
+        {
+          "name": "planFundingSource",
+          "description": "The insurance Funding Source or business line associated to that eligibility.\n"
+        },
+        {
+          "name": "claimAtRisk",
+          "description": "A 0/1 indicator that the event should be considered in financial reporting on the risk-based contract. When both the claimant and the service are \"at-risk\" this is 1.\n"
+        },
+        {
+          "name": "claimMemberAtRisk",
+          "description": "A 0/1 indicator that the claimant is in a risk contract during the event.\n"
+        },
+        {
+          "name": "claimServiceAtRisk",
+          "description": "Same definition as claimAtRisk.\n"
+        },
+        {
+          "name": "LOS",
+          "description": "The length of the inpatient stay in days.\n"
+        },
+        {
+          "name": "rptGrouper",
+          "description": "Arcadia's inpatient reporting grouper.\n"
+        },
+        {
+          "name": "MatchPriority",
+          "description": "default match priority value.\n"
+        },
+        {
+          "name": "pcpGrouper1",
+          "description": "Up to 6 \"grouper\" attributes of the provider (e.g. \"Practice\" \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "pcpGrouper2",
+          "description": "Up to 6 \"grouper\" attributes of the provider (e.g. \"Practice\" \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "pcpGrouper3",
+          "description": "Up to 6 \"grouper\" attributes of the provider (e.g. \"Practice\" \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "pcpGrouper4",
+          "description": "Up to 6 \"grouper\" attributes of the provider (e.g. \"Practice\" \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "pcpGrouper5",
+          "description": "Up to 6 \"grouper\" attributes of the provider (e.g. \"Practice\" \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "pcpGrouper6",
+          "description": "Up to 6 \"grouper\" attributes of the provider (e.g. \"Practice\" \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "pcpNPI",
+          "description": "The PCP that the member was assigned to at the time of this event. In financial reporting, the cost will be rolled up to this PCP.\n"
+        },
+        {
+          "name": "pcpName",
+          "description": "The name of the assigned PCP.\n"
+        },
+        {
+          "name": "monthsRunout",
+          "description": "Claims lag: months between the maximum paid date of claims from this payer and the event date.\n"
+        },
+        {
+          "name": "rls_planSource",
+          "description": "QDW source ID in character format of the plan data source from which this record was obtained.\n"
+        },
+        {
+          "name": "ED30",
+          "description": "The Arcadia internal ID of the outpatient event, which can be mapped to contributing line events in [dbo].[eventLineDetails] with rollupEventId. This identifier is subject to change over time.\n"
+        },
+        {
+          "name": "MatchingEnrollment",
+          "description": "The Arcadia internal ID of the outpatient event, which can be mapped to 0 if null else 1\n"
+        },
+        {
+          "name": "enrollmentId",
+          "description": "Arcadia's internal identifier for the continuous program enrollment span, which can be used to link to [cm].[enrollmentMonthlyDetail].\n"
+        },
+        {
+          "name": "program",
+          "description": "Name of the care program attributed in the enrollment.\n"
+        },
+        {
+          "name": "enrolledDate",
+          "description": "Date the patient was enrolled in the care program.\n"
+        },
+        {
+          "name": "CMDischargeDate",
+          "description": "If the trigger event has duration, Arcadia's discharge date, after running an inpatient chaining ruleset.\n"
+        },
+        {
+          "name": "careManagerName",
+          "description": "Name of the assigned user.\n"
+        },
+        {
+          "name": "CMLengthEnroll",
+          "description": "No.of days between Enroll Date and Discharge date.\n"
+        },
+        {
+          "name": "drg",
+          "description": "The most relevant DRG code. See Inpatient Chaining Details in the Claims Grouper guide for rules on how this is determined.\n"
+        },
+        {
+          "name": "drgDescription",
+          "description": "Text description of the most relevant DRG code. See Inpatient Chaining Details in the Claims Grouper guide for rules on how this is determined.\n"
+        },
+        {
+          "name": "Readmit",
+          "description": "The Arcadia internal ID of the inpatient event, which can be mapped to contributing line events in [dbo].[eventLineDetails] with rollupEventId. This identifier is subject to change over time.\n"
+        },
+        {
+          "name": "ReadmitQ",
+          "description": "The Arcadia internal ID of the inpatient event, which can be mapped to contributing line events in [dbo].[eventLineDetails] with rollupEventId. This identifier is subject to change over time.\n"
+        },
+        {
+          "name": "anchorEventId",
+          "description": "The event ID of the acute anchor event for this post- acute stay. This identifier is subject to change over time.\n"
+        },
+        {
+          "name": "BenED",
+          "description": "The Arcadia internal ID of the outpatient event, which can be mapped to contributing line events in [dbo].[eventLineDetails] with rollupEventId. This identifier is subject to change over time.\n"
+        },
+        {
+          "name": "BenLOS",
+          "description": "The length of the inpatient stay in days.\n"
+        }
+      ]
+    }
+  ]
+};

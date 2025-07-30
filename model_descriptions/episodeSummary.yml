@@ -1,0 +1,527 @@
+version: 2
+
+models:
+  - name: episodeSummary
+    config:
+      tags: [ 'utilization_and_expense_data' ]
+      statusDomain: 'Medical Claim'
+      frequencyDomain: 'MEDICAL ECONOMICS'
+    description: >
+      The table contains summary data on each distinctly grouped episode, with one line per episode ID. This includes
+      determination of exclusion, episode risk adjustment factor, aggregate costs, responsible provider, and metadata of
+      the episode trigger event.
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: ['FDR-1514']
+
+
+    columns:
+      - name: episodeName
+        description: >
+          The episode label.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2062' ]
+      - name: episodeId
+        description: >
+          The Arcadia internal ID for an episode instance. This
+          identifier is subject to change over time.
+      - name: personId
+        description: >
+          Arcadia's universal identifier for the patient/member
+          record. This identifier is subject to change over time.
+      - name: memberId
+        description: >
+          Arcadia internal member ID from the
+          trigger event, which can be used to
+          join to [dbo].[v_plan_member]or
+          [dbo].[personAttribution]. This
+          identifier is subject to change over
+          time.
+      - name: planPayer
+        description: >
+          The payer for the episode trigger
+          event.
+      - name: memberNo
+        description: >
+          The payer-supplied member
+          identifier.
+      - name: Name
+        description: >
+          The patient's full name (Last, First.)
+      - name: Dob
+        description: >
+          The patient's date of birth
+      - name: Sex
+        description: >
+          The patient's sex.
+      - name: eventDate
+        description: >
+          The service date of the episode trigger event.
+      - name: admitDate
+        description: >
+          If the trigger event has duration,
+          Arcadia's admit date, after running an
+          inpatient chaining ruleset.
+      - name: dischargeDate
+        description: >
+          If the trigger event has duration,
+          Arcadia's discharge date, after
+          running an inpatient chaining ruleset.
+      - name: paidDate
+        description: >
+          The paid date from the trigger claim header.
+      - name: monthsRunout
+        description: >
+          Claims lag: months between the
+          maximum paid date of claims from
+          this payer and the trigger event date.
+      - name: triggerSetting
+        description: >
+          Whether the trigger event was inpatient or outpatient.
+      - name: ageAtEpisode
+        description: >
+          Patient's age at the trigger event date.
+      - name: episodeRisk
+        description: >
+          The risk adjustment for the episode
+          based on clinical risk factors specific to
+          that episode.
+      - name: costCategory
+        description: >
+          Stratified cost of the included
+          episodes within the claims source:
+          High – over 1 std dev above the mean,
+          Low – over 1 std dev below the mean,
+          Medium  otherwise.  If  no  episodes
+          from the source were included, this
+          field is NULL.
+      - name: cost
+        description: >
+          The sum of all costs for the episode.
+      - name: costFacility
+        description: >
+          The  sum  of  all  costs  from  facility charges in the episode.
+      - name: costProfessional
+        description: >
+          The sum of all costs from professional charges in the episode.
+      - name: costOther
+        description: >
+          The sum of all other/ancillary charges in the episode.
+      - name: providerPersonId
+        description: >
+          The episode's accountable provider's Arcadia universal ID.
+      - name: providerName
+        description: >
+          The episode's accountable provider's full name.
+      - name: providerNPI
+        description: >
+          The episode's accountable provider's full name.
+      - name: providerSpecialty
+        description: >
+          The episode's accountable provider's specialty.
+      - name: providerGrouper1
+        description: >
+          Up to 6 "grouper" attributes of the
+          episode's accountable provider (e.g.,
+          "Practice", "Pod", "Market").
+      - name: providerGrouper2
+        description: >
+          Up to 6 "grouper" attributes of the
+          episode's accountable provider (e.g.,
+          "Practice", "Pod", "Market").
+      - name: providerGrouper3
+        description: >
+          Up to 6 "grouper" attributes of the
+          episode's accountable provider (e.g.,
+          "Practice", "Pod", "Market").
+      - name: providerGrouper4
+        description: >
+          Up to 6 "grouper" attributes of the
+          episode's accountable provider (e.g.,
+          "Practice", "Pod", "Market").
+      - name: providerGrouper5
+        description: >
+          Up to 6 "grouper" attributes of the
+          episode's accountable provider (e.g.,
+          "Practice", "Pod", "Market").
+      - name: providerGrouper6
+        description: >
+          Up to 6 "grouper" attributes of the
+          episode's accountable provider (e.g.,
+          "Practice", "Pod", "Market").
+      - name: inNetworkProvider
+        description: >
+          A 0/1 indicator that the accountable
+          provider was considered "In  etwork"
+          at the time of the trigger event.
+      - name: serviceFacilityId
+        description: >
+          Arcadia internal ID for the accountable
+          facility,  used  to  join  to
+          [dbo].[v_plan_location].
+      - name: serviceFacilityName
+        description: >
+          The name of the accountable facility for the episode.
+      - name: serviceFacilityNPI
+        description: >
+          The NPI of the episode's accountable facility, if available.
+      - name: serviceFacilityGrouper1
+        description: >
+          Up to "grouper" attributes of the
+          episode's  accountable  facility (e.g.,
+          "Practice", "Pod", "Market".
+      - name: serviceFacilityGrouper2
+        description: >
+          Up to "grouper" attributes of the
+          episode's  accountable  facility (e.g.,
+          "Practice", "Pod", "Market".
+      - name: serviceFacilityGrouper3
+        description: >
+          Up to "grouper" attributes of the
+          episode's  accountable  facility (e.g.,
+          "Practice", "Pod", "Market".
+      - name: serviceFacilityGrouper4
+        description: >
+          Up to "grouper" attributes of the
+          episode's  accountable  facility (e.g.,
+          "Practice", "Pod", "Market".
+      - name: serviceFacilityGrouper5
+        description: >
+          Up to "grouper" attributes of the
+          episode's  accountable  facility (e.g.,
+          "Practice", "Pod", "Market".
+      - name: serviceFacilityGrouper6
+        description: >
+          Up to "grouper" attributes of the
+          episode's  accountable  facility (e.g.,
+          "Practice", "Pod", "Market".
+      - name: inNetworkFacility
+        description: >
+          A 0/1 indicator that the episode's
+          accountable facility was considered
+          "In Network" at the time of the trigger event.
+      - name: placeOfService
+        description: >
+          The POS code from the episode trigger event.
+      - name: placeOfServiceDescription
+        description: >
+          Text description of the POS code.
+      - name: revenueCode
+        description: >
+          The Revenue code from the episode trigger event.
+      - name: revenueCodeDescription
+        description: >
+          Text description of the Revenue code.
+      - name: Drg
+        description: >
+          The DRG code from the episode trigger event.
+      - name: drgDescription
+        description: >
+          Text description of the DRG code.
+      - name: Mdc
+        description: >
+          MDC grouper based on the DRG code.
+      - name: mdcDescription
+        description: >
+          Text description of the MDC grouper.
+      - name: Cpt
+        description: >
+          The CPT code from the episode trigger event.
+      - name: cptDescription
+        description: >
+          Text description of the CPT code.
+      - name: ccsCptMinor
+        description: >
+          Low-level CCS grouping of CPT code.
+      - name: ccsCptMajor
+        description: >
+          High-level CCS grouping of CPT code.
+      - name: Icd
+        description: >
+          The ICD code from the episode trigger event.
+      - name: icdCodeSet
+        description: >
+          Version of ICD code set for relevant ICD code.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2063' ]
+      - name: icdDescription
+        description: >
+          Text description of the ICD code.
+      - name: ccsDxMinor
+        description: >
+          Low-level CCS grouping of ICD code.
+      - name: ccsDxMajor
+        description: >
+          High-level CCS grouping of ICD code.
+      - name: inNetworkCost
+        description: >
+          The sum of all in-network costs for the episode.
+      - name: inNetworkCostFacility
+        description: >
+          The sum of all in-network costs from facility charges in the episode.
+      - name: inNetworkCostProfessional
+        description: >
+          The sum of all in-network costs from professional charges in the episode.
+      - name: inNetworkCostOther
+        description: >
+          The sum of all other/ancillary in-network charges in the episode.
+      - name: dischargeDisposition
+        description: >
+          Place  to  which  the  patient  was
+          discharged from trigger (e.g., SNF, IP
+          Adult Med, Home)
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2063' ]
+      - name: dischargeToFacility
+        description: >
+          The name of the facility to which the
+          person was discharged, if applicable.
+      - name: dischargeToFacilityNPI
+        description: >
+          The  NPI  of  the  trigger  discharge
+          facility, if applicable.
+      - name: dischargeToInNetwork
+        description: >
+          A 0/1 indicator that the trigger
+          discharge facility is in network.
+      - name: dischargeToInTier1
+        description: >
+          A 0/1 indicator that the trigger
+          discharge facility is in a Tier 1
+          Preferred Network.
+      - name: dischargeToInTier2
+        description: >
+          A 0/1 indicator that the trigger
+          discharge facility is in a Tier 2
+          Preferred Network.
+      - name: dischargeToInTier3
+        description: >
+          A 0/1 indicator that the trigger
+          discharge facility is in a Tier 3
+          Preferred Network.
+      - name: readmissionIndex
+        description: >
+          Indicates that the discharge from the
+          trigger led to a readmission within 30
+          days. This is used to attribute user-
+          defined readmission rates.
+      - name: readmissionIndex60
+        description: >
+          Indicates that the discharge from the
+          trigger led to a readmission within 60 days.
+      - name: readmissionIndex90
+        description: >
+          Indicates that the discharge from the
+          trigger led to a readmission within 90 days.
+      - name: readmissionDays
+        description: >
+          The number of days between the
+          discharge from the trigger and the
+          date of readmission.
+      - name: followUp7DayInd
+        description: >
+          A 0/1 indicator that a primary care
+          follow up occurred within 7 days of
+          the discharge from the trigger.
+      - name: catCostIPAcuteTotal
+        description: >
+          Total cost of acute inpatient events
+          included in the episode.
+      - name: catCostIPAcuteInNetwork
+        description: >
+          In network cost of acute inpatient
+          events included in the episode.
+      - name: catCostIPSubacuteTotal
+        description: >
+          Total cost of sub-acute inpatient
+          events included in the episode.
+      - name: catCostIPSubacuteInNetwork
+        description: >
+          In network cost of sub-acute inpatient
+          events included in the episode.
+      - name: catCostEDObsTotal
+        description: >
+          Total cost of ED visits and observations included in the episode.
+      - name: catCostEDObsInNetwork
+        description: >
+          In network cost of ED visits and
+          observations included in the episode.
+      - name: catCostOpProcTotal
+        description: >
+          Total cost of outpatient procedures
+          included in the episode.
+      - name: catCostOpProcInNetwork
+        description: >
+          In network cost of outpatient
+          procedures included in the episode.
+      - name: catCostPTOTSTTotal
+        description: >
+          Total cost of therapy events included
+          in the episode.
+      - name: catCostPTOTSTInNetwork
+        description: >
+          In network cost of therapy events
+          included in the episode.
+      - name: catCostHomeHealthTotal
+        description: >
+          Total cost of home health events
+          included in the episode.
+      - name: catCostHomeHealthInNetwork
+        description: >
+          In network cost of home health events
+          included in the episode.
+      - name: catCostLabRadTotal
+        description: >
+          Total cost of labs and radiology events
+          included in the episode.
+      - name: catCostLabRadInNetwork
+        description: >
+          In network cost of labs and radiology
+          events included in the episode.
+      - name: catCostVisitsTotal
+        description: >
+          Total cost of provider visits included in
+          the episode.
+      - name: catCostVisitsInNetwork
+        description: >
+          In network cost of provider visits
+          included in the episode.
+      - name: catCostDMEMedRxTotal
+        description: >
+          Total cost of DME and medical center
+          pharmacy events included in the episode.
+      - name: catCostDMEMedRxInNetwork
+        description: >
+          In network cost of DME and medical
+          center pharmacy events included in
+          the episode.
+      - name: catCostRetailRxTotal
+        description: >
+          Total cost of retail pharmacy events
+          included in the episode.
+      - name: catCostRetailRxInNetwork
+        description: >
+          In network  cost  of  retail pharmacy
+          events included in the episode.
+      - name: catCostOtherTotal
+        description: >
+          Total cost of other event categories
+          included in the episode.
+      - name: catCostOtherInNetwork
+        description: >
+          In  network cost of other event
+          categories included in the episode.
+      - name: windowCostPreTriggerTotal
+        description: >
+          Total cost of included events in the
+          pre-trigger window of the episode.
+      - name: windowCostPreTriggerFacility
+        description: >
+          Institutional cost of included events in
+          the pre-trigger window of the
+          episode.
+      - name: windowCostPreTriggerProfessional
+        description: >
+          Professional cost of included events in
+          the pre-trigger window of the
+          episode.
+      - name: windowCostPreTriggerOther
+        description: >
+          Ancillary cost of included events in the
+          pre-trigger window of the episode.
+      - name: windowCostInTriggerTotal
+        description: >
+          Total cost of included events in the
+          trigger window of the episode.
+      - name: windowCostInTriggerFacility
+        description: >
+          Institutional cost of included events in
+          the trigger window of the episode.
+      - name: windowCostInTriggerProfessional
+        description: >
+          Professional cost of included events in
+          the trigger window of the episode.
+      - name: windowCostInTriggerOther
+        description: >
+          Ancillary cost of included events in the
+          trigger window of the episode.
+      - name: windowCostPostTriggerTotal
+        description: >
+          Total cost of included events in the
+          post-trigger window of the episode.
+      - name: windowCostPostTriggerFacility
+        description: >
+          Institutional cost of included events in
+          the post-trigger  window  of  the
+          episode.
+      - name: windowCostPostTriggerProfessional
+        description: >
+          Professional cost of included events in
+          the post-trigger window of the
+          episode.
+      - name: windowCostPostTriggerOther
+        description: >
+          Ancillary cost of included events in the
+          post-trigger window of the episode.
+      - name: postTriggerHighCostEvent
+        description: >
+          A 0/1 indicator that a $10k+ event
+          occurred in the post-trigger window
+          of the episode.
+      - name: includeInd
+        description: >
+          A 0/1 indicator that the episode as a
+          whole was not invalidated according
+          to its exclusion criteria (by co-morbidities, etc.).
+      - name: pcpName
+        description: >
+          The full name of the attributed PCP on
+          or nearest the trigger event date.
+      - name: pcpNPI
+        description: >
+          The NPI of the attributed PCP.
+      - name: pcpGrouper1
+        description: >
+          Up to 6 "grouper" attributes of the
+          e.g. ("Practice","Pod", "Market").
+      - name: pcpGrouper2
+        description: >
+          Up to 6 "grouper" attributes of the
+          e.g. ("Practice","Pod", "Market").
+      - name: pcpGrouper3
+        description: >
+          Up to 6 "grouper" attributes of the
+          e.g. ("Practice","Pod", "Market").
+      - name: pcpGrouper4
+        description: >
+          Up to 6 "grouper" attributes of the
+          e.g. ("Practice","Pod", "Market").
+      - name: pcpGrouper5
+        description: >
+          Up to 6 "grouper" attributes of the
+          e.g. ("Practice","Pod", "Market").
+      - name: pcpGrouper6
+        description: >
+          Up to 6 "grouper" attributes of the
+          e.g. ("Practice","Pod", "Market").
+      - name: planProduct
+        description: >
+          The insurance Product the patient
+          was eligible for on or nearest the
+          trigger event.
+      - name: planFundingSource
+        description: >
+          The insurance Funding Source associated to that eligibility.
+      - name: imputedReferringProviderPersonId
+        description: >
+          The Provider Person Id of the last local provider from the previous 90 day span on IP Surgical and outpatient events, excluding ED, Ambulance, Observation, DME, OP Other and IP ED admit (and ObsAdmit if configured emergent) events. The imputed referring provider is sourced from the last previous outpatient PCP Visit, Clinic Visit, or Specialist Visit event with an event line Dx CCS Major that corresponds to the Dx CCS Major of the event being evaluated. 
+      - name: imputedReferringProviderNPI
+        description: >
+          The NPI of the last local provider from the previous 90 day span on IP Surgical and outpatient events, excluding ED, Ambulance, Observation, DME, OP Other and IP ED admit (and ObsAdmit if configured emergent) events. The imputed referring provider is sourced from the last previous outpatient PCP Visit, Clinic Visit, or Specialist Visit event with an event line Dx CCS Major that corresponds to the Dx CCS Major of the event being evaluated. 

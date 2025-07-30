@@ -1,0 +1,63 @@
+version: 2
+
+models:
+  - name: cm_userTags
+    description: > 
+      This table contains a record for each application user tagged on a care management task, as well as the assigned user to that care management task. Multiple application users may be tagged to the same task, but only one user is assigned the task in question. 
+    config:
+      tags: [ 'cm' ]
+      frequencyDomain: 'CARE MANAGEMENT'
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: ['FDR-1471']
+      - has_rls:
+          meta:
+            requirement: [ 'ETL-1239' ]
+    columns:
+      - name: personId
+        description: >
+          Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1471' ]
+      - name: taskId
+        description: >
+          Arcadia’s internal identifier for the care management task.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1471' ]
+      - name: assigneeId
+        description: >
+          Arcadia’s internal identifier for the user assigned to the task
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1471' ]
+      - name: assigneename
+        description: >
+          Assigned user's full name (Last, First).Assigned user's full name (Last, First).
+      - name: assigneeEmail
+        description: >
+          Assigned user’s email address
+      - name: taggeduserId
+        description: >
+          Arcadia’s internal identifier for the user tagged to the task.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1471' ]
+      - name: taggeduserfullname
+        description: >
+          Tagged user's full name (Last, First).
+      - name: taggedUserEmail
+        description: >
+          Tagged user’s email address.
+      - name: createdtimestamp
+        description: >
+          Date and time task created.
+      - name: updatedtimestamp
+        description: >
+          Date and time task updated.

@@ -1,0 +1,137 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "bdr_budget",
+      "config": {
+        "tags": [
+          "bdr"
+        ],
+        "frequencyDomain": "BINDERY"
+      },
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "FDR-1387"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "personId",
+          "description": "Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1387"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "memberId",
+          "description": "The Arcadia internal Member ID, which can be used to join against warehouse tables prefaced with \"plan_\" This identifier is subject to change over time.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1387"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "startDate",
+          "description": "The first date/hour/minute of the given month.\n"
+        },
+        {
+          "name": "endDate",
+          "description": "The last date/hour/minute of the given month.\n"
+        },
+        {
+          "name": "pcpNPI",
+          "description": "The NPI of the attributed PCP in the given month.\n"
+        },
+        {
+          "name": "pcpName",
+          "description": "The full name of the attributed PCP in the given month.\n"
+        },
+        {
+          "name": "pcpGrouper1",
+          "description": "The health system-defined first-level of the attributed PCP in the given month. This could be a practice, medical group, department, etc.\n"
+        },
+        {
+          "name": "pcpGrouper2",
+          "description": "The health system-defined second-level grouper of the attributed PCP in the given month. This may be an ACO, region or market, or pod.\n"
+        },
+        {
+          "name": "pcpGrouper3",
+          "description": "The health system -defined Risk Unit of the attributed PCP in the given month. This may be an ACO, region or market, or pod.\n"
+        },
+        {
+          "name": "pcpGrouper4",
+          "description": "Additional groupers or provider attributes, as needed.\n"
+        },
+        {
+          "name": "pcpGrouper5",
+          "description": "Additional groupers or provider attributes, as needed.\n"
+        },
+        {
+          "name": "pcpGrouper6",
+          "description": "Additional groupers or provider attributes, as needed.\n"
+        },
+        {
+          "name": "planPayer",
+          "description": "The Payer for which the person is eligible in the given month.\n"
+        },
+        {
+          "name": "planProduct",
+          "description": "The Product for which the person is eligible in the given month. This corresponds to the LOB in the connector spec.\n"
+        },
+        {
+          "name": "planFundingSource",
+          "description": "If applicable, the Funding Source for which the person is eligible in the given month. This corresponds to the product in the connector spec.\n"
+        },
+        {
+          "name": "memberMonth",
+          "description": "A 0/1 indicator (or decimal for partial months) of coverage of a member during that month. By default this is \"1\" when the patient has eligibility during the 15th of a month, but can be configured otherwise.\n"
+        },
+        {
+          "name": "atRiskFlag",
+          "description": "A 0/1 indicator that, in the given month, this member is considered \"At Risk\" for a payer contract. This column can be summed to generate aggregate numbers of at-risk patients, or used as a filter.\n"
+        },
+        {
+          "name": "contractName",
+          "description": "Contract Name\n"
+        },
+        {
+          "name": "budget",
+          "description": "Budget\n"
+        },
+        {
+          "name": "riskAdjustedBudget",
+          "description": "Risk Adjusted Budget\n"
+        },
+        {
+          "name": "rls_planSource",
+          "description": "The Payer to which the profile is attributed.\n"
+        },
+        {
+          "name": "yearMonth",
+          "description": "Month & Year.\n"
+        }
+      ]
+    }
+  ]
+};

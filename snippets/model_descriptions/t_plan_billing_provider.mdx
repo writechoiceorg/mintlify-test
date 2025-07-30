@@ -1,0 +1,136 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "plan_billing_provider",
+      "description": "This table contains a master list of all billing providers and organizations known to the payer, along with demographic and taxonomic information and essential identifiers for reimbursement. Billing providers are individuals or organizations who have specifically billed or are billable on claims; they may differ from rendering/attending providers. Any billing provider ID mentioned in Claim Header must be included in this master list.\n",
+      "columns": [
+        {
+          "name": "id",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-749"
+                  ]
+                }
+              }
+            },
+            {
+              "unique": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1745"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "name",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-749"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "npi_exempt_ind",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-749"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "source_id",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-749"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "delete_ind",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-749"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "billing_provider_type",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-749"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "billing_provider_id",
+          "data_tests": [
+            {
+              "relationships": {
+                "to": "ref('dbo_Provider_Master')",
+                "field": "prov_original_id",
+                "meta": {
+                  "requirement": [
+                    "FDR-749"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "source_id",
+          "data_tests": [
+            {
+              "relationships": {
+                "to": "ref('dbo_plan_source')",
+                "field": "orig_source_id",
+                "meta": {
+                  "requirement": [
+                    "FDR-749"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};

@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: cus_n1inbounddata
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'F2UPGRADE-966' ]

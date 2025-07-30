@@ -1,0 +1,100 @@
+version: 2
+
+models:
+  - name: providerStrength
+    config:
+      statusDomain: 'Medical Claim'
+      frequencyDomain: 'MEDICAL ECONOMICS'
+    description: > 
+     This table lists person-provider relationships with utilization details and Arcadia Insights' Provider Strength Score. These insights can inform a variety of engagement initiatives, from reducing leakage to improving the outcomes of patients with poor care continuity. Identify patients for preventive outreach who have weak relationships to their attributed PCP or patients at risk of complications who have no strong PCP candidates in their visit history. 
+    columns:
+      - name: personId	
+        description: >
+          Arcadia's internal identifier for the member record. This identifier is subject to change over time.  
+      - name: memberNo	
+        description: >
+          The payer-supplied member identifier for the most recent eligibility record. 
+      - name: PersonName	J
+        description: >
+          Patient's full name (Last, First)
+      - name: PersonDOB	
+        description: >
+          Patient date of birth.
+      - name: ProviderNPI	
+        description: >
+          The provider's NPI. 
+      - name: ProviderName	
+        description: >
+          The provider's name. 
+      - name: ProviderSpecialty	
+        description: >
+          The provider's specialty. 
+      - name: FunctionalPCPInd	
+        description: >
+          A 0/1 indicator that the provider is flagged as the patient's PCP according to Arcadia's Functional Attribution logic.
+      - name: ClinicalPCPInd	
+        description: >
+          A 0/1 indicator that the provider is flagged as the patient's PCP at any point in time in any electronic health record.
+      - name: PlanPCPInd	
+        description: >
+          A 0/1 indicator that the provider is flagged as the patient's PCP at any point in time by the patient's insurance plan.
+      - name: QualifyingEvent	
+        description: >
+          A 0/1 indicator that the provider is flagged as a potential PCP due to having at least one qualifying event, and having a provider specialty of one of the following: Internal Medicine, Family Medicine, Pediatrics, and Geriatric Medicine.
+      - name: PCPScore	
+        description: >
+          A score that quantifies the relationship between a patient and provider, using time-weighted utilization data.
+      - name: PCPRelationship	
+        description: >
+          A descriptive label based around the PCP Score that puts each person-provider relationship into distinctive bins.  There are five bins, ranging from Extremely Low to Extremely High.
+      - name: PCPPctOfPrimaryCareServices	
+        description: >
+          The percentage of that provider's points for that patient over the sum of that patient's points among all eligible providers.
+      - name: StrongestRelationship	
+        description: >
+          A 0/1 indicator that the provider has the highest score for that patient against all other eligible providers.
+      - name: MostRecentVisit	
+        description: >
+          Date of most recent medical event for the person.
+      - name: 0To3MonthPrimaryCareServices	
+        description: >
+          The number of Primary Care Services that occurred between the provider and person between 0 and 3 Months.
+      - name: 4To6MonthPrimaryCareServices	
+        description: >
+          The number of Primary Care Services that occurred between the provider and person between 4 and 6 Months.
+      - name: 7To9MonthPrimaryCareServices	
+        description: >
+          The number of Primary Care Services that occurred between the provider and person between 7 and 9 Months.
+      - name: 10To12MonthPrimaryCareServices	
+        description: >
+          The number of Primary Care Services that occurred between the provider and person between 10 and 12 Months.
+      - name: Y2PrimaryCareServices	
+        description: >
+          The number of Primary Care Services that occurred between the provider and person between 13 and 24 Months.
+      - name: Y3PrimaryCareServices	
+        description: >
+          The number of Primary Care Services that occurred between the provider and person between 25 and 36 Months.
+      - name: 0To3MonthOtherVisits	
+        description: >
+          The number of Other Visits that occurred between the provider and person between 0 and 3 Months.
+      - name: 4To6MonthOtherVisits	
+        description: >
+          The number of Other Visits that occurred between the provider and person between 4 and 6 Months.
+      - name: 7To9MonthOtherVisits
+        description: >
+          The number of Other Visits that occurred between the provider and person between 7 and 9 Months.
+      - name: 10To12MonthOtherVisits	
+        description: >
+          The number of Other Visits that occurred between the provider and person between 10 and 12 Months.
+      - name: Y2OtherVisits	
+        description: >
+          The number of Other Visits that occurred between the provider and person between 13 and 24 Months.
+      - name: Y3OtherVisits	
+        description: >
+          The number of Other Visits that occurred between the provider and person between 25 and 36 Months.
+      - name: MaxLookbackDate	
+        description: >
+          The last day of the lookback period for provider events, which is two months back from the last available date from claims.
+      - name: LastRefreshDate	
+        description: >
+          Date when provider person relationship was last calculated.

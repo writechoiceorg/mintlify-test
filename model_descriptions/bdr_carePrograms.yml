@@ -1,0 +1,171 @@
+version: 2
+
+models:
+  - name: bdr_carePrograms
+    config:
+      tags: ['bdr']
+      frequencyDomain: 'BINDERY'
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'FDR-1388' ]
+      - has_rls:
+          meta:
+            requirement: [ 'ETL-1630' ]
+
+    columns:
+      - name: personId
+        description: >
+          Arcadia's universal identifier for the patient/member
+          record. This identifier is subject to change over time.
+        data_tests:
+          - not_null:
+             meta:
+              requirement: [ 'FDR-1388' ]
+      - name: startDate
+        description: >
+          month start date.
+      - name: endDate
+        description: >
+          month end date.
+      - name: name
+        description: >
+          patient's full name
+      - name: dob
+        description: >
+          patient date of birth
+      - name: age
+        description: >
+          Patient age as of the 15th of the month.
+      - name: sex
+        description: >
+          patient sex
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2061' ]
+      - name: program
+        description: >
+          Name of the care program attributed in the enrollment.
+      - name: careManagerName
+        description: >
+          Name of the assigned user.
+      - name: careManagerRole
+        description: >
+          Care Management role of the assigned user.
+      - name: programIdentified
+        description: >
+            A 0/1 indicator that the person was identified for the care program during the month.
+      - name: programEnrolled
+        description: >
+          A 0/1 indicator that the person is enrolled through the end of the month. Can be summed for enrollee-month counts
+      - name: programNewlyEnrolled
+        description: >
+          A 0 indicator that the person’s enrollment started during the month.
+      - name: programDischarged
+        description: >
+          A 0/1 indicator that the person was discharge from the program during the month.
+      - name: assessmentsCompleted
+        description: >
+          A 0/1 indicator that the person was assessed from the program during the month.
+      - name: otherTasksCompleted
+        description: >
+          A 0/1 indicator that the person was involved in any other tasks from the program during the month.
+      - name: tasksCreated
+        description: >
+          A 0/1 indicator that the person task was created or not.
+      - name: tasksScheduled
+        description: >
+          A 0/1 indicator that the person was scheduled any tasks from the program during the month.
+      - name: tasksCompleted
+        description: >
+          A 0/1 indicator that the person was completed any tasks from the program during the month.
+      - name: goalsCreated
+        description: >
+           0/1 indicator that the person was created for any goals from the program during the month.
+      - name: goalsCompleted
+        description: >
+          0/1 indicator that the person was completed any goals from the program during the month.
+      - name: goalsInactivated
+        description: >
+          0/1 indicator that the person was inactive from the program during the month.
+      - name: interventionsCreated
+        description: >
+          0/1 indicator that the person was created for any interventions from the program during the month.
+      - name: interventionsCompleted
+        description: >
+          0/1 indicator that the person was completed any goals from the program during the month.
+      - name: interventionsInactivated
+        description: >
+          0/1 indicator that the person was inactive from the program in this month .
+      - name: burndownGoalsActive
+        description: >
+          0/1 indicator that the person has any active goals
+      - name: burndownGoalsComplete
+        description: >
+          0/1 indicator that the person has any completed active goals
+      - name: burndownGoalsInactivate
+        description: >
+          0/1 indicator that the person has any Inactive goals
+      - name: burndownInterventionsActive
+        description: >
+          0/1 indicator that the person has any active interventions
+      - name: burndownInterventionsComplete
+        description: >
+          0/1 indicator that the person has any interventions completed
+      - name: burndownInterventionsInactivate
+        description: >
+          0/1 indicator that the person has any in active interventions
+      - name: pcpNPI
+        description: >
+          The PCP that the member was assigned to at the time of
+          this event. In financial reporting, the cost will be rolled up
+          to this PCP.
+      - name: pcpName
+        description: >
+          The name of the assigned PCP.
+      - name: pcpGrouper1
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g. "Practice"
+          "Pod", "Market").
+      - name: pcpGrouper2
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g. "Practice"
+          "Pod", "Market").
+      - name: pcpGrouper3
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g. "Practice"
+          "Pod", "Market").
+      - name: pcpGrouper4
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g. "Practice"
+          "Pod", "Market").
+      - name: pcpGrouper5
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g. "Practice"
+          "Pod", "Market").
+      - name: pcpGrouper6
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g. "Practice"
+          "Pod", "Market").
+      - name: planPayer
+        description: >
+          The payer on the claim.
+      - name: planProduct
+        description: >
+          The insurance Product the patient was eligible for during
+          the visit.
+      - name: planFundingSource
+        description: >
+          The insurance Funding Source or business line
+          associated to that eligibility.
+      - name: planProductDisposition
+        description: > 
+          insurance product disposition
+      - name: rls_planSource
+        description: >
+          QDW source ID in character format of the plan data source from which this record
+          was obtained.
+      - name: yearMonth
+        description: >
+          patient start year month

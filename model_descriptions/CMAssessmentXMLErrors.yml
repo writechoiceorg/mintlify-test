@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: cmAssessmentXmlErrors
+    config:
+      tags: [ 'utilization_and_expense_data' ]
+      frequencyDomain: 'QC'
+    description: >
+     This table captures invalid XML format assessments from the population of Care Management tables that could not be inserted during the data refresh.
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'FDR-1803' ]
+    columns:
+      - name: assessmentId
+        description: >
+          Arcadia's internal identifier for the assessment form. 
+      - name: assessmentVersionId
+        description: >
+          The upload version number of the assessment form; the full version history of assessments is stored.
+      - name: title
+        description: >
+          Title of the assessment.
+      - name: definition  
+        description: >
+          Assessment form content in XML format.
+      - name: xmlError  
+        description: >
+          Error message raised by XML parsing. 
+      - name: insertTimestamp    
+        description: >
+          Time at which XML parsing error occurred. 

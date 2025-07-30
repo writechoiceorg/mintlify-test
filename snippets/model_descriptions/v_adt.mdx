@@ -1,0 +1,184 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "v_adt",
+      "config": {
+        "tags": [
+          "care_quality_and_program_data"
+        ]
+      },
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "FDR-1849"
+              ]
+            }
+          }
+        }
+      ],
+      "description": "ADT data refers to admission, discharge, and transfer information captured for a specified patient. This includes patient identification information, event details, admission details, diagnosis code, discharge details, and attending provider information. \n",
+      "columns": [
+        {
+          "name": "person_id",
+          "description": "Unique QDW identifier for patient.\n"
+        },
+        {
+          "name": "adt_last_name",
+          "description": "Patient's Last Name.\n"
+        },
+        {
+          "name": "adt_first_name",
+          "description": "Patient's First Name.\n"
+        },
+        {
+          "name": "adt_dob",
+          "description": "Patient's date of birth.\n"
+        },
+        {
+          "name": "adt_sex",
+          "description": "Patient Sex\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2061"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "adt_address",
+          "description": "Patient's Address\n"
+        },
+        {
+          "name": "adt_city",
+          "description": "City of the patient's address.\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2062"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "adt_state",
+          "description": "State of the patient's address.\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2062"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "adt_zip",
+          "description": "Zip code of the patient's address.\n"
+        },
+        {
+          "name": "adt_MRN",
+          "description": "Patient's Medical Record Number (MRN).\n"
+        },
+        {
+          "name": "adt_member_id",
+          "description": "Patient Member ID\n"
+        },
+        {
+          "name": "sending_source",
+          "description": "Message Source\n"
+        },
+        {
+          "name": "event_type",
+          "description": "Message Type eg. A01-Admit\n"
+        },
+        {
+          "name": "event_location",
+          "description": "Facility where event took place.\n"
+        },
+        {
+          "name": "patient_class",
+          "description": "Class of patient. (e.g. inpatient, outpatient, or emergency)\n"
+        },
+        {
+          "name": "patient_type",
+          "description": "Type of patient. (e.g. inpatient, outpatient)\n"
+        },
+        {
+          "name": "admit_type",
+          "description": "Event type of patient admission. (e.g. Elective, Emergent, Urgent) \n"
+        },
+        {
+          "name": "admit_source",
+          "description": "Source of admission. (eg. MD Referral, Transfer from Hospital)\n"
+        },
+        {
+          "name": "admit_date",
+          "description": "Date of admission.\n"
+        },
+        {
+          "name": "dx_code",
+          "description": "Diagnosis ICD Code\n"
+        },
+        {
+          "name": "dx_description",
+          "description": "ICD description\n"
+        },
+        {
+          "name": "dx_date",
+          "description": "Date of diagnosis. \n"
+        },
+        {
+          "name": "service_type",
+          "description": "Type of service. (eg. Cardiology, ENT, Dental)\n"
+        },
+        {
+          "name": "discharge_date",
+          "description": "Date of discharge.\n"
+        },
+        {
+          "name": "discharge_disposition",
+          "description": "Not in Use.\n"
+        },
+        {
+          "name": "discharge_location",
+          "description": "Discharged From.\n"
+        },
+        {
+          "name": "attending_provider_npi",
+          "description": "NPI of Provider.\n"
+        },
+        {
+          "name": "attending_provider_last_name",
+          "description": "Provider Last Name.\n"
+        },
+        {
+          "name": "attending_provider_first_name",
+          "description": "Provider First Name. \n"
+        },
+        {
+          "name": "message_timestamp",
+          "description": "Timestamp for message origination\n"
+        },
+        {
+          "name": "insert_timestamp",
+          "description": "Timestamp for when row was inserted into QDW\n"
+        }
+      ]
+    }
+  ]
+};

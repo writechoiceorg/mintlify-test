@@ -1,0 +1,528 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "outpatientEvents",
+      "config": {
+        "tags": [
+          "utilization_and_expense_data"
+        ],
+        "statusDomain": "Medical Claim",
+        "frequencyDomain": "MEDICAL ECONOMICS"
+      },
+      "description": "All Outpatient activity is represented here, with claim lines rolled-up according to Arcadia’s hierarchical report grouper. As [inpatientEvents] assigns all costs and determines primary codes per Inpatient Stay, [outpatientEvents] lists one record per utpatient “ vent” and rolls up claim line details into that single event row. he definition of an outpatient “event” varies. or e ample an bservation tay is considered a single event and all activities within the stay are combined into that event record. A Radiology event, however, is only the costs/details of claims with the related radiology procedure code. More details on the hierarchical event logic can be found in the Event Grouper and Service Categorization document\n",
+      "data_tests": [
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "FDR-1514"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "eventId",
+          "description": "The Arcadia internal ID of the outpatient event, which can be mapped to contributing line events in [dbo].[eventLineDetails] with rollupEventId. This identifier is subject to change over time.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-733"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "memberId",
+          "description": "Arcadia internal member identifier, which can be used to join to raw plan views or [dbo].[personAttribution]. This identifier is subject to change over time.\n"
+        },
+        {
+          "name": "personId",
+          "description": "Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-733"
+                  ]
+                }
+              }
+            },
+            {
+              "relationships": {
+                "to": "ref('v_patient')",
+                "field": "person_id",
+                "meta": {
+                  "requirement": [
+                    "FDR-733"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "memberNo",
+          "description": "The payer-supplied member identifier.\n"
+        },
+        {
+          "name": "planPayer",
+          "description": "The payer on the claim.\n"
+        },
+        {
+          "name": "eventDate",
+          "description": "Date of the outpatient service.\n"
+        },
+        {
+          "name": "admitDate",
+          "description": "Arcadia's  admit  date,  if  applicable  after  running  an Observation stay chaining ruleset. Only events with the Observation event grouper are candidates for chaining.\n"
+        },
+        {
+          "name": "dischargeDate",
+          "description": "Arcadia's discharge date, if applicable after running an Observation stay chaining ruleset. Only events with the Observation event grouper are candidates for chaining.\n"
+        },
+        {
+          "name": "LOS",
+          "description": "The length of the Observation stay in days, if applicable.\n"
+        },
+        {
+          "name": "paidDate",
+          "description": "The paid date from the claim header.\n"
+        },
+        {
+          "name": "monthsRunout",
+          "description": "Claims lag: months between the maximum paid date of claims from this payer and the event date.\n"
+        },
+        {
+          "name": "rptGrouper",
+          "description": "Arcadia's reporting grouper.\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2063"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "rptGrouper2",
+          "description": "Optional lower-level reporting groups.\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2063"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "claimHeaderId",
+          "description": "The claim header ID for the stay. See Outpatient Event Details for rules on how this is determined.\n"
+        },
+        {
+          "name": "cost",
+          "description": "The contractual reconciliation amount for the event. This field surfaces the highest priority payer product configured cost value for the event, in order of stop loss cost, at risk event cost, and then cost of care.\n"
+        },
+        {
+          "name": "costOfCare",
+          "description": "The cost of care for the event, typically the insurer's Paid Amount though will vary by contract.\n"
+        },
+        {
+          "name": "riskAdjustedCost",
+          "description": "Costs adjusted for the patients acuity score. Note: This should ONLY be used for aggregate reporting, not analysis of a single event.\n"
+        },
+        {
+          "name": "costFacility",
+          "description": "The sum of all costs from facility charges for the stay.\n"
+        },
+        {
+          "name": "costProfessional",
+          "description": "The sum of all costs from professional charges for the stay.\n"
+        },
+        {
+          "name": "costOther",
+          "description": "The sum of all other/ancillary charges for the stay.\n"
+        },
+        {
+          "name": "costIBNR",
+          "description": "A cost calculation applying an IBNR model. While not relevant as an individual line, this can be used to roll up costs with IBNR in aggregate.\n"
+        },
+        {
+          "name": "placeOfService",
+          "description": "The most relevant POS code. See Outpatient Event Details for rules on how this is determined.\n"
+        },
+        {
+          "name": "placeOfServiceDescription",
+          "description": "Text description of the most relevant POS code. See Outpatient Event Details for rules on how this is determined.\n"
+        },
+        {
+          "name": "revenueCode",
+          "description": "The most relevant Revenue code. See Outpatient Event Details for rules on how this is determined.\n"
+        },
+        {
+          "name": "revenueCodeDescription",
+          "description": "Text description of the most relevant Revenue code. See Outpatient Event Details for rules on how this is determined.\n"
+        },
+        {
+          "name": "cpt",
+          "description": "The most relevant CPT code. See Outpatient Event Details for rules on how this is determined.\n"
+        },
+        {
+          "name": "cptDescription",
+          "description": "Text description of the most relevant CPT code. See Outpatient Event Details for rules on how this is determined.\n"
+        },
+        {
+          "name": "ccsCptMinor",
+          "description": "Low-level AHRQ CCS grouping of relevant CPT code.\n"
+        },
+        {
+          "name": "ccsCptMajor",
+          "description": "High-level AHRQ CCS grouping of relevant CPT code.\n"
+        },
+        {
+          "name": "icd",
+          "description": "The most relevant ICD code. See Outpatient Event Details for rules on how this is determined.\n"
+        },
+        {
+          "name": "icdCodeSet",
+          "description": "Version of ICD code set for relevant ICD code.\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2063"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "icdDescription",
+          "description": "Text description of the most relevant ICD code. See Outpatient Event Details for rules on how this is determined.\n"
+        },
+        {
+          "name": "ccsDxMinor",
+          "description": "Low-level AHRQ CCS grouping of relevant ICD code.\n"
+        },
+        {
+          "name": "ccsDxMajor",
+          "description": "High-level AHRQ CCS grouping of relevant ICD code.\n"
+        },
+        {
+          "name": "acgEdcMinor",
+          "description": "The ACG Expanded Diagnosis Cluster (EDC) code that categorize cases with similar diseases or conditions that are treated in ambulatory and inpatient settings.\n"
+        },
+        {
+          "name": "acgEdcMajor",
+          "description": "The ACG Major Expanded Diagnoses Cluster (MEDC) code assigned to this patient. The EDC taxonomy is structured into broad clinical categories called MEDCs.\n"
+        },
+        {
+          "name": "providerName",
+          "description": "Most relevant provider name. See Outpatient Event Details for rules on how this is determined.\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2345"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "providerNPI",
+          "description": "NPI of provider.\n"
+        },
+        {
+          "name": "providerSpecialty",
+          "description": "Specialty of provider, from NPPES.\n"
+        },
+        {
+          "name": "providerGrouper1",
+          "description": "Up to 6 \"grouper\" attributes of the provider (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "providerGrouper2",
+          "description": "Up to 6 \"grouper\" attributes of the provider (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "providerGrouper3",
+          "description": "Up to 6 \"grouper\" attributes of the provider (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "providerGrouper4",
+          "description": "Up to 6 \"grouper\" attributes of the provider (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "providerGrouper5",
+          "description": "Up to 6 \"grouper\" attributes of the provider (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "providerGrouper6",
+          "description": "Up to 6 \"grouper\" attributes of the provider (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "inNetwork",
+          "description": "A 0/1 indicator that the event is in Network.\n"
+        },
+        {
+          "name": "inTier1",
+          "description": "A 0/1 indicator that the event is in a Tier 1 Preferred Network.\n"
+        },
+        {
+          "name": "inTier2",
+          "description": "A 0/1 indicator that the event is in a Tier 2 Preferred Network.\n"
+        },
+        {
+          "name": "inTier3",
+          "description": "A 0/1 indicator that the event is in a Tier 3 Preferred Network.\n"
+        },
+        {
+          "name": "inNetworkFacility",
+          "description": "A 0/1 indicator that the Service Facility on the event was considered \"In Network\" at the time of the event.\n"
+        },
+        {
+          "name": "inNetworkProvider",
+          "description": "A 0/1 indicator that the Provider on the event was considered \"In Network\" at the time of the event.\n"
+        },
+        {
+          "name": "serviceFacility",
+          "description": "Most  relevant  service  facility.  See  Outpatient Event Details for rules on how this is determined.\n"
+        },
+        {
+          "name": "serviceFacilityNPI",
+          "description": "NPI of service facility.\n"
+        },
+        {
+          "name": "serviceFacilityGrouper1",
+          "description": "Up to 6 \"grouper\" attributes of the service facility (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "serviceFacilityGrouper2",
+          "description": "Up to 6 \"grouper\" attributes of the service facility (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "serviceFacilityGrouper3",
+          "description": "Up to 6 \"grouper\" attributes of the service facility (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "serviceFacilityGrouper4",
+          "description": "Up to 6 \"grouper\" attributes of the service facility (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "serviceFacilityGrouper5",
+          "description": "Up to 6 \"grouper\" attributes of the service facility (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "serviceFacilityGrouper6",
+          "description": "Up to 6 \"grouper\" attributes of the service facility (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "distance",
+          "description": "The distance between the member's place of residence and the facility, in miles.\n"
+        },
+        {
+          "name": "edAvoidableInd",
+          "description": "A 0/1 indicator that the ED event qualifies for the NYU Avoidable ED category. Will be empty if the event is not an ED event.\n"
+        },
+        {
+          "name": "ascInd",
+          "description": "A 0/1 indicator that the event meets CMS Ambulatory Sensitive Conditions (ASC) admission criteria.\n"
+        },
+        {
+          "name": "pcpNPI",
+          "description": "The PCP that the member was assigned to at the time of this event. In financial reporting, the cost will be rolled up to this PCP.\n"
+        },
+        {
+          "name": "pcpName",
+          "description": "The name of the assigned PCP.\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2345"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "pcpGrouper1",
+          "description": "Up to 6 \"grouper\" attributes of the PCP (e.g., \"Practice\", \"Pod\", \"Market”).\n"
+        },
+        {
+          "name": "pcpGrouper2",
+          "description": "Up to 6 \"grouper\" attributes of the PCP (e.g., \"Practice\", \"Pod\", \"Market”).\n"
+        },
+        {
+          "name": "pcpGrouper3",
+          "description": "Up to 6 \"grouper\" attributes of the PCP (e.g., \"Practice\", \"Pod\", \"Market”).\n"
+        },
+        {
+          "name": "pcpGrouper4",
+          "description": "Up to 6 \"grouper\" attributes of the PCP (e.g., \"Practice\", \"Pod\", \"Market”).\n"
+        },
+        {
+          "name": "pcpGrouper5",
+          "description": "Up to 6 \"grouper\" attributes of the PCP (e.g., \"Practice\", \"Pod\", \"Market”).\n"
+        },
+        {
+          "name": "pcpGrouper6",
+          "description": "Up to 6 \"grouper\" attributes of the PCP (e.g., \"Practice\", \"Pod\", \"Market”).\n"
+        },
+        {
+          "name": "planProduct",
+          "description": "The insurance Product the patient was eligible for during the visit.\n"
+        },
+        {
+          "name": "planFundingSource",
+          "description": "The insurance Funding Source or business line associated to that eligibility.\n"
+        },
+        {
+          "name": "claimAtRisk",
+          "description": "A 0/1 indicator that the event should be considered in financial reporting on the risk-based contract. When both the claimant and the service are \"at-risk\" this is 1.\n"
+        },
+        {
+          "name": "claimMemberAtRisk",
+          "description": "A 0/1 indicator that the claimant is in a risk contract during the event.\n"
+        },
+        {
+          "name": "claimServiceAtRisk",
+          "description": "Same definition as claimAtRisk.\n"
+        },
+        {
+          "name": "providerTIN",
+          "description": "The Federal Tax Identification Number of the provider, if applicable.\n"
+        },
+        {
+          "name": "providerCCN",
+          "description": "The CMS Certification Number of the facility, if applicable.\n"
+        },
+        {
+          "name": "sensitiveInd",
+          "description": "A 0/1 indicator that the event is a sensitive claim.\n"
+        },
+        {
+          "name": "awvInd",
+          "description": "A 0/1 indicator that the event is an Annual Wellness Visit. Arcadia uses these CPT codes to identify AWVs: G0402, G0438, G0439, G0468.\n"
+        },
+        {
+          "name": "tcmInd",
+          "description": "A 0/1 indicator that the event is a Transitional Care Management visit. Arcadia uses these CPT codes to identify TCM visits: 99495, 99496.\n"
+        },
+        {
+          "name": "acpInd",
+          "description": "A 0/1 indicator that the event has a CPT code of advanced care planning. Arcadia uses these CPT codes to identify ACP visits: 99497, 99498.\n"
+        },
+        {
+          "name": "fyStartDate",
+          "description": "The start date of the financial year the event occurs in.\n"
+        },
+        {
+          "name": "fyEndDate",
+          "description": "The end date of the financial year the event occurs in.\n"
+        },
+        {
+          "name": "fyIndex",
+          "description": "The index of the financial year the event occurs in. A '0' indicates the event is contained in the current financial year.\n"
+        },
+        {
+          "name": "telehealthInd",
+          "data_tests": [
+            "not_null",
+            {
+              "accepted_values": {
+                "values": [
+                  0,
+                  1
+                ],
+                "meta": {
+                  "requirement": [
+                    "FDR-1022"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "newSpecVisitInd",
+          "description": "A 0/1 flag to indicate a New Specialist Visit if the event is the first for a member with a diagnosis ccsDxMajor and not a PCP visit. If another event for the member with the same diagnosis code occurs more than 90 days after the first specialist event, it is also considered a new specialist visit. \n"
+        },
+        {
+          "name": "followUpCost90",
+          "description": "The sum of all medical costs during the 90 days post new specialist visit, restricted to inpatient and outpatient events that have the same ccsDxMajor on at least one of their event lines as this event. This field will only be populated where 'newSpecVisitInd' field is 1. \n"
+        },
+        {
+          "name": "imputedReferringProviderPersonID",
+          "description": "The Provider Person Id of the last local provider from the previous 90 day span on IP Surgical and outpatient events, excluding ED, Ambulance, Observation, DME, OP Other and IP ED admit (and ObsAdmit if configured emergent) events. The imputed referring provider is sourced from the last previous outpatient PCP Visit, Clinic Visit, or Specialist Visit event with an event line Dx CCS Major that corresponds to the Dx CCS Major of the event being evaluated. \n"
+        },
+        {
+          "name": "imputedReferringProviderNPI",
+          "description": "The NPI of the last local provider from the previous 90 day span on IP Surgical and outpatient events, excluding ED, Ambulance, Observation, DME, OP Other and IP ED admit (and ObsAdmit if configured emergent) events. The imputed referring provider is sourced from the last previous outpatient PCP Visit, Clinic Visit, or Specialist Visit event with an event line Dx CCS Major that corresponds to the Dx CCS Major of the event being evaluated. \n"
+        },
+        {
+          "name": "telehealthInd",
+          "description": "A 0/1 flag that indicates one of the event lines on the event has an associated telehealth CPT procedure modifier of ‘95’ or ‘GT’, or the ccsCptMinor description is 'telehealth'.\n"
+        },
+        {
+          "name": "ascPQIMeasureNumber",
+          "description": "The measure number of the individual PQI measure the event qualifies for which causes the event to be included in the ASC composite measure.\n"
+        },
+        {
+          "name": "ascPQIMeasureName",
+          "description": "The measure name of the individual PQI measure the event qualifies for which causes the event to be included in the ASC composite measure.\n"
+        },
+        {
+          "name": "billingProviderId",
+          "description": "The billing provider's Arcadia universal ID. \n"
+        },
+        {
+          "name": "billingNPI",
+          "description": "NPI of billing provider. \n"
+        },
+        {
+          "name": "billingTIN",
+          "description": "The Federal Tax Identification Number of the billing provider, if applicable.\n"
+        },
+        {
+          "name": "maxPaid",
+          "description": "Max paid date for the source in medical claims.\n"
+        },
+        {
+          "name": "age",
+          "description": "The person's age (as of last data load).\n"
+        },
+        {
+          "name": "edInSNF",
+          "description": "A 0/1 flag that indicates whether this event is an ED event that occurs during the timeframe of an inpatient SNF event. \n"
+        },
+        {
+          "name": "obsInSNF",
+          "description": "A 0/1 flag that indicates whether this event is an observation event that occurs during the timeframe of an inpatient SNF event. \n"
+        }
+      ]
+    }
+  ]
+};

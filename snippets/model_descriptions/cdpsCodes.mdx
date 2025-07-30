@@ -1,0 +1,68 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "cdpsCodes",
+      "config": {
+        "tags": [
+          "lookup"
+        ]
+      },
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "FDR-1589"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "DiagnosisCode",
+          "description": "DiagnosisCode associated with the specific group\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1589"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "DiagnosisCodeType",
+          "description": "DiagnosisCode Type Associated with the specific group\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1589"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "Description",
+          "description": "Description of Diagnosis\n"
+        },
+        {
+          "name": "Category",
+          "description": "Diagnosis Category\n"
+        },
+        {
+          "name": "coefName",
+          "description": "The Group ID associated with the diagnosis code. \n"
+        }
+      ]
+    }
+  ]
+};

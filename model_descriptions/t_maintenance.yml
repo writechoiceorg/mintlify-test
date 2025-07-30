@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: t_maintenance
+    description: > 
+      The maintenance table contains information about a variety of patient observations and clinical actions that cannot be classified in one of the other tables. Although the universe of patient observations can be very large, the Arcadia Analytics platform has a focused set of observations that are of interest in developing metrics.   In a sense, this table is a catch-all location for structured non-coded data documented within EHR systems.  Typical items stored here include: 1)documentation of assessments or questionnaires performed by staff member within a visit: i.e. Depression Screen PHQ Questions, Medication Reconciliation, Review of Systems, Nutrition Counseling, Physical Activity Counseling, 2)documentation of patient history or social status: i.e. Smoking Status, Surgical History, past screenings, 3)In-office procedures not otherwise coded: i.e. dressing changes wound check, injections, and 4)selected custom elements of the medical record as defined through client consultation. A good rule of thumb is that these observations are documentation of current or prior actions or knowledge that create a more complete record.
+    config:
+      tags: [ 'care_quality_and_program_data' ]
+
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: ['FDR-1514']
+
+    columns:
+      - name: id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-776' ]
+      - name: arc_encounter_id
+        data_tests:
+          - relationships:
+              to: ref('t_encounter')
+              field: id
+              meta:
+                requirement: [ 'FDR-776' ]

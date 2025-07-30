@@ -1,0 +1,24 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "riskRollup_wrk",
+      "columns": [
+        {
+          "name": "riskAlgorithm",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2058"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};

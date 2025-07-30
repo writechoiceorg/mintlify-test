@@ -1,0 +1,78 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "plan_capitation",
+      "description": "This table is a record of payments or renumerations to providers as part of capitation contracts. Each row should be associated with a specific member covered by a plan product, in payment to a specific provider under a given contract. Each payment should cover a specific time interval ' for example, month intervals defined by start and stop dates ' and multiple payments may be made for a given time interval, including negative payments for withholding or reimbursement to the plan.\n",
+      "data_tests": [
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "FDR-1514"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "capitation_id",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-739"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "site_id",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-739"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "source_id",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-739"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "delete_ind",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-739"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};

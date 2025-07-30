@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: t_problem
+    description: > 
+      The problem list describes all current and historical diagnoses or conditions for a specified patient. 
+      Conditions and diagnoses may be entered as part of an assessment of an ongoing condition, or may have been provided as medical history by the patient. 
+      All problem list diagnoses must be coded according to appropriate code sets (i.e. International Classification of Diagnoses v9 or v10).  Because problem list entries may be historical or current, and active or inactive, each entry must have definitive dates indicating the onset and resolution (if applicable) of the condition. 
+      Although problem list entries contain an optional status flag, for the purposes of calculations, Arcadia Analytics considers a problem active if the resolved date is empty (or until the resolved date for historical analysis).
+    config:
+      tags: [ 'care_quality_and_program_data' ]
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: ['FDR-1514']
+
+      - dbt_utils.unique_combination_of_columns:
+          meta:
+            requirement: [ 'FDR-1745' ]
+          combination_of_columns:
+            - id
+            - person_id
+
+
+    columns:
+      - name: id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-757' ]
+
+      - name: arc_originating_encounter_id
+        data_tests:
+          - relationships:
+              to: ref('t_encounter')
+              field: id
+              meta:
+                requirement: [ 'FDR-757' ]
+      - name: arc_updated_encounter_id
+        data_tests:
+          - relationships:
+              to: ref('t_encounter')
+              field: id
+              meta:
+                requirement: [ 'FDR-757' ]

@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: t_order
+    description: > 
+      An order is a record of a request for a set of diagnostic investigations to be performed. The investigation will lead to a diagnostic report that summarizes the outcome of the investigation, and includes contextual data about the ordering workflow which at a minimum should the date the order was generated and the date the result was reviewed.  The general work flow that this resource facilitates is: (1) A clinical system creates a diagnostic order. (2) The diagnostic order is then exchanged, perhaps via intermediaries, with a system that represents a diagnostic service that can perform the investigation as a request to do so. (3) The diagnostic service will update the request as the work is performed, and (4) then issues a report that references the requests that it fulfills.  Several types of orders are currently supported in this entity: Procedures, such as an order for a mammogram or colonoscopy, referrals, such as a primary care physician ordering a referral to a specialist, and labs, such as an A1c test for a diabetic patient.
+    config:
+      tags: [ 'care_quality_and_program_data' ]
+
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: ['FDR-1514']
+
+      - dbt_utils.unique_combination_of_columns:
+          meta:
+            requirement: [ 'FDR-1745' ]
+          combination_of_columns:
+            - id
+            - person_id
+
+    columns:
+      - name: id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-748' ]
+
+      - name: arc_encounter_id
+        data_tests:
+          - relationships:
+              to: ref('t_encounter')
+              field: id
+              meta:
+                requirement: [ 'FDR-748' ]

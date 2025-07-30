@@ -1,0 +1,89 @@
+version: 2
+
+models:
+  - name: functionalAttributionResults
+    config:
+      tags: [ 'utilization_and_expense_data' ]
+      frequencyDomain: 'QC'
+    description: >
+      This table surfaces person-grain results of the attribution process, including contributions from different data sources.
+
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: ['FDR-1514']
+
+    columns:
+      - name: personld
+        description: >
+          Arcadia's universal identifier
+          for the patient/member record.
+          This identifier is subject to change over time.
+      - name: name
+        description: >
+          The patient's full name (Last, First).
+      - name: sex
+        description: >
+          The person's sex.
+      - name: dob
+        description: >
+          The person's date of birth.
+      - name: planPayer
+        description: >
+          The Payer for which the person is eligible
+          in the most recent attribution.
+      - name: planProduct
+        description: >
+          The Product for which the person is eligible
+          in the most recent attribution.
+      - name: planFundingSource
+        description: >
+          The Funding Source for which the person
+          is eligible in the most recent attribution.
+      - name: ehrPCPNPI
+        description: >
+          The NPI of the person's EHR attributed PCP.
+      - name: ehrPCPName
+        description: >
+          The full name of the person's HER attributed PC.
+      - name: ehrPCPStatus
+        description: >
+          The status of the EHR PCP, including whether the
+          PCP is in the hierarchy and practice.
+      - name: planPCPNPI
+        description: >
+          The NPI of the person's plan attributed PCP.
+      - name: planPCPName
+        description: >
+          The full name of the person's plan attributed PCP.
+      - name: planPCPStatus
+        description: >
+          The status of the Plan PCP, including whether the
+          PCP is in the hierarchy and practice.
+      - name: primaryCareEvents
+        description: >
+          Describes the state of primary care events during
+          the lookback period, including whether the events
+          are excluded from the hierarchy.
+      - name: functionalPCPNPI
+        description: >
+          The NPI of the person's functionally attributed PCP.
+      - name: functionalPCPName
+        description: >
+          The full name of the person's functional attributed PCP.
+      - name: functionalAssignmentStep
+        description: >
+          Numeric ranking of attribution assigned provider to the person.
+      - name: functionalAssignmentReason
+        description: >
+          Brief description of why the PCP was
+          functionally attributed to the person.
+          Describes the numeric ranking in functionalAssignmentStep.
+      - name: attributionTimestamp
+        description: >
+          Date which functional attribution
+          was last calculated for the person.
+      - name: reportTimestamp
+        description: >
+          Timestamp of creation of the row on
+          the functional attribution report table.

@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: inNetworkFacility
+    description: > 
+     A list of supplied Provider and Facility NPIs, with dates indicating the span during which they are considered in the health system or payer network. Used for calculation of the "In Network" flag in utilization events.  
+    config:
+      tags: [ 'lookup' ]
+
+    columns:
+      - name: facilityName
+        description: >
+          The name of the facility. This can be used for string-matching on In Network lookups where an NPI is not available.
+      - name: facilityNPI
+        description: >
+          The facility NPI
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1595' ]
+      - name: startDate
+        description: >
+          The first date for which the facility is considered in the health system network. 
+          If the facility has been in the network a sufficiently long time, a NULL value can be specified.
+      - name: endDate
+        description: >
+          The last date for which the facility is considered in the health system network. 
+          This can be NULL if the facility is still currently in the health system network.
+      - name: inNetwork
+        description: >
+          A 0/1 indicator that the provider is considered in the health system network.
+      - name: riskUnit
+        description: >
+          An optional field mapping to Grouper to only mark a facility as “In Network” if the patient’s PCP is attributed to it. 
+          This is useful for regional exceptions for limited access.
+      - name: InTier1
+        description: >
+          A 0/1 indicator that the event is in a Tier 1 Preferred Network.
+      - name: InTier2
+        description: >
+          A 0/1 indicator that the event is in a Tier 2 Preferred Network.
+      - name: InTier3
+        description: >
+          A 0/1 indicator that the event is in a Tier 3 Preferred Network.

@@ -1,0 +1,78 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "plan_group",
+      "description": "This table contains a master list of groups that sponsor members' insurance coverage, such as employer groups, unions, or other benefit purchasing bodies.  Any group ID referenced in the v_plan_member_elig table must be included in this list.\n",
+      "columns": [
+        {
+          "name": "group_id",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-742"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "source_id",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-742"
+                  ]
+                }
+              }
+            },
+            {
+              "relationships": {
+                "to": "ref('v_plan_source')",
+                "field": "orig_source_id",
+                "meta": {
+                  "requirement": [
+                    "FDR-742"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "group_no",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-742"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "delete_ind",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-742"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};

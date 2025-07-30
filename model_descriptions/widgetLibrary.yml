@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: widgetLibrary
+    description: > 
+      This table surfaces expanded details on Arcadia application widgets, including a full description the widget and a link to additional information about the widget. 
+    config:
+      tags: [ 'configuration_and_metadata' ]
+      frequencyDomain: 'WEB'
+    columns:
+      - name: widgetId
+        description: >
+          Arcadia's internal identifier for the widget.
+      - name: widgetTitle
+        description: >
+          The title of the widget.
+      - name: widgetLink
+        description: >
+          The link to widget, if provided.
+      - name: widgetDescription
+        description: >
+          Description of the widget.
+      - name: createdAt
+        description: >
+          Date at which the widget was created.
+      - name: updatedAt
+        description: >
+          Date at which the widget was most recently updated.

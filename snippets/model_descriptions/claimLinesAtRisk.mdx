@@ -1,0 +1,35 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "claimLinesAtRisk",
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "FDR-717"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "claim_line_id",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-717"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};

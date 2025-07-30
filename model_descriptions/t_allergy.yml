@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: t_allergy
+    description: >
+      This table contains clinical statements representing whether an allergy or adverse reaction exists or does not exist to a specific agent. The agents may be medications or they may be food items or environmental.  Arcadia Analytics measure logic makes use of drug allergies; other types of allergies are currently informational only.  The agent should be asserted explicitly and defined through a national code set, specifically medication brand names, generic names or NDC. Allergies should have a definitive indication of whether or not an allergy has or has not been resolved.
+    config:
+      tags: [ 'care_quality_and_program_data' ]
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: [ 'FDR-1514' ]
+      - dbt_utils.unique_combination_of_columns:
+          meta:
+            requirement: [ 'FDR-1745' ]
+          combination_of_columns:
+            - id
+            - person_id
+
+    columns:
+      - name: id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-746' ]

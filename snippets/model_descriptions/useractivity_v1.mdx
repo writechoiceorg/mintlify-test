@@ -1,0 +1,55 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "useractivity_v1",
+      "description": "A model populated from V1 Replica server AuditDB.dbo.Loadlogs. V2 users that need Foundry usage data for security/compliance need the historic usage of their V1 REPORTING database.  Frequency: While V1 continues to be enabled and used by the customer, daily updates to this report will be required. Months after upgrade, V1 environment will be spun down and audit.useractivity_v1 will remain static.\n",
+      "columns": [
+        {
+          "name": "id",
+          "description": "Unique record identifier (GUID).\n"
+        },
+        {
+          "name": "session_server_principal_name",
+          "description": "Name by which a client uniquely identifies an instance of a service. Is configured inside the account running the SQL Server service.\n"
+        },
+        {
+          "name": "event_time",
+          "description": "A timestamp for logged event.\n"
+        },
+        {
+          "name": "database_name",
+          "description": "Database name against which the log is made.\n"
+        },
+        {
+          "name": "statement",
+          "description": "SQL query executed.\n"
+        },
+        {
+          "name": "server_instance_name",
+          "description": "Server instance name against which the log is made.\n"
+        },
+        {
+          "name": "schema_name",
+          "description": "Schema name against which the log is made.\n"
+        },
+        {
+          "name": "object_name",
+          "description": "Object name.\n"
+        },
+        {
+          "name": "file_name",
+          "description": "Physical file location.\n"
+        },
+        {
+          "name": "SessionID",
+          "description": "Serves as a unique identifier for a given connection between a client and a database server.\n"
+        },
+        {
+          "name": "loaddate",
+          "description": "The date the logs data was last loaded into the Arcadia Foundry.\n"
+        }
+      ]
+    }
+  ]
+};

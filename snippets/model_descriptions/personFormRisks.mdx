@@ -1,0 +1,99 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "personFormRisks",
+      "description": "This table surfaces a report of risk gaps for a given profile and form, as well as the status of the form. Risk gap details include the risk model (risk algorithm) and risk group, risk gap value, and risk gap status captured in the Assess application.\n",
+      "config": {
+        "frequencyDomain": "ASSESS"
+      },
+      "columns": [
+        {
+          "name": "personId",
+          "description": "Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.  \n"
+        },
+        {
+          "name": "memberNo",
+          "description": "The member number for the person.\n"
+        },
+        {
+          "name": "profileID",
+          "description": "GUID for the Assess profile - a combination of person, program, instance, period, provider, and insurance product.\n"
+        },
+        {
+          "name": "profileInactiveIn",
+          "description": "A 0/1 indicator that the Assess profile is inactive. Inactive profiles will only appear if a form was attached to them.\n"
+        },
+        {
+          "name": "formId",
+          "description": "GUID for the Assess form. One profile may have multiple forms. \n"
+        },
+        {
+          "name": "riskModel",
+          "description": "Model/algorithm of the risk gap.\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1924"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "riskId",
+          "description": "Risk group identifier. If the risk model used is HCC, the identifier will present the HCC number. \n"
+        },
+        {
+          "name": "riskDescription",
+          "description": "Description of the risk gap/condition.\n"
+        },
+        {
+          "name": "riskCategory",
+          "description": "Category of the risk gap/condition. \n"
+        },
+        {
+          "name": "riskStatus",
+          "description": "The status of the risk gap in Assess.\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2059"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "riskValue",
+          "description": "The incremental RAF of the risk gap. \n"
+        },
+        {
+          "name": "riskGapOpen",
+          "description": "A 0/1 indicator that the risk gap has not been closed.\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2059"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "modifieddate",
+          "description": "The time the risk gap was last modified in the form or of the latest profile update.\n"
+        }
+      ]
+    }
+  ]
+};

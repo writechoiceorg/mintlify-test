@@ -1,0 +1,12 @@
+version: 2
+
+models:
+    - name: lookup_v_ndc_generic_ind
+      config:
+          tags: [ 'lookup' ]
+      description: >
+          View provides NDC generic indicator info
+      data_tests:
+          - not_empty:
+                meta:
+                    requirement: [ 'ETL-836' ]

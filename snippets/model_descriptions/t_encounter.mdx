@@ -1,0 +1,45 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "t_encounter",
+      "description": "An encounter is an interaction, regardless of the setting, between a patient and a practitioner who is vested with primary responsibilities for diagnosing, evaluating, or treating the patient's condition. Encounters must contain information about the parties involved (patient, provider), the date of the event, and the nature of or reason for the encounter.   Arcadia Analytics will store multiple types of encounters, including and not limited to:  in-person visits, telephone conversations, and electronic message exchanges. Whether an encounter is classified as a 'medical encounter' is determined either by corroborating procedure data from the charge table, or through direct indication in the encounter type data element.\n",
+      "config": {
+        "tags": [
+          "care_quality_and_program_data"
+        ]
+      },
+      "data_tests": [
+        {
+          "dbt_utils.unique_combination_of_columns": {
+            "meta": {
+              "requirement": [
+                "FDR-1745"
+              ]
+            },
+            "combination_of_columns": [
+              "id",
+              "person_id"
+            ]
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "id",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-774"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};

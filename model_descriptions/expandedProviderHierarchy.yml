@@ -1,0 +1,264 @@
+version: 2
+
+models:
+  - name: expandedProviderHierarchy
+    description: >
+      This view surfaces supplied expanded provider hierarchy, where available.
+    config:
+      tags: [ 'lookup' ]
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'FDR-1521', 'ETL-1171', 'ETL-1093' ]
+    columns:
+      - name: HierarchyID
+        description: >
+          Not Applicable
+      - name: NPI
+        description: >
+          Not Applicable
+      - name: PrimaryTIN
+        description: >
+          Not Applicable
+      - name: CCN
+        description: >
+          Not Applicable
+        data_tests:
+          - accepted_values:
+              values: [ 'TEST_DATA' ]
+              meta:
+                requirement: [ 'ETL-1171' ]
+      - name: PrimaryClinicalSource
+        description: >
+          Not Applicable
+      - name: PrimaryClinicalDepartment
+        description: >
+          Not Applicable
+      - name: Startdate
+        description: >
+          The first date/hour/minute of the given month.
+      - name: Enddate
+        description: >
+          The last date/hour/minute of the given month.
+      - name: ApplyToSecHierarchy
+        description: >
+          Not Applicable
+      - name: ProviderCredentials
+        description: >
+          Not Applicable
+      - name: ProviderFirstName
+        description: >
+          Not Applicable
+      - name: ProviderMiddleName
+        description: >
+          Not Applicable
+      - name: ProviderLastName
+        description: >
+          Not Applicable
+      - name: OrganizationName
+        description: >
+          Not Applicable
+      - name: ProviderDisplayName
+        description: >
+          Not Applicable
+      - name: ProviderEmail
+        description: >
+          Not Applicable
+      - name: ProviderPrimaryPhone
+        description: >
+          Not Applicable
+      - name: ProviderSecondaryPhone
+        description: >
+          Not Applicable
+      - name: ProviderPrimaryTaxonomyCode
+        description: >
+          Not Applicable
+      - name: ProviderSecondaryTaxonomyCode
+        description: >
+          Not Applicable
+      - name: PCPInd
+        description: >
+          Not Applicable
+      - name: OpthoInd
+        description: >
+          Not Applicable
+      - name: MHInd
+        description: >
+          Not Applicable
+      - name: PrescriberInd
+        description: >
+          Not Applicable
+      - name: NephInd
+        description: >
+          Not Applicable
+      - name: DentalInd
+        description: >
+          Not Applicable
+      - name: NetworkTier1Ind
+        description: >
+          Not Applicable
+      - name: NetworkTier2Ind
+        description: >
+          Not Applicable
+      - name: NetworkTier3Ind
+        description: >
+          Not Applicable
+      - name: InNetworkInd
+        description: >
+          Not Applicable
+      - name: CFAInd
+        description: >
+          Not Applicable
+      - name: GrouperID1
+        description: >
+          Not Applicable
+      - name: GrouperType1
+        description: >
+          Not Applicable
+      - name: GrouperName1
+        description: >
+          Not Applicable
+      - name: GrouperID2
+        description: >
+          Not Applicable
+      - name: GrouperType2
+        description: >
+          Not Applicable
+      - name: GrouperName2
+        description: >
+          Not Applicable
+      - name: GrouperID3
+        description: >
+          Not Applicable
+      - name: GrouperType3
+        description: >
+          Not Applicable
+      - name: GrouperName3
+        description: >
+          Not Applicable
+      - name: GrouperID4
+        description: >
+          Not Applicable
+      - name: GrouperType4
+        description: >
+          Not Applicable
+      - name: GrouperName4
+        description: >
+          Not Applicable
+      - name: GrouperID5
+        description: >
+          Not Applicable
+      - name: GrouperType5
+        description: >
+          Not Applicable
+      - name: GrouperName5
+        description: >
+          Not Applicable
+      - name: GrouperID6
+        description: >
+          Not Applicable
+      - name: GrouperType6
+        description: >
+          Not Applicable
+      - name: GrouperName6
+        description: >
+          Not Applicable
+      - name: ProviderPrimaryPracticeName
+        description: >
+          Not Applicable
+      - name: ProviderPrimaryPracticePhone
+        description: >
+          Not Applicable
+      - name: ProviderPrimaryPracticeFax
+        description: >
+          Not Applicable
+      - name: ProviderPrimaryPracticeEmail
+        description: >
+          Not Applicable
+      - name: ProviderPrimaryPracticeLocationAddressLine
+        description: >
+          Not Applicable
+      - name: ProviderPrimaryPracticeLocationAddressLine2
+        description: >
+          Not Applicable
+      - name: ProviderPrimaryPracticeLocationCity
+        description: >
+          Not Applicable
+      - name: ProviderPrimaryPracticeLocationState
+        description: >
+          Not Applicable
+      - name: ProviderPrimaryPracticeLocationZipcode
+        description: >
+          Not Applicable
+      - name: ProviderSecondaryPracticeName
+        description: >
+          Not Applicable
+      - name: ProviderSecondaryPracticePhone
+        description: >
+          Not Applicable
+      - name: ProviderSecondaryPracticeFax
+        description: >
+          Not Applicable
+      - name: ProviderSecondaryPracticeEmail
+        description: >
+          Not Applicable
+      - name: ProviderSecondaryPracticeLocationAddressLine
+        description: >
+          Not Applicable
+      - name: ProviderSecondaryPracticeLocationAddressLine2
+        description: >
+          Not Applicable
+      - name: ProviderSecondaryPracticeLocationCity
+        description: >
+          Not Applicable
+      - name: ProviderSecondaryPracticeLocationState
+        description: >
+          Not Applicable
+      - name: ProviderSecondaryPracticeLocationZipcode
+        description: >
+          Not Applicable
+      - name: ProviderTertiaryPracticeName
+        description: >
+          Not Applicable
+      - name: ProviderTertiaryPracticePhone
+        description: >
+          Not Applicable
+      - name: ProviderTertiaryPracticeFax
+        description: >
+          Not Applicable
+      - name: ProviderTertiaryPracticeEmail
+        description: >
+          Not Applicable
+      - name: ProviderTertiaryPracticeLocationAddressLine
+        description: >
+          Not Applicable
+      - name: ProviderTertiaryPracticeLocationAddressLine2
+        description: >
+          Not Applicable
+      - name: ProviderTertiaryPracticeLocationCity
+        description: >
+          Not Applicable
+      - name: ProviderTertiaryPracticeLocationState
+        description: >
+          Not Applicable
+      - name: ProviderTertiaryPracticeLocationZipcode
+        description: >
+          Not Applicable
+      - name: OutreachEnabledInd
+        description: >
+          Not Applicable
+      - name: OutreachPracticeName
+        description: >
+          Not Applicable
+      - name: OutreachPracticePhone
+        description: >
+          Not Applicable
+      - name: LoadedFromFile
+        description: >
+          Not Applicable
+      - name: InsertTimestamp
+        description: >
+          Not Applicable
+      - name: UpdateTimestamp
+        description: >
+          Not Applicable

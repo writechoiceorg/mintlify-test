@@ -1,0 +1,107 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "carePlanLibrary",
+      "description": "This table contains a list of all care plan goals and interventions available to choose from in the Care Management module, either configured or added via free-text. \n",
+      "config": {
+        "tags": [
+          "master_data"
+        ],
+        "frequencyDomain": "CARE MANAGEMENT"
+      },
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "FDR-1063"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "goalId",
+          "description": "Numeric ID assigned to the goal.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1063"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "interventionType",
+          "description": "Describes nature of the intervention.\n",
+          "data_tests": [
+            {
+              "accepted_values": {
+                "values": [
+                  "One-Time",
+                  "Referral",
+                  "Recurring"
+                ],
+                "meta": {
+                  "requirement": [
+                    "FDR-1063"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "goalTitle",
+          "description": "Title given to describe the patient goal.\n"
+        },
+        {
+          "name": "goalCustomInd",
+          "description": "Number given\n"
+        },
+        {
+          "name": "goalDescription",
+          "description": "Brief description of the goal.\n"
+        },
+        {
+          "name": "goalCitations",
+          "description": "Records guidelines and citations of goal.\n"
+        },
+        {
+          "name": "goalCreatedTimestamp",
+          "description": "Date and time the goal was created.\n"
+        },
+        {
+          "name": "goalUpdatedTimestamp",
+          "description": "Date and time the goal was updated.\n"
+        },
+        {
+          "name": "interventionId",
+          "description": "Numeric ID assigned to the intervention.\n"
+        },
+        {
+          "name": "interventionTitle",
+          "description": "Title of the type of intervention.\n"
+        },
+        {
+          "name": "interventionDescription",
+          "description": "Brief description of the intervention.\n"
+        },
+        {
+          "name": "interventionCreatedTimestamp",
+          "description": "Date and time intervention created.\n"
+        },
+        {
+          "name": "interventionUpdatedTimestamp",
+          "description": "Date and time intervention updated.\n"
+        }
+      ]
+    }
+  ]
+};

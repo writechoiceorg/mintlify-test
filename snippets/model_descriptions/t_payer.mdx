@@ -1,0 +1,54 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "t_payer",
+      "description": "A payer is a record of payer relationships for specific patients. The payer entity is flexible, and can include \"third party\" insurers, self-pay, other payer or guarantor, or some combination of payers. The combination of payer records define which entity is the responsible fiduciary for the financial aspects of a patient's care at any given time.  The sources of payment must be represented as a Coverage Activity, which identifies all of the insurance policies or government or other programs that cover some or all of the patient's healthcare expenses. Each policy or program identifies the covered party with respect to the payer.\n",
+      "config": {
+        "tags": [
+          "care_quality_and_program_data"
+        ]
+      },
+      "data_tests": [
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "FDR-1514"
+              ]
+            }
+          }
+        },
+        {
+          "dbt_utils.unique_combination_of_columns": {
+            "meta": {
+              "requirement": [
+                "FDR-1745"
+              ]
+            },
+            "combination_of_columns": [
+              "id",
+              "person_id"
+            ]
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "id",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-760"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};

@@ -1,0 +1,72 @@
+version: 2
+
+models:
+  - name: cm_notes
+    description: > 
+     This table contains any instances of the care management task type of notes submitted in the 
+     care management application. The description and content of the note is surfaced here, as well 
+     as the associated task, person, and application user. 
+    config:
+      tags: ['care_management']
+      frequencyDomain: 'CARE MANAGEMENT'
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'FDR-1469' ]
+      - has_rls:
+          meta:
+            requirement: [ 'ETL-1239' ]
+    columns:          
+      - name: personId
+        description: >
+          Arcadia's universal identifier for the patient/member record. This
+          identifier is subject to change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1469' ]            
+          - relationships:
+              to: ref('v_patient')
+              field: person_id
+              meta:
+                requirement: [ 'FDR-1469' ]                
+      - name: taskId
+        description: >
+          Arcadia's internal identifier for the care management task.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1469' ]  
+      - name: scheduledDate
+        description: >
+          Date and time note task scheduled.
+      - name: completedTimestamp	
+        description: >
+          Date and time note task completed.
+      - name: title	
+        description: >
+          Title of the note. 
+      - name: noteDescription	
+        description: >
+          Brief description of the content of the note. 
+      - name: noteContent	
+        description: >
+          Full text of note task.
+      - name: updatedTimeStamp	
+        description: >
+          Date and time the note task was updated. 
+      - name: userId	
+        description: >
+          Arcadia's internal identifier for the user who completed the note.
+      - name: userFullName	
+        description: >
+          User's full name (Last, First).
+      - name: userEmail	
+        description: >
+          User's email address.
+      - name: minutesSpent	
+        description: >
+          User reported logging of time spent on task. 
+      - name: attachmentFileName
+        description: >
+          Filename of attachments that have been included as a part of an assessment. 

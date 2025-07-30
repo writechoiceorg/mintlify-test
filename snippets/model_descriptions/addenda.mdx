@@ -1,0 +1,53 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "addenda",
+      "description": "This table contains addenda associated with care management tasks.\n",
+      "config": {
+        "tags": [
+          "cm"
+        ],
+        "frequencyDomain": "CARE MANAGEMENT"
+      },
+      "columns": [
+        {
+          "name": "addendaId",
+          "description": "Arcadia's internal identifier for the care management plan addendum.\n"
+        },
+        {
+          "name": "taskId",
+          "description": "Arcadia's internal identifier for the care management task.\n"
+        },
+        {
+          "name": "noteContent",
+          "description": "Full text of note task.\n"
+        },
+        {
+          "name": "userId",
+          "description": "Arcadia's internal identifier for the user who completed the note.\n"
+        },
+        {
+          "name": "userFullName",
+          "description": "User's full name (Last, First).\n"
+        },
+        {
+          "name": "userEmail",
+          "description": "User's email address.\n"
+        },
+        {
+          "name": "createdAt",
+          "description": "Date and time addendum was created.\n"
+        },
+        {
+          "name": "updatedAt",
+          "description": "Date and time addendum was updated.\n"
+        },
+        {
+          "name": "completedAt",
+          "description": "Date and time addendum was completed.\n"
+        }
+      ]
+    }
+  ]
+};

@@ -1,0 +1,226 @@
+version: 2
+
+models:
+  - name: users
+    description: > 
+      A complete registry of Arcadia application users, including full name and contact information, patient access parameters, functional access parameters, and account status metadata. This table can be used in conjunction with application workflow report building, or for user audit investigation. 
+    config:
+      tags: [ 'application_usage_auditing' ]
+      frequencyDomain: 'WEB'
+    columns:
+      - name: userId
+        description: > 
+          Arcadia's internal identifier for the user.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1052' ]
+      - name: email
+        description: > 
+          User's email address.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1052' ]
+      - name: username
+        description: > 
+          User's username typically email for legacy accounts).
+      - name: fullname
+        description: > 
+          User's full name (Last, First).
+      - name: npi
+        description: > 
+          If available the user's  NPI. (Deprecated)
+      - name: category
+        description: > 
+          Users can be assigned to a category that can be
+          used to search for a group of users all at once for
+          management activities at scale. (Deprecated)
+      - name: credentials
+        description: > 
+          If available  the user's credentials, used in select
+          parts of the application to affix a signature. (Deprecated)
+      - name: address
+        description: > 
+          If available, the street address of the user. (Deprecated)
+      - name: city
+        description: > 
+          If available, the City of the user. (Deprecated)
+      - name: state
+        description: > 
+          If available, the State of the user. (Deprecated)
+      - name: zip
+        description: > 
+          If available, the Zip of the user. (Deprecated)
+      - name: phone
+        description: > 
+          If available,  the user's phone number.
+      - name: adminLevel
+        description: > 
+          The level of administrative authorization of the
+          user within the application: Client Admin, Group
+          Manager, or Regular User
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1052' ]
+      - name: userGroup
+        description: > 
+          The user group to which the user is attributed. (Deprecated)
+      - name: userType
+        description: > 
+          The type of attribution used to determine the
+          patient-level  access  of  this  user:  "Clinical" for
+          users who access patients that have visited the
+          facility or provider. (Deprecated)
+      - name: defaultAttribution
+        description: > 
+          The default PCP attribution method selected in
+          the Analytics Global Filters for the given user. (No
+          impact to patient-level access.) (Deprecated)
+      - name: providers
+        description: > 
+          A list of internal identifiers for the nodes of the
+          Organization Hierarchy (pcpGrouper1-6) to which
+          patients  accessible  by  the  user  must  be
+          attributed. (Deprecated)
+      - name: sources
+        description: > 
+          A list of internal identifiers for the clinical data
+          sources in which patients a "Clinical" type user has
+          access to must have records. (Deprecated)
+      - name: plans
+        description: > 
+          A list of internal identifiers for the payers to
+          whose eligible members a "Plan" type user has
+          access. (Deprecated)
+      - name: reports
+        description: > 
+          A  ist of internal identifiers for the pre-built
+          Analytics reports the user can access. (Deprecated)
+      - name: initiatives
+        description: > 
+          A list of internal identifiers for the Analytics
+          quality initiatives the user can access. (Deprecated)
+      - name: dashboards
+        description: > 
+          A list of Analytics dashboards the user can access. (Deprecated)
+      - name: binderyAuth
+        description: > 
+          If licensed, a description of the permission level of
+          the user in the Bindery module. (Deprecated)
+      - name: outreachAuth
+        description: > 
+          If licensed, a 0/1 indicator that the user can send
+          messages via the Patient Outreach module. (Deprecated)
+      - name: outreachTemplates
+        description: > 
+          If licensed, a list of internal path identifiers for the
+          message templates the user has permission to
+          send via the Patient Outreach module. (Deprecated)
+      - name: exportAuth
+        description: > 
+          A 0/1 indicator that the user can export data from
+          Arcadia Analytics. (Note: the protection of the
+          data within an exported report is the
+          responsibility of the user and their organization.) (Deprecated)
+      - name: careManagerAuth
+        description: > 
+          If licensed, a 0/1 indicator the user has access to
+          Care Management tools, including Program
+          Enrollment, Tasks, Assessments, and Care Plans. (Deprecated)
+      - name: careManagerRole
+        description: > 
+          Care Management role assigned to the user.
+      - name: mfaVerified
+        description: > 
+          A 0/1 indicator that the user has Multifactor
+          Authentication enabled. (Deprecated)
+      - name: hraAuth
+        description: > 
+          If licensed, a numeric key for the permission level
+          of the user in the HRA module. (Deprecated)
+      - name: widgets
+        description: > 
+          A  list  of  internal  identifiers  for  the  custom
+          reports/dashboards that are configured to show
+          on the user's Analytics homepage as shortcuts. (Deprecated)
+      - name: hraAuditAuth
+        description: >
+          If licensed, a numeric key for the permission level
+          of the user in the HRA Auditing module. (Deprecated)
+      - name: hmrAuth
+        description: >
+          If licensed, a numeric key for the permission level
+          of the user in the HMR module. (Deprecated)
+      - name: hpmAuth
+        description: > 
+          If licensed, a numeric key for the permission level
+          of the user in the HPM module. (Deprecated)
+      - name: desktopAuth
+        description: > 
+          If licensed, a 0/1 indicator that the user has access
+          to the Desktop module. (Deprecated)
+      - name: lastSignIn
+        description: > 
+          Date and time of most recent sign in by the user. (Deprecated)
+      - name: lastSignInIp
+        description: > 
+          IP address from which the user most recently
+          signed in. (Deprecated)
+      - name: totalSignIns
+        description: > 
+          Count of total sign ins by the user. (Deprecated)
+      - name: failedAttempts
+        description: > 
+          Count of failed sign in attempts by the user. (Deprecated)
+      - name: createdTimestamp
+        description: > 
+          Date and time the user was created. (Deprecated)
+      - name: updatedTimestamp
+        description: > 
+          Date and time the record was recently updated. (Deprecated)
+      - name: lockedTimestamp
+        description: > 
+          Date and time the user's account was locked  if
+          applicable. (Deprecated)
+      - name: disabledTimestamp
+        description: > 
+          Date and time the user was disabled, if applicable. (Deprecated)
+      - name: deletedTimestamp
+        description: > 
+          Date and time the user was deleted, if applicable. (Deprecated)
+      - name: confirmedTimestamp
+        description: > 
+          Date and time the user confirmed their account. (Deprecated)
+      - name: confirmationSentTimestamp
+        description: > 
+          Date and time the user's confirmation email was
+          sent. (Deprecated)
+      - name: pwResetTimestamp
+        description: > 
+          Date and time the user most recently reset their
+          password. (Deprecated)
+      - name: pwResetSentTimestamp
+        description: > 
+          Date and time of a password reset email was sent,
+          if available. (Deprecated)
+      - name: disabledInd
+        description: > 
+          A 0/1 indicator that user is disabled. (Deprecated)
+      - name: temporaryInd
+        description: > 
+          A 0/1 indicator that user is temporarily
+          provisioned. (Deprecated)
+      - name: identityProvider
+        description: > 
+          A description of the identity provider for user
+          authentication, such as email or cognito. (Deprecated)
+      - name: identityProviderUID
+        description: > 
+          User ID attached to the identity provider for user
+          authentication.
+      - name: emailFrequency
+        description: > 
+          Frequency of email notifications sent to the user:
+          "Digest" or "Real-time". (Deprecated)

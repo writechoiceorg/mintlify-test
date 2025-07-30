@@ -1,0 +1,43 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "measureInventoryLookup",
+      "description": "A simple lookup that includes all enabled measures, initiatives, and maybe periods run and last run date as well.\n",
+      "columns": [
+        {
+          "name": "initiative_name",
+          "description": "The name of the initiative that contains the given measure as it appears in the Arcadia Analytics front end.\n"
+        },
+        {
+          "name": "measure_name",
+          "description": "The name of the given measure as it appears in the Arcadia Analytics front end.\n"
+        },
+        {
+          "name": "MeasureID",
+          "description": "Arcadia's internal identifier for the given measure.\n"
+        },
+        {
+          "name": "initiativeID",
+          "description": "Arcadia’s internal identifier for the initiative that contains the given measure.\n"
+        },
+        {
+          "name": "name",
+          "description": "The name of the given measure as it appears in the Arcadia Analytics front end.\n"
+        },
+        {
+          "name": "rate",
+          "description": "Rate associated with the measure.\n"
+        },
+        {
+          "name": "period_name",
+          "description": "The name of the calculated period.\n"
+        },
+        {
+          "name": "importDate",
+          "description": "Most recent import date.\n"
+        }
+      ]
+    }
+  ]
+};

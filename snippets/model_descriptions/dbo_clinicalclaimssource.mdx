@@ -1,0 +1,19 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "dbo_clinicalclaimssource",
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "F2UPGRADE-4117"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+};

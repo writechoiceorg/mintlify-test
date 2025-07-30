@@ -1,0 +1,352 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "personAttribution",
+      "config": {
+        "tags": [
+          "patient_information"
+        ],
+        "statusDomain": "Medical Claim",
+        "frequencyDomain": "MEDICAL ECONOMICS"
+      },
+      "description": "This table holds one record per member month, with the member's plan attributed PCP, Practice, Pod and Risk Unit as well as the eligible Payer, Product, and Funding Source. This table also holds the \"At Risk Flag\" for the patient derived from the given month’s enrollment details. Almost all monthly trending analysis of costs, utilization or attribution should use this table as its foundation.\n",
+      "data_tests": [
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "FDR-1514"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "personId",
+          "description": "Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-736"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "memberId",
+          "description": "The Arcadia internal Member ID, which can be used to join against warehouse tables prefaced with \"plan_\" This identifier is subject to change over time.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-736"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "memberNo",
+          "description": "The payer-supplied member identifier, useful for cross referencing against payer-supplied data sources.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-736"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "name",
+          "description": "Patient's full name (Last, First)\n"
+        },
+        {
+          "name": "dob",
+          "description": "Patient date of birth.\n"
+        },
+        {
+          "name": "age",
+          "description": "Patient age as of the 15th of the month.\n"
+        },
+        {
+          "name": "sex",
+          "description": "Patient sex.\n"
+        },
+        {
+          "name": "startDate",
+          "description": "The first date/hour/minute of the given month.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-736"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "endDate",
+          "description": "The last date/hour/minute of the given month.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-736"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "pcpNPI",
+          "description": "The NPI of the attributed PCP in the given month.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-736"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "pcpName",
+          "description": "The full name of the attributed PCP in the given month.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-736"
+                  ]
+                }
+              }
+            },
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2345"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "pcpGrouper1",
+          "description": "The health system-defined first-level of the attributed PCP in the given month. This could be a practice, medical group, department, etc.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-736"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "pcpGrouper2",
+          "description": "The health system-defined second-level grouper of the attributed PCP in the given month. This may be an ACO, region or market, or pod.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-736"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "pcpGrouper3",
+          "description": "The health system -defined Risk Unit of the attributed PCP in the given month. This may be an ACO, region or market, or pod.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-736"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "pcpGrouper4",
+          "description": "Additional groupers or provider attributes, as needed.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-736"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "pcpGrouper5",
+          "description": "Additional groupers or provider attributes, as needed.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-736"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "pcpGrouper6",
+          "description": "Additional groupers or provider attributes, as needed.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-736"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "planPayer",
+          "description": "The Payer for which the person is eligible in the given month.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-736"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "planProduct",
+          "description": "The Product for which the person is eligible in the given month. This corresponds to the LOB in the connector spec.\n"
+        },
+        {
+          "name": "planFundingSource",
+          "description": "If applicable, the Funding Source for which the person is eligible in the given month. This corresponds to the product in the connector spec.\n"
+        },
+        {
+          "name": "memberMonth",
+          "description": "A 0/1 indicator (or decimal for partial months) of coverage of a member during that month. By default this is \"1\" when the patient has eligibility during the 15th of a month, but can be configured otherwise.\n"
+        },
+        {
+          "name": "atRiskFlag",
+          "description": "A 0/1 indicator that, in the given month, this member is considered \"At Risk\" for a payer contract. This column can be summed to generate aggregate numbers of at-risk patients, or used as a filter.\n"
+        },
+        {
+          "name": "rxCoverage",
+          "description": "A 0/1 indicator, in the given month, this member has prescription drug benefits.\n"
+        },
+        {
+          "name": "stopLossInd",
+          "description": "A 0/1 indicator that, in the given month, this member has passed the stop loss threshold for the financial year.\n"
+        },
+        {
+          "name": "medRxStopLossInd",
+          "description": "A 0/1 indicator that, where stop loss calculation has been enabled, stop loss also includes pharmacy events in its calculation.\n"
+        },
+        {
+          "name": "catastrophicInd",
+          "description": "A 0/1 indicator, in the given financial year, this member has passed the catastrophic threshold and is considered a highcost claimant.\n"
+        },
+        {
+          "name": "awvInd",
+          "description": "A 0/1 indicator, in the given month, this member has an outpatient event that was coded an Annual Wellness Visit. Arcadia uses these CPT codes to identify AWVs: G0402, G0438, G0439, G0468.\n"
+        },
+        {
+          "name": "acpInd",
+          "description": "A 0/1 indicator, in the given month, this member has an outpatient event that was coded an Advance Care Planning visit. Arcadia uses these CPT codes to identify ACP visits: 99497, 99498.\n"
+        },
+        {
+          "name": "eligYear",
+          "description": "The year in which the current eligibility span began.\n"
+        },
+        {
+          "name": "spanStartDate",
+          "description": "The first date/hour/minute of the beginning of the period for which the member has this eligibility and assignment.\n"
+        },
+        {
+          "name": "spanEndDate",
+          "description": "The last date/hour/minute of the beginning of the period for which the member has this eligibility and assignment.\n"
+        },
+        {
+          "name": "fyStartDate",
+          "description": "The start date of the financial year the attribution occurs in.\n"
+        },
+        {
+          "name": "fyEndDate",
+          "description": "The end date of the financial year the attribution occurs in\n"
+        },
+        {
+          "name": "fyIndex",
+          "description": "The index of the financial year the attribution occurs in. A '0' indicates the attribution is contained in the current financial year.\n"
+        },
+        {
+          "name": "providerPersonId",
+          "description": "The attributed provider's Arcadia universal ID.\n"
+        },
+        {
+          "name": "ladata_testspan",
+          "description": "A 0/1 flag that indicates the attribution period is the most recent attribution record available for the person.  If a person is dual enrolled during this period, all attribution records for the person will be flagged for that period. \n"
+        },
+        {
+          "name": "planActive",
+          "description": "A 0/1 flag that indicates whether the member is currently active, calculated at the source level.  - not_null:\n    meta:\n      requirement: [ 'FDR-2014' ]\n"
+        },
+        {
+          "name": "planPcpNPI",
+          "description": "The NPI of the plan-based PCP in the given month.\n"
+        },
+        {
+          "name": "functionalPcpNPI",
+          "description": "The NPI of the functional PCP in the given month.  \n"
+        },
+        {
+          "name": "temporalFunctionalPcpNPI",
+          "description": "The NPI of the temporal functional PCP in the given month.\n"
+        }
+      ]
+    }
+  ]
+};

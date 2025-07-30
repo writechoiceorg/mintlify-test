@@ -1,0 +1,95 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "plan_provider",
+      "description": "This table contains a master list of all providers known to the payer, along with demographic and taxonomic information and essential identifiers for reimbursement. Providers are individuals or organizations who provide care directly as reflected through claims or to whom members are assigned for purposes of managed care. Any provider ID mentioned in v_plan_claim_header, v_plan_claim_line, v_plan_claim_rx, v_plan_member_elig, or v_plan_member_assignment must be included in this master list.\n",
+      "columns": [
+        {
+          "name": "id",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-764"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "provider_id",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-764"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "source_id",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-764"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "create_timestamp",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-764"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "modify_timestamp",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-764"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "delete_ind",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-764"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};

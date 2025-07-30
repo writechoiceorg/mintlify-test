@@ -1,0 +1,121 @@
+version: 2
+
+models:
+  - name: enrollments
+    config:
+      tags: [ 'care_management' ]
+      frequencyDomain: 'CARE MANAGEMENT'
+    description: >
+     This table contains a record for each continuous span of identification and enrollment in a program. 
+     For example, one row in this table may represent the fact that 'Jane Smith was identified on Feb. 13, 2019 
+     for enrollment in the Complex Care Coordination program, enrolled in the program in June of that year, 
+     assigned to Nurse Mark Engels and has yet to be discharged from the program.' Each enrollment span has a 
+     unique ID for convenient cross-reference with the trending [cm].[enrollmentMonthlyDetail]
+    data_tests:
+      - has_rls:
+           meta:
+             requirement: [ 'ETL-1239' ]
+    columns:
+      - name: personId
+        description: >
+          Arcadia's universal identifier for the patient/member record.
+          This identifier is subject to change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1059' ]
+          - relationships:
+              to: ref('v_patient')
+              field: person_id
+              meta:
+                requirement: [ 'FDR-1059' ]
+      - name: name
+        description: >
+          The person's name.
+      - name: dob
+        description: >
+          The person's date of birth.
+      - name: age
+        description: >
+          The person's age.
+      - name: sex
+        description: >
+          The persons sex.
+      - name: enrollmentId
+        description: >
+          Arcadia's internal identifier for the
+          continuous program enrollment
+          span, which can be used to link to
+          [cm].[enrollmentMonthlyDetail].
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1059' ]
+      - name: careManagerId
+        description: >
+          Arcadia's internal identifier for the
+          care manager user assigned to the
+          case.
+      - name: careManagerName
+        description: >
+          Name of the assigned user.
+      - name: careManagerEmail
+        description: >
+          Email of the assigned user.
+      - name: careManagerRole
+        description: >
+          Care Management role of the
+          assigned user.
+      - name: autoAssignedCareManagerInd
+        description: >
+          A 0/1 indicator that the care
+          manager was auto assigned to the
+          enrollments.
+      - name: program
+        description: >
+          Name of the care program
+          attributed in the enrollment.
+      - name: referralSource
+        description: >
+          The entity that referred the patient
+          to the program. The list of possible
+          sources is configured in the
+          application.
+      - name: autoEnrolledInd
+        description: >
+          A 0/1 indicator that the enrollment
+          was auto created.
+      - name: identifiedDate
+        description: >
+          Date the patient was identified for
+          the care program.
+      - name: enrolledDate
+        description: >
+          Date the patient was enrolled in the
+          care program.
+      - name: dischargeDate
+        description: >
+          Date the patient was discharged
+          from the care program.
+      - name: dischargeReason
+        description: >
+          Reason for discharge, if available.
+      - name: dischargeReasonComments
+        description: >
+          Comments on the discharge reason,
+          if available.
+      - name: enrollmentStatus
+        description: >
+          The latest status set for the
+          patient's enrollment in the program.
+          Standard statuses are "Identified"
+          "Enrolled" or "Discharged;" the
+          transaction history of non-standard
+          status updates is not captured for
+          reporting.
+      - name: created_at
+        description: >
+          Date the enrollment record was created.
+      - name: updated_at
+        description: >
+          Date the enrollment record was last updated.

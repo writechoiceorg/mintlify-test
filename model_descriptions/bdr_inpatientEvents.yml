@@ -1,0 +1,648 @@
+version: 2
+
+models:
+  - name: bdr_inpatientEvents
+    config:
+      tags: [ 'bdr' ]
+      frequencyDomain: 'BINDERY'
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'FDR-1400' ]
+      - has_rls:
+          meta:
+            requirement: [ 'ETL-1630' ]
+
+    columns:
+      - name: eventId
+        description: >
+          The Arcadia internal ID of the inpatient event, which can
+          be mapped to contributing line events in
+          [dbo].[eventLineDetails] with rollupEventId. This
+          identifier is subject to change over time.
+      - name: memberId
+        description: >
+          Arcadia internal member_id, which can be used to join to
+          [dbo].[v_plan_member] or [dbo].[personAttribution].
+          This identifier is subject to change over time. This
+          identifier is subject to change over time.
+      - name: personId
+        description: >
+           Arcadia's universal identifier for the patient/member
+           record. This identifier is subject to change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1400' ]
+      - name: memberNo
+        description: >
+          The payer-supplied member identifier.
+      - name: planPayer
+        description: >
+          The payer on the claim.
+      - name: admitDate
+        description: >
+          Arcadia's admit date, after running an inpatient chaining
+          ruleset.
+      - name: dischargeDate
+        description: >
+          Arcadia's discharge date, after running an inpatient
+          chaining ruleset.
+      - name: LOS
+        description: >
+          The length of the inpatient stay in days.
+      - name: paidDate
+        description: >
+          The paid date from the claim header.
+      - name: monthsRunout
+        description: >
+          Claims lag: months between the maximum paid date of claims from this payer and the event date.
+      - name: rptGrouper
+        description: >
+          Arcadia's inpatient reporting grouper.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2063' ]
+      - name: ipAcute
+        description: >
+          A 0/1 indicator if an event is subacute or acute.
+      - name: claimHeaderId
+        description: >
+          The claim header ID for the stay. See Inpatient Chaining
+          Details in the Claims Grouper guide for rules on how this
+          is determined.
+      - name: cost
+        description: >
+          The contractual reconciliation amount for the stay. This
+          field surfaces the highest priority payer product
+          configured cost value for the event, in order of stop loss
+          cost, at risk event cost, and then cost of care.
+      - name: costOfCare
+        description: >
+          The cost of care for the event, typically the insurer's Paid
+          Amount though will vary by contract.
+      - name: riskAdjustedCost
+        description: >
+          Costs adjusted for the patients acuity score. Note: This
+          should  ONLY  be  used  for  aggregate  reporting,  not
+          analysis of a single stay.
+      - name: costFacility
+        description: >
+          The sum of all costs from facility charges for the stay.
+      - name: costProfessional
+        description: >
+          The sum of all costs from professional charges for the
+          stay.
+      - name: costOther
+        description: >
+          The sum of all other/ancillary charges for the stay.
+      - name: costIBNR
+        description: >
+          A cost calculation applying an IBNR model. While not
+          relevant as an individual line, this can be used to roll up
+          costs with IBNR in aggregate.
+      - name: placeOfService
+        description: >
+          The most relevant POS code. See Inpatient Chaining
+          Details in the Claims Grouper guide for rules on how this
+          is determined.
+      - name: placeOfServiceDescription
+        description: >
+          Text description of the most relevant POS code. See
+          Inpatient Chaining Details in the Claims Grouper guide
+          for rules on how this is determined.
+      - name: revenueCode
+        description: >
+          The most relevant Revenue code. See Inpatient Chaining
+          Details in the Claims Grouper guide for rules on how this
+          is determined.
+      - name: revenueCodeDescription
+        description: >
+          Text description of the most relevant Revenue code. See
+          Inpatient Chaining Details in the Claims Grouper guide
+          for rules on how this is determined.
+      - name: drg
+        description: >
+          The most relevant DRG code. See Inpatient Chaining
+          Details in the Claims Grouper guide for rules on how this
+          is determined.
+      - name: drgDescription
+        description: >
+          Text description of the most relevant DRG code. See
+          Inpatient Chaining Details in the Claims Grouper guide
+          for rules on how this is determined.
+      - name: drgSeverityLevel
+        description: >
+          A 0/1 indicator of severity in APR DRG coding (1-4).
+      - name: mdc
+        description: >
+          MDC grouper based on most relevant DRG code.
+      - name: mdcDescription
+        description: >
+          Text description of the MDC grouper.
+      - name: cpt
+        description: >
+          The most relevant CPT code. See Inpatient Chaining
+          Details in the Claims Grouper guide for rules on how this
+          is determined.
+      - name: cptDescription
+        description: >
+          Text description of the most relevant CPT code. See
+          Inpatient Chaining Details in the Claims Grouper guide
+          for rules on how this is determined.
+      - name: ccsCptMinor
+        description: >
+          Low-level AHRQ CCS grouping of relevant CPT code.
+      - name: ccsCptMajor
+        description: >
+          High-level AHRQ CCS grouping of relevant CPT code.
+      - name: icd
+        description: >
+          The most relevant ICD code. See Inpatient Chaining
+          Details in the Claims Grouper guide for rules on how this
+          is determined.
+      - name: icdCodeSet
+        description: >
+          Version of ICD code set for relevant ICD code.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2063' ]
+      - name: icdDescription
+        description: >
+          Text description of the most relevant ICD code. See
+          Inpatient Chaining Details in the Claims Grouper guide
+          for rules on how this is determined.
+      - name: ccsDxMinor
+        description: >
+          Low-level AHRQ CCS grouping of relevant ICD code.
+      - name: ccsDxMajor
+        description: >
+          High-level AHRQ CCS grouping of relevant ICD code.
+      - name: acgEdcMinor
+        description: >
+          The ACG Expanded Diagnosis Cluster (EDC) code that
+          categorize cases with similar diseases or conditions that
+          are treated in ambulatory and inpatient settings.
+      - name: acgEdcMajor
+        description: >
+          The ACG Major Expanded Diagnoses Cluster (MEDC)
+          code assigned to this patient. The EDC taxonomy is
+          structured into broad clinical categories called MEDCs.
+      - name: serviceLineMinor
+        description: >
+          Low-level service line, based on most relevant DRG.
+      - name: serviceLineMajor
+        description: >
+          Top-level service line, based on most relevant DRG.
+      - name: providerName
+        description: >
+          Most relevant provider name. See Inpatient Chaining
+          Details in the Claims Grouper guide for rules on how this
+          is determined.
+      - name: providerNPI
+        description: >
+          NPI of provider.
+      - name: providerSpecialty
+        description: >
+          Specialty of provider, from NPPES.
+      - name: providerGrouper1
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g.,
+          "Practice", "Pod", "Market").
+      - name: providerGrouper2
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g.,
+          "Practice", "Pod", "Market").
+      - name: providerGrouper3
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g.,
+          "Practice", "Pod", "Market").
+      - name: providerGrouper4
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g.,
+          "Practice", "Pod", "Market").
+      - name: providerGrouper5
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g.,
+          "Practice", "Pod", "Market").
+      - name: providerGrouper6
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g.,
+          "Practice", "Pod", "Market").
+      - name: inNetwork
+        description: >
+          In-Network indicator, typically generated from Service
+          Facility.
+      - name: inTier1
+        description: >
+          A 0/1 indicator that the event is in a Tier 1 Preferred
+          Network.
+      - name: inTier2
+        description: >
+          A 0/1 indicator that the event is in a Tier 2 Preferred
+          Network.
+      - name: inTier3
+        description: >
+          A 0/1 indicator that the event is in a Tier 3 Preferred
+          Network.
+      - name: inNetworkFacility
+        description: >
+          A 0/1 indicator that the Service Facility on the event was
+          considered "In Network” at the time of the event.
+      - name: distance
+        description: >
+          The distance between the member's place of residence
+          and the facility, in miles.
+      - name: inNetworkProvider
+        description: >
+          A 0/1 indicator that the Provider on the event was
+          considered "In Network” at the time of the event.
+      - name: serviceFacility
+        description: >
+          The most relevant service facility. See Inpatient Chaining
+          Details in the Claims Grouper guide for rules on how this
+          is determined.
+      - name: serviceFacilityNPI
+        description: >
+          NPI of service facility.
+      - name: serviceFacilityGrouper1
+        description: >
+          Up to 6 "grouper" attributes of the service facility (e.g.
+          "Practice", "Pod", "Market").
+      - name: serviceFacilityGrouper2
+        description: >
+          Up to 6 "grouper" attributes of the service facility (e.g.
+          "Practice", "Pod", "Market").
+      - name: serviceFacilityGrouper3
+        description: >
+          Up to 6 "grouper" attributes of the service facility (e.g.
+          "Practice", "Pod", "Market").
+      - name: serviceFacilityGrouper4
+        description: >
+          Up to 6 "grouper" attributes of the service facility (e.g.
+          "Practice", "Pod", "Market").
+      - name: serviceFacilityGrouper5
+        description: >
+          Up to 6 "grouper" attributes of the service facility (e.g.
+          "Practice", "Pod", "Market").
+      - name: serviceFacilityGrouper6
+        description: >
+          Up to 6 "grouper" attributes of the service facility (e.g.
+          "Practice", "Pod", "Market").
+      - name: plannedStay
+        description: >
+          A 0/1 indicator that the stay was planned, based on
+          HEDIS code sets.
+      - name: levineScore
+        description: >
+          The patient's Levine score, a categorical description of
+          likelihood of 12 month mortality following an inpatient
+          discharge. The Levine score was defined and described
+          by Levine and colleagues.
+      - name: transfer
+        description: >
+          A 0/1 indicator that the event was an inpatient transfer
+          from an event of equivalent acuity (i.e. an emergency).
+      - name: transferIndex
+        description: >
+          A 0/1 indicator that the event was followed by an
+          inpatient transfer to an event of equivalent acuity.
+      - name: followUp7DayInd
+        description: >
+          A 0/1 indicator that a primary care follow up occurred
+          within 7 days of the discharge.
+      - name: readmission
+        description: >
+          A 0/1 indicator that the stay was an actionable
+          readmission: i.e. an inpatient hospital admit that took
+          place within 30 days of an inpatient hospital discharge
+          that was not for a transplant or cancer patient.
+      - name: readmission60
+        description: >
+          A 0/1 indicator that the stay was an actionable
+          readmission that took place within 60 days of an
+          inpatient hospital discharge that was not for a transplant
+          or cancer patient.
+      - name: readmission90
+        description: >
+          A 0/1 indicator that the stay was an actionable
+          readmission that took place within 90 days of an
+          inpatient hospital discharge that was not for a transplant
+          or cancer patient.
+      - name: readmissionIndex
+        description: >
+          Using the same logic as the Readmission flag, indicates
+          that the discharge from this stay led to a readmission
+          within 30 days. This is used to attribute user-defined
+          readmission rates.
+      - name: readmissionIndex60
+        description: >
+          Using the same logic as the Readmission flag, indicates
+          that the discharge from this stay led to a readmission
+          within 60 days.
+      - name: readmissionIndex90
+        description: >
+          Using the same logic as the Readmission flag, indicates
+          that the discharge from this stay led to a readmission
+          within 90 days.
+      - name: readmissionDays
+        description: >
+          The number of days between the discharge from this
+          event and and the date of readmission.
+      - name: readmitToEventId
+        description: >
+          The event ID for the related readmission event. This
+          identifier is subject to change over time.
+      - name: readmitToFacility
+        description: >
+          The facility where the readmission took place.
+      - name: readmitToFacilityNPI
+        description: >
+          The NPI of the facility where the readmission took place.
+      - name: readmitToInNetwork
+        description: >
+          A 0/1 indicator that the readmission was in network.
+      - name: readmitToInTier1
+        description: >
+          A 0/1 indicator that the readmission is in a Tier 1
+          Preferred Network.
+      - name: readmitToInTier2
+        description: >
+          A 0/1 indicator that the readmission is in a Tier 2
+          Preferred Network.
+      - name: readmitToInTier3
+        description: >
+          A 0/1 indicator that the readmission is in a Tier 3
+          Preferred Network.
+      - name: readmitToCost
+        description: >
+          The total cost of the subsequent readmission.
+      - name: readmitToMatchInd
+        description: >
+          A 0/1 flag that the readmission was to the same facility
+          as this event.
+      - name: roundTripEdVisits
+        description: >
+          The number of ED visits that occurred during a
+          SNF/Post-Acute stay.
+      - name: ascInd
+        description: >
+          A 0/1 indicator that the stay meets CMS Ambulatory
+          Sensitive Conditions (ASC) admission criteria.
+      - name: isEmergent
+        description: >
+          A 0/1 indicator that the patient was admitted from the
+          ED or an ambulance.
+      - name: edAdmitInd
+        description: >
+          A 0/1 indicator that the stay was preceded by an ED visit.
+      - name: ambulanceInd
+        description: >
+          A 0/1 indicator that the stay included an Ambulance bill
+          on the first day of the admission.
+      - name: ambulanceName
+        description: >
+          The name of the Ambulance provider.
+      - name: ambulanceCost
+        description: >
+          The cost associated to the Ambulance event.
+      - name: ambulanceInNetwork
+        description: >
+          A 0/1 indicator that the ambulance is in network.
+      - name: ambulanceInTier1
+        description: >
+          A 0/1 indicator that the ambulance is in a Tier 1 Preferred
+          Network.
+      - name: ambulanceInTier2
+        description: >
+          A 0/1 indicator that the ambulance is in a Tier 2 Preferred
+          Network.
+      - name: ambulanceInTier3
+        description: >
+          A 0/1 indicator that the ambulance is in a Tier 3 Preferred
+          Network.
+      - name: dischargeDisposition
+        description: >
+          Place to which the patient was discharged (e.g., SNF, IP
+          Adult Med, Home)
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2063' ]
+      - name: dischargeToEventId
+        description: >
+          The event ID for the related discharge event. This
+          identifier is subject to change over time.
+      - name: dischargeToFacility
+        description: >
+          The  name  of  the  facility  to  which  the  person  was
+          discharged, if applicable.
+      - name: dischargeToFacilityNPI
+        description: >
+          The NPI of the discharge facility, if applicable.
+      - name: dischargeToCost
+        description: >
+          The sum of all costs at the discharge facility, if applicable.
+      - name: dischargeToInNetwork
+        description: >
+          A 0/1 indicator that the discharge facility is in network.
+      - name: dischargeToInTier1
+        description: >
+          A 0/1 indicator that the discharge facility is in a Tier 1
+          Preferred Network.
+      - name: dischargeToInTier2
+        description: >
+          A 0/1 indicator that the discharge facility is in a Tier 2
+          Preferred Network.
+      - name: dischargeToInTier3
+        description: >
+          A 0/1 indicator that the discharge facility is in a Tier 3
+          Preferred Network.
+      - name: anchorEventId
+        description: >
+          The event ID of the acute anchor event for this post-
+          acute stay. This identifier is subject to change over time.
+      - name: anchorLOS
+        description: >
+          The length of the anchor stay in days.
+      - name: anchorDRGSeverity
+        description: >
+          A 0/1 indicator of severity in APR DRG coding (1-4) for
+          the anchor event.
+      - name: anchorFacility
+        description: >
+          The most relevant service facility for the anchor event.
+      - name: anchorFacilityNPI
+        description: >
+          The NPI of the service facility for the anchor event.
+      - name: anchorInNetwork
+        description: >
+          A 0/1 indicator that the anchor event is in network.
+      - name: anchorInTier1
+        description: >
+          A 0/1 indicator that the anchor event is in a Tier 1
+          Preferred Network.
+      - name: anchorInTier2
+        description: >
+          A 0/1 indicator that the anchor event is in a Tier 2
+          Preferred Network.
+      - name: anchorInTier3
+        description: >
+          A 0/1 indicator that the anchor event is in a Tier 3
+          Preferred Network.
+      - name: pcpNPI
+        description: >
+          The PCP that the member was assigned to at the time of
+          this event. In financial reporting, the cost will be rolled up
+          to this PCP.
+      - name: pcpName
+        description: >
+          The name of the assigned PCP.
+      - name: pcpGrouper1
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g. "Practice"
+          "Pod", "Market").
+      - name: pcpGrouper2
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g. "Practice"
+          "Pod", "Market").
+      - name: pcpGrouper3
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g. "Practice"
+          "Pod", "Market").
+      - name: pcpGrouper4
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g. "Practice"
+          "Pod", "Market").
+      - name: pcpGrouper5
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g. "Practice"
+          "Pod", "Market").
+      - name: pcpGrouper6
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g. "Practice"
+          "Pod", "Market").
+      - name: planProduct
+        description: >
+          The insurance Product the patient was eligible for during
+          the visit.
+      - name: planFundingSource
+        description: >
+          The insurance Funding Source or business line
+          associated to that eligibility.
+      - name: claimAtRisk
+        description: >
+          A 0/1 indicator that the event should be considered in
+          financial reporting on the risk-based contract. When
+          both the claimant and the service are "at-risk" this is 1.
+      - name: claimMemberAtRisk
+        description: >
+          A 0/1 indicator that the claimant is in a risk contract
+          during the event.
+      - name: claimServiceAtRisk
+        description: >
+          Same definition as claimAtRisk.
+      - name: providerTIN
+        description: >
+          The Federal Tax Identification Number of the provider, if
+          applicable.
+      - name: providerCCN
+        description: >
+          The CMS Certification Number of the facility, if
+          applicable.
+      - name: sensitiveInd
+        description: >
+          A 0/1 indicator that the event is a sensitive claim.
+      - name: fyStartDate
+        description: >
+          The start date of the financial year the event occurs in.
+      - name: fyEndDate
+        description: >
+          The end date of the financial year the event occurs in.
+      - name: fyIndex
+        description: >
+          The index of the financial year the event occurs in. A '0'
+          indicates the event is contained in the current financial
+          year
+      - name: billingProviderId
+        description: >
+          Not Available
+      - name: billingNPI
+        description: >
+          Not Available
+      - name: billingTIN
+        description: >
+          Not Available
+      - name: imputedReferringProviderPersonID
+        description: >
+          Not Available
+      - name: imputedReferringProviderNPI
+        description: >
+          Not Available
+      - name: readmissionDenom
+        description: >
+          Not Available
+      - name: readmissionDenom60
+        description: >
+          Not Available
+      - name: readmissionDenom90
+        description: >
+          Not Available
+      - name: obsAdmitInd
+        description: >
+          Not Available
+      - name: pacReadmission
+        description: >
+          Not Available
+      - name: pacReadmission60
+        description: >
+          Not Available
+      - name: pacReadmission90
+        description: >
+          Not Available
+      - name: pacReadmissionIndex
+        description: >
+          Not Available
+      - name: pacReadmissionIndex60
+        description: >
+          Not Available
+      - name: pacReadmissionIndex90
+        description: >
+          Not Available
+      - name: pacReadmissionIndexDays
+        description: >
+          Not Available
+      - name: pacReadmitToEventID
+        description: >
+          Not Available
+      - name: edOb30DayInd
+        description: >
+          Not Available
+      - name: edOb30DayEventId
+        description: >
+          Not Available
+      - name: edOb30DayCost
+        description: >
+          Not Available
+      - name: ascPQIMeasureNumber
+        description: >
+          Not Available
+      - name: ascPQIMeasureName
+        description: >
+          Not Available.
+      - name: mortalityInd
+        description: >
+           A 0/1 indicator that the event has a discharge status of death or is the 
+           final inpatient event within the 30 day window before a date of death for the person. 
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1669' ]
+      - name: maxPaid
+        description: >
+          Max paid date for the source in medical claims.
+      - name: acuteAdmitInSNF
+        description: >
+          A 0/1 indicator if the event is an acute inpatient stay contained within the timeframe of a SNF event.

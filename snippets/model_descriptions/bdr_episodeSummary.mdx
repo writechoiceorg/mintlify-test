@@ -1,0 +1,569 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "bdr_episodeSummary",
+      "config": {
+        "tags": [
+          "bdr"
+        ],
+        "frequencyDomain": "BINDERY"
+      },
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "FDR-1397"
+              ]
+            }
+          }
+        },
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "ETL-1630"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "episodeName",
+          "description": "The episode label.\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2062"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "episodeId",
+          "description": "The Arcadia internal ID for an episode instance. This identifier is subject to change over time.\n"
+        },
+        {
+          "name": "personId",
+          "description": "Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.\n"
+        },
+        {
+          "name": "memberId",
+          "description": "Arcadia internal member ID from the trigger event, which can be used to join to [dbo].[v_plan_member]or [dbo].[personAttribution]. This identifier is subject to change over time.\n"
+        },
+        {
+          "name": "planPayer",
+          "description": "The payer for the episode trigger event.\n"
+        },
+        {
+          "name": "memberNo",
+          "description": "The payer-supplied member identifier.\n"
+        },
+        {
+          "name": "Name",
+          "description": "The patient's full name (Last, First.)\n"
+        },
+        {
+          "name": "Dob",
+          "description": "The patient's date of birth\n"
+        },
+        {
+          "name": "Sex",
+          "description": "The patient's sex.\n"
+        },
+        {
+          "name": "eventDate",
+          "description": "The service date of the episode trigger event.\n"
+        },
+        {
+          "name": "admitDate",
+          "description": "If the trigger event has duration, Arcadia's admit date, after running an inpatient chaining ruleset.\n"
+        },
+        {
+          "name": "dischargeDate",
+          "description": "If the trigger event has duration, Arcadia's discharge date, after running an inpatient chaining ruleset.\n"
+        },
+        {
+          "name": "paidDate",
+          "description": "The paid date from the trigger claim header.\n"
+        },
+        {
+          "name": "monthsRunout",
+          "description": "Claims lag: months between the maximum paid date of claims from this payer and the trigger event date.\n"
+        },
+        {
+          "name": "triggerSetting",
+          "description": "Whether the trigger event was inpatient or outpatient.\n"
+        },
+        {
+          "name": "ageAtEpisode",
+          "description": "Patient's age at the trigger event date.\n"
+        },
+        {
+          "name": "episodeRisk",
+          "description": "The risk adjustment for the episode based on clinical risk factors specific to that episode.\n"
+        },
+        {
+          "name": "costCategory",
+          "description": "Stratified cost of the included episodes within the claims source: High – over 1 std dev above the mean, Low – over 1 std dev below the mean, Medium  otherwise.  If  no  episodes from the source were included, this field is NULL.\n"
+        },
+        {
+          "name": "cost",
+          "description": "The sum of all costs for the episode.\n"
+        },
+        {
+          "name": "costFacility",
+          "description": "The  sum  of  all  costs  from  facility charges in the episode.\n"
+        },
+        {
+          "name": "costProfessional",
+          "description": "The sum of all costs from professional charges in the episode.\n"
+        },
+        {
+          "name": "costOther",
+          "description": "The sum of all other/ancillary charges in the episode.\n"
+        },
+        {
+          "name": "providerPersonId",
+          "description": "The episode's accountable provider's Arcadia universal ID.\n"
+        },
+        {
+          "name": "providerName",
+          "description": "The episode's accountable provider's full name.\n"
+        },
+        {
+          "name": "providerNPI",
+          "description": "The episode's accountable provider's full name.\n"
+        },
+        {
+          "name": "providerSpecialty",
+          "description": "The episode's accountable provider's specialty.\n"
+        },
+        {
+          "name": "providerGrouper1",
+          "description": "Up to 6 \"grouper\" attributes of the episode's accountable provider (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "providerGrouper2",
+          "description": "Up to 6 \"grouper\" attributes of the episode's accountable provider (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "providerGrouper3",
+          "description": "Up to 6 \"grouper\" attributes of the episode's accountable provider (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "providerGrouper4",
+          "description": "Up to 6 \"grouper\" attributes of the episode's accountable provider (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "providerGrouper5",
+          "description": "Up to 6 \"grouper\" attributes of the episode's accountable provider (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "providerGrouper6",
+          "description": "Up to 6 \"grouper\" attributes of the episode's accountable provider (e.g., \"Practice\", \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "inNetworkProvider",
+          "description": "A 0/1 indicator that the accountable provider was considered \"In  etwork\" at the time of the trigger event.\n"
+        },
+        {
+          "name": "serviceFacilityId",
+          "description": "Arcadia internal ID for the accountable facility,  used  to  join  to [dbo].[v_plan_location].\n"
+        },
+        {
+          "name": "serviceFacilityName",
+          "description": "The name of the accountable facility for the episode.\n"
+        },
+        {
+          "name": "serviceFacilityNPI",
+          "description": "The NPI of the episode's accountable facility, if available.\n"
+        },
+        {
+          "name": "serviceFacilityGrouper1",
+          "description": "Up to \"grouper\" attributes of the episode's  accountable  facility (e.g., \"Practice\", \"Pod\", \"Market\".\n"
+        },
+        {
+          "name": "serviceFacilityGrouper2",
+          "description": "Up to \"grouper\" attributes of the episode's  accountable  facility (e.g., \"Practice\", \"Pod\", \"Market\".\n"
+        },
+        {
+          "name": "serviceFacilityGrouper3",
+          "description": "Up to \"grouper\" attributes of the episode's  accountable  facility (e.g., \"Practice\", \"Pod\", \"Market\".\n"
+        },
+        {
+          "name": "serviceFacilityGrouper4",
+          "description": "Up to \"grouper\" attributes of the episode's  accountable  facility (e.g., \"Practice\", \"Pod\", \"Market\".\n"
+        },
+        {
+          "name": "serviceFacilityGrouper5",
+          "description": "Up to \"grouper\" attributes of the episode's  accountable  facility (e.g., \"Practice\", \"Pod\", \"Market\".\n"
+        },
+        {
+          "name": "serviceFacilityGrouper6",
+          "description": "Up to \"grouper\" attributes of the episode's  accountable  facility (e.g., \"Practice\", \"Pod\", \"Market\".\n"
+        },
+        {
+          "name": "inNetworkFacility",
+          "description": "A 0/1 indicator that the episode's accountable facility was considered \"In Network\" at the time of the trigger event.\n"
+        },
+        {
+          "name": "placeOfService",
+          "description": "The POS code from the episode trigger event.\n"
+        },
+        {
+          "name": "placeOfServiceDescription",
+          "description": "Text description of the POS code.\n"
+        },
+        {
+          "name": "revenueCode",
+          "description": "The Revenue code from the episode trigger event.\n"
+        },
+        {
+          "name": "revenueCodeDescription",
+          "description": "Text description of the Revenue code.\n"
+        },
+        {
+          "name": "Drg",
+          "description": "The DRG code from the episode trigger event.\n"
+        },
+        {
+          "name": "drgDescription",
+          "description": "Text description of the DRG code.\n"
+        },
+        {
+          "name": "Mdc",
+          "description": "MDC grouper based on the DRG code.\n"
+        },
+        {
+          "name": "mdcDescription",
+          "description": "Text description of the MDC grouper.\n"
+        },
+        {
+          "name": "Cpt",
+          "description": "The CPT code from the episode trigger event.\n"
+        },
+        {
+          "name": "cptDescription",
+          "description": "Text description of the CPT code.\n"
+        },
+        {
+          "name": "ccsCptMinor",
+          "description": "Low-level CCS grouping of CPT code.\n"
+        },
+        {
+          "name": "ccsCptMajor",
+          "description": "High-level CCS grouping of CPT code.\n"
+        },
+        {
+          "name": "Icd",
+          "description": "The ICD code from the episode trigger event.\n"
+        },
+        {
+          "name": "icdCodeSet",
+          "description": "Version of ICD code set for relevant ICD code.\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2063"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "icdDescription",
+          "description": "Text description of the ICD code.\n"
+        },
+        {
+          "name": "ccsDxMinor",
+          "description": "Low-level CCS grouping of ICD code.\n"
+        },
+        {
+          "name": "ccsDxMajor",
+          "description": "High-level CCS grouping of ICD code.\n"
+        },
+        {
+          "name": "inNetworkCost",
+          "description": "The sum of all in-network costs for the episode.\n"
+        },
+        {
+          "name": "inNetworkCostFacility",
+          "description": "The sum of all in-network costs from facility charges in the episode.\n"
+        },
+        {
+          "name": "inNetworkCostProfessional",
+          "description": "The sum of all in-network costs from professional charges in the episode.\n"
+        },
+        {
+          "name": "inNetworkCostOther",
+          "description": "The sum of all other/ancillary in-network charges in the episode.\n"
+        },
+        {
+          "name": "dischargeDisposition",
+          "description": "Place  to  which  the  patient  was discharged from trigger (e.g., SNF, IP Adult Med, Home)\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2063"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "dischargeToFacility",
+          "description": "The name of the facility to which the person was discharged, if applicable.\n"
+        },
+        {
+          "name": "dischargeToFacilityNPI",
+          "description": "The  NPI  of  the  trigger  discharge facility, if applicable.\n"
+        },
+        {
+          "name": "dischargeToInNetwork",
+          "description": "A 0/1 indicator that the trigger discharge facility is in network.\n"
+        },
+        {
+          "name": "dischargeToInTier1",
+          "description": "A 0/1 indicator that the trigger discharge facility is in a Tier 1 Preferred Network.\n"
+        },
+        {
+          "name": "dischargeToInTier2",
+          "description": "A 0/1 indicator that the trigger discharge facility is in a Tier 2 Preferred Network.\n"
+        },
+        {
+          "name": "dischargeToInTier3",
+          "description": "A 0/1 indicator that the trigger discharge facility is in a Tier 3 Preferred Network.\n"
+        },
+        {
+          "name": "readmissionIndex",
+          "description": "Indicates that the discharge from the trigger led to a readmission within 30 days. This is used to attribute user- defined readmission rates.\n"
+        },
+        {
+          "name": "readmissionIndex60",
+          "description": "Indicates that the discharge from the trigger led to a readmission within 60 days.\n"
+        },
+        {
+          "name": "readmissionIndex90",
+          "description": "Indicates that the discharge from the trigger led to a readmission within 90 days.\n"
+        },
+        {
+          "name": "readmissionDays",
+          "description": "The number of days between the discharge from the trigger and the date of readmission.\n"
+        },
+        {
+          "name": "followUp7DayInd",
+          "description": "A 0/1 indicator that a primary care follow up occurred within 7 days of the discharge from the trigger.\n"
+        },
+        {
+          "name": "catCostIPAcuteTotal",
+          "description": "Total cost of acute inpatient events included in the episode.\n"
+        },
+        {
+          "name": "catCostIPAcuteInNetwork",
+          "description": "In network cost of acute inpatient events included in the episode.\n"
+        },
+        {
+          "name": "catCostIPSubacuteTotal",
+          "description": "Total cost of sub-acute inpatient events included in the episode.\n"
+        },
+        {
+          "name": "catCostIPSubacuteInNetwork",
+          "description": "In network cost of sub-acute inpatient events included in the episode.\n"
+        },
+        {
+          "name": "catCostEDObsTotal",
+          "description": "Total cost of ED visits and observations included in the episode.\n"
+        },
+        {
+          "name": "catCostEDObsInNetwork",
+          "description": "In network cost of ED visits and observations included in the episode.\n"
+        },
+        {
+          "name": "catCostOpProcTotal",
+          "description": "Total cost of outpatient procedures included in the episode.\n"
+        },
+        {
+          "name": "catCostOpProcInNetwork",
+          "description": "In network cost of outpatient procedures included in the episode.\n"
+        },
+        {
+          "name": "catCostPTOTSTTotal",
+          "description": "Total cost of therapy events included in the episode.\n"
+        },
+        {
+          "name": "catCostPTOTSTInNetwork",
+          "description": "In network cost of therapy events included in the episode.\n"
+        },
+        {
+          "name": "catCostHomeHealthTotal",
+          "description": "Total cost of home health events included in the episode.\n"
+        },
+        {
+          "name": "catCostHomeHealthInNetwork",
+          "description": "In network cost of home health events included in the episode.\n"
+        },
+        {
+          "name": "catCostLabRadTotal",
+          "description": "Total cost of labs and radiology events included in the episode.\n"
+        },
+        {
+          "name": "catCostLabRadInNetwork",
+          "description": "In network cost of labs and radiology events included in the episode.\n"
+        },
+        {
+          "name": "catCostVisitsTotal",
+          "description": "Total cost of provider visits included in the episode.\n"
+        },
+        {
+          "name": "catCostVisitsInNetwork",
+          "description": "In network cost of provider visits included in the episode.\n"
+        },
+        {
+          "name": "catCostDMEMedRxTotal",
+          "description": "Total cost of DME and medical center pharmacy events included in the episode.\n"
+        },
+        {
+          "name": "catCostDMEMedRxInNetwork",
+          "description": "In network cost of DME and medical center pharmacy events included in the episode.\n"
+        },
+        {
+          "name": "catCostRetailRxTotal",
+          "description": "Total cost of retail pharmacy events included in the episode.\n"
+        },
+        {
+          "name": "catCostRetailRxInNetwork",
+          "description": "In network  cost  of  retail pharmacy events included in the episode.\n"
+        },
+        {
+          "name": "catCostOtherTotal",
+          "description": "Total cost of other event categories included in the episode.\n"
+        },
+        {
+          "name": "catCostOtherInNetwork",
+          "description": "In  network cost of other event categories included in the episode.\n"
+        },
+        {
+          "name": "windowCostPreTriggerTotal",
+          "description": "Total cost of included events in the pre-trigger window of the episode.\n"
+        },
+        {
+          "name": "windowCostPreTriggerFacility",
+          "description": "Institutional cost of included events in the pre-trigger window of the episode.\n"
+        },
+        {
+          "name": "windowCostPreTriggerProfessional",
+          "description": "Professional cost of included events in the pre-trigger window of the episode.\n"
+        },
+        {
+          "name": "windowCostPreTriggerOther",
+          "description": "Ancillary cost of included events in the pre-trigger window of the episode.\n"
+        },
+        {
+          "name": "windowCostInTriggerTotal",
+          "description": "Total cost of included events in the trigger window of the episode.\n"
+        },
+        {
+          "name": "windowCostInTriggerFacility",
+          "description": "Institutional cost of included events in the trigger window of the episode.\n"
+        },
+        {
+          "name": "windowCostInTriggerProfessional",
+          "description": "Professional cost of included events in the trigger window of the episode.\n"
+        },
+        {
+          "name": "windowCostInTriggerOther",
+          "description": "Ancillary cost of included events in the trigger window of the episode.\n"
+        },
+        {
+          "name": "windowCostPostTriggerTotal",
+          "description": "Total cost of included events in the post-trigger window of the episode.\n"
+        },
+        {
+          "name": "windowCostPostTriggerFacility",
+          "description": "Institutional cost of included events in the post-trigger  window  of  the episode.\n"
+        },
+        {
+          "name": "windowCostPostTriggerProfessional",
+          "description": "Professional cost of included events in the post-trigger window of the episode.\n"
+        },
+        {
+          "name": "windowCostPostTriggerOther",
+          "description": "Ancillary cost of included events in the post-trigger window of the episode.\n"
+        },
+        {
+          "name": "postTriggerHighCostEvent",
+          "description": "A 0/1 indicator that a $10k+ event occurred in the post-trigger window of the episode.\n"
+        },
+        {
+          "name": "includeInd",
+          "description": "A 0/1 indicator that the episode as a whole was not invalidated according to its exclusion criteria (by co-morbidities, etc.).\n"
+        },
+        {
+          "name": "pcpName",
+          "description": "The full name of the attributed PCP on or nearest the trigger event date.\n"
+        },
+        {
+          "name": "pcpNPI",
+          "description": "The NPI of the attributed PCP.\n"
+        },
+        {
+          "name": "pcpGrouper1",
+          "description": "Up to 6 \"grouper\" attributes of the e.g. (\"Practice\",\"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "pcpGrouper2",
+          "description": "Up to 6 \"grouper\" attributes of the e.g. (\"Practice\",\"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "pcpGrouper3",
+          "description": "Up to 6 \"grouper\" attributes of the e.g. (\"Practice\",\"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "pcpGrouper4",
+          "description": "Up to 6 \"grouper\" attributes of the e.g. (\"Practice\",\"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "pcpGrouper5",
+          "description": "Up to 6 \"grouper\" attributes of the e.g. (\"Practice\",\"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "pcpGrouper6",
+          "description": "Up to 6 \"grouper\" attributes of the e.g. (\"Practice\",\"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "planProduct",
+          "description": "The insurance Product the patient was eligible for on or nearest the trigger event.\n"
+        },
+        {
+          "name": "planFundingSource",
+          "description": "The insurance Funding Source associated to that eligibility.\n"
+        },
+        {
+          "name": "rls_planSource",
+          "description": "QDW source ID in character format of the plan data source from which this record was obtained.\n"
+        },
+        {
+          "name": "imputedReferringProviderPersonID",
+          "description": "As a nice proxy for the referring provider, the last local provider establishes who was likely the referring physician for a given event.\n"
+        },
+        {
+          "name": "imputedReferringProviderNPI",
+          "description": "As a nice proxy for the referring provider, the last local provider establishes who was likely the referring physician for a given event.\n"
+        }
+      ]
+    }
+  ]
+};

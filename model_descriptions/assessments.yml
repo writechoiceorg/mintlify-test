@@ -1,0 +1,72 @@
+version: 2
+
+models:
+  - name: assessments
+    description: >
+      This table contains the version history of all assessment forms configured in the product in a tabular form. This includes content and metadata for all assessment configured tab sections, questions, and question responses. There is one record per configured response, so select question types will have multiple records for the same question. Each assessment form is identified by a numeric ID and title with each uploaded version distinguished by a version ID number. 
+    config:
+      tags: [ 'care_management' ]
+      frequencyDomain: 'CARE MANAGEMENT'
+    columns:
+      - name: assessmentId
+        description: >
+          Arcadia's internal identifier for the assessment form.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1061' ]
+          - relationships:
+              to: ref('dbo_assessments')
+              field: id
+              meta:
+                requirement: [ 'FDR-1061' ]
+      - name: assessmentVersionId
+        description: >
+          The upload version number of the assessment form;
+          the full version history of assessments is stored.
+      - name: title
+        description: >
+          Title of the assessment.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1061' ]
+      - name: section
+        description: >
+          The section tab in which the question appears.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1061' ]
+      - name: questionSequenceNumber
+        description: >
+          The sequential order of the question as it appears in
+          the assessment content.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1061' ]
+      - name: questionType
+        description: >
+          The input type of the question: "Free Text" for text
+          fields, "Select" for single or multi-select lists.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1061' ]
+      - name: questionText
+        description: >
+          The content of the question.
+      - name: responseText
+        description: >
+            For "Free Text" questions the placeholder text in the
+            assessment form field. For "Select" questions an item
+            in the list of selectable options.
+      - name: nestedResponseText
+        description: >
+          If applicable, a secondary free text question whose
+          appearance is contingent on a selected response to
+          the parent question.
+      - name: updatedTimestamp
+        description: >
+          Date and time the assessment version was updated.

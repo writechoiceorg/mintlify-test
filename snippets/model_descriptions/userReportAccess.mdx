@@ -1,0 +1,37 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "userReportAccess",
+      "description": "This table contains the map of Arcadia application users to the expanded details of reports they have access to. This table is deprecated so all fields are now NULL.\n",
+      "config": {
+        "tags": [
+          "application_usage_auditing"
+        ],
+        "frequencyDomain": "WEB"
+      },
+      "columns": [
+        {
+          "name": "userId",
+          "description": "Arcadia's internal identifier for the user.\n"
+        },
+        {
+          "name": "reportId",
+          "description": "Arcadia's internal identifier for the report.\n"
+        },
+        {
+          "name": "reportName",
+          "description": "Name of the Arcadia Analytics report.\n"
+        },
+        {
+          "name": "reportSection",
+          "description": "Analytics dashboard the report corresponds to.\n"
+        },
+        {
+          "name": "customInd",
+          "description": "0/1 indicator that report is custom/user defined.\n"
+        }
+      ]
+    }
+  ]
+};

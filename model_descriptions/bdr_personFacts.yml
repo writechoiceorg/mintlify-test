@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: bdr_personFacts
+    config:
+      tags: [ 'bdr' ]
+      frequencyDomain: 'BINDERY'
+    columns:
+      - name: impactScoreProgram
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2059' ]
+      - name: readmissionScoreProgram
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2059' ]
+      - name: EDPropensityScoreProgram
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2059' ]
+      - name: impactScoreVersion
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2059' ]
+      - name: readmissionScoreVersion
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2059' ]
+      - name: EDPropensityScoreVersion
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2059' ]
+      - name: morbidityAlgorithm
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2058' ]

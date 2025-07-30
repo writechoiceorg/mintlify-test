@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: userWidgetAccess
+    description: >
+      This table contains the map of Arcadia application users and the expanded details of widgets they have access to.
+      This table is deprecated so all fields are now NULL.  
+    config:
+      tags: [ 'application_usage_auditing' ]
+      frequencyDomain: 'WEB'
+    columns:
+      - name: userId
+        description: >
+          Arcadia's internal identifier for the user.
+      - name: widgetId
+        description: >
+          Arcadia's internal identifier for the widget.
+      - name: widgetTitle
+        description: >
+          Title of the widget.

@@ -1,0 +1,113 @@
+version: 2
+
+models:
+  - name: personMeasuresSimple
+    config:
+      tags: [ 'care_quality_and_program_data' ]
+    description: >
+        Simplified view of quality measure results containing one record per person/period/measure.
+        This is a streamlined version of personMeasures that focuses on core measure data without
+        initiative-level details. Contains measure calculations from Arcadia and payer-supplied data
+        where available. Note the "person" is the post-MPI record, so results may contain data from
+        multiple member records (duals or churn) and multiple patient records per person.
+
+    columns:
+      - name: PersonId
+        description: >
+          Arcadia's universal identifier for the patient/member
+          record. This identifier is subject to change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-744' ]
+          - relationships:
+              to: ref('v_patient')
+              field: person_id
+              meta:
+                requirement: [ 'FDR-744' ]
+      - name: MeasureId
+        description: >
+          Arcadia's internal identifier for the given measure.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-744' ]
+      - name: MeasureUniqueName
+        description: >
+          Arcadia's universal identifier for the given measure.
+          Various initiatives may have the same measure with
+          different configurations or display names, but the
+          base calculation is the same.
+      - name: MeasureRate
+        description: >
+          Rate associated with the measure.
+      - name: MeasureDisplayName
+        description: >
+          The name of the given measure as it appears in the
+          Arcadia Analytics front end.
+      - name: MeasureDescription
+        description: >
+          The description that appears when hovering over the
+          given measure in the Arcadia Analytics front end.
+      - name: PeriodStart
+        description: >
+          The first day of the calculated period.
+      - name: PeriodEnd
+        description: >
+          The last day of the calculated period.
+      - name: ArcadiaNumerator
+        description: >
+          A 0/1 indicator that the person qualifies for the
+          numerator of the given measure in the given period
+          before exclusions or exceptions by Arcadia's
+          calculation.
+      - name: ArcadiaDenominator
+        description: >
+          A 0/1 indicator that the person qualifies for the
+          denominator of the given measure in the given period
+          before exclusions or exceptions by Arcadia's
+          calculation. *May be NULL in payer-supplied
+          measures when the person is in the payer file but not
+          in arcadia calculations.
+      - name: ArcadiaExclusion
+        description: >
+          A 0/1 indicator that the person is excluded from the
+          denominator of the given measure in the given period
+          by Arcadia's calculation. *May be NULL in payer-supplied
+          measures when the person is in the payer
+          file but not in arcadia calculations.
+      - name: ArcadiaException
+        description: >
+          A 0/1 indicator that the person should be excluded
+          from the denominator of the given measure if the
+          numerator criteria is not met by Arcadia's calculation.
+          *May be NULL in payer-supplied measures when the
+          person is in the payer file but not in arcadia
+          calculations.
+      - name: ArcadiaCalcNumerator
+        description: >
+          The final numerator calculation for the given measure
+          and period with exclusions and exceptions by
+          Arcadia's calculation. This is the numerator result that
+          is used in Arcadia's performance module.
+      - name: ArcadiaCalcDenominator
+        description: >
+          The final denominator calculation for the given
+          measure and period with exclusions and exceptions
+          by Arcadia's calculation. This is the denominator result
+          that is used in Arcadia's performance module. *May
+          be NULL in payer-supplied measures when the
+          person is in the payer file but not in arcadia
+          calculations.
+      - name: PayerNumerator
+        description: >
+          A 0/1 indicator that the person qualifies for the
+          numerator of the given payer-supplied measure in
+          the given period according to the payer file. NULL if
+          the measure is not payer-supplied.
+      - name: PayerDenominator
+        description: >
+          A 0/1 indicator that the person qualifies for the
+          denominator of the given payer-supplied measure in
+          the given period according to the payer file. NULL if
+          the measure is not payer-supplied. 

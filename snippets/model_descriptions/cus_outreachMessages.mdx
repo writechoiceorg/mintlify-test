@@ -1,0 +1,62 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "outreachMessages",
+      "config": {
+        "tags": [
+          "cus"
+        ]
+      },
+      "data_tests": [
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "ETL-1574"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "Task ID",
+          "description": "The unique identifier for a text or call.\n"
+        },
+        {
+          "name": "Person ID",
+          "description": "The personId associated with the task.\n"
+        },
+        {
+          "name": "Phone Number",
+          "description": "The phone number associated with the task.\n"
+        },
+        {
+          "name": "Campaign",
+          "description": "The outreach campaign associated with the task.\n"
+        },
+        {
+          "name": "Template",
+          "description": "The message template associated with the task.\n"
+        },
+        {
+          "name": "Message Text",
+          "description": "The message text sent out to the patient.\n"
+        },
+        {
+          "name": "Delivery Status",
+          "description": "Determining if a message was delivered to a patient by checking the error description field.\n"
+        },
+        {
+          "name": "Message Date",
+          "description": "The date and time that the message was sent.\n"
+        },
+        {
+          "name": "Error Description",
+          "description": "The type of error recorded for the message.  Error description is null if there was no error.\n"
+        }
+      ]
+    }
+  ]
+};

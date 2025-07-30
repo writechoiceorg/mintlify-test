@@ -1,0 +1,82 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "eventLineMedicareFields",
+      "config": {
+        "tags": [
+          "utilization_and_expense_data"
+        ],
+        "statusDomain": "Medical Claim",
+        "frequencyDomain": "MEDICAL ECONOMICS"
+      },
+      "description": "Note: This information is also on the [eventLineDetails] table. This table contains an array of Medicare-specific concepts and identifiers at the event line level. It links to [eventLineDetails] and to [medicareProviders] when enabled for a given payer. Some of these fields are specific to certain types of service (e.g., Part B claims) and will be empty for many events\n",
+      "columns": [
+        {
+          "name": "claimLineId",
+          "description": "The Arcadia internal Claim Line ID, which can be used to link to [dbo].[v_plan_claim_line]. Every adjudicated claim line should have exactly one record in this table.\n"
+        },
+        {
+          "name": "claimHeaderId",
+          "description": "The Arcadia internal Claim Header ID, which can be used to link to [dbo].[v_plan_claim_header] or [dbo].[v_plan_claim_line].\n"
+        },
+        {
+          "name": "detailEventId",
+          "description": "The Arcadia internal ID of the line-level event included in the roll-up. Join to [dbo].[eventLineDetails] for the individual line details. This identifier is subject to change over time.\n"
+        },
+        {
+          "name": "providerNPI",
+          "description": "The servicing provider's NPI.\n"
+        },
+        {
+          "name": "providerTIN",
+          "description": "The Federal Tax Identification Number of the provider, if applicable.\n"
+        },
+        {
+          "name": "providerCCN",
+          "description": "The CMS Certification Number of the facility, if applicable.\n"
+        },
+        {
+          "name": "controlNumber",
+          "description": "The Claim Control Number from Part B. A unique number assigned to a claim by the Medicare carrier. This number allows CMS to associate each line item with its respective claim.\n"
+        },
+        {
+          "name": "adjustmentCode",
+          "description": "An indicator of whether the claim is an original, cancellation, or adjustment claim in Part B. Codes include: 0 = Original Claim, 1 = Cancellation Claim, 2 = Adjustment Claim\n"
+        },
+        {
+          "name": "effectiveDate",
+          "description": "Date the Part B claim was processed and added to the NCH. This is also referred to as the NCH Weekly Processing Date.\n"
+        },
+        {
+          "name": "typeOfServiceCode",
+          "description": "Signifies the type of claim being submitted through the Medicare or Medicaid programs.\n"
+        },
+        {
+          "name": "fedTypeServiceCode",
+          "description": "Indicates the type of service (e.g., consultation, surgery) provided to the beneficiary on Part B and DME claims. Types of Service Code are defined in the Medicare Carrier Manual. Find Types of Service Code at the ResDAC website.\n"
+        },
+        {
+          "name": "orderingProviderNPI",
+          "description": "The NPI of the provider ordering the indicated service on the claim line on Part B and DME claims.\n"
+        },
+        {
+          "name": "payToProviderNPI",
+          "description": "The NPI of the provider billing for the service on the claim line on Part B and DME claims.\n"
+        },
+        {
+          "name": "operatingProviderNPI",
+          "description": "The NPI of the operating provider associated with the claim on Part A claims.\n"
+        },
+        {
+          "name": "attendingProviderNPI",
+          "description": "The NPI of the attending provider on Part A claims.\n"
+        },
+        {
+          "name": "otherProviderNPI",
+          "description": "The NPI of the other provider on Part A claims.\n"
+        }
+      ]
+    }
+  ]
+};

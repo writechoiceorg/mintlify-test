@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: claimLinesServiceAtRiskExclusions
+    columns:
+      - name: claim_line_id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-717' ]

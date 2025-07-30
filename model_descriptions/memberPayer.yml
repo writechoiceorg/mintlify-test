@@ -1,0 +1,44 @@
+version: 2
+
+models:
+  - name: memberPayer
+    config:
+      tags: ['patient_information']
+      statusDomain: 'Medical Claim'
+      frequencyDomain: 'MEDICAL ECONOMICS'
+    description: >
+      This table maps all available members to payer names and their most current external identifiers
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: ['FDR-1514']
+
+
+    columns:
+      - name: personId
+        description: >
+          Arcadia's universal identifier for the patient/member record. This identifier is
+          subject to change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-728' ]
+          - relationships:
+              to: ref('v_patient')
+              field: person_id
+              meta:
+                requirement: [ 'FDR-728' ]
+      - name: memberId
+        description: >
+          The Arcadia internal Member ID, which can be used to join against warehouse
+          tables prefaced with "plan_" This identifier is subject to change over time.
+      - name: memberNo
+        description: >
+          The payer-supplied member identifier, useful for cross referencing against
+          payer-supplied data sources.
+      - name: planPayer
+        description: >
+          The Payer for which the person is eligible in the most recent attribution.
+      - name: origSourceId
+        description: >
+          The field represents an identifier for the original source of the data from the connector.

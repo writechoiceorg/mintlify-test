@@ -1,0 +1,465 @@
+version: 2
+
+models:
+  - name: episodeDetails
+    config:
+      tags: [ 'utilization_and_expense_data' ]
+      statusDomain: 'Medical Claim'
+      frequencyDomain: 'MEDICAL ECONOMICS'
+    description: >
+      This table contains one record per event included in the aggregate cost of an episode. These events are drawn from
+      [outpatientEvents], [inpatientEvents], [eventLineDetails], and [pharmacyEvents] according to the inclusion rules of
+      the episode. The [episodeDetails] table lists the full set of event metadata – codes, dates, costs, and categorizations
+      – from its underlying event table, its chronology relative to the episode trigger, and which inclusion criterion it
+      satisfies for the episode.
+
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: ['FDR-1514']
+
+    columns:
+      - name: episodeName
+        description: >
+          The episode label.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-721' ]
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2062' ]
+      - name: episodeId
+        description: >
+          The Arcadia internal ID for an episode instance. This
+          identifier is subject to change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-721' ]
+      - name: personId
+        description: >
+          Arcadia's universal identifier for the patient/member
+          record. This identifier is subject to change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-721' ]
+      - name: eventAlias
+        description: >
+          The episode inclusion criterion met by the event.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-721' ]
+      - name: windowAlias
+        description: >
+          The alias for the episode window describing a relative
+          time period of the event within the episode.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-721' ]
+      - name: eventType
+        description: >
+          The type of event: "rollup" for grouped I medical
+          event "detail event" for medical line-level detail, "rxEvent"
+          for retail pharmacy.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-721' ]
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2060' ]
+      - name: eventId
+        description: >
+          The Arcadia internal ID for the event. This identifier is
+          subject to change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-721' ]
+      - name: eventDate
+        description: >
+          The service date of the event.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-721' ]
+      - name: admitDate
+        description: >
+          If the event has duration, the admit date from Arcadia's
+          inpatient chaining ruleset or the admit from the header.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-721' ]
+      - name: dischargeDate
+        description: >
+          If the event has duration, the discharge date from
+          Arcadia's inpatient chaining ruleset or the discharge from
+          the header.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-721' ]
+      - name: daysFromTrigger
+        description: >
+          The difference between the event date and the episode
+          trigger date in days.
+      - name: memberId
+        description: >
+          Arcadia internal member id, which can be used to join to
+          [dbo].[v_plan_member] or [dbo].[personAttribution]. This
+          identifier is subject to change over time.
+      - name: memberNo
+        description: >
+          The payer-supplied member identifier.
+      - name: planPayer
+        description: >
+          The payer for the event
+      - name: los
+        description: >
+          The length of the event in days.
+      - name: paidDate
+        description: >
+          The paid date from the claim header.
+      - name: monthsRunout
+        description: >
+          Claims lag: months between the maximum paid date of
+          claims from this payer and the event date.
+      - name: rptGrouper
+        description: >
+          Arcadia's reporting grouper.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2063' ]
+      - name: rptGrouper2
+        description: >
+          Optional lower-level reporting groups.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2063' ]
+      - name: claimHeaderId
+        description: >
+          The claim header ID for the stay.
+      - name: cost
+        description: >
+          The sum of all costs for the event.
+      - name: costFacility
+        description: >
+          The sum of all costs from facility charges for the event.
+      - name: costProfessional
+        description: >
+          The sum of all costs from professional charges for the event.
+      - name: costOther
+        description: >
+          The sum of all other/ancillary charges for the stay.
+      - name: placeOfService
+        description: >
+          The POS code on the claim. These are often mapped from
+          the UB-04 Type of Bill code for facility claims.
+      - name: placeOfServiceDescription
+        description: >
+          The text description of the CMS POS code.
+      - name: revenueCode
+        description: >
+          For inpatient claims, the Revenue Code.
+      - name: revenueCodeDescription
+        description: >
+          A description of the Revenue Code.
+      - name: drg
+        description: >
+          For inpatient claims, the DRG code. Set to "999" when it
+          does not apply. If MS-DRG, only the DRG is displayed. If
+          APR-DRG an "A-" is prepended to the code.
+      - name: drgDescription
+        description: >
+          A description of the DRG.
+      - name: drgSeverityLevel
+        description: >
+          A 0/1 indicator of severity in APR DRG coding (1-4).
+      - name: mdc
+        description: >
+          Higher-level MDC Code (from DRG)
+      - name: mdcDescription
+        description: >
+          A description of MDC code.
+      - name: cpt
+        description: >
+          The CPT code on the claim.
+      - name: cptDescription
+        description: >
+          A text description of the CPT code.
+      - name: ccsCptMinor
+        description: >
+          The bottom-level categorization of the of the procedure
+          code, based on the AHRQ CCS classification system.
+      - name: ccsCptMajor
+        description: >
+          The top-level categorization of the procedure code, based
+          on the AHRQ CCS classification system.
+      - name: icd
+        description: >
+          The primary diagnosis code on the event.
+      - name: icdCodeSet
+        description: >
+          The code set of the primary diagnosis code.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2063' ]
+      - name: icdDescription
+        description: >
+          A text description of the diagnosis code.
+      - name: ccsDxMinor
+        description: >
+          The bottom-level categorization of the of the primary
+          diagnosis code, based on the AHRQ CCS classification
+          system.
+      - name: ccsDxMajor
+        description: >
+          The  top-level  categorization  of  the  primary  diagnosis
+          code, based on the AHRQ CCS classification system.
+      - name: acgEdcMinor
+        description: >
+          The ACG Expanded Diagnosis Cluster (EDC) code that
+          categorize cases with similar diseases or conditions that
+          are treated in ambulatory and inpatient settings.
+      - name: acgEdcMajor
+        description: >
+          The ACG Major Expanded Diagnoses Cluster (MEDC) code
+          assigned to this patient. The EDC taxonomy is structured
+          into broad clinical categories called MEDCs.
+      - name: serviceLineMinor
+        description: >
+          Low-level service line, based on DRG code.
+      - name: serviceLineMajor
+        description: >
+          Top-level service line, based on DRG code.
+      - name: providerName
+        description: >
+          The servicing provider's full name.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2345' ]
+      - name: providerNPI
+        description: >
+          The servicing provider's full name.
+      - name: providerSpecialty
+        description: >
+          The servicing provider's specialty.
+      - name: providerGrouper1
+        description: >
+          Up to 6 "grouper" attributes of the servicing provider (e.g.
+          "Practice", "Pod", "Market").
+      - name: providerGrouper2
+        description: >
+          Up to 6 "grouper" attributes of the servicing provider (e.g.
+          "Practice", "Pod", "Market").
+      - name: providerGrouper3
+        description: >
+          Up to 6 "grouper" attributes of the servicing provider (e.g.
+          "Practice", "Pod", "Market").
+      - name: providerGrouper4
+        description: >
+          Up to 6 "grouper" attributes of the servicing provider (e.g.
+          "Practice", "Pod", "Market").
+      - name: providerGrouper5
+        description: >
+          Up to 6 "grouper" attributes of the servicing provider (e.g.
+          "Practice", "Pod", "Market").
+      - name: providerGrouper6
+        description: >
+          Up to 6 "grouper" attributes of the servicing provider (e.g.
+          "Practice", "Pod", "Market").
+      - name: inNetwork
+        description: >
+          A 0/1 indicator that the event is in Network.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-721' ]
+      - name: inNetworkFacility
+        description: >
+          A 0/1 indicator that the Service Facility on the event was
+          considered "In Network" at the time of the event.
+      - name: inNetworkProvider
+        description: >
+          A 0/1 indicator that the Provider on the event was
+          considered "In Network" at the time of the event.
+      - name: serviceFacility
+        description: >
+          The most relevant service facility.
+      - name: serviceFacilityNPI
+        description: >
+          The NPI of the service facility, if available.
+      - name: serviceFacilityGrouper1
+        description: >
+          Up to "grouper" attributes of the service facility (e.g.,
+          "Practice", "Pod", "Market").
+      - name: serviceFacilityGrouper2
+        description: >
+          Up to "grouper" attributes of the service facility (e.g.,
+          "Practice", "Pod", "Market").
+      - name: serviceFacilityGrouper3
+        description: >
+          Up to "grouper" attributes of the service facility (e.g.,
+          "Practice", "Pod", "Market").
+      - name: serviceFacilityGrouper4
+        description: >
+          Up to "grouper" attributes of the service facility (e.g.,
+          "Practice", "Pod", "Market").
+      - name: serviceFacilityGrouper5
+        description: >
+          Up to "grouper" attributes of the service facility (e.g.,
+          "Practice", "Pod", "Market").
+      - name: serviceFacilityGrouper6
+        description: >
+          Up to "grouper" attributes of the service facility (e.g.,
+          "Practice", "Pod", "Market").
+      - name: edAvoidableInd
+        description: >
+          A 0/1 indicator that the ED event qualifies for the NYU
+          Avoidable ED category. Will be empty if the event is not
+          an ED event.
+      - name: plannedStay
+        description: >
+          A 0/1 indicator that the stay was planned, based on HEDIS
+          code sets.
+      - name: readmission
+        description: >
+          A 0/1 indicator that the stay was a readmission (i.e., a
+          discharge  occurred  fewer  than  30  days  prior  to  this
+          admission and met HEDIS readmit specs).
+      - name: readmissionIndex
+        description: >
+          Using the same logic as the Readmission flag, this is set if
+          the stay contained the discharge that *preceded* the
+          readmission. This is typically used to attribute readmission
+          rates.
+      - name: ascInd
+        description: >
+          A 0/1 indicator that the stay meets CMS Ambulatory
+          Sensitive Conditions (ASC) admission criteria.
+      - name: isEmergent
+        description: >
+          A 0/1 indicator that the stay was emergent.
+      - name: edAdmitInd
+        description: >
+          A 0/1 indicator that the stay was preceded by an ED visit.
+      - name: ambulanceInd
+        description: >
+          A 0/1 indicator that the stay included an Ambulance bill on
+          the first day of the admission
+      - name: ambulanceName
+        description: >
+          The name of the Ambulance provider.
+      - name: ambulanceCost
+        description: >
+          The cost associated to the Ambulance event.
+      - name: dischargeDisposition
+        description: >
+          Place to which the patient was discharged (e.g., SNF, IP
+          Adult Med, Home).
+      - name: dischargeToFacility
+        description: >
+          The  name  of  the  facility  to  which  the  person  was
+          discharged, if applicable.
+      - name: dischargeToFacilityNPI
+        description: >
+          The NPI of the discharge facility, if applicable.
+      - name: dischargeToCost
+        description: >
+          The sum of all costs at the discharge facility, if applicable.
+      - name: pcpNPI
+        description: >
+          The NPI of the attributed PCP.
+      - name: pcpName
+        description: >
+          The full name of the attributed PCP.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2345' ]
+      - name: pcpGrouper1
+        description: >
+          Up to 6 "grouper" attributes of the PCP (e.g. "Practice",
+          "Pod", "Market").
+      - name: pcpGrouper2
+        description: >
+          Up to 6 "grouper" attributes of the PCP (e.g. "Practice",
+          "Pod", "Market").
+      - name: pcpGrouper3
+        description: >
+          Up to 6 "grouper" attributes of the PCP (e.g. "Practice",
+          "Pod", "Market").
+      - name: pcpGrouper4
+        description: >
+          Up to 6 "grouper" attributes of the PCP (e.g. "Practice",
+          "Pod", "Market").
+      - name: pcpGrouper5
+        description: >
+          Up to 6 "grouper" attributes of the PCP (e.g. "Practice",
+          "Pod", "Market").
+      - name: pcpGrouper6
+        description: >
+          Up to 6 "grouper" attributes of the PCP (e.g. "Practice",
+          "Pod", "Market").
+      - name: planProduct
+        description: >
+          The insurance Product for which the person is eligible
+          during the given episode.
+      - name: planFundingSource
+        description: >
+          If applicable, the insurance Funding Source for which the
+          person is eligible during the given episode.
+      - name: claimAtRisk
+        description: >
+          A 0/1 indicator that the event should be considered in
+          financial reporting on the risk-based contract. When both
+          the claimant and the service are "at-risk" this is 1.
+      - name: claimMemberAtRisk
+        description: >
+          A 0/1 indicator that the claimant is in a risk contract during
+          the event.
+      - name: claimServiceAtRisk
+        description: >
+          Same definition as claimAtRisk.
+      - name: providerTIN
+        description: >
+          The Federal Tax Identification Number of the provider, if
+          applicable.
+      - name: providerCCN
+        description: >
+          The CMS Certification Number of the facility, if applicable.
+      - name: ndc
+        description: >
+          NDC code for medication.
+      - name: medicationName
+        description: >
+          Name of medication associated with claim.
+      - name: theraGroup1
+        description: >
+          Highest-level therapeutic group used to classify drugs
+          based on NDC code. This column is only populated with an
+          active Medispan license.
+      - name: theraGroup2
+        description: >
+          Second-level therapeutic group used to classify drugs
+          based on NDC code. This column is only populated with an
+          active Medispan license.
+      - name: theraGroup3
+        description: >
+          Third-level therapeutic group used to classify drugs based
+          on NDC code. This column is only populated with an active
+          Medispan license.
+      - name: theraGroup4
+        description: >
+          Lowest level therapeutic group used to classify drugs
+          based on NDC code. This column is only populated with an
+          active Medispan license.

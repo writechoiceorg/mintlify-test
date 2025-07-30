@@ -1,0 +1,41 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "userLogins",
+      "description": "A timestamped log of user sign ins to the Analytics application. This table is deprecated so all fields are now NULL.\n",
+      "config": {
+        "tags": [
+          "application_usage_auditing"
+        ],
+        "frequencyDomain": "WEB"
+      },
+      "columns": [
+        {
+          "name": "userId",
+          "description": "Arcadia's internal identifier for the user.\n"
+        },
+        {
+          "name": "userEmail",
+          "description": "User's email address.\n"
+        },
+        {
+          "name": "userFullName",
+          "description": "User's full name (Last, First).\n"
+        },
+        {
+          "name": "userIp",
+          "description": "IP address from which the user accessed the patient. \n"
+        },
+        {
+          "name": "logType",
+          "description": "Type of user activity.\n"
+        },
+        {
+          "name": "loggedTimestamp",
+          "description": "Date and time the activity occurred.\n"
+        }
+      ]
+    }
+  ]
+};

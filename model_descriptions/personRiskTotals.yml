@@ -1,0 +1,162 @@
+version: 2
+
+models:
+  - name: personRiskTotals
+    config:
+      tags: [ 'care_quality_and_program_data' ]
+      frequencyDomain: 'RISK ADJUSTMENT'
+    description: >
+      This table summarizes the total risk adjustment factor per person/algorithm/year. It is a more convenient mechanism
+      for reporting risk values when the individual conditions and gaps are not needed. It reports Closed, Claims-based
+      Closed, and Total/Suggested risk
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: ['FDR-1514']
+    columns:
+      - name: riskYear
+        description: >
+          The year treated as the current year for the risk calculation.
+          For example, claims with service dates in this year are
+          considered "Current Claims" events whereas claims for
+          service dates in previous years are considered "Historical
+          Claims" events.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-727' ]
+      - name: personId
+        description: >
+          Arcadia's universal identifier for the patient/member record.
+          This identifier is subject to change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-727' ]
+          - relationships:
+              to: ref('v_patient')
+              field: person_id
+              meta:
+                requirement: [ 'FDR-727' ]
+      - name: memberId
+        description: >
+          Arcadia internal member_id, which can be used to join to
+          [dbo].[v_plan_member] or [dbo].[personAttribution]. This
+          identifier is subject to change over time.
+      - name: memberNo
+        description: >
+          The payer-supplied member identifier, useful for cross
+          referencing against payer-supplied data sources.
+      - name: pcpNPI
+        description: >
+          The NPI of the person's attributed for the most recent
+          attribution in the risk year.
+      - name: pcpName
+        description: >
+          The full name of the person's attributed for the most
+          recent attribution in the risk year.
+      - name: pcpGrouper1
+        description: >
+          The health system-defined first-level of the person's
+          attributed PCP for the most recent attribution in the risk
+          year. This could be a practice, medical group, department, etc.
+      - name: pcpGrouper2
+        description: >
+          The health system-defined second-level grouper of the
+          attributed PCP for the most recent attribution in the risk
+          year. This may be an ACO, region or market, or pod.
+      - name: pcpGrouper3
+        description: >
+          The health system-defined Risk Unit of the person's
+          attributed PCP for the most recent attribution in the risk
+          year. This may be an ACO, region or market, or pod.
+      - name: pcpGrouper4
+        description: >
+          Additional groupers or provider attributes, as needed
+      - name: pcpGrouper5
+        description: >
+          Additional groupers or provider attributes, as needed
+      - name: pcpGrouper6
+        description: >
+          Additional groupers or provider attributes, as needed
+      - name: planPayer
+        description: >
+          The Payer for which the person is most recently eligible in
+          the risk year.
+      - name: planProduct
+        description: >
+          The insurance Product for which the person is most recently
+          eligible in the risk year.
+      - name: planFundingSource
+        description: >
+          If applicable, the insurance Funding Source associated with
+          the person's most recent eligibility span in the risk year.
+      - name: atRiskFlag
+        description: >
+          A 0/1 indicator that the person is at risk for a payer contract
+          during the most recent eligibility span in the risk year.
+      - name: riskAlgorithm
+        description: >
+          The risk algorithm applied.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-727' ]
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2058' ]
+      - name: riskScoreClosed
+        description: >
+          The sum of all risk associated with demographic factors and
+          risk closure events from claims or clinical sources that
+          occurred during the risk year.
+      - name: riskScoreClosedClaims
+        description: >
+          The sum of all risk associated with risk closure events from
+          claims sources only that occurred during the risk year.
+      - name: riskScoreSuggested
+        description: >
+          The sum of all risk associated with demographic factors, risk
+          closure events, and other risk suspecting sources for the
+          person for the risk year.
+      - name: riskScoreAdjustedClosed
+        description: >
+          The sum of all risk associated with demographic factors and
+          risk closure events from claims or clinical sources that
+          occurred during the risk year with a normalization factor and
+          coding adjustment factor applied. This field will only be
+          populated for the HCC risk algorithm. Beyond the HCC
+          calculation, CMS releases a normalization factor to account
+          for increases in the overall population's risk that normalizes
+          the average risk back to 1.0, and a coding intensity factor is
+          used for Medicare Advantage beneficiaries by CMS to
+          account for the higher increase in risk for that population
+          versus "traditional" fee-for-service beneficiaries.
+      - name: riskScoreAdjustedClosedClaims
+        description: >
+          The sum of all risk associated with risk closure events from
+          claims sources only that occurred during the risk year with a
+          normalization factor and coding adjustment factor applied.
+          This field will only be populated for the HCC risk algorithm.
+          Beyond the HCC calculation, CMS releases a normalization
+          factor to account for increases in the overall population's risk
+          that normalizes the average risk back to 1.0, and a coding
+          intensity factor is used for Medicare Advantage beneficiaries
+          by CMS to account for the higher increase in risk for that
+          population versus "traditional" fee-for-service beneficiaries.
+      - name: riskScoreAdjustedSuggested
+        description: >
+          The sum of all risk associated with demographic factors, risk
+          closure events, and other risk suspecting sources for the
+          person for the risk year with a normalization factor and
+          coding adjustment factor applied. This field will only be
+          populated for the HCC risk algorithm. Beyond the HCC
+          calculation, CMS releases a normalization factor to account
+          for increases in the overall population's risk that normalizes
+          the average risk back to 1.0, and a coding intensity factor is
+          used for Medicare Advantage beneficiaries by CMS to
+          account for the higher increase in risk for that population
+          versus "traditional" fee-for-service beneficiaries.
+      - name: origSourceId
+        description: >
+          The field represents an identifier for the original source of the data from the connector.

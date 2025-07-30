@@ -1,0 +1,243 @@
+version: 2
+
+models:
+  - name: bdr_personAttribution
+    config:
+      tags: ['bdr']
+      frequencyDomain: 'BINDERY'
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: ['FDR-1385']
+      - has_rls:
+          meta:
+            requirement: [ 'ETL-1630' ]
+
+    columns:
+      - name: personId
+        description: >
+          Arcadia's universal identifier for the patient/member record.
+          This identifier is subject to change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1385' ]
+      - name: memberId
+        description: >
+          The Arcadia internal Member ID, which can be used to join
+          against warehouse tables prefaced with "plan_" This
+          identifier is subject to change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1385' ]
+      - name: memberNo
+        description: >
+          The payer-supplied member identifier, useful for cross
+          referencing against payer-supplied data sources.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1385' ]
+      - name: name
+        description: >
+          Patient's full name (Last, First)
+      - name: dob
+        description: >
+          Patient date of birth.
+      - name: age
+        description: >
+          Patient age as of the 15th of the month.
+      - name: sex
+        description: >
+          Patient sex.
+      - name: startDate
+        description: >
+          The first date/hour/minute of the given month.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1385' ]
+      - name: endDate
+        description: >
+          The last date/hour/minute of the given month.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1385' ]
+      - name: pcpNPI
+        description: >
+          The NPI of the attributed PCP in the given month.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1385' ]
+      - name: pcpName
+        description: >
+          The full name of the attributed PCP in the given month.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1385' ]
+      - name: pcpGrouper1
+        description: >
+          The health system-defined first-level of the attributed PCP in
+          the given month. This could be a practice, medical group,
+          department, etc.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1385' ]
+      - name: pcpGrouper2
+        description: >
+          The health system-defined second-level grouper of the
+          attributed PCP in the given month. This may be an ACO,
+          region or market, or pod.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1385' ]
+      - name: pcpGrouper3
+        description: >
+          The health system -defined Risk Unit of the attributed PCP in
+          the given month. This may be an ACO, region or market, or
+          pod.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1385' ]
+      - name: pcpGrouper4
+        description: >
+          Additional groupers or provider attributes, as needed.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1385' ]
+      - name: pcpGrouper5
+        description: >
+          Additional groupers or provider attributes, as needed.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1385' ]
+      - name: pcpGrouper6
+        description: >
+          Additional groupers or provider attributes, as needed.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1385' ]
+      - name: planPayer
+        description: >
+          The Payer for which the person is eligible in the given month.
+      - name: planProduct
+        description: >
+          The Product for which the person is eligible in the given
+          month. This corresponds to the LOB in the connector spec.
+      - name: planFundingSource
+        description: >
+          If applicable, the Funding Source for which the person is
+          eligible in the given month. This corresponds to the product
+          in the connector spec.
+      - name: planContract
+        description: >
+          The Payer for which the person is eligible in the given month.
+      - name: planContractType
+        description: >
+          The patient plan contract type.
+      - name: planProductDisposition
+        description: >
+          The plan product disposition.
+      - name: memberMonth
+        description: >
+          A 0/1 indicator (or decimal for partial months) of coverage of
+          a member during that month. By default this is "1" when the
+          patient has eligibility during the 15th of a month, but can be
+          configured otherwise.
+      - name: atRiskFlag
+        description: >
+          A 0/1 indicator that, in the given month, this member is
+          considered "At Risk" for a payer contract. This column can be
+          summed to generate aggregate numbers of at-risk patients,
+          or used as a filter.
+      - name: rxCoverage
+        description: >
+          A 0/1 indicator, in the given month, this member has
+          prescription drug benefits.
+      - name: stopLossInd
+        description: >
+          A 0/1 indicator that, in the given month, this member has
+          passed the stop loss threshold for the financial year.
+      - name: medRxStopLossInd
+        description: >
+          A 0/1 indicator that, where stop loss calculation has been
+          enabled, stop loss also includes pharmacy events in its
+          calculation.
+      - name: catastrophicInd
+        description: >
+          A 0/1 indicator, in the given financial year, this member has
+          passed the catastrophic threshold and is considered a highcost
+          claimant.
+      - name: awvInd
+        description: >
+          A 0/1 indicator, in the given month, this member has an
+          outpatient event that was coded an Annual Wellness Visit.
+          Arcadia uses these CPT codes to identify AWVs: G0402, G0438, G0439, G0468.
+      - name: acpInd
+        description: >
+          A 0/1 indicator, in the given month, this member has an
+          outpatient event that was coded an Advance Care Planning visit.
+          Arcadia uses these CPT codes to identify ACP visits: 99497, 99498.
+      - name: rls_planSource
+        description: >
+          Not Available
+      - name: rls_provider
+        description: >
+          Not Available
+      - name: rls_providerGrouper1
+        description: >
+          Not Available
+      - name: rls_providerGrouper2
+        description: >
+          Not Available
+      - name: rls_providerGrouper3
+        description: >
+          Not Available
+      - name: rls_personDisposition
+        description: >
+          Not Available
+      - name: yearMonth
+        description: >
+          The year and month in which the current eligibility span began.
+      - name: fyStartDate
+        description: >
+          The start date of the financial year the attribution occurs in.
+      - name: fyEndDate
+        description: >
+          The end date of the financial year the attribution occurs in
+      - name: fyIndex
+        description: >
+          The index of the financial year the attribution occurs in. A '0'
+          indicates the attribution is contained in the current financial
+          year
+      - name: providerPersonID
+        description: >
+          The accountable provider's Arcadia universal ID
+      - name: ladata_testspan
+        description: >
+          Not Available.
+      - name: planActive
+        description: >
+          A 0/1 flag that indicates whether the member is currently active, calculated at the source level. 
+          - not_null:
+              meta:
+                requirement: [ 'FDR-2014' ]
+      - name: planPcpNPI
+        description: >
+          The NPI of the plan-based PCP in the given month.
+      - name: functionalPcpNPI
+        description: >
+          The NPI of the functional PCP in the given month.  
+      - name: temporalFunctionalPcpNPI
+        description: >
+          The NPI of the temporal functional PCP in the given month.

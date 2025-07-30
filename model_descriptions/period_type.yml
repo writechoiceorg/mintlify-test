@@ -1,0 +1,70 @@
+version: 2
+
+models:
+  - name: period_type
+    columns:
+      - name: period_type_id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1143' ]
+        description: >
+          The numeric identifier of the period type.
+      - name: name
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1143' ]
+        description: >
+          The name of the period type, i.e. 'Month'
+      - name: description
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1143' ]
+        description: >
+          A brief description of the period type, i.e. 'Calendar Year'
+      - name: insert_timestamp
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1143' ]
+        description: >
+          Datetime that period record was inserted into table. 
+      - name: update_timestamp
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1143' ]
+        description: >
+          Datetime that period record was updated in table. 
+      - name: lag_days
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1143' ]
+        description: >
+          Datetime that period record was updated in table. 
+      - name: display_order
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1143' ]
+      - name: LockMeasures
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1143' ]
+          - accepted_values:
+              values: [ 0, 1 ]
+              meta:
+                requirement: [ 'FDR-1143' ]
+      - name: enabled
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1143' ]
+          - accepted_values:
+              values: [ 0, 1 ]
+              meta:
+                requirement: [ 'FDR-1143' ]

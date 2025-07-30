@@ -1,0 +1,112 @@
+version: 2
+
+models:
+  - name: costBreakoutEventRollup
+    config:
+      tags: [ 'utilization_and_expense_data' ]
+      statusDomain: 'Medical Claim'
+      frequencyDomain: 'MEDICAL ECONOMICS'
+    description: >
+      This table holds one record per rollup event, with the supplementary cost breakouts surfaced from the event grouper
+      beyond what is available in [inpatientEvents] or [outpatientEvents].
+
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: ['FDR-1514']
+      - not_empty:
+          meta:
+            requirement: [ 'FDR-1836' ]
+
+    columns:
+      - name: rollupEventId
+        description: >
+          The Arcadia internal ID of the IP or OP event after roll-up. Join
+          to [dbo].[inpatientEvents] or [dbo].[outpatientEvents] for the
+          rolled up event record. This identifier is subject to change over
+          time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-722' ]
+      - name: ffsEquivalentAmount
+        description: >
+          The amount that would be paid in a fee for service
+          contract.
+      - name: billedAmount
+        description: >
+          The amount that was billed by the entity that rendered the
+          services.
+      - name: allowedAmount
+        description: >
+          The reimbursement amount negotiated between the
+          payer and provider for the services rendered.
+      - name: copayAmount
+        description: >
+          The amount that was paid by the patient as copayment
+          for services rendered.  When  available, this is taken
+          directly from the submitted claim, not derived based on
+          additional information.
+      - name: couinsuranceAmount
+        description: >
+          The amount that was paid by the patient as coinsurance
+          for services rendered. This is typically a percentage of the
+          entire service as dictated by the patient's benefit package.
+          When available, this is taken directly from the submitted
+          claim, not derived based on additional information.
+      - name: deductibleAmount
+        description: >
+          The amount that was paid by the patient as a deductible
+          for services rendered per their benefit package. When
+          available, this is taken directly from the submitted claim,
+          not derived based on additional information.
+      - name: patientLiabilityAmount
+        description: >
+          The total patient liability for services rendered and is the
+          summation of copay, coinsurance and deductible amounts.
+      - name: witholdAmount
+        description: >
+          The amount withheld by the payer for the services
+          rendered. This amount is negotiated between the
+          physician organization and the payer and is paid back to
+          the physician group dependent on an end of year
+          reconciliation process
+      - name: cobAmount
+        description: >
+          The Coordination of Benefits amount is the amount that
+          was paid by a different payer for these services based on
+          a coordination of benefits agreement.
+      - name: paidAmount
+        description: >
+          The amount that your organization paid for the services
+          rendered.
+      - name: contractAmount
+        description: >
+          The amount that your organization is contractually
+          managing your population against and that you use to
+          reconcile the total cost of care against on an annual basis.
+          (Deprecated as of 2020.1.0)
+      - name: tcocAmount
+        description: >
+          The Total Cost of Care Amount that is the configured cost prior
+          to the application of at-Risk and stop loss rules. The application
+          of these rules produces the final contractual reconciliation
+          amount.
+      - name: atRiskAmount
+        description: >
+          The Total Cost of Care Amount that is the configured cost prior
+          to the application of at-Risk and stop loss rules. The application
+          of these rules produces the final contractual reconciliation
+          amount.
+      - name: slProtectedAmount
+        description: >
+          The Total Cost of Care Amount that is the configured cost prior
+          to the application of at-Risk and stop loss rules. The application
+          of these rules produces the final contractual reconciliation
+          amount.
+      - name: allowedAmountIBNR
+        description: >
+          A cost calculation applying an IBNR model to the allowed amount cost. While not relevant as an individual line, this can be used to roll up costs with IBNR in aggregate.
+      - name: paidAmountIBNR
+        description: >
+          A cost calculation applying an IBNR model to the paid amount cost. While not relevant as an individual line, this can be used to roll up costs with IBNR in aggregate.

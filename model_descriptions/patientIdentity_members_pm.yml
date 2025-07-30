@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: patientIdentity_members_pm
+    data_tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns:
+            - orig_member_id
+            - orig_source_id
+          meta:
+            requirement: [ 'ETL-1332' ]

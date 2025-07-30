@@ -1,0 +1,90 @@
+version: 2
+
+models:
+  - name: providerHierarchy
+    description: >
+      Also known as the Patient Assignment Hierarchy, this lists the set of providers known to the organization relative to the practices, pods, and teams at which they are assigned patient panels or otherwise render services to patients. The hierarchy can be configured to reflect the understood structure of a provider network, allowing the grouping of providers into practices, groups, chapters, pods, regions, and other physical or logical divisions. 
+    config:
+      tags: [ 'master_data' ]
+
+    columns:
+      - name: ProvFirstName
+        description: >
+          The first name of the provider.
+      - name: ProvLastName
+        description: >
+          The last name of the provider.
+      - name: ProvFullName
+        description: >
+          The full name of the provider (Last, First).
+      - name: ProvSpecialty1
+        description: >
+          An optional Primary Specialty field.
+      - name: ProvSpecialty2
+        description: >
+          An optional Secondary Specialty field.
+      - name: ProvType
+        description: >
+          An optional Provider Type field (can be Specialist vs PCP
+          distinction).
+      - name: ProvNPI
+        description: >
+          The provider NPI.
+      - name: Grouper1Name
+        description: >
+          The name of the Grouper.
+      - name: Grouper1IDType
+        description: >
+          An optional ID Type name of the Grouper (e.g., "TIN")
+      - name: Grouper1Id
+        description: >
+          An optional ID of the Grouper.
+      - name: Grouper2Name
+        description: >
+          The name of the Grouper.
+      - name: Grouper2IDType
+        description: >
+          An optional ID Type name of the Grouper (e.g., "TIN")
+      - name: Grouper2Id
+        description: >
+          An optional ID of the Grouper.
+      - name: Grouper3Name
+        description: >
+          The name of the Grouper.
+      - name: Grouper3IDType
+        description: >
+          An optional ID Type name of the Grouper (e.g., "TIN")
+      - name: Grouper3Id
+        description: >
+          An optional ID of the Grouper.
+      - name: Grouper4Name
+        description: >
+          The name of the Grouper.
+      - name: Grouper4IDType
+        description: >
+          An optional ID Type name of the Grouper (e.g., "TIN")
+      - name: Grouper4Id
+        description: >
+          An optional ID of the Grouper.
+      - name: Grouper5Name
+        description: >
+          The name of the Grouper.
+      - name: Grouper5IDType
+        description: >
+          An optional ID Type name of the Grouper (e.g., "TIN")
+      - name: Grouper5Id
+        description: >
+          An optional ID of the Grouper.
+      - name: Grouper6Name
+        description: >
+          The name of the Grouper.
+      - name: Grouper6IDType
+        description: >
+          An optional ID Type name of the Grouper (e.g., "TIN")
+      - name: Grouper6Id
+        description: >
+          An optional ID of the Grouper.
+      - name: UpdateTimestamp
+        description: >
+          Date at which the provider's records was most recently
+          modified.

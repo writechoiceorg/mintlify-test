@@ -1,0 +1,70 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "t_result",
+      "description": "A result record captures the results of a laboratory, radiology, or other study performed on a patient. The result observation may include contextual data to aid interpretation of the result value.  Result observations should be encoded with LOINC or SNOMED codes and have numeric readings and units or findings and interpretation of diagnostic data_tests.  Furthermore, results should include clinical context, such as requester and provider information, and some mix of atomic results, textual and coded interpretations, and formatted representation of diagnostic reports.  When appropriate, result records should link back to the originating order record by way of its order ID.\n",
+      "config": {
+        "tags": [
+          "care_quality_and_program_data"
+        ]
+      },
+      "data_tests": [
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "FDR-1514"
+              ]
+            }
+          }
+        },
+        {
+          "dbt_utils.unique_combination_of_columns": {
+            "meta": {
+              "requirement": [
+                "FDR-1745"
+              ]
+            },
+            "combination_of_columns": [
+              "id",
+              "person_id"
+            ]
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "id",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-741"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "arc_order_id",
+          "data_tests": [
+            {
+              "relationships": {
+                "to": "ref('t_order')",
+                "field": "id",
+                "meta": {
+                  "requirement": [
+                    "FDR-741"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};

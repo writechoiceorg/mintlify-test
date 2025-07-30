@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: t_assessment
+    description: > 
+      An assessment is a diagnosis identified at the close of an encounter (provider-patient interaction) that is relevant to that encounter and that includes complaints or reasons for medical attention. All assessments must be coded to a national code set for classification and should represent the provider's objective determination as to the justifications for procedures for that encounter.
+    config:
+      tags: [ 'care_quality_and_program_data' ]
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: [ 'FDR-1514' ]
+
+      - dbt_utils.unique_combination_of_columns:
+          meta:
+            requirement: [ 'FDR-1745' ]
+          combination_of_columns:
+            - id
+            - person_id
+
+    columns:
+      - name: id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-767' ]
+      - name: arc_encounter_id
+        data_tests:
+          - relationships:
+              to: ref('t_encounter')
+              field: id
+              meta:
+                requirement: [ 'FDR-767' ]

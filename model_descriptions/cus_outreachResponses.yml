@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: outreachResponses
+    config:
+      tags: [ 'cus' ]
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: [ 'ETL-1574' ]
+    columns:
+      - name: Phone Number
+        description: >
+          The phone number that replied with the recorded message.
+      - name: Person ID
+        description: >
+          The personId associated with the most recent outreach task that was sent to the phone number above.
+      - name: Campaign
+        description: >
+          The outreach campaign associated with the most recent outreach task that was sent to the phone number above.
+      - name: Template
+        description: >
+          The message template associated with the most recent outreach task that was sent to the phone number above.
+      - name: Date/Time of Send
+        description: >
+          The date and time that the message reply was sent.
+      - name: Response Text
+        description: >
+          The content of the message reply that was sent.
+      - name: Channel
+        description: >
+          The outreach channel (auto call or auto text) of the most recent outreach task that was sent
+          to the phone number above.

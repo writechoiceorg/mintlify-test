@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: t_prescription
+    description: > 
+      A prescription is an order for the supply of a specific medication at a point in time and for a certain number of fills, along with instructions for administration of the medicine to a patient, whether they are filled by the prescriber or ordered to be filled by a pharmacy.  The prescription entity is inclusive of prescription medications, over-the-counter medications, and nutritional/diet supplements, provided they are ordered by a provider and documented in the source system. 
+      Instructions should consist of recommended dosage and timings for administration, as well as additional instructions as ordered.  
+      All prescriptions must be encoded with either an NDC or RxNorm code set.
+    config:
+      tags: [ 'care_quality_and_program_data' ]
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: ['FDR-1514']
+
+      - dbt_utils.unique_combination_of_columns:
+          meta:
+            requirement: [ 'FDR-1745' ]
+          combination_of_columns:
+            - id
+            - person_id
+
+    columns:
+      - name: id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-751' ]
+      - name: arc_encounter_id
+        data_tests:
+          - relationships:
+              to: ref('t_encounter')
+              field: id
+              meta:
+                requirement: [ 'FDR-751' ]

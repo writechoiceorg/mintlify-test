@@ -1,0 +1,49 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "userPatSummaryViews",
+      "description": "A timestamped log of instances of Analytics users viewing specific Patient Summary Charts, with which user viewed which patient.\n",
+      "config": {
+        "tags": [
+          "application_usage_auditing"
+        ],
+        "frequencyDomain": "WEB"
+      },
+      "columns": [
+        {
+          "name": "userId",
+          "description": "Arcadia's internal identifier for the user.\n"
+        },
+        {
+          "name": "userEmail",
+          "description": "User's email address.\n"
+        },
+        {
+          "name": "userFullName",
+          "description": "User's full name (Last, First).\n"
+        },
+        {
+          "name": "userIp",
+          "description": "IP address from which the user accessed the patient.  \n"
+        },
+        {
+          "name": "logType",
+          "description": "Type of user activity.\n"
+        },
+        {
+          "name": "loggedTimestamp",
+          "description": "Date and time the activity occurred.\n"
+        },
+        {
+          "name": "personId",
+          "description": "Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.  \n"
+        },
+        {
+          "name": "name",
+          "description": "Name of the patient whose summary was accessed.\n"
+        }
+      ]
+    }
+  ]
+};

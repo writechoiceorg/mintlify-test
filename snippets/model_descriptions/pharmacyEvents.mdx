@@ -1,0 +1,519 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "pharmacyEvents",
+      "config": {
+        "tags": [
+          "utilization_and_expense_data"
+        ],
+        "statusDomain": "Medical Claim",
+        "frequencyDomain": "MEDICAL ECONOMICS"
+      },
+      "description": "This table holds one row for each medication fill in claims sources. Medication, cost, and prescriber information are categorized in this table.\n",
+      "data_tests": [
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "FDR-1514"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "eventId",
+          "description": "The Arcadia internal ID of the pharmacy event. This identifier is subject to change over time.\n"
+        },
+        {
+          "name": "memberId",
+          "description": "Arcadia's internal identifier for the member record. This identifier is subject to change over time.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-726"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "personId",
+          "description": "Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-726"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "memberNo",
+          "description": "The payer-supplied member identifier for the most recent eligibility record.\n"
+        },
+        {
+          "name": "claimId",
+          "description": "The Arcadia internal Claim Rx ID, which can be used to link to [dbo].[v_plan_claim_rx]. Every prescription claim should have exactly one record in this table.\n"
+        },
+        {
+          "name": "planPayer",
+          "description": "The payer name associated to the fill.\n"
+        },
+        {
+          "name": "fillDate",
+          "description": "Date and time the prescription was filled.\n"
+        },
+        {
+          "name": "paidDate",
+          "description": "Date of payment from insurer.\n"
+        },
+        {
+          "name": "monthsRunout",
+          "description": "Claims lag: months between the maximum paid date of claims from this payer and the trigger event date.\n"
+        },
+        {
+          "name": "adjustmentStatus",
+          "description": "The adjustment status of the claim.\n"
+        },
+        {
+          "name": "NDC",
+          "description": "NDC code for medication.\n"
+        },
+        {
+          "name": "medicationName",
+          "description": "Name of medication associated with claim.\n"
+        },
+        {
+          "name": "theraGroup1",
+          "description": "Highest-level therapeutic group used to classify drugs based on NDC code. This column is only populated with an active Medispan license.\n"
+        },
+        {
+          "name": "theraGroup2",
+          "description": "Second-level therapeutic group used to classify drugs based on NDC code. This column is only populated with an active Medispan license.\n"
+        },
+        {
+          "name": "theraGroup3",
+          "description": "Third-level therapeutic group used to classify drugs based on NDC code. This column is only populated with an active Medispan license.\n"
+        },
+        {
+          "name": "theraGroup4",
+          "description": "Lowest level therapeutic group used to classify drugs based on NDC code. This column is only populated with an active Medispan license.\n"
+        },
+        {
+          "name": "refillNo",
+          "description": "The number of times the prescription has been refilled as of this prescription claim. Values are integers from 0 and higher. A value of '0' indicates this is a new prescription. A value of '1' indicates this claim represents the first time the member has refilled the prescription, i.e. the second fill of the prescription.\n"
+        },
+        {
+          "name": "strength",
+          "description": "Strength of prescribed medication.\n"
+        },
+        {
+          "name": "daysSupply",
+          "description": "The number of days the quantity of the drug dispensed is intended to last. This value is used in calculating the end date, the last date on which the member presumably was taking this medication.\n"
+        },
+        {
+          "name": "scripts",
+          "description": "How many scripts this record represents. Almost always \"1\".\n"
+        },
+        {
+          "name": "thirtyDayUnits",
+          "description": "How many thirty-day durations the record represents (rounded  up). For example, a 45-day supply is 2 thirty-day units. Used for aggregation.\n"
+        },
+        {
+          "name": "genericInd",
+          "description": "Indication if medication is generic.\n"
+        },
+        {
+          "name": "specialtyDrug",
+          "description": "Indication if medication is considered a specialty drug.\n"
+        },
+        {
+          "name": "amtPaid",
+          "description": "Paid amount for given prescription.\n"
+        },
+        {
+          "name": "amtCopay",
+          "description": "Copay amount for prescription.\n"
+        },
+        {
+          "name": "amtAllowed",
+          "description": "A configurable field representing the allowed amount defined in the payer contract. In some cases, this is just Paid amount, or Paid + Copay.\n"
+        },
+        {
+          "name": "cost",
+          "description": "The contractual reconciliation amount for the prescription. If stop loss cost calculation is configured for the payer product, this field will surface the stop loss cost amount of the claim. If stop loss calculation is not enabled, this field will surface the cost of care of the prescription.\n"
+        },
+        {
+          "name": "costOfCare",
+          "description": "The cost of care of the prescription, typically the insurer's Paid Amount though will vary by contract.\n"
+        },
+        {
+          "name": "pcpNPI",
+          "description": "NPI of attributed PCP at the time of the fill.\n"
+        },
+        {
+          "name": "pcpName",
+          "description": "Name of the attributed PCP.\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2345"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "pcpGrouper1",
+          "description": "Up to 6 \"groupers\" associated with the attributed PCP.\n"
+        },
+        {
+          "name": "pcpGrouper2",
+          "description": "Up to 6 \"groupers\" associated with the attributed PCP.\n"
+        },
+        {
+          "name": "pcpGrouper3",
+          "description": "Up to 6 \"groupers\" associated with the attributed PCP.\n"
+        },
+        {
+          "name": "pcpGrouper4",
+          "description": "Up to 6 \"groupers\" associated with the attributed PCP.\n"
+        },
+        {
+          "name": "pcpGrouper5",
+          "description": "Up to 6 \"groupers\" associated with the attributed PCP.\n"
+        },
+        {
+          "name": "pcpGrouper6",
+          "description": "Up to 6 \"groupers\" associated with the attributed PCP.\n"
+        },
+        {
+          "name": "planProduct",
+          "description": "The eligible insurance Product at the time of the fill.\n"
+        },
+        {
+          "name": "planFundingSource",
+          "description": "The insurance Funding Source at the time of the fill.\n"
+        },
+        {
+          "name": "claimAtRisk",
+          "description": "A 0/1 indicator that the event should be considered in financial reporting on the risk-based contract. When both the claimant and the service are \"at-risk\" this is 1.\n"
+        },
+        {
+          "name": "claimMemberAtRisk",
+          "description": "A 0/1 indicator that the claimant is in a risk contract during the event.\n"
+        },
+        {
+          "name": "claimServiceAtRisk",
+          "description": "Same definition as claimAtRisk.\n"
+        },
+        {
+          "name": "patientMemberMonth",
+          "description": "A 0/1 indicator (or decimal for partial months) of coverage  of  a  member during  the month  of  the pharmacy fill.\n"
+        },
+        {
+          "name": "prescriberNPI",
+          "description": "Prescribing provider NPI. From NPPES database.\n"
+        },
+        {
+          "name": "prescribedByPCP",
+          "description": "Indicates whether medication was prescribed by PCP.\n"
+        },
+        {
+          "name": "prescriberName",
+          "description": "Prescribing provider name. From NPPES database.\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2345"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "prescriberSpecialty",
+          "description": "The  \"Classification\" of the taxonomy code - the middle level in the Grouping>Classification>Specialization hierarchy.\n"
+        },
+        {
+          "name": "prescriberGrouper1",
+          "description": "Up to 6 \"groupers\" associated with the prescribing provider, if available in the provider hierarchy.\n"
+        },
+        {
+          "name": "prescriberGrouper2",
+          "description": "Up to 6 \"groupers\" associated with the prescribing provider, if available in the provider hierarchy.\n"
+        },
+        {
+          "name": "prescriberGrouper3",
+          "description": "Up to 6 \"groupers\" associated with the prescribing provider, if available in the provider hierarchy.\n"
+        },
+        {
+          "name": "prescriberGrouper4",
+          "description": "Up to 6 \"groupers\" associated with the prescribing provider, if available in the provider hierarchy.\n"
+        },
+        {
+          "name": "prescriberGrouper5",
+          "description": "Up to 6 \"groupers\" associated with the prescribing provider, if available in the provider hierarchy.\n"
+        },
+        {
+          "name": "prescriberGrouper6",
+          "description": "Up to 6 \"groupers\" associated with the prescribing provider, if available in the provider hierarchy.\n"
+        },
+        {
+          "name": "prescriberSubspecialty",
+          "description": "The \"Specialization\" of the taxonomy code - the bottom  level in the Grouping>Classification>Specialization hierarchy.\n"
+        },
+        {
+          "name": "prescriberOrgName",
+          "description": "The Org Name from NPPES, of the prescribing provider, if applicable.\n"
+        },
+        {
+          "name": "prescriberAddress1",
+          "description": "The primary practice location, from NPPES, of the prescribing provider.\n"
+        },
+        {
+          "name": "prescribereAddress2",
+          "description": "The primary practice location, from NPPES, of the prescribing provider, if applicable.\n"
+        },
+        {
+          "name": "prescriberCity",
+          "description": "The primary practice location, from NPPES, of the prescribing provider.\n"
+        },
+        {
+          "name": "prescriberState",
+          "description": "The primary practice location, from NPPES, of the prescribing provider.\n"
+        },
+        {
+          "name": "prescriberZip",
+          "description": "The primary practice location, from NPPES, of the prescribing provider.\n"
+        },
+        {
+          "name": "prescriberPhone",
+          "description": "The primary practice phone, from NPPES, of the prescribing provider.\n"
+        },
+        {
+          "name": "prescriberInNetwork",
+          "description": "Flag to indicate if prescribing provider is in network.\n"
+        },
+        {
+          "name": "pharmacyNPI",
+          "description": "NPI of prescribing pharmacy. From NPPES database.\n"
+        },
+        {
+          "name": "pharmacyName",
+          "description": "Name of prescribing pharmacy. From NPPES database.\n"
+        },
+        {
+          "name": "pharmacyAddress1",
+          "description": "First  address line of prescribing pharmacy. From NPPES database.\n"
+        },
+        {
+          "name": "pharmacyAddress2",
+          "description": "Second address line of prescribing pharmacy. From NPPES database.\n"
+        },
+        {
+          "name": "pharmacyCity",
+          "description": "City of prescribing pharmacy. From NPPES database.\n"
+        },
+        {
+          "name": "pharmacyState",
+          "description": "State abbreviation of prescribing pharmacy. From NPPES database.\n"
+        },
+        {
+          "name": "pharmacyZip",
+          "description": "Pharmacy  ZIP  code,  sourced  from  NPPES  by matching provider NPI.\n"
+        },
+        {
+          "name": "pharmacyPhone",
+          "description": "Phone number of prescribing pharmacy. From NPPES database.\n"
+        },
+        {
+          "name": "rptGrouper",
+          "description": "The highest-level report grouper. Defaulted  to \"Pharmacy\"\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2063"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "rptGrouper2",
+          "description": "The highest-level report grouper. Defaulted  to \"Pharmacy\"\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2063"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "rptGrouper3",
+          "description": "The highest-level report grouper. Defaulted  to \"Pharmacy\"\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2063"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "lastRun",
+          "description": "Date/hour/minute of last execution when the table was calculated.\n"
+        },
+        {
+          "name": "sensitiveInd",
+          "description": "A 0/1 indicator that the event is a sensitive claim.\n"
+        },
+        {
+          "name": "fyStartDate",
+          "description": "The start date of the financial year the event occurs in.\n"
+        },
+        {
+          "name": "fyEndDate",
+          "description": "The end date of the financial year the event occurs in.\n"
+        },
+        {
+          "name": "fyIndex",
+          "description": "The index of the financial year the event occurs in. A '0' indicates the event is contained in the current financial year.\n"
+        },
+        {
+          "name": "processInd"
+        },
+        {
+          "name": "insert_timestamp"
+        },
+        {
+          "name": "update_timestamp"
+        },
+        {
+          "name": "formulary",
+          "description": "The maximum formulary tier on the pharmacy claim.\n"
+        },
+        {
+          "name": "amtBilled",
+          "description": "Total amount billed for the prescription claim. A negative value in this column indicates that this row represents a reversal or negative adjustment. Prescription claims do not always contain billed amount values\n"
+        },
+        {
+          "name": "amtNotCovered",
+          "description": "Amount not covered by insurance.\n"
+        },
+        {
+          "name": "amtDeductible",
+          "description": "Amount of this prescription claim that was applied to the member's deductible amount. The overall deductible is a specific dollar amount that the member pays out-of-pocket each year before the health insurance plan begins to make payments for claims. When a claim is submitted, if the member has not yet satisfied the deductible that year, then the claim will be paid (in part) from the member's deductible, and that amount will be reflected in this column. Note that some plan data sources do not break down deductible/ copay/ coinsurance amounts and may only specify total member payment. A negative value in this column indicates that this row represents a reversal or negative adjustment.\n"
+        },
+        {
+          "name": "amtCoinsurance",
+          "description": "Coinsurance amount for this prescription claim. Coinsurance is the member's share of the costs of a covered medication, calculated as a percentage (for example, 20%) of the allowed amount. Note that some plan data sources do not break down deductible/ copay/ coinsurance amounts and may only specify total member payment. A negative value in this column indicates that this row represents a reversal or negative adjustment\n"
+        },
+        {
+          "name": "amtBillingCopay",
+          "description": "Derived copay amount used in billing and invoicing process. A negative value in this column indicates that this row represents a reversal or negative adjustment\n"
+        },
+        {
+          "name": "amtPassedCopay",
+          "description": "Actual amount the member paid at the pharmacy, which may include an ancillary charge and/or deductible amount. A negative value in this column indicates that this row represents a reversal or negative adjustment\n"
+        },
+        {
+          "name": "amtAncillary",
+          "description": "Ancillary amount, a charge in addition to the copay and/or deductible which the member is required to pay for the prescription, e.g. due to a Maximum Allowable Cost (MAC) limit. A negative value in this column indicates that this row represents a reversalor negative adjustment.\n"
+        },
+        {
+          "name": "amtPbmProcessingFee",
+          "description": "Administrative fee amount for the claim. A negative value in this column indicates that this row represents a reversal or negative adjustment.\n"
+        },
+        {
+          "name": "amtTax",
+          "description": "Sales tax for the prescription based on state/local laws where the pharmacy is located. A negative value in this column indicates that this row represents a reversal or negative adjustment.\n"
+        },
+        {
+          "name": "amtUc",
+          "description": "Usual and Customary amount for the drug, the amount paid for a medical service in a geographic area based on what providers in the area usually charge for the same or similar medical service. Usual and customary (U&C) prices reflect the costs of the drugs to the consumer at the retail level without the use of insurance. The U&C rate is often referred to as the 'cash price' for patients, and sometimes is used to determine the allowed amount.\n"
+        },
+        {
+          "name": "amtMac",
+          "description": "Maximum Allowable Cost amount of the drug. MAC prices are the upper limits that a pharmacy benefit manager (PBM) or prescription drug benefit plan will pay a pharmacy for generic drugs and brand name drugs that have generic versions available.\n"
+        },
+        {
+          "name": "amtIngrCost",
+          "description": "Ingredient cost amount. State Medicaid programs reimburse pharmacies for prescription drugs based on the ingredient costs for the drug and a dispensing fee for filling the prescription. A negative value in this column indicates that this row represents a reversal or negative adjustment.\n"
+        },
+        {
+          "name": "amtDispensingFee",
+          "description": "Dispensing fee amount. This is a fee charged by the pharmacy to fill a prescription. Dispensing fees vary by pharmacy, geographic location, and type of medication, where the fee may be higher for compound or more complex medications. A negative value in this column indicates that this row represents a reversal or negative adjustment.\n"
+        },
+        {
+          "name": "amtAwp",
+          "description": "Average wholesale price amount. AWP is a benchmark for pricing and reimbursement of prescription drugs, published by commercial publishers of drug pricing data. It was initially intended to represent the average price that wholesalers used to sell medications to providers, such as physicians, pharmacies, and other customers. Reimbursement amounts are often based on AWP minus some percentage\n"
+        },
+        {
+          "name": "amtLicsSubsidy",
+          "description": "Medicare prescription drug benefit subsidy for low-income individuals. A negative value in this column indicates that this row represents a reversal or negative adjustment.\n"
+        },
+        {
+          "name": "amtRetroLicsSubsidy",
+          "description": "Retroactive Medicare prescription drug benefit subsidy for low-income individuals. A negative value in this column indicates that this row represents a reversal or negative adjustment\n"
+        },
+        {
+          "name": "drugBaseName",
+          "description": "The active ingredient of the drug.\n"
+        },
+        {
+          "name": "drugProductName",
+          "description": "The product name of the drug.\n"
+        },
+        {
+          "name": "gpi",
+          "description": "The Generic Product Identifier of the drug. \n"
+        },
+        {
+          "name": "formulary",
+          "description": "The maximum formulary tier on the pharmacy claim. \n"
+        },
+        {
+          "name": "daysBetweenFills",
+          "description": "Days between the current and the last filled claim for a drug within the same theraGroup4 (the lowest level therapeutic group) When there has not been a refill, this field shows the days between the fill and the most recent fill date at the source level. This column is null when it is a person's initial prescription within a theraGroup4 in the pharmacy events table. This column is only populated with an active Medispan license.\n"
+        },
+        {
+          "name": "maxPaid",
+          "description": "Max paid date for the source in pharmacy claims.\n"
+        },
+        {
+          "name": "age",
+          "description": "The person's age (as of last data load).\n"
+        }
+      ]
+    }
+  ]
+};

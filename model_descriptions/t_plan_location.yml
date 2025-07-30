@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: plan_location
+    description: > 
+     This table contains a master list of all clinics or provider offices that may be reflected in the plan data, such as the locations in which claimed services are provided or to which members are assigned for the purposes of managed care. A location may be something as general as 'Valley View Hospital' or as specific as 'Bay Medical Center Pediatrics', depending on how the plan data source stores this information. 
+     Note that the set of locations referred to in the clinical tables, are sourced separately.
+    columns:
+      - name: id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-770' ]
+          - unique:
+              meta:
+                requirement: [ 'FDR-1745' ]
+      - name: source_id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-770' ]
+          - relationships:
+              to: ref('v_plan_source')
+              field: source_id
+              meta:
+                requirement: [ 'FDR-770' ]
+      - name: location_id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-770' ]
+      - name: location_desc
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-770' ]

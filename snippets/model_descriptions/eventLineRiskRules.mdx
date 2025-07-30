@@ -1,0 +1,108 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "eventLineRiskRules",
+      "description": "This table surfaces details for the line level 'At Risk Flag.' Rules can be added to reflect a given contract's rules for line level claim risk flagging.\n",
+      "config": {
+        "tags": [
+          "lookup"
+        ]
+      },
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "FDR-1521",
+                "FDR-1785"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "cpt",
+          "description": "The CPT code associated with the immunization.\n"
+        },
+        {
+          "name": "revenueCode",
+          "description": "The Revenue code from the episode trigger event.\n"
+        },
+        {
+          "name": "placeOfService",
+          "description": "The POS code from the episode trigger event.\n"
+        },
+        {
+          "name": "drg",
+          "description": "The DRG code from the episode trigger event.\n"
+        },
+        {
+          "name": "icd",
+          "description": "The ICD code from the episode trigger event.\n"
+        },
+        {
+          "name": "providerSpecialty",
+          "description": "The immunization provider's specialty.\n"
+        },
+        {
+          "name": "cptModifier",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ndc",
+          "description": "NDC code for medication\n"
+        },
+        {
+          "name": "theraGroup1",
+          "description": "Highest-level therapeutic group used to classify drugs based on NDC code. This column is only populated with an active Medispan license.\n"
+        },
+        {
+          "name": "theraGroup2",
+          "description": "Second-level therapeutic group used to classify drugs based on NDC code. This column is only populated with an active Medispan license.\n"
+        },
+        {
+          "name": "theraGroup3",
+          "description": "Third-level therapeutic group used to classify drugs based on NDC code. This column is only populated with an active Medispan license.\n"
+        },
+        {
+          "name": "theraGroup4",
+          "description": "Lowest level therapeutic group used to classify drugs based on NDC code. This column is only populated with an active Medispan license.\n"
+        },
+        {
+          "name": "origSourceId",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "origProductId",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "startDate",
+          "description": "The first date/hour/minute of the given month.\n"
+        },
+        {
+          "name": "endDate",
+          "description": "The last date/hour/minute of the given month.\n"
+        },
+        {
+          "name": "customRule1",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "customRule2",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "customRule3",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "notes",
+          "description": "Any additional metadata or content specific to the score.\n"
+        }
+      ]
+    }
+  ]
+};

@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: rpt_SourceDisplay
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'ETL-1054' ]

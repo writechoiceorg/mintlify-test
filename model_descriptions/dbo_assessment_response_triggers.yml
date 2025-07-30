@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: dbo_assessment_response_triggers
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'ETL-1698' ]

@@ -1,0 +1,112 @@
+version: 2
+
+models:
+  - name: personRiskEvent
+    config:
+      tags: [ 'care_quality_and_program_data' ]
+      frequencyDomain: 'RISK SCORE DELTAS'
+    description: >
+      This table presents risk value deltas before and after the date of a potentially risk-impacting event. It contains one
+      record per person/algorithm/risk event date. It reports Claims-based Closed, Closed, and Open risk before and after
+      the date, indicating how that date changed risk values. Risk event dates that do not change risk values are also
+      included in this table.
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: ['FDR-1514']
+    columns:
+      - name: personId
+        description: >
+          Arcadia's universal identifier for the patient/member record.
+          This identifier is subject to change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-735' ]
+          - relationships:
+              to: ref('v_patient')
+              field: person_id
+              meta:
+                requirement: [ 'FDR-735' ]
+      - name: riskAlgorithm
+        description: >
+          The risk algorithm applied.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-735' ]
+          - accepted_values:
+              values: ['HCC']
+              meta:
+                requirement: [ 'FDR-735' ]
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2058' ]
+      - name: eventDate
+        description: >
+          Event date of risk event.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-735' ]
+      - name: priorClaims
+        description: >
+          The sum of all risk associated with risk claims events that
+          occurred during the calendar year prior to the event date.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-735' ]
+      - name: priorClosed
+        description: >
+          The sum of all risk associated with demographic factors and
+          risk closure events from claims or clinical sources that occurred
+          during the calendar year prior to the event date.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-735' ]
+      - name: priorOpen
+        description: >
+          The sum of all risk associated with demographic factors and
+          risk closure events from claims or clinical sources that occurred
+          during the calendar year prior to the event date subtracted
+          from the sum of all risk associated with demographic factors,
+          risk closure events, and other risk suspecting sources for the
+          person during the calendar prior to the event date, including
+          historical risk
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-735' ]
+      - name: postClaims
+        description: >
+          The sum of all risk associated with risk claims events that
+          occurred during the calendar year prior to and including the
+          event date.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-735' ]
+      - name: postClosed
+        description: >
+          The sum of all risk associated with demographic factors and
+          risk closure events from claims or clinical sources that occurred
+          during the calendar year prior to and including the event date.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-735' ]
+      - name: postOpen
+        description: >
+          The sum of all risk associated with demographic factors and
+          risk closure events from claims or clinical sources that occurred
+          during the calendar year prior to and including the event date
+          subtracted from the sum of all risk associated with
+          demographic factors, risk closure events, and other risk
+          suspecting sources for the person during the calendar prior to
+          and including the event date, including historical risk
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-735' ]

@@ -1,0 +1,45 @@
+version: 2
+
+models:
+  - name: personPatientLists
+    config:
+      tags: ['patient_information']
+      frequencyDomain: 'WEB'
+    description: >
+      This table holds a many-to-many crosswalk of persons to configured patient lists. Include this table when filtering
+      reports on patient list cohorts
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: ['FDR-1514']
+
+    columns:
+      - name: listId
+        description: >
+          Arcadia internal ID for the patient list.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-718' ]
+      - name: listName
+        description: >
+          Name of the patient list as it appears in the application.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-718' ]
+      - name: personId
+        description: >
+          Arcadia's universal identifier for the patient/member record. This
+          identifier is subject to change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-718' ]
+      - name: personName
+        description: >
+          Patient's name.
+      - name: addedTimestamp
+        description: >
+          Date and time that patient was added to the list.
+      - name: createdBy

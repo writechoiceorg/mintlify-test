@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: medispan
+    description: >
+      Only available to customers who purchase the Medispan license, this table provides useful categorization data for medications, by NDC. When available, this is used in medication scorecard reports and the [pharmacyEvents] table. 
+    config:
+      tags: [ 'lookup' ]
+    columns:
+      - name: NDC
+      - name: DDI
+      - name: GPI
+      - name: DrugTherapeuticClass
+      - name: DrugGroup
+      - name: DrugClass
+      - name: DrugSubclass
+      - name: DrugBaseName
+      - name: DrugName
+      - name: DrugNameDosage
+      - name: DrugFullName
+      - name: DrugNameStrength
+      - name: DrugProductName
+      - name: BrandNameInd
+      - name: CreateTimestamp
+      - name: ModifyTimestamp

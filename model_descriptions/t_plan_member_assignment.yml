@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: plan_member_assignment
+    description: > 
+      This table contains information about member assignments by health plans to specific organizations and providers for the purposes of managed care, risk adjustment, and contract compliance. 
+      For example, one row in this table may represent the fact that 'From Jan-Dec 2015, the HMO has assigned Dr. Jones to be the Primary Care Provider for member Mary Lee.' Each entry includes a date range for the assignment, which may or may not coincide with an eligibility assignment in the v_plan_member_elig table. 
+      The data in this table drive Arcadia Analytics plan attribution functionality for determining member attribution.
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: ['FDR-1514']
+
+    columns:
+      - name: id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-766' ]
+          - unique:
+              meta:
+                requirement: [ 'FDR-1745' ]
+      - name: member_id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-766' ]

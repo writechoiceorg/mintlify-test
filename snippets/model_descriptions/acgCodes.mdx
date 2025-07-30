@@ -1,0 +1,50 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "acgCodes",
+      "config": {
+        "tags": [
+          "acg"
+        ]
+      },
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "FDR-1587"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "dxCode",
+          "description": "The billed diagnosis code value.\n"
+        },
+        {
+          "name": "dxCodeType",
+          "description": "The billed diagnosis code set.\n"
+        },
+        {
+          "name": "edcDescription",
+          "description": "A text description of the diagnosis code.\n"
+        },
+        {
+          "name": "medcDescription",
+          "description": "Text description of the MDC grouper.\n"
+        },
+        {
+          "name": "severity",
+          "description": "severity of the diagnosis code value (1-4)\n"
+        },
+        {
+          "name": "coefName",
+          "description": "The EDC Code associated with the diagnosis code. \n"
+        }
+      ]
+    }
+  ]
+};

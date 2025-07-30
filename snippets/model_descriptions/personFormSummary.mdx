@@ -1,0 +1,198 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "personFormSummary",
+      "description": "This table contains a summary of all profiles and forms with statistics, status, program details, and modified dates of persons present in the Arcadia Assess/Audit product.  There is a record for every opened form plus any not-yet-started forms of profiles with outstanding gaps Also included are provider and plan details as recorded in Assess.  \n",
+      "config": {
+        "frequencyDomain": "ASSESS"
+      },
+      "columns": [
+        {
+          "name": "programId",
+          "description": "GUID for the Assess program.\n"
+        },
+        {
+          "name": "programName",
+          "description": "Name of the program. \n"
+        },
+        {
+          "name": "programInstanceId",
+          "description": "GUID for the program instance, which usually indicates a single period within a program that spans multiple years.\n"
+        },
+        {
+          "name": "programInstanceName",
+          "description": "Name of the program instance. \n"
+        },
+        {
+          "name": "personId",
+          "description": "Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.  \n"
+        },
+        {
+          "name": "memberId",
+          "description": "Arcadia's internal member identifier. This identifier is subject to change over time.  \n"
+        },
+        {
+          "name": "memberNo",
+          "description": "The member number for the person.\n"
+        },
+        {
+          "name": "profileId",
+          "description": "GUID for the Assess profile - a combination of person, program, instance, period, provider, and insurance product.\n"
+        },
+        {
+          "name": "period",
+          "description": "The program period of the program and instance.\n"
+        },
+        {
+          "name": "providerNPI",
+          "description": "National Provider Identifier of the provider to which the profile is attributed.\n"
+        },
+        {
+          "name": "providerName",
+          "description": "Full name of the provider to which the profile is attributed.  \n"
+        },
+        {
+          "name": "providerClassification",
+          "description": "The classification of the provider, from the NPPES primary taxonomy code. \n"
+        },
+        {
+          "name": "providerSpecialty",
+          "description": "Specialty of the provider to which the profile is attributed.\n"
+        },
+        {
+          "name": "providerGrouper1-6",
+          "description": "Up to 6 'groupers' associated with the provider, if available in the provider hierarchy.\n"
+        },
+        {
+          "name": "planSource",
+          "description": "The Payer to which the profile is attributed. \n"
+        },
+        {
+          "name": "planProduct",
+          "description": "The Product to which the profile is attributed. \n"
+        },
+        {
+          "name": "planFundingSource",
+          "description": "The Funding Source to which the profile is attributed. \n"
+        },
+        {
+          "name": "profileInactiveInd",
+          "description": "A 0/1 indicator that the Assess profile is inactive. Inactive profiles will only appear if a form was attached to them.\n"
+        },
+        {
+          "name": "profileCreatedDate",
+          "description": "Date at which the profile was first generated from the Arcadia profile creation engine. \n"
+        },
+        {
+          "name": "profileModifiedDate",
+          "description": "Date at which the profile was last updated from the profile creation engine. \n"
+        },
+        {
+          "name": "formId",
+          "description": "GUID for the form created for the associated profile. One profile may have multiple forms. A NULL formId indicates a not-yet-started form with outstanding gaps.\n"
+        },
+        {
+          "name": "formCreatedDate",
+          "description": "Date at which the form was created in the Arcadia Assess application. \n"
+        },
+        {
+          "name": "formModifiedDate",
+          "description": "Date at which the form was last modified in the Arcadia Assess application. \n"
+        },
+        {
+          "name": "formStatus",
+          "description": "Latest workflow status of the form. May differ from the configured display status in the UI.\n"
+        },
+        {
+          "name": "formStatusDate",
+          "description": "Date at which the status of the form was last updated.\n"
+        },
+        {
+          "name": "formMeasuresTotal",
+          "description": "Number of measures present in the form.\n"
+        },
+        {
+          "name": "formMeasuresAddressed",
+          "description": "Number of form measures for which the user supplied evidence.\n"
+        },
+        {
+          "name": "formRisksTotal",
+          "description": "Number of risk gaps associated with a risk model present in the form. \n"
+        },
+        {
+          "name": "formsRisksConfirmed",
+          "description": "Number of form risk gaps confirmed by a user.  \n"
+        },
+        {
+          "name": "formRiskDenied",
+          "description": "Number of form risk gaps denied by a user.\n"
+        },
+        {
+          "name": "formRisksUnknown",
+          "description": "Number of form risk gaps with 'Unknown' status. \n"
+        },
+        {
+          "name": "formMiscFieldsAddressed",
+          "description": "Number of custom form fields with a user interaction in the form. Not captured in this version.\n"
+        },
+        {
+          "name": "formSubmitDate",
+          "description": "Date on which the form was last submitted. \n"
+        },
+        {
+          "name": "formSubmitterId",
+          "description": "Arcadia's internal numeric identifier for the user who most recently submitted the form. This can be used to join to any [web] or [cm] table with a userId like field. \n"
+        },
+        {
+          "name": "formSubmitterUID",
+          "description": "Assess UID for the user who most recently submitted the form. This can be used to join to the [web].[users] table [identityProviderUID] field.\n"
+        },
+        {
+          "name": "formSubmittedUsername",
+          "description": "Username of the most recent submitter of the form.\n"
+        },
+        {
+          "name": "formSubmitterFullName",
+          "description": "Full name of the most recent submitter of the form. \n"
+        },
+        {
+          "name": "formAuditStatus",
+          "description": "The most recent audit workflow status of the form. May differ from the configured display status in the UI.\n"
+        },
+        {
+          "name": "formAuditDate",
+          "description": "Date at which the form status was last updated by an auditor. \n"
+        },
+        {
+          "name": "formAuditorId",
+          "description": "Arcadia's internal numeric identifier for the user who most recently audited the form. This can be used to join to any [web] or [cm] table with a userId like field. \n"
+        },
+        {
+          "name": "formAuditorUID",
+          "description": "Assess UID for the user who most recently audited the form. This can be used to join to the [web].[users] table [identityProviderUID] field.\n"
+        },
+        {
+          "name": "formAuditorUsername",
+          "description": "Username of the most recent auditor of the form. \n"
+        },
+        {
+          "name": "formAuditorFullName",
+          "description": "Username of the most recent auditor of the form.\n"
+        },
+        {
+          "name": "formStatusLabel",
+          "description": "The configured display status of the form.\n"
+        },
+        {
+          "name": "formsAuditStatusLabel",
+          "description": "The configured display status of the form as visible in the auditor view.\n"
+        },
+        {
+          "name": "formCompleteDate",
+          "description": "formCompleteDate\n"
+        }
+      ]
+    }
+  ]
+};

@@ -1,0 +1,47 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "mem_eventLineDetails",
+      "data_tests": [
+        {
+          "model_column_capitalized_according_to_config": {
+            "identifier": "qdw_mem_eventLineDetails",
+            "meta": {
+              "requirement": [
+                "FDR-2058"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "personId",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-737"
+                  ]
+                }
+              }
+            },
+            {
+              "relationships": {
+                "to": "ref('v_patient')",
+                "field": "person_id",
+                "meta": {
+                  "requirement": [
+                    "FDR-737"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};

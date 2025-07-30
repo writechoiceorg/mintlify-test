@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: mpi_personUpdateAudit
+    data_tests:
+      - has_size:
+          size: 1
+          meta:
+            requirement: [ 'ETL-1106' ]

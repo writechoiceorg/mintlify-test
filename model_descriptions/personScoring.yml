@@ -1,0 +1,72 @@
+version: 2
+
+models:
+  - name: personScoring
+    config:
+      tags: [ 'care_quality_and_program_data' ]
+      statusDomain: 'Person IDs'
+      frequencyDomain: 'PERSON ID & REGISTRY'
+    description: >
+      This table is a placeholder for expanded risk models and patient metrics for stratification. It includes payer-supplied
+      risk scores as default and should be the endpoint for additional custom and supplied scoring model outputs that
+      supplement Foundry. Each numeric score is named, credited, and linked to a person in Arcadia. It can also include
+      descriptive metadata, and an incident date or date span.
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: ['FDR-1514']
+
+    columns:
+      - name: personId
+        description: >
+          Arcadia's universal identifier for the patient/member record.
+          This identifier is subject to change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-734' ]
+          - relationships:
+              to: ref('v_patient')
+              field: person_id
+              meta:
+                requirement: [ 'FDR-734' ]
+      - name: memberNo
+        description: >
+          The payer-supplied member identifier. In payer-supplied
+          scoring, this is the identifier tied to that payer.
+      - name: memberId
+        description: >
+          Arcadia internal member_id, which can be used to join to
+          [dbo].[v_plan_member] or [dbo].[personAttribution]. In payer-
+          supplied scoring, this is the identifier tied to that payer. This
+          identifier is subject to change over time.
+      - name: startDate
+        description: >
+          The start date of a period span for which the score value
+          applies.
+      - name: endDate
+        description: >
+          The end date of a period span for which the score value applies.
+      - name: scoreName
+        description: >
+          A concise, unique name for the scoring model.
+        data_tests:
+          - not_null
+      - name: scoreDescription
+        description: >
+          A longer description of the purpose and provenance of the
+          score. It should also clarify the analytic significance of context-specific
+          fields such as scoreSource and notes.
+      - name: scoreSource
+        description: >
+          The data source or model steward that supplied the score.
+      - name: scoreValue
+        description: >
+          The numeric score value for the person.
+      - name: scoreDate
+        description: >
+          The point-in-time stamp with which to associate the score
+          value, such as the update timestamp.
+      - name: notes
+        description: >
+          Any additional metadata or content specific to the score.

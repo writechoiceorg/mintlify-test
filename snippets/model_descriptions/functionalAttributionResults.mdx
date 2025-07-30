@@ -1,0 +1,108 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "functionalAttributionResults",
+      "config": {
+        "tags": [
+          "utilization_and_expense_data"
+        ],
+        "frequencyDomain": "QC"
+      },
+      "description": "This table surfaces person-grain results of the attribution process, including contributions from different data sources.\n",
+      "data_tests": [
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "FDR-1514"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "personld",
+          "description": "Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.\n"
+        },
+        {
+          "name": "name",
+          "description": "The patient's full name (Last, First).\n"
+        },
+        {
+          "name": "sex",
+          "description": "The person's sex.\n"
+        },
+        {
+          "name": "dob",
+          "description": "The person's date of birth.\n"
+        },
+        {
+          "name": "planPayer",
+          "description": "The Payer for which the person is eligible in the most recent attribution.\n"
+        },
+        {
+          "name": "planProduct",
+          "description": "The Product for which the person is eligible in the most recent attribution.\n"
+        },
+        {
+          "name": "planFundingSource",
+          "description": "The Funding Source for which the person is eligible in the most recent attribution.\n"
+        },
+        {
+          "name": "ehrPCPNPI",
+          "description": "The NPI of the person's EHR attributed PCP.\n"
+        },
+        {
+          "name": "ehrPCPName",
+          "description": "The full name of the person's HER attributed PC.\n"
+        },
+        {
+          "name": "ehrPCPStatus",
+          "description": "The status of the EHR PCP, including whether the PCP is in the hierarchy and practice.\n"
+        },
+        {
+          "name": "planPCPNPI",
+          "description": "The NPI of the person's plan attributed PCP.\n"
+        },
+        {
+          "name": "planPCPName",
+          "description": "The full name of the person's plan attributed PCP.\n"
+        },
+        {
+          "name": "planPCPStatus",
+          "description": "The status of the Plan PCP, including whether the PCP is in the hierarchy and practice.\n"
+        },
+        {
+          "name": "primaryCareEvents",
+          "description": "Describes the state of primary care events during the lookback period, including whether the events are excluded from the hierarchy.\n"
+        },
+        {
+          "name": "functionalPCPNPI",
+          "description": "The NPI of the person's functionally attributed PCP.\n"
+        },
+        {
+          "name": "functionalPCPName",
+          "description": "The full name of the person's functional attributed PCP.\n"
+        },
+        {
+          "name": "functionalAssignmentStep",
+          "description": "Numeric ranking of attribution assigned provider to the person.\n"
+        },
+        {
+          "name": "functionalAssignmentReason",
+          "description": "Brief description of why the PCP was functionally attributed to the person. Describes the numeric ranking in functionalAssignmentStep.\n"
+        },
+        {
+          "name": "attributionTimestamp",
+          "description": "Date which functional attribution was last calculated for the person.\n"
+        },
+        {
+          "name": "reportTimestamp",
+          "description": "Timestamp of creation of the row on the functional attribution report table.\n"
+        }
+      ]
+    }
+  ]
+};

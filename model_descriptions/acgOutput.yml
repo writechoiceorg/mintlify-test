@@ -1,0 +1,634 @@
+version: 2
+
+models:
+  - name: acgOutput
+    description: >
+      Only available to customers who purchase the John Hopkins ACG Risk Score, this table contains the all patient-level outputs of the ACG system for current and previous calendar year. Output is generated based on two datasets: 'Closed', representing only events (service dates) occurring in the observed calendar year (e.g. matching the year described above), and 'Total', representing current data as well as historical and other clinical data. This is primarily to provide comparative risk scores, identified vs inferred and imputed. 
+    config:
+      tags: ['care_quality_and_program_data']
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'FDR-1741' ]
+    columns:
+      - name: PersonID
+        description: >
+          Arcadia's universal identifier for the
+          patient/member record. This identifier is
+          subject to change over time.
+      - name: YearVal
+        description: >
+          The year treated as the current year against which risk
+          calculations are run. Events that occur prior to this year
+          contribute to open gaps and events that occur curing this
+          year contribute to gap closure.
+      - name: RiskType
+        description: >
+          The type of risk, either Closed or Total. 
+      - name: Age
+        description: >
+          Age of person. 
+      - name: Sex
+        description: >
+          Sex of Person
+      - name: LineOfBusiness
+        description: >
+          Not Applicable
+      - name: Company
+        description: >
+          Not Applicable
+      - name: Product
+        description: >
+          Not Applicable
+      - name: EmployerGroupID
+        description: >
+          Not Applicable
+      - name: EmployerGroupName
+        description: >
+          Not Applicable
+      - name: BenefitPlan
+        description: >
+          Not Applicable
+      - name: HealthSystem
+        description: >
+          Not Applicable
+      - name: PCPID
+        description: >
+          Not Applicable
+      - name: PCPName
+        description: >
+          Not Applicable
+      - name: PCPGroupID
+        description: >
+          Not Applicable
+      - name: PCPGroupName
+        description: >
+          Not Applicable
+      - name: Pregnant
+        description: >
+          Not Applicable
+      - name: Delivered
+        description: >
+          Not Applicable
+      - name: LowBirthWeight
+        description: >
+          Not Applicable
+      - name: PharmacyCost
+        description: >
+          Not Applicable
+      - name: TotalCost
+        description: >
+          Not Applicable
+      - name: UntruncatedTotalCost
+        description: >
+          Not Applicable
+      - name: InpatientHospitalizationCount
+        description: >
+          Not Applicable
+      - name: InpatientHospitalizationDays
+        description: >
+          Not Applicable
+      - name: EmergencyVisitCount
+        description: >
+          Not Applicable
+      - name: OutpatientVisitCount
+        description: >
+          Not Applicable
+      - name: DialysisService
+        description: >
+          Not Applicable
+      - name: NursingService
+        description: >
+          Not Applicable
+      - name: MajorProcedure
+        description: >
+          Not Applicable
+      - name: CancerTreatment
+        description: >
+          Not Applicable
+      - name: CareManagementProgram
+        description: >
+          Not Applicable
+      - name: DateOfBirth
+        description: >
+          Not Applicable
+      - name: PsychotherapyService
+        description: >
+          Not Applicable
+      - name: MechanicalVentilation
+        description: >
+          Not Applicable
+      - name: CalSSA
+        description: >
+          Not Applicable
+      - name: AllCauseInpatientHospitalizationCount
+        description: >
+          Not Applicable
+      - name: UnplannedInpatientHospitalizationCount
+        description: >
+          Not Applicable
+      - name: Readmission30DayCount
+        description: >
+          Not Applicable
+      - name: UnplannedReadmission30DayCount
+        description: >
+          Not Applicable
+      - name: AgeBand
+        description: >
+          Not Applicable
+      - name: PharmacyCostBand
+        description: >
+          Not Applicable
+      - name: TotalCostBand
+        description: >
+          Not Applicable
+      - name: ACGCode
+        description: >
+          Not Applicable
+      - name: ResourceUtilizationBand
+        description: >
+          Not Applicable
+      - name: UnscaledACGConcurrentRisk
+        description: >
+          Not Applicable
+      - name: RescaledACGConcurrentRisk
+        description: >
+          Not Applicable
+      - name: LocalACGConcurrentRisk
+        description: >
+          Not Applicable
+      - name: UnscaledConcurrentRisk
+        description: >
+          Not Applicable
+      - name: RescaledConcurrentRisk
+        description: >
+          Not Applicable
+      - name: LocalAgeGenderConcurrentRisk
+        description: >
+          Not Applicable
+      - name: UnscaledTotalCostPredictedRisk
+        description: >
+          Not Applicable
+      - name: RescaledTotalCostPredictedRisk
+        description: >
+          Not Applicable
+      - name: PredictedTotalCostRange
+        description: >
+          Not Applicable
+      - name: RankProbabilityHighTotalCost
+        description: >
+          Not Applicable
+      - name: ReferenceProbabilityHighTotalCost
+        description: >
+          Not Applicable
+      - name: UnscaledPharmacyCostPredictedRisk
+        description: >
+          Not Applicable
+      - name: RescaledPharmacyCostPredictedRisk
+        description: >
+          Not Applicable
+      - name: PredictedPharmacyCostRange
+        description: >
+          Not Applicable
+      - name: RankProbabilityHighPharmacyCost
+        description: >
+          Not Applicable
+      - name: ReferenceProbabilityHighPharmacyCost
+        description: >
+          Not Applicable
+      - name: HighRiskUnexpectedPharmacyCost
+        description: >
+          Not Applicable
+      - name: ProbabilityUnexpectedPharmacyCost
+        description: >
+          Not Applicable
+      - name: ProbabilityPersistentHighUser
+        description: >
+          Not Applicable
+      - name: MajorADGCount
+        description: >
+          Not Applicable
+      - name: HospitalDominantMorbidityTypes
+        description: >
+          Not Applicable
+      - name: PregnancyWithoutDelivery
+        description: >
+          Not Applicable
+      - name: ChronicConditionCount
+        description: >
+          Not Applicable
+      - name: DiagnosesUsedCount
+        description: >
+          Not Applicable
+      - name: FrailtyFlag
+        description: >
+          Not Applicable
+      - name: FrailtyConcepts
+        description: >
+          Not Applicable
+      - name: ADGCodes
+        description: >
+          Not Applicable
+      - name: ADGVector
+        description: >
+          Not Applicable
+      - name: EDCCodes
+        description: >
+          Not Applicable
+      - name: MEDCCodes
+        description: >
+          Not Applicable
+      - name: RXMGCodes
+        description: >
+          Not Applicable
+      - name: MedicalRXMGCodes
+        description: >
+          Not Applicable
+      - name: PharmacyRXMGCodes
+        description: >
+          Not Applicable
+      - name: MajorRXMGCodes
+        description: >
+          Not Applicable
+      - name: ActiveIngredientCount
+        description: >
+          Not Applicable
+      - name: ProbabilityIPHospitalization
+        description: >
+          Not Applicable
+      - name: ProbabilityIPHospitalization6Mos
+        description: >
+          Not Applicable
+      - name: ProbabilityICUHospitalization
+        description: >
+          Not Applicable
+      - name: ProbabilityInjuryHospitalization
+        description: >
+          Not Applicable
+      - name: ProbabilityExtendedHospitalization
+        description: >
+          Not Applicable
+      - name: ProbabilityUnplanned30DayReadmission
+        description: >
+          Not Applicable
+      - name: AgeRelatedMacularDegenerationCondition
+        description: >
+          Not Applicable
+      - name: BipolarDisorderCondition
+        description: >
+          Not Applicable
+      - name: BipolarDisorderRxGaps
+        description: >
+          Not Applicable
+      - name: BipolarDisorderMPR
+        description: >
+          Not Applicable
+      - name: BipolarDisorderCSA
+        description: >
+          Not Applicable
+      - name: BipolarDisorderUntreatedRx
+        description: >
+          Not Applicable
+      - name: CongestiveHeartFailureCondition
+        description: >
+          Not Applicable
+      - name: CongestiveHeartFailureRxGaps
+        description: >
+          Not Applicable
+      - name: CongestiveHeartFailureMPR
+        description: >
+          Not Applicable
+      - name: CongestiveHeartFailureCSA
+        description: >
+          Not Applicable
+      - name: CongestiveHeartFailureUntreatedRx
+        description: >
+          Not Applicable
+      - name: DepressionCondition
+        description: >
+          Not Applicable
+      - name: DepressionRxGaps
+        description: >
+          Not Applicable
+      - name: DepressionMPR
+        description: >
+          Not Applicable
+      - name: DepressionCSA
+        description: >
+          Not Applicable
+      - name: DepressionUntreatedRx
+        description: >
+          Not Applicable
+      - name: DiabetesCondition
+        description: >
+          Not Applicable
+      - name: DiabetesRxGaps
+        description: >
+          Not Applicable
+      - name: DiabetesMPR
+        description: >
+          Not Applicable
+      - name: DiabetesCSA
+        description: >
+          Not Applicable
+      - name: DiabetesUntreatedRx
+        description: >
+          Not Applicable
+      - name: GlaucomaCondition
+        description: >
+          Not Applicable
+      - name: GlaucomaRxGaps
+        description: >
+          Not Applicable
+      - name: GlaucomaMPR
+        description: >
+          Not Applicable
+      - name: GlaucomaCSA
+        description: >
+          Not Applicable
+      - name: GlaucomaUntreatedRx
+        description: >
+          Not Applicable
+      - name: HumanImmunodeficiencyVirusCondition
+        description: >
+          Not Applicable
+      - name: HumanImmunodeficiencyVirusRxGaps
+        description: >
+          Not Applicable
+      - name: HumanImmunodeficiencyVirusMPR
+        description: >
+          Not Applicable
+      - name: HumanImmunodeficiencyVirusCSA
+        description: >
+          Not Applicable
+      - name: HumanImmunodeficiencyVirusUntreatedRx
+        description: >
+          Not Applicable
+      - name: DisordersOfLipidMetabolismCondition
+        description: >
+          Not Applicable
+      - name: DisordersOfLipidMetabolismRxGaps
+        description: >
+          Not Applicable
+      - name: DisordersOfLipidMetabolismMPR
+        description: >
+          Not Applicable
+      - name: DisordersOfLipidMetabolismCSA
+        description: >
+          Not Applicable
+      - name: DisordersOfLipidMetabolismUntreatedRx
+        description: >
+          Not Applicable
+      - name: HypertensionCondition
+        description: >
+          Not Applicable
+      - name: HypertensionRxGaps
+        description: >
+          Not Applicable
+      - name: HypertensionMPR
+        description: >
+          Not Applicable
+      - name: HypertensionCSA
+        description: >
+          Not Applicable
+      - name: HypertensionUntreatedRx
+        description: >
+          Not Applicable
+      - name: HypothyroidismCondition
+        description: >
+          Not Applicable
+      - name: HypothyroidismRxGaps
+        description: >
+          Not Applicable
+      - name: HypothyroidismMPR
+        description: >
+          Not Applicable
+      - name: HypothyroidismCSA
+        description: >
+          Not Applicable
+      - name: HypothyroidismUntreatedRx
+        description: >
+          Not Applicable
+      - name: ImmunosuppressionTransplantCondition
+        description: >
+          Not Applicable
+      - name: ImmunosuppressionTransplantRxGaps
+        description: >
+          Not Applicable
+      - name: ImmunosuppressionTransplantMPR
+        description: >
+          Not Applicable
+      - name: ImmunosuppressionTransplantCSA
+        description: >
+          Not Applicable
+      - name: ImmunosuppressionTransplantUntreatedRx
+        description: >
+          Not Applicable
+      - name: IschemicHeartDiseaseCondition
+        description: >
+          Not Applicable
+      - name: IschemicHeartDiseaseRxGaps
+        description: >
+          Not Applicable
+      - name: IschemicHeartDiseaseMPR
+        description: >
+          Not Applicable
+      - name: IschemicHeartDiseaseCSA
+        description: >
+          Not Applicable
+      - name: IschemicHeartDiseaseUntreatedRx
+        description: >
+          Not Applicable
+      - name: OsteoporosisCondition
+        description: >
+          Not Applicable
+      - name: OsteoporosisRxGaps
+        description: >
+          Not Applicable
+      - name: OsteoporosisMPR
+        description: >
+          Not Applicable
+      - name: OsteoporosisCSA
+        description: >
+          Not Applicable
+      - name: OsteoporosisUntreatedRx
+        description: >
+          Not Applicable
+      - name: ParkinsonsDiseaseCondition
+        description: >
+          Not Applicable
+      - name: ParkinsonsDiseaseRxGaps
+        description: >
+          Not Applicable
+      - name: ParkinsonsDiseaseMPR
+        description: >
+          Not Applicable
+      - name: ParkinsonsDiseaseCSA
+        description: >
+          Not Applicable
+      - name: ParkinsonsDiseaseUntreatedRx
+        description: >
+          Not Applicable
+      - name: PersistentAsthmaCondition
+        description: >
+          Not Applicable
+      - name: PersistentAsthmaRxGaps
+        description: >
+          Not Applicable
+      - name: PersistentAsthmaMPR
+        description: >
+          Not Applicable
+      - name: PersistentAsthmaCSA
+        description: >
+          Not Applicable
+      - name: PersistentAsthmaUntreatedRx
+        description: >
+          Not Applicable
+      - name: RheumatoidArthritisCondition
+        description: >
+          Not Applicable
+      - name: RheumatoidArthritisRxGaps
+        description: >
+          Not Applicable
+      - name: RheumatoidArthritisMPR
+        description: >
+          Not Applicable
+      - name: RheumatoidArthritisCSA
+        description: >
+          Not Applicable
+      - name: RheumatoidArthritisUntreatedRx
+        description: >
+          Not Applicable
+      - name: SchizophreniaCondition
+        description: >
+          Not Applicable
+      - name: SchizophreniaRxGaps
+        description: >
+          Not Applicable
+      - name: SchizophreniaMPR
+        description: >
+          Not Applicable
+      - name: SchizophreniaCSA
+        description: >
+          Not Applicable
+      - name: SchizophreniaUntreatedRx
+        description: >
+          Not Applicable
+      - name: SeizureDisordersCondition
+        description: >
+          Not Applicable
+      - name: SeizureDisordersRxGaps
+        description: >
+          Not Applicable
+      - name: SeizureDisordersMPR
+        description: >
+          Not Applicable
+      - name: SeizureDisordersCSA
+        description: >
+          Not Applicable
+      - name: SeizureDisordersUntreatedRx
+        description: >
+          Not Applicable
+      - name: COPDCondition
+        description: >
+          Not Applicable
+      - name: ChronicRenalFailureCondition
+        description: >
+          Not Applicable
+      - name: LowBackPainCondition
+        description: >
+          Not Applicable
+      - name: TotalRxGaps
+        description: >
+          Not Applicable
+      - name: MajoritySourceOfCarePercent
+        description: >
+          Not Applicable
+      - name: MajoritySourceOfCareProviders
+        description: >
+          Not Applicable
+      - name: UniqueProviderCount
+        description: >
+          Not Applicable
+      - name: SpecialtyCount
+        description: >
+          Not Applicable
+      - name: GeneralistSeen
+        description: >
+          Not Applicable
+      - name: ManagementVisitCount
+        description: >
+          Not Applicable
+      - name: CoordinationRisk
+        description: >
+          Not Applicable
+      - name: CareDensityRatio
+        description: >
+          Not Applicable
+      - name: CareDensityQuantile
+        description: >
+          Not Applicable
+      - name: CareDensityBottomQuartileCutoff
+        description: >
+          Not Applicable
+      - name: CareDensityTopQuartileCutoff
+        description: >
+          Not Applicable
+      - name: CareDensityCostSavingRatio
+        description: >
+          Not Applicable
+      - name: CareDensityCostSavingRange
+        description: >
+          Not Applicable
+      - name: HHSMarket
+        description: >
+          Not Applicable
+      - name: HHSRatingArea
+        description: >
+          Not Applicable
+      - name: HHSRiskPool
+        description: >
+          Not Applicable
+      - name: HHSMetalLevel
+        description: >
+          Not Applicable
+      - name: HHSCSRIndicator
+        description: >
+          Not Applicable
+      - name: HHSModel
+        description: >
+          Not Applicable
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-1924' ]
+      - name: HHSExcludeFromRiskAdjustment
+        description: >
+          Not Applicable
+      - name: HHSCCCodes
+        description: >
+          Not Applicable
+      - name: HHSHCCCodes
+        description: >
+          Not Applicable
+      - name: HHSRiskScore
+        description: >
+          Not Applicable
+      - name: HHSCSRAdjustedRiskScore
+        description: >
+          Not Applicable
+      - name: HHSMemberMonths
+        description: >
+          Not Applicable
+      - name: HHSBillableMemberMonths
+        description: >
+          Not Applicable
+      - name: HHSTotalMemberMonths
+        description: >
+          Not Applicable
+      - name: HHSTotalBillableMemberMonths
+        description: >
+          Not Applicable
+      - name: WarningCodes
+        description: >
+          Not Applicable

@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: lookup_eventMapServiceCategory
+    description: > 
+      This table surfaces mappings between Service Categorizations and claim details. 
+    config:
+      tags: ['lookup']
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'FDR-1592' ]          
+    columns:          
+      - name: claimType
+        description: >
+          The Claim Type on the claim, when available          
+      - name: pos
+        description: >
+          The POS code on the claim. These are often mapped from the UB-04 Type of Bill code for facility claims
+      - name: revCode
+        description: >
+          For inpatient claims, the Revenue Code
+      - name: ccsMinor
+        description: >
+          The bottom-level categorization of the of the procedure code, based on the AHRQ CCS classification system
+      - name: ccsDxMinor
+        description: >
+          The bottom-level categorization of the of the primary diagnosis code, based on the AHRQ CCS classification system
+      - name: DRG
+        description: >
+          For inpatient claims, the DRG code
+      - name: CPT
+        description: >
+          The CPT code on the claim
+      - name: TaxonomyClassification
+        description: >
+          The Classification descriptor of the taxonomy code
+      - name: serviceCategory
+        description: >
+          The Service Category attached to the claim
+      - name: procedureClass
+        description: >
+          The Procedure Class attached to the claim

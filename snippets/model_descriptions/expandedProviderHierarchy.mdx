@@ -1,0 +1,371 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "expandedProviderHierarchy",
+      "description": "This view surfaces supplied expanded provider hierarchy, where available.\n",
+      "config": {
+        "tags": [
+          "lookup"
+        ]
+      },
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "FDR-1521",
+                "ETL-1171",
+                "ETL-1093"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "HierarchyID",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "NPI",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "PrimaryTIN",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "CCN",
+          "description": "Not Applicable\n",
+          "data_tests": [
+            {
+              "accepted_values": {
+                "values": [
+                  "TEST_DATA"
+                ],
+                "meta": {
+                  "requirement": [
+                    "ETL-1171"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "PrimaryClinicalSource",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "PrimaryClinicalDepartment",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "Startdate",
+          "description": "The first date/hour/minute of the given month.\n"
+        },
+        {
+          "name": "Enddate",
+          "description": "The last date/hour/minute of the given month.\n"
+        },
+        {
+          "name": "ApplyToSecHierarchy",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderCredentials",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderFirstName",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderMiddleName",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderLastName",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "OrganizationName",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderDisplayName",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderEmail",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderPrimaryPhone",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderSecondaryPhone",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderPrimaryTaxonomyCode",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderSecondaryTaxonomyCode",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "PCPInd",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "OpthoInd",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "MHInd",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "PrescriberInd",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "NephInd",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "DentalInd",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "NetworkTier1Ind",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "NetworkTier2Ind",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "NetworkTier3Ind",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "InNetworkInd",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "CFAInd",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "GrouperID1",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "GrouperType1",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "GrouperName1",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "GrouperID2",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "GrouperType2",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "GrouperName2",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "GrouperID3",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "GrouperType3",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "GrouperName3",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "GrouperID4",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "GrouperType4",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "GrouperName4",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "GrouperID5",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "GrouperType5",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "GrouperName5",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "GrouperID6",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "GrouperType6",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "GrouperName6",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderPrimaryPracticeName",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderPrimaryPracticePhone",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderPrimaryPracticeFax",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderPrimaryPracticeEmail",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderPrimaryPracticeLocationAddressLine",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderPrimaryPracticeLocationAddressLine2",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderPrimaryPracticeLocationCity",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderPrimaryPracticeLocationState",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderPrimaryPracticeLocationZipcode",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderSecondaryPracticeName",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderSecondaryPracticePhone",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderSecondaryPracticeFax",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderSecondaryPracticeEmail",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderSecondaryPracticeLocationAddressLine",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderSecondaryPracticeLocationAddressLine2",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderSecondaryPracticeLocationCity",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderSecondaryPracticeLocationState",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderSecondaryPracticeLocationZipcode",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderTertiaryPracticeName",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderTertiaryPracticePhone",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderTertiaryPracticeFax",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderTertiaryPracticeEmail",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderTertiaryPracticeLocationAddressLine",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderTertiaryPracticeLocationAddressLine2",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderTertiaryPracticeLocationCity",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderTertiaryPracticeLocationState",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProviderTertiaryPracticeLocationZipcode",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "OutreachEnabledInd",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "OutreachPracticeName",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "OutreachPracticePhone",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "LoadedFromFile",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "InsertTimestamp",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "UpdateTimestamp",
+          "description": "Not Applicable\n"
+        }
+      ]
+    }
+  ]
+};

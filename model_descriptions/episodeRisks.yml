@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: episodeRisks
+    config:
+      tags: [ 'utilization_and_expense_data' ]
+      statusDomain: 'Medical Claim'
+      frequencyDomain: 'MEDICAL ECONOMICS'
+    description: >
+     This table contains one record per risk factor identified for each episode, as well as the risk weight corresponding to that risk factor. 
+    columns:
+      - name: episodeId
+        description: >
+          The Arcadia internal ID for an episode instance. This identifier is subject to change over time.  
+      - name: episodeName
+        description: >
+          The episode label.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2062' ]
+      - name: riskName
+        description: >
+          Name of the specific clinical risk factor that is applicable to the episode.  
+      - name: riskWeight
+        description: >
+          The risk adjustment of  the clinical risk factor in the episode.

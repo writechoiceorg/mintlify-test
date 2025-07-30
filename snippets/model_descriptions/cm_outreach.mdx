@@ -1,0 +1,118 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "cm_outreach",
+      "description": "This table details outreach attempt data performed on a particular task,  including the application user, outreach attempt number, method, and outreach result.\n",
+      "config": {
+        "tags": [
+          "cm"
+        ],
+        "frequencyDomain": "CARE MANAGEMENT"
+      },
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "FDR-1470"
+              ]
+            }
+          }
+        },
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "ETL-1239"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "taskId",
+          "description": "Arcadia's internal identifier for the care management task. \n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1470"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "personId",
+          "description": "Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1470"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "userId",
+          "description": "Arcadia's internal identifier for the user who completed the assessment.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1470"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "userFullName",
+          "description": "User's full name (Last, First).\n"
+        },
+        {
+          "name": "userEmail",
+          "description": "User's email address.\n"
+        },
+        {
+          "name": "outreachAttemptNumber",
+          "description": "Number of outreach attempts.\n"
+        },
+        {
+          "name": "outreachResult",
+          "description": "Result of outreach attempt.\n"
+        },
+        {
+          "name": "taskOutreachMethod",
+          "description": "Records outreach method of task performed.\n"
+        },
+        {
+          "name": "taskType",
+          "description": "Format of the documented task.\n"
+        },
+        {
+          "name": "taskDescription",
+          "description": "Brief description of the task.\n"
+        },
+        {
+          "name": "assessmentTitle",
+          "description": "Title of associated assessment.\n"
+        },
+        {
+          "name": "loggedTimestamp",
+          "description": "Date and time outreach logged.\n"
+        }
+      ]
+    }
+  ]
+};

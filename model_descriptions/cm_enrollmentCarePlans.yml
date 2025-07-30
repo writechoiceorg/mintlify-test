@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: cm_enrollmentCarePlans
+    description: >
+     Care plans created in Arcadia Care Management are typically linked to a patient’s active program enrollment(s). This table holds a many-to-many crosswalk between a program enrollment ID (from [cm].[enrollments]) and the corresponding care plan goal IDs (from [cm].[carePlans]). Use this to aggregate care plan activity by care program. It is not required that every goal have an enrollment association, and some goals may have more than one enrollment association. 
+    config:
+      tags: ['cm']
+      frequencyDomain: 'CARE MANAGEMENT'
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'FDR-1462' ]
+    columns:
+      - name: enrollmentId
+        description: >
+          Arcadia’s internal identifier for the continuous program enrollment 
+          span,  which  can  be  used  to  link  to [cm].[enrollmentMonthlyDetail].
+      - name: program
+        description: >
+          Name of the care program attributed in the enrollment.
+      - name: carePlanGoalId
+        description: >
+          Numeric  identifier  for  the  instance of the care goal in the care plan.

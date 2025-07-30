@@ -1,0 +1,478 @@
+version: 2
+
+models:
+  - name: eventLineDetails
+    config:
+      tags: [ 'utilization_and_expense_data' ]
+      statusDomain: 'Medical Claim'
+      frequencyDomain: 'MEDICAL ECONOMICS'
+    description: >
+      This table holds one record per claim line, with various costs, codes and categorizations for aggregation and analysis.
+      Cost and utilization analysis should use this table as a foundation, jointly with [personAttribution].
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: ['FDR-1514']
+
+    columns:
+      - name: eventID
+        description: >
+          The Arcadia internal ID for the event. This identifier is
+          subject to change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-717' ]
+      - name: rollupEventID
+        description: >
+          The Arcadia internal ID of the IP or OP event after roll-up.
+          Join to [dbo].[inpatientEvents] or [dbo].[outpatientEvents]
+          for the rolled up event record. This identifier is subject to
+          change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-717' ]
+      - name: rollupEventTriggerInd
+        description: >
+          A 0/1 indicator for whether the detail event was the trigger
+          line for either inpatient or outpatient event rollup.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-717' ]
+      - name: claimHeaderId
+        description: >
+          The Arcadia internal Claim Header ID, which can be used to
+          link to [dbo].[v_plan_claim_header] or
+          [dbo].[v_plan_claim_line].
+      - name: claimLineId
+        description: >
+          The Arcadia internal Claim Line ID, which can be used to link
+          to [dbo].[v_plan_claim_line]. Every adjudicated claim line
+          should have exactly one record in this table.
+      - name: planPayer
+        description: >
+          The payer this data was provided from.
+      - name: personId
+        description: >
+          Arcadia's universal identifier for the patient/member record.
+          This identifier is subject to change over time.
+      - name: memberId
+        description: >
+          The Arcadia internal member ID, which can be used to link
+          to [dbo].[v_plan_member] or [dbo].[personAttribution].
+          This is a useful key, as those with dual eligibility may have
+          multiple memberIds active for a single Arcadia "personId"
+          This identifier is subject to change over time.
+      - name: memberNo
+        description: >
+          The payer-supplied member identifier.
+      - name: eventDate
+        description: >
+          The service date of the line-level event.
+      - name: paidDate
+        description: >
+          The paid date from the claim header.
+      - name: monthsRunout
+        description: >
+          Claims lag: months between the maximum paid date of
+          claims from this payer and the event date.
+      - name: cost
+        description: >
+          The contractual reconciliation amount for the claim. This
+          field surfaces the highest priority payer product configured
+          cost value for the claim, in order of stop loss cost, at risk
+          event cost, and then cost of care.
+      - name: costOfCare
+        description: >
+          The cost of care of the claim, typically the insurer's Paid
+          Amount though will vary by contract.
+      - name: costFacility
+        description: >
+          The portion of cost from facility charges.
+      - name: costProfessional
+        description: >
+          The portion of cost from professional charges.
+      - name: costOther
+        description: >
+          The portion of cost from other/ancillary charges.
+      - name: riskAdjustedCost
+        description: >
+          This field multiplies the "costOfCare" column by the inverse
+          of the patient's risk score, such that a patient with high risk
+          receives a lower Risk Adjusted Cost for the same service
+          than a patient with a low risk score. This is useful for
+          population-level aggregations, and should not be used at
+          the individual event-level.
+      - name: claimType
+        description: >
+          The Claim Type on the claim, when available.
+      - name: placeOfService
+        description: >
+          The POS code on the claim. These are often mapped from
+          the UB-04 Type of Bill code for facility claims.
+      - name: placeOfServiceDescription
+        description: >
+          The text description of the CMS POS code.
+      - name: revenueCode
+        description: >
+          For inpatient claims, the Revenue Code.
+      - name: revenueCodeDescription
+        description: >
+          A description of the Revenue Code.
+      - name: drg
+        description: >
+          For inpatient claims, the DRG code. Set to "999" when it
+          does not apply. If MS-DRG, only the DRG is displayed. If
+          APR-DRG an "A-" is prepended to the code.
+      - name: drgDescription
+        description: >
+          A description of the DRG.
+      - name: mdc
+        description: >
+          Higher-level MDC Code (from DRG)
+      - name: mdcDescription
+        description: >
+          A description of MDC code.
+      - name: cpt
+        description: >
+          The CPT code on the claim.
+      - name: cptDescription
+        description: >
+          A text description of the CPT code.
+      - name: ccsCptMinor
+        description: >
+          The bottom-level categorization of the of the procedure
+          code, based on the AHRQ CCS classification system.
+      - name: ccsCptMajor
+        description: >
+          The top-level categorization of the procedure code, based
+          on the AHRQ CCS classification system.
+      - name: cptModifer1
+        description: >
+          Up to four procedure modifers from the claim.
+      - name: cptModifer2
+        description: >
+          Up to four procedure modifers from the claim.
+      - name: cptModifer3
+        description: >
+          Up to four procedure modifers from the claim.
+      - name: cptModifer4
+        description: >
+          Up to four procedure modifers from the claim.
+      - name: icd
+        description: >
+          The primary diagnosis code on the event.
+      - name: icdCodeSet
+        description: >
+          The code set of the primary diagnosis code.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2063' ]
+      - name: icdDescription
+        description: >
+          A text description of the diagnosis code.
+      - name: ccsDxMinor
+        description: >
+          The bottom-level categorization of the of the primary
+          diagnosis code, based on the AHRQ CCS classification
+          system.
+      - name: ccsDxMajor
+        description: >
+          The top-level categorization of the primary diagnosis code,
+          based on the AHRQ CCS classification system.
+      - name: acgEdcMinor
+        description: >
+          The ACG Expanded Diagnosis Cluster (EDC) code that
+          categorize cases with similar diseases or conditions that are
+          treated in ambulatory and inpatient settings.
+      - name: acgEdcMajor
+        description: >
+          The ACG Major Expanded Diagnoses Cluster (MEDC) code
+          assigned to this patient. The EDC taxonomy is structured
+          into broad clinical categories called MEDCs.
+      - name: providerPersonID
+        description: >
+          The servicing provider's Arcadia universal ID.
+      - name: providerName
+        description: >
+          The servicing provider's full name.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2345' ]
+      - name: providerNPI
+        description: >
+          The servicing provider's NPI.
+      - name: providerSpecialty
+        description: >
+          The servicing provider's specialty.
+      - name: providerGrouper1
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g., "Practice",
+          "Pod", "Market").
+      - name: providerGrouper2
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g., "Practice",
+          "Pod", "Market").
+      - name: providerGrouper3
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g., "Practice",
+          "Pod", "Market").
+      - name: providerGrouper4
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g., "Practice",
+          "Pod", "Market").
+      - name: providerGrouper5
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g., "Practice",
+          "Pod", "Market").
+      - name: providerGrouper6
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g., "Practice",
+          "Pod", "Market").
+      - name: serviceCategory
+        description: >
+          The Service Category attached to the claim, as defined by
+          the [dbo].[eventMapServiceCategory] rules.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2063' ]
+      - name: procedureClass
+        description: >
+          The Procedure Class attached to the claim, as defined by the
+          [dbo].[eventMapProcedureClass] rules.
+      - name: inNetworkFacility
+        description: >
+          A 0/1 indicator that the Service Facility on the event was
+          considered "In Network" at the time of the event.
+      - name: inNetworkProvider
+        description: >
+          A 0/1 indicator that the Provider on the event was
+          considered "In Network" at the time of the event.
+      - name: serviceFacilityID
+        description: >
+          Arcadia internal location ID, used to join to
+          [dbo].[v_plan_location].
+      - name: serviceFacilityNPI
+        description: >
+          The NPI of the service facility, if available.
+      - name: serviceFacility
+        description: >
+          The facility that the claim event was billed from.
+      - name: serviceFacilityGrouper1
+        description: >
+          Up to 6 "grouper" attributes of the service facility (e.g.,
+          "Practice", "Pod", "Market").
+      - name: serviceFacilityGrouper2
+        description: >
+          Up to 6 "grouper" attributes of the service facility (e.g.,
+          "Practice", "Pod", "Market").
+      - name: serviceFacilityGrouper3
+        description: >
+          Up to 6 "grouper" attributes of the service facility (e.g.,
+          "Practice", "Pod", "Market").
+      - name: serviceFacilityGrouper4
+        description: >
+          Up to 6 "grouper" attributes of the service facility (e.g.,
+          "Practice", "Pod", "Market").
+      - name: serviceFacilityGrouper5
+        description: >
+          Up to 6 "grouper" attributes of the service facility (e.g.,
+          "Practice", "Pod", "Market").
+      - name: serviceFacilityGrouper6
+        description: >
+          Up to 6 "grouper" attributes of the service facility (e.g.,
+          "Practice", "Pod", "Market").
+      - name: admitDate
+        description: >
+          The admit date as it was present on the claim header.
+      - name: DischargeDate
+        description: >
+          The discharge date as it was presented on the claim header.
+      - name: pcpNPI
+        description: >
+          The PCP that the member was assigned to at the time of
+          this event. In financial reporting, the cost will be rolled up to
+          this PCP.
+      - name: pcpName
+        description: >
+          The name of the assigned PCP.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2345' ]
+      - name: pcpGrouper1
+        description: >
+          Up to 6 "grouper" attributes of the (e.g. "Practice",
+          "Pod", "Market").
+      - name: pcpGrouper2
+        description: >
+          Up to 6 "grouper" attributes of the (e.g. "Practice",
+          "Pod", "Market").
+      - name: pcpGrouper3
+        description: >
+          Up to 6 "grouper" attributes of the (e.g. "Practice",
+          "Pod", "Market").
+      - name: pcpGrouper4
+        description: >
+          Up to 6 "grouper" attributes of the (e.g. "Practice",
+          "Pod", "Market").
+      - name: pcpGrouper5
+        description: >
+          Up to 6 "grouper" attributes of the (e.g. "Practice",
+          "Pod", "Market").
+      - name: pcpGrouper6
+        description: >
+          Up to 6 "grouper" attributes of the (e.g. "Practice",
+          "Pod", "Market").
+      - name: planProduct
+        description: >
+          The insurance Product the patient was eligible for during
+          the visit.
+      - name: planFundingSource
+        description: >
+          The insurance Funding Source or business line associated to
+          that eligibility.
+      - name: claimAtRisk
+        description: >
+          A 0/1 indicator that the event should be considered in
+          financial reporting on the risk-based contract. When both
+          the claimant and the service are "at-risk" this is 1.
+      - name: claimMemberAtRisk
+        description: >
+          A 0/1 indicator that the claimant is in a risk contract during
+          the event.
+      - name: claimServiceAtRisk
+        description: >
+          Same definition as claimAtRisk.
+      - name: rptGrouper
+        description: >
+          A report grouper based on Arcadia's hierarchical grouping
+          process. (Deprecated)
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2063' ]
+      - name: rptGrouper2
+        description: >
+          A lower-level report grouper based on Arcadia's hierarchical
+          grouping process. This only applies to a subset of outpatient
+          utilization. (Deprecated)
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2063' ]
+      - name: providerTIN
+        description: >
+          The Federal Tax Identification Number of the provider, if
+          applicable.
+      - name: providerCCN
+        description: >
+          The CMS Certification Number of the facility, if applicable.
+      - name: controlNumber
+        description: >
+          The Claim Control Number from Part B. A unique number
+          assigned to a claim by the Medicare carrier. This number
+          allows CMS to associate each line item with its respective
+          claim.
+      - name: adjustmentCode
+        description: >
+          An indicator of whether the claim is an original, cancellation,
+          or adjustment claim in Part B. Codes include: 0 = Original
+          Claim, 1 = Cancellation Claim, 2 = Adjustment Claim
+      - name: effectiveDate
+        description: >
+          Date the Part B claim was processed and added to the NCH.
+          This is also referred to as the NCH Weekly Processing Date.
+      - name: typeOfServiceCode
+        description: >
+          Signifies the type of claim being submitted through the
+          Medicare or Medicaid programs.
+      - name: fedTypeServiceCode
+        description: >
+          Indicates the type of service (e.g., consultation, surgery)
+          provided to the beneficiary on Part B and DME claims. Types
+          of Service Code are defined in the Medicare Carrier Manual.
+          Find Types of Service Code at the ResDAC website.
+      - name: orderingProviderNPI
+        description: >
+          The NPI of the provider ordering the indicated service on the
+          claim line on Part B and DME claims.
+      - name: payToProviderNPI
+        description: >
+          The NPI of the provider billing for the service on the claim
+          line on Part B and DME claims.
+      - name: operatingProviderNPI
+        description: >
+          The NPI of the operating provider associated with the claim
+          on Part A claims.
+      - name: attendingProviderNPI
+        description: >
+          The NPI of the attending provider on Part A claims.
+      - name: otherProviderNPI
+        description: >
+          The NPI of the other provider on Part A claims.
+      - name: eventYear
+        description: >
+          The year of the line level service date.
+      - name: dischargeYear
+        description: >
+          The year of Arcadia's discharge date.
+      - name: IsEmergent
+        description: >
+          A 0/1 indicator that the Inpatient stay was emergent,
+          determined by surrounding ambulance and/or emergency
+          room events. (Deprecated)
+      - name: sensitiveInd
+        description: >
+          A 0/1 indicator that the event is a sensitive claim.
+      - name: fyStartDate
+        description: >
+          The start date of the financial year the event occurs in.
+      - name: fyEndDate
+        description: >
+          The end date of the financial year the event occurs in.
+      - name: fyIndex
+        description: >
+          The index of the financial year the event occurs in. A '0'
+          indicates the event is contained in the current financial year.
+      - name: inNetwork	
+        description: >
+          A 0/1 indicator that the event is in Network. 
+      - name: inTier1Provider 	
+        description: >
+          A 0/1 indicator that the provider is in a Tier 1 Preferred Network.
+      - name: inTier2Provider	
+        description: >
+          A 0/1 indicator that the provider is in a Tier 2 Preferred Network.
+      - name: inTier3Provider	
+        description: >
+          A 0/1 indicator that the provider is in a Tier 3 Preferred Network.
+      - name: inTier1Facility	
+        description: >
+          A 0/1 indicator that the facility is in a Tier 1 Preferred Network.
+      - name: inTier2Facility	
+        description: >
+          A 0/1 indicator that the facility is in a Tier 2 Preferred Network.
+      - name: inTier3Facility	
+        description: >
+          A 0/1 indicator that the facility is in a Tier 3 Preferred Network.
+      - name: billingProviderId	
+        description: >
+          The billing provider's Arcadia universal ID. 
+      - name: billingNPI	
+        description: >
+          NPI of billing provider. 
+      - name: billingTIN
+        description: >
+          The Federal Tax Identification Number of the billing provider, if applicable.
+      - name: maxPaid
+        description: >
+          Max paid date for the source in medical claims.
+      - name: age
+        description: >
+          The person's age (as of last data load).

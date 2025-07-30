@@ -1,0 +1,127 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "rptGroupers",
+      "config": {
+        "tags": [
+          "master_data"
+        ]
+      },
+      "columns": [
+        {
+          "name": "ipInd",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-730"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "dayInd",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-730"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "pxClassInd",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-730"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "ipAsOpInd",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-730"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "subAcuteInd",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-730"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "uiDisplay",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-730"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "facLeakInd",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-730"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "serviceCategory",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2063"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};

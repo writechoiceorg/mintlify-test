@@ -1,0 +1,130 @@
+version: 2
+
+models:
+  - name: personDemographics
+    config:
+      tags: ['patient_information']
+    description: >
+      This view holds important demographic data at the person-level. Join against the [personAttribution] and the
+      [eventLineDetails] tables to get population and costs statistics by age, sex, and more. Also useful for direct patientlevel
+      reporting.
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: ['FDR-1514']
+
+    columns:
+      - name: personId
+        description: >
+          Arcadia's universal identifier for the patient/member record. This
+          identifier is subject to change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-725' ]
+          - relationships:
+              to: ref('v_patient')
+              field: person_id
+              meta:
+                requirement: [ 'FDR-725' ]
+      - name: name
+        description: >
+          The patient's full name (Last, First).
+      - name: MRN
+        description: >
+          The patients MRN(s).
+      - name: memberNo
+        description: >
+          If a plan record exists, the payer-supplied member identifier for the
+          most recent eligibility record.
+      - name: activeInd
+        description: >
+          A Y/N indicator that the person is considered "Active" based on
+          indications in the EHR and the recency of past utilization.
+      - name: DOB
+        description: >
+          The person's date of birth.
+      - name: deathDate
+        description: >
+          If available and relevant, the person's death date.
+      - name: age
+        description: >
+          The person's age (as of last data load).
+      - name: sex
+        description: >
+          The person's sex.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2061' ]
+      - name: phone
+        description: >
+          The primary phone on the most recently updated patient record.
+      - name: email
+        description: >
+          If available, the most recently added email address for the patient.
+      - name: address1
+        description: >
+          If available, the most recently added street address for the patient.
+      - name: address2
+        description: >
+          If available, the most recently added second street address for the
+          patient.
+      - name: city
+        description: >
+          If available, the most recently added City for the patient.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2062' ]
+      - name: state
+        description: >
+          If available, the most recently added State for the patient.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2062' ]
+      - name: ZIP
+        description: >
+          If available, the most recently added Zip for the patient.
+      - name: GeoID
+        description: >
+          The geocoded US Census Tract for the patient's address.
+      - name: censusBlock
+        description: >
+          The geocoded US Census Block for the patient's address used to map
+          to certain ACS variables or other GIS data.
+      - name: censusTract
+        description: >
+          CensusTract is a small geographic area defined by the U.S. Census Bureau 
+          for analyzing population and housing data.
+      - name: latitude
+        description: >
+          The geocoded latitude of the patient's address.
+      - name: longitude
+        description: >
+          The geocoded longitude of the patient's address.
+      - name: race
+        description: >
+          The person race (if available, from the EHR and claims sources).
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2061' ]
+      - name: ethnicity
+        description: >
+          The person ethnicity (if available, from the EHR and claims sources).
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2061' ]
+      - name: Language
+        description: >
+          The person language (if available, from the EHR and claims sources).
+      - name: planActive
+        description: >
+          A 0/1 flag that indicates whether the person is currently active in any at-risk plan,
+          sourced from the personAttribution table.
+          - not_null:
+              meta:
+                requirement: [ 'FDR-2014' ]

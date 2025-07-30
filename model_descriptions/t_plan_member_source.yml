@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: t_plan_member_source
+    description: >
+      This is a convenience view for cross-walking member_ids to plan source_ids
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: ['FDR-1514']
+    columns:
+      - name: member_id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-752' ]
+      - name: orig_source_id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-752' ]
+      - name: source_id
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-752' ]

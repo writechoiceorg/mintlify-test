@@ -1,0 +1,170 @@
+version: 2
+
+models:
+  - name: unifiedVisits
+    description: A table containing one row per patient visit to
+      a PCP or specialist, from either a clinical or claims data
+      source. This allows customers to easily identify last visit
+      date and determine the number of visits between a patient
+      and provider. Clinical and claims data are combined when
+      possible, and claims data typically takes precedence over
+      clinical data when the sources differ.
+    config:
+      tags: [ 'utilization_and_expense_data' ]
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'FDR-2031' ]
+    columns:
+      - name: PersonID
+        description: >
+          Arcadia's universal identifier for the patient/member record.
+          This identifier is subject to change over time.
+      - name: memberId
+        description: >
+          Arcadia internal member identifier, which can be used to
+          join to raw plan views or [dbo].[personAttribution]. This
+          identifier is subject to change over time. This field is
+          null for records based only on clinical data.
+      - name: patientId
+        description: >
+          QDW patient ID for the patient whose encounter is recorded.
+          This field is null for records based only on claims data.
+      - name: eventDate
+        description: >
+          Date of the visit.
+      - name: clinicalEncTime
+        description: >
+          The earliest time of the encounter listed in the t_encounter
+          table. This field depends on timestamps in the enc_timestamp
+          field.
+      - name: providerNPI
+        description: >
+          NPI of provider.
+      - name: providerName
+        description: >
+          Most relevant provider name. This is sourced from the
+          outpatient events table, or if this data is null, the
+          clinical tables.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2345' ]
+      - name: providerSpecialty
+        description: >
+          Specialty of provider.
+      - name: providerGrouper1
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g.,
+          "Practice", "Pod", "Market").
+      - name: providerGrouper2
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g.,
+          "Practice", "Pod", "Market").
+      - name: providerGrouper3
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g.,
+          "Practice", "Pod", "Market").
+      - name: providerGrouper4
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g.,
+          "Practice", "Pod", "Market").
+      - name: providerGrouper5
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g.,
+          "Practice", "Pod", "Market").
+      - name: providerGrouper6
+        description: >
+          Up to 6 "grouper" attributes of the provider (e.g.,
+          "Practice", "Pod", "Market").
+      - name: cpt
+        description: >
+          The most relevant CPT code. This field is sourced from the outpatient events table,
+          or if this data is null, the clinical tables.
+      - name: cptDescription
+        description: >
+          Text description of the most relevant CPT code.
+      - name: ccsCptMinor
+        description: >
+          Low-level AHRQ CCS grouping of relevant CPT code.
+      - name: ccsCptMajor
+        description: >
+          High-level AHRQ CCS grouping of relevant CPT code.
+      - name: planPayer
+        description: >
+          Either the payer on the claim from the outpatient events table, or if there
+          is no claims data for this record, the plan payer to whom the member was
+          attributed at the time of the event.
+      - name: planProduct
+        description: >
+          The insurance Product the patient was eligible for
+          during the visit. This field is sourced from the outpatient events table,
+          or if this data is null, it is the plan product from the person attribution
+          table at the time of the event.
+      - name: planFundingSource
+        description: >
+          The insurance Funding Source or business line associated to that eligibility.
+          This field is sourced from the outpatient events table, or if this data is null,
+          it is the plan funding source from the person attribution table at the time of the event.
+      - name: claimServiceFacility
+        description: >
+          Most  relevant  service  facility.  See  Outpatient Event
+          Details for rules on how this is determined. This field is only
+          populated for records containing claims data.
+      - name: clinicalSiteName
+        description: >
+          Name of this source.  This is the column typically used on reports
+          to identify the entity being reported on.  This field is only
+          populated for records containing clinical data.
+      - name: clinicalLocationName
+        description: >
+          Name of the location.  This is the name that is displayed in the front end. 
+          More than one location row could share the same display name, but it's best
+          to ensure that location display names are unique. This field is only
+          populated for records containing clinical data.
+      - name: pcpNPI
+        description: >
+          The PCP that the member was assigned to at the time
+          of this event.
+      - name: pcpName
+        description: >
+          The name of the assigned PCP.
+      - name: pcpGrouper1
+        description: >
+          Up to 6 "grouper" attributes of the PCP (e.g., "Practice",
+          "Pod", "Market”).
+      - name: pcpGrouper2
+        description: >
+          Up to 6 "grouper" attributes of the PCP (e.g., "Practice",
+          "Pod", "Market”).
+      - name: pcpGrouper3
+        description: >
+          Up to 6 "grouper" attributes of the PCP (e.g., "Practice",
+          "Pod", "Market”).
+      - name: pcpGrouper4
+        description: >
+          Up to 6 "grouper" attributes of the PCP (e.g., "Practice",
+          "Pod", "Market”).
+      - name: pcpGrouper5
+        description: >
+          Up to 6 "grouper" attributes of the PCP (e.g., "Practice",
+          "Pod", "Market”).
+      - name: pcpGrouper6
+        description: >
+          Up to 6 "grouper" attributes of the PCP (e.g., "Practice",
+          "Pod", "Market”).
+      - name: clinicalInd
+        description: >
+          Indicates whether the record contains data from claims.
+      - name: claimInd
+        description: >
+          Indicates whether the record contains data from clinical tables.
+      - name: claimEventId
+        description: >
+          The Arcadia internal ID of the outpatient event, which
+          can be mapped to contributing line events in
+          [dbo].[eventLineDetails] with rollupEventId. This
+          identifier is subject to change over time.
+      - name: clinicalEncID
+        description: >
+          QDW encounter ID; primary key for the t_encounter table.  This is generated by Arcadia.

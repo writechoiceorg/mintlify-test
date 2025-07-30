@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: inNetworkProvider
+    description: > 
+      A list of supplied Provider and Facility NPIs, with dates indicating the span during which they are considered in the health system or payer network. Used for calculation of the "In Network" flag in utilization events.  
+    config:
+      tags: [ 'lookup' ]
+
+    columns:
+      - name: npi
+        description: >
+          The provider NPI.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1596' ]
+      - name: startDate
+        description: >
+          The first date for which the provider is considered in the health system network. If the provider has been in the network a sufficiently long time, a NULL value can be specified.
+      - name: endDate
+        description: >
+           The last date for which the provider is considered in the health system network. This can be NULL if the provider is still currently in the health system network.
+      - name: inNetwork
+        description: >
+          A 0/1 indicator that the provider is considered in the health system network.
+      - name: inTier1
+        description: >
+          A 0/1 indicator that the event is in a Tier 1 Preferred Network.
+      - name: inTier2
+        description: >
+          A 0/1 indicator that the event is in a Tier 2 Preferred Network.
+      - name: inTier3
+        description: >
+          A 0/1 indicator that the event is in a Tier 3 Preferred Network.

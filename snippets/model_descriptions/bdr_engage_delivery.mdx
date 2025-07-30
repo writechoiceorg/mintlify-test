@@ -1,0 +1,260 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "bdr_engage_delivery",
+      "config": {
+        "tags": [
+          "bdr"
+        ],
+        "frequencyDomain": "BINDERY"
+      },
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "FDR-2233"
+              ]
+            }
+          }
+        },
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "ETL-1630"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "personId",
+          "description": "Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.\n"
+        },
+        {
+          "name": "memberId",
+          "description": "Arcadia internal member identifier, which can be used to join to raw plan views or [dbo].[personAttribution]. This identifier is subject to change over time.\n"
+        },
+        {
+          "name": "pcpNPI",
+          "description": "The PCP that the member was assigned to on the message send date.\n"
+        },
+        {
+          "name": "pcpName",
+          "description": "The name of the assigned PCP.\n"
+        },
+        {
+          "name": "pcpGrouper1",
+          "description": "Up to 6 \"grouper\" attributes of the PCP (e.g., \"Practice\", \"Pod\", \"Market”).\n"
+        },
+        {
+          "name": "pcpGrouper2",
+          "description": "Up to 6 \"grouper\" attributes of the PCP (e.g., \"Practice\", \"Pod\", \"Market”).\n"
+        },
+        {
+          "name": "pcpGrouper3",
+          "description": "Up to 6 \"grouper\" attributes of the PCP (e.g., \"Practice\", \"Pod\", \"Market”).\n"
+        },
+        {
+          "name": "pcpGrouper4",
+          "description": "Up to 6 \"grouper\" attributes of the PCP (e.g., \"Practice\", \"Pod\", \"Market”).\n"
+        },
+        {
+          "name": "pcpGrouper5",
+          "description": "Up to 6 \"grouper\" attributes of the PCP (e.g., \"Practice\", \"Pod\", \"Market”).\n"
+        },
+        {
+          "name": "pcpGrouper6",
+          "description": "Up to 6 \"grouper\" attributes of the PCP (e.g., \"Practice\", \"Pod\", \"Market”).\n"
+        },
+        {
+          "name": "planPayer",
+          "description": "The Payer for which the person is eligible on the message send date.\n"
+        },
+        {
+          "name": "planProduct",
+          "description": "The Product for which the person is eligible on the message send date. This corresponds to the LOB in the connector spec.\n"
+        },
+        {
+          "name": "planFundingSource",
+          "description": "If applicable, the Funding Source for which the person is eligible on the message send date. This corresponds to the product in the connector spec.\n"
+        },
+        {
+          "name": "planContract",
+          "description": "The Payer for which the person is eligible on the message send date.\n"
+        },
+        {
+          "name": "atRiskFlag",
+          "description": "A 0/1 indicator that, in the given month, this member is considered \"At Risk\" for a payer contract. This column can be summed to generate aggregate numbers of at-risk patients, or used as a filter.\n"
+        },
+        {
+          "name": "patientName",
+          "description": "The patient's full name (Last, First).\n"
+        },
+        {
+          "name": "age",
+          "description": "The person's age\n"
+        },
+        {
+          "name": "DOB",
+          "description": "The person's date of birth.\n"
+        },
+        {
+          "name": "countryCode",
+          "description": "The country code of the patient's phone number.\n"
+        },
+        {
+          "name": "phoneNumber",
+          "description": "The phone number the message attempt was sent to.\n"
+        },
+        {
+          "name": "phoneType",
+          "description": "The phone type, such as landline or mobile.\n"
+        },
+        {
+          "name": "carrier",
+          "description": "The service carrier registered for the phone number.\n"
+        },
+        {
+          "name": "messageTemplateName",
+          "description": "The Arcadia standardized template name, used for outcome reporting.\n"
+        },
+        {
+          "name": "messageTemplate",
+          "description": "The message template with variables defined.\n"
+        },
+        {
+          "name": "message",
+          "description": "The completed message attempt that was sent to the number.\n"
+        },
+        {
+          "name": "messageParts",
+          "description": "The number of segments the message was sent in by the carrier.\n"
+        },
+        {
+          "name": "sendNumber",
+          "description": "The source phone number the message attempt was sent from.\n"
+        },
+        {
+          "name": "modality",
+          "description": "The message modality, i.e. SMS.\n"
+        },
+        {
+          "name": "sendDate",
+          "description": "The date the message attempt was sent.\n"
+        },
+        {
+          "name": "sendTime",
+          "description": "The time the message attempt was sent.\n"
+        },
+        {
+          "name": "deliveryStatus",
+          "description": "Status indicating whether the message attempt was successful.\n"
+        },
+        {
+          "name": "errorMessage",
+          "description": "The error message indicating why the message could not be delivered.\n"
+        },
+        {
+          "name": "messageTrackerId",
+          "description": "Unique ID for the message. \n"
+        },
+        {
+          "name": "valid",
+          "description": "Indicator as to whether the phone number is valid or not.\n"
+        },
+        {
+          "name": "timeZone",
+          "description": "Timezone the validated phone number is based in.\n"
+        },
+        {
+          "name": "destinationPhoneNumber",
+          "description": "Phone number the message is attempted to send to after validation.\n"
+        },
+        {
+          "name": "secondaryPhoneCountryCode",
+          "description": "Country code of the secondary phone number\n"
+        },
+        {
+          "name": "secondaryPhoneNumber",
+          "description": "Secondary phone number for the patient.\n"
+        },
+        {
+          "name": "secondaryPhoneType",
+          "description": "Phone type of the secondary phone number.\n"
+        },
+        {
+          "name": "secondaryPhoneCarrier",
+          "description": "Carrier of the secondary phone number.\n"
+        },
+        {
+          "name": "secondaryPhoneValid",
+          "description": "Indication as to whether the secondary phone number is valid.\n"
+        },
+        {
+          "name": "secondaryPhoneTimeZone",
+          "description": "Time zone of the secondary phone number.\n"
+        },
+        {
+          "name": "city",
+          "description": "If available, the most recently added City for the patient.\n"
+        },
+        {
+          "name": "state",
+          "description": "If available, the most recently added State for the patient.\n"
+        },
+        {
+          "name": "zip",
+          "description": "If available, the most recently added Zip for the patient.\n"
+        },
+        {
+          "name": "responsedate",
+          "description": "Date the response was received.\n"
+        },
+        {
+          "name": "response1",
+          "description": "Content of the first response message. \n"
+        },
+        {
+          "name": "response2",
+          "description": "Content of the second response message. \n"
+        },
+        {
+          "name": "response3",
+          "description": "Content of the third response message. \n"
+        },
+        {
+          "name": "response4",
+          "description": "Content of the fourth response message. \n"
+        },
+        {
+          "name": "response5",
+          "description": "Content of the fifth response message. \n"
+        },
+        {
+          "name": "response6",
+          "description": "Content of the sixth response message. \n"
+        },
+        {
+          "name": "response7",
+          "description": "Content of the seventh response message. \n"
+        },
+        {
+          "name": "response8",
+          "description": "Content of the eighth response message. \n"
+        },
+        {
+          "name": "response9",
+          "description": "Content of the ninth response message. \n"
+        },
+        {
+          "name": "response10",
+          "description": "Content of the tenth response message. \n"
+        }
+      ]
+    }
+  ]
+};

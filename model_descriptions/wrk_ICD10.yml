@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: wrk_ICD10
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'ETL-952' ]

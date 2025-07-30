@@ -1,0 +1,167 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "personImmunization",
+      "config": {
+        "tags": [
+          "patient_information"
+        ],
+        "statusDomain": "Imm Details",
+        "frequencyDomain": "CLINICAL"
+      },
+      "description": "This table surfaces details of all recorded immunizations. These completed immunizations are sourced from EHR and claims data. Details include the patient’s age in months and years at the time of immuni ation codes and X codes when available.\n",
+      "data_tests": [
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "FDR-1514"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "immunizationId",
+          "description": "Arcadia's identifier for the immunization record.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-720"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "personId",
+          "description": "Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-720"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "dob",
+          "description": "The person's date of birth.\n"
+        },
+        {
+          "name": "ageMonths",
+          "description": "The patient's age in months at the time of immunization.\n"
+        },
+        {
+          "name": "ageYears",
+          "description": "The patient's age in years at the time of immunization.\n"
+        },
+        {
+          "name": "immunizationType",
+          "description": "Name of the immunization normalized to Arcadia's clinical concept dictionary.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-720"
+                  ]
+                }
+              }
+            },
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2062"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "cpt",
+          "description": "The CPT code associated with the immunization.\n"
+        },
+        {
+          "name": "cptDescription",
+          "description": "A brief description of the CPT code associated with immunization, if available.\n"
+        },
+        {
+          "name": "cvx",
+          "description": "The CVX code associated with the immunization.\n"
+        },
+        {
+          "name": "cvxDescription",
+          "description": "A brief description of the CVX code associated with the immunization, if available.\n"
+        },
+        {
+          "name": "immunizationDate",
+          "description": "Date the immunization was administered.\n"
+        },
+        {
+          "name": "sourceSystem",
+          "description": "The source data system of the immunization. This is either the site of the EHR or the name of the claims source.\n"
+        },
+        {
+          "name": "sourceTable",
+          "description": "Name of the \"raw\" Arcadia table that contains the immunization.\n"
+        },
+        {
+          "name": "sourceRecordId",
+          "description": "Arcadia's internal record for the immunization on the source table.\n"
+        },
+        {
+          "name": "providerNPI",
+          "description": "The immunization provider's NPI.\n"
+        },
+        {
+          "name": "providerName",
+          "description": "The immunization provider's full name.\n"
+        },
+        {
+          "name": "providerSpecialty",
+          "description": "The immunization provider's specialty.\n"
+        },
+        {
+          "name": "providerGrouper1",
+          "description": "Up to \"grouper\" attributes of the immunization's accountable provider e.g. (\"Practice, \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "providerGrouper2",
+          "description": "Up to \"grouper\" attributes of the immunization's accountable provider e.g. (\"Practice, \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "providerGrouper3",
+          "description": "Up to \"grouper\" attributes of the immunization's accountable provider e.g. (\"Practice, \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "providerGrouper4",
+          "description": "Up to \"grouper\" attributes of the immunization's accountable provider e.g. (\"Practice, \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "providerGrouper5",
+          "description": "Up to \"grouper\" attributes of the immunization's accountable provider e.g. (\"Practice, \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "providerGrouper6",
+          "description": "Up to \"grouper\" attributes of the immunization's accountable provider e.g. (\"Practice, \"Pod\", \"Market\").\n"
+        },
+        {
+          "name": "locationName",
+          "description": "Name of location where immunization was administered.\n"
+        }
+      ]
+    }
+  ]
+};

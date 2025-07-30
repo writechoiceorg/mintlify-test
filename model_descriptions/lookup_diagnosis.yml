@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: diagnosis
+    config:
+      tags: [ 'lookup' ]
+    description: >
+      This view provides a central lookup for diagnosis codes. 
+    columns:
+      - name: codevalue
+        description: >
+          The billed diagnosis code value.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-721' ]
+      - name: codetype
+        description: >
+          The billed diagnosis code set
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-721' ]
+      - name: codedescription
+        description: >
+          Text description of the ICD code.
+      - name: ccsdxminor
+        description: >
+          The bottom-level categorization of the of the primary diagnosis code, based on the AHRQ CCS classification system.
+      - name: ccsdxmajor
+        description: >
+          The top-level categorization of the primary diagnosis code, based on the AHRQ CCS classification system.

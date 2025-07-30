@@ -1,0 +1,854 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "acgOutput",
+      "description": "Only available to customers who purchase the John Hopkins ACG Risk Score, this table contains the all patient-level outputs of the ACG system for current and previous calendar year. Output is generated based on two datasets: 'Closed', representing only events (service dates) occurring in the observed calendar year (e.g. matching the year described above), and 'Total', representing current data as well as historical and other clinical data. This is primarily to provide comparative risk scores, identified vs inferred and imputed. \n",
+      "config": {
+        "tags": [
+          "care_quality_and_program_data"
+        ]
+      },
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "FDR-1741"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "PersonID",
+          "description": "Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.\n"
+        },
+        {
+          "name": "YearVal",
+          "description": "The year treated as the current year against which risk calculations are run. Events that occur prior to this year contribute to open gaps and events that occur curing this year contribute to gap closure.\n"
+        },
+        {
+          "name": "RiskType",
+          "description": "The type of risk, either Closed or Total. \n"
+        },
+        {
+          "name": "Age",
+          "description": "Age of person. \n"
+        },
+        {
+          "name": "Sex",
+          "description": "Sex of Person\n"
+        },
+        {
+          "name": "LineOfBusiness",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "Company",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "Product",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "EmployerGroupID",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "EmployerGroupName",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "BenefitPlan",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HealthSystem",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "PCPID",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "PCPName",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "PCPGroupID",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "PCPGroupName",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "Pregnant",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "Delivered",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "LowBirthWeight",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "PharmacyCost",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "TotalCost",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "UntruncatedTotalCost",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "InpatientHospitalizationCount",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "InpatientHospitalizationDays",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "EmergencyVisitCount",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "OutpatientVisitCount",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "DialysisService",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "NursingService",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "MajorProcedure",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "CancerTreatment",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "CareManagementProgram",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "DateOfBirth",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "PsychotherapyService",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "MechanicalVentilation",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "CalSSA",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "AllCauseInpatientHospitalizationCount",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "UnplannedInpatientHospitalizationCount",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "Readmission30DayCount",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "UnplannedReadmission30DayCount",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "AgeBand",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "PharmacyCostBand",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "TotalCostBand",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ACGCode",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ResourceUtilizationBand",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "UnscaledACGConcurrentRisk",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "RescaledACGConcurrentRisk",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "LocalACGConcurrentRisk",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "UnscaledConcurrentRisk",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "RescaledConcurrentRisk",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "LocalAgeGenderConcurrentRisk",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "UnscaledTotalCostPredictedRisk",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "RescaledTotalCostPredictedRisk",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "PredictedTotalCostRange",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "RankProbabilityHighTotalCost",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ReferenceProbabilityHighTotalCost",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "UnscaledPharmacyCostPredictedRisk",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "RescaledPharmacyCostPredictedRisk",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "PredictedPharmacyCostRange",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "RankProbabilityHighPharmacyCost",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ReferenceProbabilityHighPharmacyCost",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HighRiskUnexpectedPharmacyCost",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProbabilityUnexpectedPharmacyCost",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProbabilityPersistentHighUser",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "MajorADGCount",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HospitalDominantMorbidityTypes",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "PregnancyWithoutDelivery",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ChronicConditionCount",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "DiagnosesUsedCount",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "FrailtyFlag",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "FrailtyConcepts",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ADGCodes",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ADGVector",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "EDCCodes",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "MEDCCodes",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "RXMGCodes",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "MedicalRXMGCodes",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "PharmacyRXMGCodes",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "MajorRXMGCodes",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ActiveIngredientCount",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProbabilityIPHospitalization",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProbabilityIPHospitalization6Mos",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProbabilityICUHospitalization",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProbabilityInjuryHospitalization",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProbabilityExtendedHospitalization",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ProbabilityUnplanned30DayReadmission",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "AgeRelatedMacularDegenerationCondition",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "BipolarDisorderCondition",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "BipolarDisorderRxGaps",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "BipolarDisorderMPR",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "BipolarDisorderCSA",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "BipolarDisorderUntreatedRx",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "CongestiveHeartFailureCondition",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "CongestiveHeartFailureRxGaps",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "CongestiveHeartFailureMPR",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "CongestiveHeartFailureCSA",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "CongestiveHeartFailureUntreatedRx",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "DepressionCondition",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "DepressionRxGaps",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "DepressionMPR",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "DepressionCSA",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "DepressionUntreatedRx",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "DiabetesCondition",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "DiabetesRxGaps",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "DiabetesMPR",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "DiabetesCSA",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "DiabetesUntreatedRx",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "GlaucomaCondition",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "GlaucomaRxGaps",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "GlaucomaMPR",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "GlaucomaCSA",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "GlaucomaUntreatedRx",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HumanImmunodeficiencyVirusCondition",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HumanImmunodeficiencyVirusRxGaps",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HumanImmunodeficiencyVirusMPR",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HumanImmunodeficiencyVirusCSA",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HumanImmunodeficiencyVirusUntreatedRx",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "DisordersOfLipidMetabolismCondition",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "DisordersOfLipidMetabolismRxGaps",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "DisordersOfLipidMetabolismMPR",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "DisordersOfLipidMetabolismCSA",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "DisordersOfLipidMetabolismUntreatedRx",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HypertensionCondition",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HypertensionRxGaps",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HypertensionMPR",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HypertensionCSA",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HypertensionUntreatedRx",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HypothyroidismCondition",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HypothyroidismRxGaps",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HypothyroidismMPR",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HypothyroidismCSA",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HypothyroidismUntreatedRx",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ImmunosuppressionTransplantCondition",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ImmunosuppressionTransplantRxGaps",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ImmunosuppressionTransplantMPR",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ImmunosuppressionTransplantCSA",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ImmunosuppressionTransplantUntreatedRx",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "IschemicHeartDiseaseCondition",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "IschemicHeartDiseaseRxGaps",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "IschemicHeartDiseaseMPR",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "IschemicHeartDiseaseCSA",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "IschemicHeartDiseaseUntreatedRx",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "OsteoporosisCondition",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "OsteoporosisRxGaps",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "OsteoporosisMPR",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "OsteoporosisCSA",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "OsteoporosisUntreatedRx",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ParkinsonsDiseaseCondition",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ParkinsonsDiseaseRxGaps",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ParkinsonsDiseaseMPR",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ParkinsonsDiseaseCSA",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ParkinsonsDiseaseUntreatedRx",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "PersistentAsthmaCondition",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "PersistentAsthmaRxGaps",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "PersistentAsthmaMPR",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "PersistentAsthmaCSA",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "PersistentAsthmaUntreatedRx",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "RheumatoidArthritisCondition",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "RheumatoidArthritisRxGaps",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "RheumatoidArthritisMPR",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "RheumatoidArthritisCSA",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "RheumatoidArthritisUntreatedRx",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "SchizophreniaCondition",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "SchizophreniaRxGaps",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "SchizophreniaMPR",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "SchizophreniaCSA",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "SchizophreniaUntreatedRx",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "SeizureDisordersCondition",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "SeizureDisordersRxGaps",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "SeizureDisordersMPR",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "SeizureDisordersCSA",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "SeizureDisordersUntreatedRx",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "COPDCondition",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ChronicRenalFailureCondition",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "LowBackPainCondition",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "TotalRxGaps",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "MajoritySourceOfCarePercent",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "MajoritySourceOfCareProviders",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "UniqueProviderCount",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "SpecialtyCount",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "GeneralistSeen",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "ManagementVisitCount",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "CoordinationRisk",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "CareDensityRatio",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "CareDensityQuantile",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "CareDensityBottomQuartileCutoff",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "CareDensityTopQuartileCutoff",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "CareDensityCostSavingRatio",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "CareDensityCostSavingRange",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HHSMarket",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HHSRatingArea",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HHSRiskPool",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HHSMetalLevel",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HHSCSRIndicator",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HHSModel",
+          "description": "Not Applicable\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1924"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "HHSExcludeFromRiskAdjustment",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HHSCCCodes",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HHSHCCCodes",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HHSRiskScore",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HHSCSRAdjustedRiskScore",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HHSMemberMonths",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HHSBillableMemberMonths",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HHSTotalMemberMonths",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "HHSTotalBillableMemberMonths",
+          "description": "Not Applicable\n"
+        },
+        {
+          "name": "WarningCodes",
+          "description": "Not Applicable\n"
+        }
+      ]
+    }
+  ]
+};

@@ -1,0 +1,133 @@
+version: 2
+
+models:
+  - name: v_medicationlist
+    config:
+      tags: ['care_quality_and_program_data']
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'FDR-1849' ]
+    description: > 
+        The medication list describes all current and historical medications the patient is intended to take or has reported taking. The entity can include a patient’s prescription history as well as self-reported medications the patient is taking. Elements on the medication list should have an indicator as to the patient’s status and whether they are continuing to remain under the treatment of the medication. All medications must be encoded with either an NDC or RxNorm code.
+    columns:
+      - name: person_id       
+        description: >
+          QDW person ID for the patient. 
+      - name: site_name     
+        description: >
+          Name of the clinical data source from which this record was obtained.
+      - name: originating_enc_id      
+        description: >
+          QDW encounter ID of the encounter during which the medication list was documented.    When this link is present, the recorded medication will be included in the pseudo claims extract for that encounter. 
+      - name: updated_enc_id      
+        description: >
+          QDW encounter ID for the encounter during which the patient's medication information was updated.   A null value indicates that the medication record was not updated since originally being populated; or else that the clinical source did not provide a link to such an encounter.    When this link is present, the updated medication will be included in the pseudo claims extract for that encounter. 
+      - name: original_id
+        description: >
+          ID of the medication list row in the Staging database, used to tie back to the source system.  This is created by the connector query or direct feed that loads the row from a given source, and is derived from source system column(s) to uniquely identify a row. For a given source, one original ID corresponds to one and only one QDW ID for this entity.  The same original ID value could be found on more than one row if the rows are derived from different sources.
+      - name: patient_id
+        description: >
+          QDW patient ID in integer format for the patient whose medication is recorded.
+      - name: ndc_code
+        description: >
+          National Drug Code (NDC code) for the documented medication.  Generally formatted as 11 numeric characters, which may contain leading zeroes.
+      - name: ndc_code_unscrubbed
+        description: >
+          National Drug Code (NDC code) for the documented medication, as specified in the clinical data source.  This value is scrubbed into the ndc_code column. 
+      - name: prescribed_elsewhere_ind
+        description: >
+          Indicates if the medication was prescribed at a clinical location other than the one where the medication list was documented.  Values are  '0' (the medication was prescribed at the clinical location specified in location_id) and '1' (the medication was prescribed at a different location).
+      - name: start_date
+        description: >
+          Date and time when the patient began taking the medication. Typically the time information is not specified.  This is the key date column for this entity, and is used to populate the StartDate in the rpt.Event table.
+      - name: stop_date
+        description: >
+          Date and time when the patient stopped taking the medication. Typically the time information is not specified.  A null value in this column indicates that the patient is believed to still be taking this medication; but it may also mean simply that the clinical source did not provide such a date.  This value is used to populate the EndDate in the rpt.Event table.   
+      - name: date_last_refilled
+        description: >
+          Date and time when the medication was last refilled.
+      - name: medication_dictionary
+        description: >
+          Name of the medication dictionary from which the medication name was drawn, e.g. 'NDC' or 'Medispan'.  Medications are available in so many formulations and so many dosages that EHRs use a dictionary so that when the provider says Acetiminaphen 311mg it can let the provider know that the only available dosage is 300mg or 500mg, or suggest generic alternatives. Medispan is a major dictionary vendor.
+      - name: CPOE_ind
+        description: >
+          Indicates if the medication was documented using CPOE, or Computerized Physician Order Entry, which is the process of capturing a physician's instructions for a patient's care electronically.  Values are '1' (documented using CPOE) and '0' (CPOE was not used to document the medication).   Used for MU measures only
+      - name: entry_timestamp
+        description: >
+          Date and time when the row was first inserted into the QDW.  When neither start_date nor modify_timestamp is populated, this value is used instead to populate the StartDate in the rpt.Event table.
+      - name: updated_timestamp
+        description: >
+          Date and time when the row was last updated in the QDW.
+      - name: create_timestamp
+        description: >
+          Date and time when the record was first inserted into the clinical data source.
+      - name: modify_timestamp
+        description: >
+          Date and time when the record was last updated in the clinical data source.  When start_date is not populate this is used to populate StartDate in the events table.
+      - name: created_by
+        description: >
+          User who first inserted the row into the source system, as specified by a user ID known to the source system.
+      - name: modified_by
+        description: >
+          User who most recently updated the row in the source system, as specified by a user ID known to the source system.
+      - name: delete_ind
+        description: >
+          Indicates if the record is marked as deleted, either because it was deleted in the clinical data source, or because the connector query changed in a way that makes the record no longer valid.  Values are 'Y' (deleted) and 'N' (not deleted).  If the value is 'Y' then the row should be excluded from all queries.
+      - name: orig_site_id
+        description: >
+          QDW site ID in integer format of the clinical data source from which this record was obtained.
+      - name: loaded_from_file
+        description: >
+          Name of the file from which this particular record was first loaded, usually a CSV file. When Arcadia pulls data from an EHR source via Informatica, we automatically embed the following pieces of information in this file name: date and time of the extract, client and source IDs, and connector query version.  When data partners instead send us direct feeds that are loaded directly into staging (i.e. bypassing prestaging), the file name is created by the data partner and therefore may not contain the same type of information.
+      - name: medication_name
+        description: >
+          Name of the medication, including dosage and format, e.g. 'Metformin 500 mg Tab'.  Generally corresponds to the description associated with the NDC code, although the description may not match exactly.
+      - name: medication_generic_name
+        description: >
+          Generic name of the medication, e.g. 'Lisinopril', 'Ibuprofen', or 'Metformin', not including dosage or format descriptors.
+      - name: order_ind
+        description: >
+          Indicates if the medication was ordered in the clinical location in which it is being documented.  Values are 1 (ordered here) and 0 (reported by the patient but not ordered here).  This is like the inverse of prescribed_elsewhere_ind; in other words if the patient is reporting taking this medication was it ordered here. This is especially useful for other-the-counter medications such as 'Take 81mg of aspirin daily' that was ordered here but not prescribed. 
+      - name: order_date
+        description: >
+          Date and time when the medication was ordered, if the medication was ordered at the clinical location in which it is being documented. 
+      - name: location_name
+        description: >
+          Name of the clinical location where the medication list was recorded.  This value is mapped based on the value in location_unscrubbed.  If the unscrubbed value cannot be mapped to a location ID, then this is populated with the ID of the default location for that site. This is the name that is displayed in the front end.
+      - name: location_unscrubbed
+        description: >
+          Name of the clinical location at which this medication information was documented, as specified in the clinical data source.  This value is scrubbed into the location_id column. 
+      - name: provider_NPI
+        description: >
+          National Provider Identifier (NPI) code of the provider who documented the medication.  This value is mapped based on the value in provider_id_unscrubbed.  NPI codes are maintained by CMS and may represent either an individual provider or a healthcare organization.  Valid NPI codes are 10 digits long with no leading zeroes.  NPI codes do not uniquely identify a given provider row.  The same NPI code may be present on multiple provider rows, for example when the clinical data source uses the NPI code for the organization on rows for providers working in that organization who do not have individual NPI codes.  A given provider could also be active at multiple clinical sites, in which case there would be a multiple provider_ids (one per site) for the same NPI code, since a QDW provider_id is used only on data from a single clinical data source.
+      - name: provider_name
+        description: >
+          Full name of the provider who documented the medication.  This value is mapped based on the value in provider_id_unscrubbed.  This value is derived by combining the values in proehr_first_name and proehr_last_name (not proehr_middle_name) and formatting them as Lastname, Firstname.  When the provider is an organization rather than an individual, this value may not correctly reflect the name due to this automated formatting. 
+      - name: provider_id_unscrubbed
+        description: >
+          ID of the provider who documented the medication, as specified in the clinical data source.  This value is scrubbed into the provider_id column. 
+      - name: dose
+        description: >
+          Description of the medication dosage, for example '1 tablet 50mg'.  This value is present in the pseudo-claims extract.
+      - name: route
+        description: >
+          Method of delivery
+      - name: instructions
+        description: >
+          Instructions provided for the medication.
+      - name: status
+        description: >
+          Status of the medication, indicating whether the patient is still taking this medication, e.g. 'Active', 'Inactive', 'Discontinued'.
+      - name: RxNorm
+        description: >
+          RxNorm concept unique identifier (RXCUI) for the documented medication, if the medication is specified using an RxNorm code instead of an NDC code.  Generally formatted as 1-7 numeric characters with no leading zeroes.  Drugs whose names map to the same RXCUI are taken to be the same drug and are identical as to ingredients, strengths, and dose forms. Conversely, drugs that differ in any of these particulars are conceptually distinct and will have different RXCUIs.
+      - name: orig_patient_id
+        description: >
+          ID of the relevant patient, as specified in the clinical data source.
+      - name: orig_originating_enc_id
+        description: >
+          ID of the originating encounter, as specified in the clinical data source.
+      - name: orig_updated_enc_id
+        description: >
+          ID of the encounter during which the list item was updated, as specified in the clinical data source.

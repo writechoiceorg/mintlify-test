@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: mem_ccsoverride
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'F2UPGRADE-2877' ]

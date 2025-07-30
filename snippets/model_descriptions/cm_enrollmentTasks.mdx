@@ -1,0 +1,51 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "cm_enrollmentTasks",
+      "description": "Tasks, notes, and assessments created in Arcadia Care Management are typically linked to a patient’s  active program enrollment(s). This table holds a many-to-many crosswalk between a program enrollment ID  (from [cm].[enrollments]) and the corresponding task IDs (from [cm].[userActivity]). Use this to aggregate care plan activity by care program. It is not required that every task have an enrollment association,  and some tasks may have more than one enrollment association.  \n",
+      "config": {
+        "tags": [
+          "cm"
+        ],
+        "frequencyDomain": "CARE MANAGEMENT"
+      },
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "FDR-1465"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "enrollmentId",
+          "description": "Arcadia’s internal identifier for the continuous program enrollment span, which can be used to link to [cm].[enrollmentMonthlyDetail]\n"
+        },
+        {
+          "name": "program",
+          "description": "Name of the care program attributed in the enrollment.\n"
+        },
+        {
+          "name": "taskId",
+          "description": "Arcadia’s internal identifier for the care management task.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1470"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};

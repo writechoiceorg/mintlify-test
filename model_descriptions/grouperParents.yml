@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: grouperParents
+    description: >
+      This is a lookup table containing rptGroupers and associated parentGrouper
+    config:
+      tags: [ 'lookup' ]
+    columns:
+      - name: rptGrouper
+        description: >
+          Arcadia's reporting grouper.
+      - name: parentGrouper
+        description: >
+          Arcadia's top-level claims grouper (e.g., “Inpatient”, “Outpatient”, “Ancillary”, etc.) 

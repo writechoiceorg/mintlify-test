@@ -1,0 +1,157 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "conditionRiskWorkflowV6",
+      "description": "A report of changes to risk condition status, including confirmation, denial, and supplemental or alternative evidence, as well as the user that took these actions. Only actions taken in V6.0+ Arcadia applications will surface here. \n",
+      "config": {
+        "tags": [
+          "application_usage_auditing"
+        ],
+        "frequencyDomain": "WEB"
+      },
+      "columns": [
+        {
+          "name": "riskYear",
+          "description": "The year treated as the current year against which risk calculations are run. Events that occur prior to this year contribute to open gaps and events that occur curing this year contribute to gap closure.\n"
+        },
+        {
+          "name": "personId",
+          "description": "Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.\n"
+        },
+        {
+          "name": "memberId",
+          "description": "Arcadia internal member_id, which can be used to join to [dbo].[v_plan_member] or [dbo].[personAttribution]. This identifier is subject to change over time.\n"
+        },
+        {
+          "name": "pcpNPI",
+          "description": "The NPI of the person's attributed PCP for the most recent attribution in the risk year.\n"
+        },
+        {
+          "name": "pcpName",
+          "description": "The full name of the person's attributed for the most recent attribution in the risk year.\n"
+        },
+        {
+          "name": "pcpGrouper1",
+          "description": "The health system-defined first-level of the person's attributed PCP for the most recent attribution in the risk year. This could be a practice, medical group, department, etc.\n"
+        },
+        {
+          "name": "pcpGrouper2",
+          "description": "The health system-defined second-level grouper of the attributed PCP for the most recent attribution in the risk year. This may be an ACO, region or market, or pod.\n"
+        },
+        {
+          "name": "pcpGrouper3",
+          "description": "The health system -defined isk Unit of the person's attributed PCP for the most recent attribution in the risk year. This may be an ACO, region or market, or pod.\n"
+        },
+        {
+          "name": "pcpGrouper4",
+          "description": "Additional groupers or provider attributes, as needed.\n"
+        },
+        {
+          "name": "pcpGrouper5",
+          "description": "Additional groupers or provider attributes, as needed.\n"
+        },
+        {
+          "name": "pcpGrouper6",
+          "description": "Additional groupers or provider attributes, as needed.\n"
+        },
+        {
+          "name": "planPayer",
+          "description": "The Payer for which the person is most recently eligible in the risk year.\n"
+        },
+        {
+          "name": "planProduct",
+          "description": "The Product for which the person is eligible most recently in the risk year.\n"
+        },
+        {
+          "name": "planFundingSource",
+          "description": "If applicable, the Funding Source associated with the person's most recent eligibility span in the risk year.\n"
+        },
+        {
+          "name": "atRiskFlag",
+          "description": "A 0/1 indicator that the person is at risk for a payer contract during the most recent eligibility span in the risk year.\n"
+        },
+        {
+          "name": "riskAlgorithm",
+          "description": "The risk algorithm applied.\n"
+        },
+        {
+          "name": "riskGroup",
+          "description": "The risk group for the risk condition, as defined by the risk algorithm. \n"
+        },
+        {
+          "name": "condition",
+          "description": "A description of the risk condition that applies to the given risk algorithm.\n"
+        },
+        {
+          "name": "conditionCategory",
+          "description": "Category for the risk condition, as defined by the risk algorithm.\n"
+        },
+        {
+          "name": "riskGapOpen",
+          "description": "Y/N indicator that the risk gap described has not been coded on a claim or in a connected EHR in the risk year.\n"
+        },
+        {
+          "name": "riskStatus",
+          "description": "The status of the risk gap as determined by user input from the Arcadia Analytics Risk Navigator.\n"
+        },
+        {
+          "name": "riskStatusPrimary",
+          "description": "A 0/1 indicator that the risk evidence is considered authoritative (primary) for the risk gap. \n"
+        },
+        {
+          "name": "workflowApp",
+          "description": "Source application of the risk condition record.\n"
+        },
+        {
+          "name": "riskDataSource",
+          "description": "The source of evidence for this condition. Possible sources include:\n    Current/Historical RAPS\n    Current/Historical Claim\n    Current/Historical Encounter\n    Problem List\n    Medications and Prescription\n    Labs and Observation\n  Not all sources are available in all configurations.\n"
+        },
+        {
+          "name": "riskDataSourceRank",
+          "description": "The rank of the data source, as presented in riskDataSource, above. Sources with lower rank supersede sources with higher rank.\n"
+        },
+        {
+          "name": "riskNotes",
+          "description": "The notes associated with the risk status as determined by user input from the Arcadia Analytics Risk Navigator.\n"
+        },
+        {
+          "name": "riskAlternateCode",
+          "description": "The code used to substantiate identified or imputed risk, if available.\n"
+        },
+        {
+          "name": "riskAlternateCodeType",
+          "description": "The code set of the code used to substantiate the identified or imputed risk, if available.\n"
+        },
+        {
+          "name": "riskAlternateCodeDescription",
+          "description": "The description of the code used to substantiate identified or imputed risk, if available.\n"
+        },
+        {
+          "name": "riskAlternateDate",
+          "description": "Date of the event substantiating the risk; if the event is from a longitudinal list (e.g. Problem or Medication List), this date represents the onset date.\n"
+        },
+        {
+          "name": "updatedDate",
+          "description": "The date risk status was last updated.\n"
+        },
+        {
+          "name": "userId",
+          "description": "Arcadia's internal identifier for the user.\n"
+        },
+        {
+          "name": "userUID",
+          "description": "UID of the user. \n"
+        },
+        {
+          "name": "username",
+          "description": "User's username typically email for legacy accounts).\n"
+        },
+        {
+          "name": "userFullName",
+          "description": "User's full name (Last, First).\n"
+        }
+      ]
+    }
+  ]
+};

@@ -1,0 +1,209 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "bdr_demographics",
+      "config": {
+        "tags": [
+          "bdr"
+        ],
+        "frequencyDomain": "BINDERY"
+      },
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "FDR-1386"
+              ]
+            }
+          }
+        },
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "ETL-1630"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "personId",
+          "description": "Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-1386"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "name",
+          "description": "The patient's full name (Last, First).\n"
+        },
+        {
+          "name": "MRN",
+          "description": "The patients MRN(s).\n"
+        },
+        {
+          "name": "memberNo",
+          "description": "If a plan record exists, the payer-supplied member identifier for the most recent eligibility record.\n"
+        },
+        {
+          "name": "activeInd",
+          "description": "A Y/N indicator that the person is considered \"Active\" based on indications in the EHR and the recency of past utilization.\n"
+        },
+        {
+          "name": "DOB",
+          "description": "The person's date of birth.\n"
+        },
+        {
+          "name": "deathDate",
+          "description": "If available and relevant, the person's death date.\n"
+        },
+        {
+          "name": "age",
+          "description": "The person's age (as of last data load).\n"
+        },
+        {
+          "name": "sex",
+          "description": "The person's sex.\n"
+        },
+        {
+          "name": "phone",
+          "description": "The primary phone on the most recently updated patient record.\n"
+        },
+        {
+          "name": "email",
+          "description": "If available, the most recently added email address for the patient.\n"
+        },
+        {
+          "name": "address1",
+          "description": "If available, the most recently added street address for the patient.\n"
+        },
+        {
+          "name": "address2",
+          "description": "If available, the most recently added second street address for the patient.\n"
+        },
+        {
+          "name": "city",
+          "description": "If available, the most recently added City for the patient.\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2062"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "state",
+          "description": "If available, the most recently added State for the patient.\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2062"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "ZIP",
+          "description": "If available, the most recently added Zip for the patient.\n"
+        },
+        {
+          "name": "GeoID",
+          "description": "The geocoded US Census Tract for the patient's address.\n"
+        },
+        {
+          "name": "censusBlock",
+          "description": "The geocoded US Census Block for the patient's address used to map to certain ACS variables or other GIS data.\n"
+        },
+        {
+          "name": "latitude",
+          "description": "The geocoded latitude of the patient's address.\n"
+        },
+        {
+          "name": "longitude",
+          "description": "The geocoded longitude of the patient's address.\n"
+        },
+        {
+          "name": "race",
+          "description": "The person race (if available, from the EHR and claims sources).\n"
+        },
+        {
+          "name": "ethnicity",
+          "description": "The person ethnicity (if available, from the EHR and claims sources).\n"
+        },
+        {
+          "name": "Language",
+          "description": "The person language (if available, from the EHR and claims sources).\n"
+        },
+        {
+          "name": "pcpNPI",
+          "description": "The NPI of the attributed PCP in the given month.\n"
+        },
+        {
+          "name": "pcpName",
+          "description": "The full name of the attributed PCP in the given month.\n"
+        },
+        {
+          "name": "pcpGrouper1",
+          "description": "The health system-defined first-level of the attributed PCP in the given month. This could be a practice, medical group, department, etc.\n"
+        },
+        {
+          "name": "pcpGrouper2",
+          "description": "The health system-defined second-level grouper of the attributed PCP in the given month. This may be an ACO, region or market, or pod.\n"
+        },
+        {
+          "name": "pcpGrouper3",
+          "description": "The health system -defined Risk Unit of the attributed PCP in the given month. This may be an ACO, region or market, or pod.\n"
+        },
+        {
+          "name": "pcpGrouper4",
+          "description": "Additional groupers or provider attributes, as needed.\n"
+        },
+        {
+          "name": "pcpGrouper5",
+          "description": "Additional groupers or provider attributes, as needed.\n"
+        },
+        {
+          "name": "pcpGrouper6",
+          "description": "Additional groupers or provider attributes, as needed.\n"
+        },
+        {
+          "name": "planPayer",
+          "description": "The Payer for which the person is eligible in the given month.\n"
+        },
+        {
+          "name": "planProduct",
+          "description": "The Product for which the person is eligible in the given month. This corresponds to the LOB in the connector spec.\n"
+        },
+        {
+          "name": "planFundingSource",
+          "description": "If applicable, the Funding Source for which the person is eligible in the given month. This corresponds to the product in the connector spec.\n"
+        },
+        {
+          "name": "atRiskFlag",
+          "description": "A 0/1 indicator that, in the given month, this member is considered \"At Risk\" for a payer contract. This column can be summed to generate aggregate numbers of at-risk patients, or used as a filter.\n"
+        }
+      ]
+    }
+  ]
+};

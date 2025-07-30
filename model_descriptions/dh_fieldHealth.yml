@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: dh_fieldHealth
+    config:
+      frequencyDomain: 'QC'

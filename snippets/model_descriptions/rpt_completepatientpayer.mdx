@@ -1,0 +1,19 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "rpt_completepatientpayer",
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "F2UPGRADE-4728"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+};

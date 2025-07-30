@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: personChronicConditions
+    description: > 
+      This table identifies persons with chronic conditions and aggregates diagnoses counts for both claims and EMR assessments related to the chronic condition, as well as surfaces the latest diagnosis date for the condition
+    config:
+      tags: [ 'care_quality_and_program_data' ]
+      frequencyDomain: 'CLINICAL'
+      statusDomain: 'Imm Details'
+    columns:
+      - name: PersonId
+        description: >
+         Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.  
+      - name: chronicConditionType
+        description: >
+         The chronic condition that has been identified as being associated with the person.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2062' ]
+      - name: claimDxCount
+        description: >
+         Count of the number of times that this chronic condition has been identified on a person's claim (in the past 36 months)
+      - name: latestClaimDiagDate
+        description: >
+          Most recent date that the chronic condition was present on a claim (in the past 36 months).
+      - name: assessmentDxCount
+        description: >
+         Count of the number of times that this chronic condition has been identified in the patient's clinical record (in the past 36 months)
+      - name: latestAssessmentDiagDate
+        description: >
+         The most recent date that the chronic condition was present in the person's clinical record (in the past 36 months)

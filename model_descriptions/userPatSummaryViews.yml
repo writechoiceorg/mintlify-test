@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: userPatSummaryViews
+    description: > 
+      A timestamped log of instances of Analytics users viewing specific Patient Summary Charts, with which user viewed which patient.
+    config:
+      tags: [ 'application_usage_auditing' ]
+      frequencyDomain: 'WEB'
+    columns:
+      - name: userId
+        description: > 
+          Arcadia's internal identifier for the user.
+      - name: userEmail
+        description: > 
+          User's email address.
+      - name: userFullName
+        description: > 
+          User's full name (Last, First).
+      - name: userIp
+        description: > 
+          IP address from which the user accessed the patient.  
+      - name: logType
+        description: > 
+          Type of user activity.
+      - name: loggedTimestamp
+        description: > 
+          Date and time the activity occurred.
+      - name: personId
+        description: > 
+          Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.  
+      - name: name
+        description: > 
+          Name of the patient whose summary was accessed.

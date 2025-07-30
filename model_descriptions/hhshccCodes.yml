@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: hhshccCodes
+    description: >
+      This is a lookup table containing Health and Human Services (HHS) Hierarchical Condition Categories (HCC) codes.
+    config:
+      tags: [ 'lookup' ]
+    columns:
+      - name: DxCode
+      - name: DxType
+      - name: Description
+      - name: Category
+      - name: Severity
+      - name: coefName

@@ -1,0 +1,112 @@
+version: 2
+
+models:
+  - name: personMeasureEvidenceAdditionalInfo
+    description: > 
+      This table surfaces the additional supporting evidence, if available, for specified quality measures enabled in Analytics. As available, there is one evidential event per person/period/measure/measure component. 
+      In the case of multiple events qualifying the person for the measure component, the event with the most recent service date is surfaced.
+    config:
+      tags: [ 'care_quality_and_program_data' ]
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: ['FDR-1514']
+
+    columns:
+      - name: PersonId
+        description: >
+          Arcadia's universal identifier for the patient/member
+          record. This identifier is subject to change over time.
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('v_patient')
+              field: person_id
+      - name: InitiativeId
+        description: >
+          Arcadia's internal identifier for the initiative that
+          contains the given measure.
+        data_tests:
+          - not_null
+          - relationships:
+              to: source('staging', 'qdw_web_Initiative')
+              field: InitiativeID
+      - name: MeasureId
+        description: >
+          Arcadia's internal identifier for the given measure.
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('web_InitiativeMeasure')
+              field: measureId
+      - name: InitiativeName
+        description: >
+          The name of the initiative that contains the given
+          measure as it appears in the Arcadia Analytics front
+          end.
+      - name: MeasureDisplayName
+        description: >
+          The name of the given measure as it appears in the
+          Arcadia Analytics front end.
+      - name: MeasureDescription
+        description: >
+          The description that appears when hovering over the
+          given measure in the Arcadia Analytics front end.
+      - name: PeriodName
+        description: >
+          The period for which the measure evidence values are
+          captured.
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('rpt_period')
+              field: name
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2060' ]
+      - name: PeriodType
+        description: >
+          The type of period for which the measure evidence
+          values are captured
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2060' ]
+      - name: PeriodStart
+        description: >
+          The first day of the calculated period.
+      - name: PeriodEnd
+        description: >
+          The last day of the calculated period.
+      - name: eligLag
+        description: >
+          The value of configured eligibility lag as it appears in the
+          Arcadia Analytics front end.
+      - name: activeLookback
+        description: >
+          The value of configured active lookback as it appears in the
+          Arcadia Analytics front end.
+      - name: measureRateInfo
+        description: >
+          The description of the measure rate as it appears in the
+          Arcadia Analytics front end.
+      - name: lastDataLoad
+        description: >
+          The date of last data load as it appears in the
+          Arcadia Analytics front end.
+      - name: sex
+        description: >
+          The value of the sex of the person as it appears in the
+          Arcadia Analytics front end.
+      - name: DOB
+        description: >
+          The value of the date of birth of the person as it appears in the
+          Arcadia Analytics front end.
+      - name: span
+        description: >
+          The value of the continuous enrollment period span as it appears in the
+          Arcadia Analytics front end.
+      - name: measureRunDate
+        description: >
+          The value of the measure runtime as it appears in the
+          Arcadia Analytics front end.

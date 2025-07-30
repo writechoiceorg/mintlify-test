@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: rpt_nextappointment
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'F2UPGRADE-1525' ]

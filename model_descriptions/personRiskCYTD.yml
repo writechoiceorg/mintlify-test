@@ -1,0 +1,74 @@
+version: 2
+
+models:
+  - name: personRiskCYTD
+    config:
+      tags: [ 'care_quality_and_program_data' ]
+      frequencyDomain: 'RISK SCORE PERIODS'
+    description: >
+      This table presents trending risk values calculated from the calendar year start to the end of each month. It contains
+      one record per person/algorithm/year/period end month. It reports the Closed, Claims-based Closed, Demographic,
+      and Total/Suggested risk at the end of each month as well as the Initial risk open at the calendar year start. The
+      initial risk can be used as a baseline for the other risk values in periodic analysis.
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: ['FDR-1514']
+    columns:
+      - name: personId
+        description: >
+          Arcadia's universal identifier for the patient/member record.
+          This identifier is subject to change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-723' ]
+          - relationships:
+              to: ref('v_patient')
+              field: person_id
+              meta:
+                requirement: [ 'FDR-723' ]
+      - name: riskAlgorithm
+        description: >
+          The risk algorithm applied.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-723' ]
+          - accepted_values:
+              values: [ 'HCC' ]
+              meta:
+                requirement: [ 'FDR-723' ]
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2058' ]
+      - name: startDate
+        description: >
+          Start date of the risk calculation.
+      - name: endDate
+        description: >
+          End date of the risk calculation.
+      - name: claimsRisk
+        description: >
+          The sum of all risk associated with risk closure events from
+          claims sources only that occurred during the calendar year to
+          date
+      - name: closedRisk
+        description: >
+          The sum of all risk associated with demographic factors and
+          risk closure events from claims or clinical sources that occurred
+          during the calendar year to date.
+      - name: totalRisk
+        description: >
+          The sum of all risk associated with demographic factors, risk
+          closure events, and other risk suspecting sources for the person
+          during the calendar year to date, including historical risk.
+      - name: demographicRisk
+        description: >
+          The sum of all risk associated with demographic factors for the
+          person during the trailing year, including historical risk.
+      - name: initialOpenRisk
+        description: >
+          Sum of all risk associated with demographic factors, risk closure
+          events, and other risk suspecting sources for the person before
+          the start date of the calendar year to date.

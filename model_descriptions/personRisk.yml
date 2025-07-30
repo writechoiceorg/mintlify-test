@@ -1,0 +1,318 @@
+version: 2
+
+models:
+  - name: personRisk
+    config:
+      tags: [ 'care_quality_and_program_data' ]
+      frequencyDomain: 'RISK ADJUSTMENT'
+    description: >
+      This table contains a detailed view of each person’s risk scores across all risk algorithms enabled in Arcadia. It
+      contains one record per person/algorithm/model/year/evidence, meaning there will be at least one record reflecting
+      every gap identified for each applicable model and for every source from which the risk element or gap was
+      identified. It also contains an example “event” of each gap from each source, which can include the data source name,
+      codes used, the date of the event, and the provider who rendered the service generating the record. The table
+      surfaces both the raw risk value associated with the condition* and the final calculated risk value, indicating exactly
+      which sources contribute to the final calculated risk value. (*ACG does not support condition-grain risk scores.)
+    data_tests:
+      - has_rls:
+          meta:
+            requirement: ['FDR-1514']
+    columns:
+      - name: riskYear
+        description: >
+          The year treated as the current year against which risk
+          calculations are run. Events that occur prior to this year
+          contribute to open gaps and events that occur curing this
+          year contribute to gap closure.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-716' ]
+      - name: personId
+        description: >
+          Arcadia's universal identifier for the patient/member record.
+          This identifier is subject to change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-716' ]
+          - relationships:
+              to: ref('v_patient')
+              field: person_id
+      - name: memberId
+        description: >
+          Arcadia internal member_id, which can be used to join to
+          [dbo].[v_plan_member] or [dbo].[personAttribution]. This
+          identifier is subject to change over time.
+      - name: memberNo
+        description: >
+          The payer-supplied member identifier, useful for cross
+          referencing against payer-supplied data sources.
+      - name: pcpNPI
+        description: >
+          The NPI of the person's attributed PCP for the most recent
+          attribution in the risk year.
+      - name: pcpName
+        description: >
+          The full name of the person's attributed for the most
+          recent attribution in the risk year.
+      - name: pcpGrouper1
+        description: >
+          The health system-defined first-level of the person's
+          attributed PCP for the most recent attribution in the risk
+          year. This could be a practice, medical group, department,
+          etc.
+      - name: pcpGrouper2
+        description: >
+          The health system-defined second-level grouper of the
+          attributed PCP for the most recent attribution in the risk
+          year. This may be an ACO, region or market, or pod.
+      - name: pcpGrouper3
+        description: >
+          The health system -defined isk Unit of the person's
+          attributed PCP for the most recent attribution in the risk
+          year. This may be an ACO, region or market, or pod.
+      - name: pcpGrouper4
+        description: >
+          Additional groupers or provider attributes, as needed.
+      - name: pcpGrouper5
+        description: >
+          Additional groupers or provider attributes, as needed.
+      - name: pcpGrouper6
+        description: >
+          Additional groupers or provider attributes, as needed.
+      - name: planPayer
+        description: >
+          The Payer for which the person is most recently eligible in
+          the risk year.
+      - name: planProduct
+        description: >
+          The Product for which the person is eligible most recently
+          in the risk year.
+      - name: planFundingSource
+        description: >
+          If applicable, the Funding Source associated with the
+          person's most recent eligibility span in the risk year.
+      - name: atRiskFlag
+        description: >
+          A 0/1 indicator that the person is at risk for a payer contract
+          during the most recent eligibility span in the risk year.
+      - name: riskAlgorithm
+        description: >
+          The risk algorithm applied.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2058' ]
+      - name: riskModel
+        description: >
+          A descriptor for the risk model to which the record applies.
+          Possible values differ by algorithm.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2058' ]
+      - name: riskGroup
+        description: >
+          The risk group for the risk condition, as defined by the risk
+          algorithm.
+      - name: condition
+        description: >
+          A description of the risk condition that applies to the given
+          risk algorithm.
+      - name: conditionCategory
+        description: >
+          Category for the risk condition, as defined by the risk
+          algorithm.
+      - name: riskScore
+        description: >
+          Risk score for this specific condition. This risk score value is
+          informational, and does not take into account hierarchical
+          codes or duplicate evidence. When summing risk values, use
+          the riskValueClosed and riskValueSuggested fields, below.
+          This field is populated only when condition-specific
+          coefficients are available.
+      - name: riskTotal
+        description: >
+          Total risk score for the person for the risk year. May include
+          factors not otherwise represented in this table. This value
+          repeats for each row and should not be used for
+          aggregation. To access closed, claims-based, and
+          suggested/total risk, use [dbo].[personRiskTotals].
+      - name: riskDataSource
+        description: >
+          The source of evidence for this condition. Possible sources
+          include:
+              Current/Historical RAPS
+              Current/Historical Claim
+              Current/Historical Encounter
+              Problem List
+              Medications and Prescription
+              Labs and Observation
+            Not all sources are available in all configurations.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2059' ]
+      - name: riskDataSourceRank
+        description: >
+          The rank of the data source, as presented in riskDataSource,
+          above. Sources with lower rank supersede sources with
+          higher rank.
+      - name: riskEventCode
+        description: >
+          The code used to substantiate identified or imputed risk, if
+          available.
+      - name: riskEventCodeType
+        description: >
+          The code set of the code used to substantiate the identified
+          or imputed risk, if available.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2058' ]
+      - name: riskEventCodeDescription
+        description: >
+          The description of the code used to substantiate identified
+          or imputed risk, if available.
+      - name: riskEventChronicInd
+        description: >
+          A 0/1 indicator that the diagnosis used to substantiate the
+          identified or imputed risk is a chronic condition.
+      - name: riskEventDate
+        description: >
+          Date of the event substantiating the risk; if the event is
+          from a longitudinal list (e.g. Problem or Medication List), this
+          date represents the onset date.
+      - name: riskEventProviderNPI
+        description: >
+          The NPI of the rendering provider associated with the event
+          most recently substantiating the risk, if available.
+      - name: riskEventProviderName
+        description: >
+          The name of the rendering provider associated with the
+          event most recently substantiating the risk, if available.
+      - name: riskEventLocation
+        description: >
+          The name of the location associated with the event most
+          recently substantiating the risk, if available.
+      - name: riskGapOpen
+        description: >
+          Y/N indicator that the risk gap described has not been coded
+          on a claim or in a connected EHR in the risk year.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2059' ]
+      - name: riskStatus
+        description: >
+          The status of the risk gap as determined by user input from
+          the Arcadia Analytics Risk Navigator.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2059' ]
+      - name: riskNotes
+        description: >
+          The notes associated with the risk status as determined by
+          user input from the Arcadia Analytics Risk Navigator.
+      - name: riskStatusUpdatedBy
+        description: >
+          The name of the user associated with the update of the risk
+          status in the Arcadia Analytics Risk Navigator.
+      - name: riskStatusUpdatedDate
+        description: >
+          The date risk status was updated in the Arcadia Analytics
+          Risk Navigator.
+      - name: riskValueClosed
+        description: >
+          The incremental risk score associated with this risk
+          condition. It is used for summing closed risk over one or
+          more individuals. Only records contributing to the final
+          closed risk have a non-zero value; duplicate or hierarchically
+          excluded records will show zero risk.
+      - name: riskValueSuggested
+        description: >
+          The incremental risk adjustment factor associated with this
+          risk condition. It is used for summing total/suggested risk
+          over one or more individuals. Only records contributing to
+          the final total risk have a non-zero value; duplicate or
+          hierarchically excluded records will show zero risk.
+      - name: riskValueAdjustedClosed
+        description: >
+          The incremental risk score associated with this risk
+          condition with a normalization factor and coding
+          adjustment factor applied. It is used for summing adjusted
+          closed risk over one or more individuals. Only records
+          contributing to the final closed risk have a non-zero value;
+          duplicate or hierarchically excluded records will show zero
+          risk. This field will only be populated for the HCC risk
+          algorithm. Beyond the HCC calculation, CMS releases a
+          normalization factor to account for increases in the overall
+          population's risk and a coding intensity factor is used for
+          Medicare Advantage beneficiaries by CMS to account for
+          the higher increase in risk for that population versus
+          "traditional" fee-for-service beneficiaries.
+      - name: riskValueAdjustedSuggested
+        description: >
+          The incremental risk adjustment factor associated with this
+          risk condition with a normalization factor and coding
+          adjustment factor applied. It is used for summing adjusted
+          total/suggested risk over one or more individuals. Only
+          records contributing to the final total risk have a non-zero
+          value; duplicate or hierarchically excluded records will show
+          zero risk. This field will only be populated for the HCC risk
+          algorithm. Beyond the HCC calculation, CMS releases a
+          normalization factor to account for increases in the overall
+          population's risk and a coding intensity factor is used for
+          Medicare Advantage beneficiaries by CMS to account for
+          the higher increase in risk for that population versus
+          "traditional" fee-for-service beneficiaries.
+      - name: riskValueClosedUnblended
+        description: >
+          The unblended incremental risk score associated with this
+          risk condition. It is used for summing closed risk over one or 
+          more individuals. Only records contributing to the final
+          closed risk have a non-zero value; duplicate or hierarchically
+          excluded records will show zero risk.
+      - name: riskValueSuggestedUnblended
+        description: >
+          The unblended incremental risk adjustment factor
+          associated with this risk condition. It is used for summing
+          total/suggested risk over one or more individuals. Only
+          records contributing to the final total risk have a non-zero
+          value; duplicate or hierarchically excluded records will show
+          zero risk.
+      - name: riskValueAdjustedClosedUnblended
+        description: >
+          The unblended incremental risk score associated with this
+          risk condition with a normalization factor and coding
+          adjustment factor applied. It is used for summing adjusted
+          closed risk over one or more individuals. Only records
+          contributing to the final closed risk have a non-zero value;
+          duplicate or hierarchically excluded records will show zero
+          risk. This field will only be populated for the HCC risk
+          algorithm. Beyond the HCC calculation, CMS releases a
+          normalization factor to account for increases in the overall
+          population’s risk and a coding intensity factor is used for
+          Medicare Advantage beneficiaries by CMS to account for
+          the higher increase in risk for that population versus
+          “traditional” fee-for-service beneficiaries.
+      - name: riskValueAdjustedSuggestedUnblended
+        description: >
+          The unblended incremental risk adjustment factor
+          associated with this risk condition with a normalization
+          factor and coding adjustment factor applied. It is used for
+          summing adjusted total/suggested risk over one or more
+          individuals. Only records contributing to the final total risk
+          have a non-zero value; duplicate or hierarchically excluded
+          records will show zero risk. This field will only be populated
+          for the HCC risk algorithm. Beyond the HCC calculation, CMS
+          releases a normalization factor to account for increases in
+          the overall population’s risk and a coding intensity factor is
+          used for Medicare Advantage beneficiaries by CMS to
+          account for the higher increase in risk for that population
+          versus “traditional” fee-for-service beneficiaries.
+      - name: origSourceId
+        description: >
+          The field represents an identifier for the original source of the data from the connector.

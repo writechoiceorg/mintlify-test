@@ -1,0 +1,527 @@
+version: 2
+
+models:
+  - name: memberMonthMetrics
+    description: >
+        This table contains person facts relevant for member month trending or contract grouped analytics.
+        There is one record per attribution member month within the previous three years where the member
+        is at risk under contract rules. Included in the aggregated member facts are chronic condition indicators,
+        total risk scores, utilization costs and counts, and demographic details. 
+    config:
+      statusDomain: 'Medical Claim'
+      frequencyDomain: 'MEDICAL ECONOMICS'
+    columns:
+      - name: personId	
+        description: >
+          Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.  
+      - name: memberId	
+        description: >
+          The Arcadia internal Member ID, which can be used to join against warehouse tables prefaced with "plan_" This identifier is subject to change over time.  
+      - name: yearMonth	
+        description: >
+          The combination of year and month of the given member month.
+      - name: startDate	
+        description: >
+          The first date/hour/minute of the given month.
+      - name: endDate	
+        description: >
+          The last date/hour/minute of the given month.
+      - name: startDate	
+        description: >
+          The first date/hour/minute of the given month.
+      - name: endDate	
+        description: >
+          The last date/hour/minute of the given month.
+      - name: pcpNPI	
+        description: >
+          The NPI of the attributed PCP in the given month.
+      - name: pcpName	
+        description: >
+          The full name of the attributed PCP in the given month.
+      - name: pcpGrouper1	
+        description: >
+          The health system-defined first-level of the attributed PCP in the given month. This could be a practice, medical group, department, etc.
+      - name: pcpGrouper2	
+        description: >
+          The health system-defined second-level grouper of the attributed PCP in the given month. This may be an ACO, region or market, or pod.
+      - name: pcpGrouper3 	
+        description: >
+          The health system -defined Risk Unit of the attributed PCP in the given month. This may be an ACO, region or market, or pod. 
+      - name: pcpGrouper4-6 	
+        description: >
+          Additional groupers or provider attributes, as needed. 
+      - name: planPayer 	
+        description: >
+          Payer for which the person is eligible in the given month. 
+      - name: planProduct 	
+        description: >
+          The Product for which the person is eligible in the given month. This corresponds to the LOB in the connector spec.
+      - name: planFundingSource 	
+        description: >
+          If applicable, the Funding Source for which the person is eligible in the given month. This corresponds to the product in the connector spec.
+      - name: memberMonth 	
+        description: >
+          A 0/1 indicator (or decimal for partial months) of coverage of a member during that month. By default this is '1' when the patient has eligibility during the 15th of a month, but can be configured otherwise. 
+      - name: atRiskFlag 	
+        description: >
+          A 0/1 indicator that, in the given month, this member is considered "At Risk" for a payer contract. This column can be summed to generate aggregate numbers of at-risk patients, or used as a filter. 
+      - name: name	
+        description: >
+          Patient's full name (Last, First)
+      - name: dob	
+        description: >
+          Patient date of birth.
+      - name: age	
+        description: >
+          Patient age as of the 15th of the month.
+      - name: sex	
+        description: >
+          Patient sex.
+      - name: deathDate 	
+        description: >
+          If available and relevant, the person's death date. 
+      - name: phone 	
+        description: >
+          The primary phone on the most recently updated patient record. 
+      - name: email 	
+        description: >
+          If available, the most recently added email address for the patient. 
+      - name: address 1 	
+        description: >
+          If available, the most recently added street address for the patient. 
+      - name: address 2 	
+        description: >
+          If available, the most recently added second street address for the patient. 
+      - name: city 	
+        description: >
+          If available, the most recently added City for the patient.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2062' ]
+      - name: state 	
+        description: >
+          If available, the most recently added State for the patient.
+        data_tests:
+          - column_values_are_in_uppercase:
+              meta:
+                requirement: [ 'FDR-2062' ]
+      - name: ZIP 	
+        description: >
+          If available, the most recently added Zip for the patient. 
+      - name: latitude	
+        description: >
+          The geocoded Latitude of the patient's address.
+      - name: longitude	
+        description: >
+          The geocoded Longitude of the patient's address.
+      - name: impactScore	
+        description: >
+          The Impact Score calculated for the patient. 
+      - name: impactScorePct	
+        description: >
+          The Impact Score percentile of the patient against all other patients in the entire population.
+      - name: deceasedInd	
+        description: >
+          A 0/1 indicator if the person is deceased. 
+      - name: topDegHS	
+        description: >
+          The percentage of people in the patients' Census Block Group without more than a High School Degree.
+      - name: belowPovertyLine	
+        description: >
+          The percentage of people in the patients' Census Block Group living below the poverty line.
+      - name: unemployment	
+        description: >
+          The percentage of people in the patients' Census Block Group reporting to be unemployed.
+      - name: publicAssistance	
+        description: >
+          The percentage of people in the patients' Census Block Group on public assistance.
+      - name: noCar	
+        description: >
+          The percentage of people in the patients' Census Block Group without access to a car.
+      - name: singleParent	
+        description: >
+          The percentage of households with children in the patient's Census Block Group with only a single live-in parent.
+      - name: vacancyRate	
+        description: >
+          The percentage of households in the patient's Census Block Group with vacancy.
+      - name: race 	
+        description: >
+          The person race (if available, from the EHR and claims sources). 
+      - name: ethnicity 	
+        description: >
+          The person ethnicity (if available, from the EHR and claims sources). 
+      - name: Language 	
+        description: >
+          The person language (if available, from the EHR and claims sources). 
+      - name: riskHCCTotalRisk	
+        description: >
+          The sum of all risk associated with demographic factors, risk closure events, and other risk suspecting sources for the person for the risk year for the HCC algorithm. 
+      - name: riskHCCClosed	
+        description: >
+          The sum of all risk associated with demographic factors and risk closure events from claims or clinical sources that occurred during the risk year for the HCC algorithm.
+      - name: riskHCCClaimsClosed	
+        description: >
+          The sum of all risk associated with risk closure events from claims sources only that occurred during the risk year for the HCC algorithm.
+      - name: riskHHSHCCTotalRisk	
+        description: >
+          The sum of all risk associated with demographic factors, risk closure events, and other risk suspecting sources for the person for the risk year for the HHSHCC algorithm. 
+      - name: riskHHSHCCClosed	
+        description: >
+          The sum of all risk associated with demographic factors and risk closure events from claims or clinical sources that occurred during the risk year for the HHSHCC algorithm.
+      - name: riskHHSHCCClaimsClosed	
+        description: >
+          The sum of all risk associated with risk closure events from claims sources only that occurred during the risk year for the HHSHCC algorithm.
+      - name: riskACGTotalRisk	
+        description: >
+          The sum of all risk associated with demographic factors, risk closure events, and other risk suspecting sources for the person for the risk year for the ACG algorithm. 
+      - name: riskACGClosed	
+        description: >
+          The sum of all risk associated with demographic factors and risk closure events from claims or clinical sources that occurred during the risk year for the ACG algorithm.
+      - name: riskACGClaimsClosed	
+        description: >
+          The sum of all risk associated with risk closure events from claims sources only that occurred during the risk year for the ACG algorithm.
+      - name: riskCDPSTotalRisk	
+        description: >
+          The sum of all risk associated with demographic factors, risk closure events, and other risk suspecting sources for the person for the risk year for the CDPS algorithm. 
+      - name: riskCDPSClosed	
+        description: >
+          The sum of all risk associated with demographic factors and risk closure events from claims or clinical sources that occurred during the risk year for the CDPS algorithm.
+      - name: riskCDPSClaimsClosed	
+        description: >
+          The sum of all risk associated with risk closure events from claims sources only that occurred during the risk year for the CDPS algorithm.
+      - name: demographicRiskChange	
+        description: >
+          The percent change in demographic risk from the previous year to the risk year of the given row.
+      - name: chronicConditionAsthmaInd	
+        description: >
+          A 0/1 indicator to flag whether the person has had evidence of asthma within the past 36 months. 
+      - name: chronicConditionESRDInd	
+        description: >
+          A 0/1 indicator to flag whether the person has had evidence of end stage renal disease within the past 36 months. 
+      - name: chronicConditionHFInd	
+        description: >
+          A 0/1 indicator to flag whether the person has had evidence of heart failure within the past 36 months. 
+      - name: chronicConditionCRFInd	
+        description: >
+          A 0/1 indicator to flag whether the person has had evidence of chronic renal failure within the past 36 months. 
+      - name: chronicConditionHypertensionInd	
+        description: >
+          A 0/1 indicator to flag whether the person has had evidence of hypertension within the past 36 months. 
+      - name: chronicConditionCancerInd	
+        description: >
+          A 0/1 indicator to flag whether the person has had evidence of cancer within the past 36 months. 
+      - name: chronicConditionCOPDInd	
+        description: >
+          A 0/1 indicator to flag whether the person has had evidence of COPD within the past 36 months. 
+      - name: chronicConditionDiabetesInd	
+        description: >
+          A 0/1 indicator to flag whether the person has had evidence of diabetes within the past 36 months. 
+      - name: costTotal	
+        description: >
+          Total medical and pharmacy costs in the given member month. 
+      - name: costTotalIbnr	
+        description: >
+          Total medical and pharmacy IBNR costs in the given member month.
+      - name: costMedical	
+        description: >
+          Total medical costs in the given member month.
+      - name: costMedicalIbnr	
+        description: >
+          Total medical IBNR costs in the given member month. 
+      - name: anyUtilizationInd	
+        description: >
+          A 0/1 indicator that indicates whether there is an inpatient, outpatient, or pharmacy event within the member month. 
+      - name: costIpInNetwork	
+        description: >
+          Total inpatient in network costs in the given member month. 
+      - name: costOpInNetwork	
+        description: >
+          Total outpatient in network costs in the given member month. 
+      - name: countIp	
+        description: >
+          Count of inpatient events in the given member month. 
+      - name: costIp	
+        description: >
+          Total cost of inpatient events in the given member month. 
+      - name: countIpASC	
+        description: >
+          Total count of ASC inpatient events in the given member month. 
+      - name: costIpIbnr	
+        description: >
+          Total IBNR costs of inpatient events in the given member month. 
+      - name: countIpBehavioralHealth	
+        description: >
+          Total count of Behavioral Health inpatient events in the given member month. 
+      - name: costIpBehavioralHealth	
+        description: >
+          Total cost of Behavioral Health inpatient events in the given member month. 
+      - name: countIpLtcRehab	
+        description: >
+          Total count of LTC Rehab inpatient events in the given member month. 
+      - name: costIpLtcRehab	
+        description: >
+          Total cost of LTC Rehab inpatient events in the given member month. 
+      - name: countIpMaternity	
+        description: >
+          Total count of Maternity inpatient events in the given member month. 
+      - name: costIpMaternity	
+        description: >
+          Total cost of Maternity inpatient events in the given member month. 
+      - name: countIpMedicalAdult	
+        description: >
+          Total count of Medical Adult inpatient events in the given member month. 
+      - name: costIpMedicalAdult	
+        description: >
+          Total cost of Medical Adult inpatient events in the given member month. 
+      - name: countIpMedicalPed	
+        description: >
+          Total count of Medical Pediatric inpatient events in the given member month. 
+      - name: costIpMedicalPed	
+        description: >
+          Total cost of Medical Pediatric inpatient events in the given member month. 
+      - name: countIpOther	
+        description: >
+          Total count of Other inpatient events in the given member month. 
+      - name: costIpOther	
+        description: >
+          Total cost of Other inpatient events in the given member month. 
+      - name: countIpSNF	
+        description: >
+          Total count of SNF inpatient events in the given member month. 
+      - name: costIpSNF	
+        description: >
+          Total cost of SNF inpatient events in the given member month. 
+      - name: countIpSNFDays	
+        description: >
+          Total amount of LOS days of SNF inpatient events in the given member month. 
+      - name: countIpSurgAdult	
+        description: >
+          Total count of Surgical Adult inpatient events in the given member month. 
+      - name: costIpSurgAdult	
+        description: >
+          Total cost of Surgical Adult inpatient events in the given member month. 
+      - name: countIpSurgPed	
+        description: >
+          Total count of Surgical Pediatric inpatient events in the given member month. 
+      - name: costIpSurgPed	
+        description: >
+          Total cost of Surgical Pediatric inpatient events in the given member month. 
+      - name: countIpDays	
+        description: >
+          Total amount of LOS days of inpatient events in the given member month.
+      - name: countIpAcute	
+        description: >
+          Total count of Acute inpatient events in the given member month. 
+      - name: countIpReadmission7	
+        description: >
+          Total count of 7-day readmission inpatient events in the given member month. 
+      - name: countIpReadmission14	
+        description: >
+          Total count of 14-day readmission inpatient events in the given member month. 
+      - name: countIpReadmission	
+        description: >
+          Total count of 30-day readmission inpatient events in the given member month. 
+      - name: countIpReadmission60	
+        description: >
+          Total count of 60-day readmission events in the given member month.
+      - name: countIpReadmission90	
+        description: >
+          Total count of 90-day readmission events in the given member month. 
+      - name: countIpEdAdmit	
+        description: >
+          Total count of ED Admit inpatient events in the given member month. 
+      - name: followUp7DayPcp
+        description: >
+          Total count of acute inpatient events that had a follow-up PCP visit within seven days in the given member month.
+      - name: followUP14DayTcm	
+        description: >
+          Total count of all inpatient events that had TCM within fourteen days in the given member month.
+          Arcadia uses these CPT codes to identify TCM visits: 99495, 99496.
+      - name: followUp14DayTcmMedSurg	
+        description: >
+          Total count of medical and surgical inpatient events that had TCM within fourteen days in the given member month.
+          Arcadia uses these CPT codes to identify TCM visits: 99495, 99496.
+      - name: countOp	
+        description: >
+          Total count of outpatient events in the given member month. 
+      - name: costOp	
+        description: >
+          Total cost of outpatient events in the given member month. 
+      - name: countOpASC	
+        description: >
+          Total count of ASC outpatient events in the given member month. 
+      - name: costOpIbnr	
+        description: >
+          Total IBNR costs of outpatient events in the given member month.  
+      - name: countOpAmbulance	
+        description: >
+          Total count of Ambulance outpatient events in the given member month. 
+      - name: costOpAmbulance	
+        description: >
+          Total cost of Ambulance outpatient events in the given member month. 
+      - name: countOpChemotherapy	
+        description: >
+          Total count of Chemotherapy outpatient events in the given member month. 
+      - name: costOpChemotherapy	
+        description: >
+          Total cost of Chemotherapy outpatient events in the given member month. 
+      - name: countOpClinicVisit	
+        description: >
+          Total count of Clinic Visit outpatient events in the given member month. 
+      - name: costOpClinicVisit	
+        description: >
+          Total cost of Clinic Visit outpatient events in the given member month. 
+      - name: countOpDME	
+        description: >
+          Total count of DME outpatient events in the given member month. 
+      - name: costOpDME	
+        description: >
+          Total cost of DME outpatient events in the given member month. 
+      - name: countOpEDVisit	
+        description: >
+          Total count of ED Visit outpatient events in the given member month. 
+      - name: costOpEDVisit	
+        description: >
+          Total cost of ED Visit outpatient events in the given member month. 
+      - name: countOpAvoidableED	
+        description: >
+          Total count of Avoidable ED outpatient events in the given member month. 
+      - name: countOpHomeHealth	
+        description: >
+          Total count of Home Health outpatient events in the given member month. 
+      - name: costOpHomeHealth	
+        description: >
+          Total cost of Home Health outpatient events in the given member month. 
+      - name: countOpHospice	
+        description: >
+          Total count of Hospice outpatient events in the given member month. 
+      - name: costOpHospice	
+        description: >
+          Total cost of Hospice outpatient events in the given member month. 
+      - name: countOpHospiceStays10DaysPlus	
+        description: >
+          Total count of Hospice outpatient events that lasted ten or more days in the given member month. 
+      - name: countOpHospiceStaysLessThan10Days	
+        description: >
+          Total count of Hospice outpatient events that lasted less than ten days in the given member month. 
+      - name: countOpLab	
+        description: >
+          Total count of Lab outpatient events in the given member month. 
+      - name: costOpLab	
+        description: >
+          Total cost of Lab outpatient events in the given member month. 
+      - name: countOpMedicalPharmacy	
+        description: >
+          Total count of Medical Pharmacy outpatient events in the given member month. 
+      - name: costOpMedicalPharmacy	
+        description: >
+          Total cost of Medical Pharmacy outpatient events in the given member month. 
+      - name: countOpObservation	
+        description: >
+          Total count of Observation outpatient events in the given member month. 
+      - name: costOpObservation	
+        description: >
+          Total cost of Observation outpatient events in the given member month. 
+      - name: countOpBehavioralHealth	
+        description: >
+          Total count of Behavioral Health outpatient events in the given member month. 
+      - name: costOpBehavioralHealth	
+        description: >
+          Total cost of Behavioral Health outpatient events in the given member month. 
+      - name: countOpProcedures	
+        description: >
+          Total count of Procedure outpatient events in the given member month. 
+      - name: costOpProcedures	
+        description: >
+          Total cost of Procedure outpatient events in the given member month. 
+      - name: countOpOther	
+        description: >
+          Total count of Other outpatient events in the given member month. 
+      - name: costOpOther	
+        description: >
+          Total cost of Other outpatient events in the given member month.
+      - name: countOpPCPVisit	
+        description: >
+          Total count of PCP Visit outpatient events in the given member month. 
+      - name: costOpPCPVisit	
+        description: >
+          Total cost of PCP Visit outpatient events in the given member month. 
+      - name: countOpPTOTST	
+        description: >
+          Total count of PTOTST outpatient events in the given member month. 
+      - name: costOpPTOTST	
+        description: >
+          Total cost of PTOTST outpatient events in the given member month. 
+      - name: countOpSpecialistVisit	
+        description: >
+          Total count of Specialist Visit outpatient events in the given member month. 
+      - name: costOpSpecialtyVisit	
+        description: >
+          Total cost of Specialist Visit outpatient events in the given member month. 
+      - name: countOpRadiology	
+        description: >
+          Total count of Radiology outpatient events in the given member month. 
+      - name: costOpRadiology	
+        description: >
+          Total cost of Radiology outpatient events in the given member month. 
+      - name: countOpAwv	
+        description: >
+          Total count of Annual Wellness Visit outpatient events in the given member month.
+          Arcadia uses these CPT codes to identify AWVs: G0402, G0438, G0439, G0468.
+      - name: countOpTelehealth	
+        description: >
+          Total count of Telehealth outpatient events in the given member month.
+          Arcadia identifies telehealth visits with CPT procedure modifier of ‘95’ or ‘GT’,
+          or the ccsCptMinor description of 'telehealth'.
+      - name: costOpTelehealth	
+        description: >
+          Total cost of Telehealth outpatient events in the given member month. 
+      - name: countRetailRx	
+        description: >
+          Total count of retail pharmacy events within the given member month. 
+      - name: costRetailRx	
+        description: >
+          Total cost of retail pharmacy events within the given member month.
+      - name: costRetailRxIbnr	
+        description: >
+          Total IBNR costs of retail pharmacy events within the given member month. 
+      - name: countRetailRxOpioid	
+        description: >
+          Total count of Opioid retail pharmacy events within the given member month.
+      - name: countRetailRxOpioidDays	
+        description: >
+          Total days supply for all Opioid retail pharmacy events within the given member month.
+      - name: countRetailRxProvider	
+        description: >
+          Total count of number of providers on retail pharmacy events within the given member month. 
+      - name: countRetailRxSpecialtyDrug	
+        description: >
+          Total count  of retail pharmacy events with a specialty drug within the given member month. 
+      - name: costRetailRxSpecialtyDrug	
+        description: >
+          Total cost  of retail pharmacy events with a specialty drug within the given member month.
+      - name: countRetailRxBrandDrug
+        description: >
+          Total count of retail pharmacy events with a brand-name drug within the given member month. 
+      - name: costRetailRxBrandDrug	
+        description: >
+          Total cost of retail pharmacy events with a brand-name drug within the given member month.
+      - name: countRetailRxGenericDrug
+        description: >
+          Total count of retail pharmacy events with a generic drug within the given member month
+      - name: costRetailRxGenericDrug
+        description: >
+          Total cost of retail pharmacy events with a generic drug within the given member month.
+      - name: lastVisitDate	
+        description: >
+          Date of last outpatient PCP, Clinic, or Specialist visit for the member before the end date of the member month within the current calendar year.
+      - name: lastVisitFacilityName	
+        description: >
+          Facility  name of last outpatient PCP, Clinic, or Specialist visit for the member before the end date of the member month within the current calendar year.
+      - name: lastVisitFacilityNPI	
+        description: >
+          Facility NPI of last outpatient PCP, Clinic, or Specialist visit for the member before the end date of the member month within the current calendar year.
+      - name: lastVisitProvider	
+        description: >
+          Provider name of last outpatient PCP, Clinic, or Specialist visit for the member before the end date of the member month within the current calendar year.

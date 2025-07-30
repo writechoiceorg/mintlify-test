@@ -1,0 +1,120 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "plan_claim_rx",
+      "description": "This table contains prescription claim information, including comprehensive information on the prescription, as well as information on the method and cost of the prescription fill. Note that each row in this table represents a distinct and complete pharmacy claim.  Unlike medical claims, which have both header and line components stored in separate tables, pharmacy claims are stored in a single table.\n",
+      "data_tests": [
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "FDR-1514"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "claim_rx_id",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-756"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "adjustment_status",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-756"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "drug_product_type_code",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-756"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "dosage_form_code",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-756"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "daw_code",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-756"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "submit_type_code",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-756"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "delete_ind",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-756"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+};

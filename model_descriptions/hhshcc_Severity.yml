@@ -1,0 +1,9 @@
+version: 2
+
+models:
+  - name: hhshcc_Severity
+    data_tests:
+      - model_column_capitalized_according_to_config:
+          identifier: 'qdw_hhshcc_Severity'
+          meta:
+            requirement: [ 'FDR-1999' ]

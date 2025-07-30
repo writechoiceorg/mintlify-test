@@ -1,0 +1,204 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "bdr_CMOutcomesTransitions",
+      "config": {
+        "tags": [
+          "bdr"
+        ],
+        "frequencyDomain": "BINDERY"
+      },
+      "data_tests": [
+        {
+          "not_empty": {
+            "meta": {
+              "requirement": [
+                "FDR-1391"
+              ]
+            }
+          }
+        },
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "ETL-1630"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "eventId",
+          "description": "The  Arcadia  internal  ID  for  the  event.  This  identifier  is  subject to change over time.\n"
+        },
+        {
+          "name": "admitDate",
+          "description": "If  the  event has duration,  the admit  date  from  Arcadia’s  inpatient chaining ruleset or the admit from the header.\n"
+        },
+        {
+          "name": "dischargeDate",
+          "description": "If the event has duration, the discharge date from  Arcadia’s inpatient chaining ruleset or the discharge from  the header.\n"
+        },
+        {
+          "name": "personId",
+          "description": "Arcadia's universal identifier for the patient/member record.  This identifier  is  subject  to  change  over time.\n"
+        },
+        {
+          "name": "planPayer",
+          "description": "The payer for the episode trigger event.\n"
+        },
+        {
+          "name": "planProduct",
+          "description": "The  Payer  for  which  the  person  is  most  recently  eligible   in the risk year.\n"
+        },
+        {
+          "name": "planFundingSource",
+          "description": "If  applicable, the  insurance  Funding  Source associated with the person’s  most recent eligibility span in the risk year.\n"
+        },
+        {
+          "name": "claimAtRisk",
+          "description": "A  0/1  indicator  that  the  event  should  be  considered  in financial  reporting on the risk-based contract. When both the claimant and the  service are “at-risk” this is  .\n"
+        },
+        {
+          "name": "claimMemberAtRisk",
+          "description": "A 0/1 indicator that the claimant is in a risk contract during the event.\n"
+        },
+        {
+          "name": "claimserviceatrisk",
+          "description": "A  0/1  indicator  that  the  event  should  be  considered  in financial reporting  on the risk-based contract. When both the claimant and the service are  “at-risk” this is  .\n"
+        },
+        {
+          "name": "readmissionIndex",
+          "description": "Using the same logic as the Readmission flag, indicates that  the  discharge  from  this   stay  led  to  a  readmission within  30  days.  This  is  used  to  attribute   user-defined readmission rates.\n"
+        },
+        {
+          "name": "followUp7DayInd",
+          "description": "A  0/1  indicator  that  a  primary  care follow  up  occurred  within  7  days   of the discharge from the trigger.\n"
+        },
+        {
+          "name": "drg",
+          "description": "For inpatient claims, the DRG code. Set to \"999\" when it does not apply. If MS-DRG,  only the DRG is displayed. If APR-  G  an “A-” is prepended to the code.\n"
+        },
+        {
+          "name": "drgDescription",
+          "description": "A description of the DRG.\n"
+        },
+        {
+          "name": "rptGrouper",
+          "description": "Arcadia's inpatient reporting grouper.\n"
+        },
+        {
+          "name": "pcpGrouper1",
+          "description": "The health system-defined first-level  of  the  person’s attributed  PCP  for   the  most  recent  attribution  in  the  risk year. This  could  be  a  practice,  medical  group, department, etc.\n"
+        },
+        {
+          "name": "pcpGrouper2",
+          "description": "The  health  system-defined  second-level  grouper  of  the attributed  PCP   for  the  most  recent  attribution  in  the  risk year. This may be an ACO,  region or market, or pod.\n"
+        },
+        {
+          "name": "pcpGrouper3",
+          "description": "The health system -defined   isk  Unit  of  the  person’s attributed  PCP  for   the  most  recent  attribution  in  the  risk year. This may be an ACO,  region or market, or pod.\n"
+        },
+        {
+          "name": "pcpGrouper4",
+          "description": "Additional groupers or provider attributes, as needed.\n"
+        },
+        {
+          "name": "pcpGrouper5",
+          "description": "Additional groupers or provider attributes, as needed.\n"
+        },
+        {
+          "name": "pcpGrouper6",
+          "description": "Additional groupers or provider attributes, as needed.\n"
+        },
+        {
+          "name": "pcpNPI",
+          "description": "The NPI of the person’s attributed PCP for the most recent attribution in the risk year.\n"
+        },
+        {
+          "name": "pcpName",
+          "description": "The full name of the person’s attributed for the most recent attribution in the risk year.\n"
+        },
+        {
+          "name": "enrollmentId",
+          "description": "Arcadia’s internal identifier for the continuous program enrollment span,   which  can  be  used  to  link  to [cm].[enrollmentMonthlyDetail].\n"
+        },
+        {
+          "name": "program",
+          "description": "Name of the care program attributed in the enrollment.\n"
+        },
+        {
+          "name": "enrolledDate",
+          "description": "Date the patient was enrolled in the care program.\n"
+        },
+        {
+          "name": "careManagerName",
+          "description": "Name of the assigned user. \n"
+        },
+        {
+          "name": "readmitq",
+          "description": "Not Applicable.\n"
+        },
+        {
+          "name": "qualif7day",
+          "description": "Not Applicable.\n"
+        },
+        {
+          "name": "matchpriority",
+          "description": "Not Applicable.\n"
+        },
+        {
+          "name": "rls_plansource",
+          "description": "Not Applicable.\n"
+        },
+        {
+          "name": "ed30",
+          "description": "Not Applicable.\n"
+        },
+        {
+          "name": "ip30",
+          "description": "Not Applicable.\n"
+        },
+        {
+          "name": "cost30",
+          "description": "Not Applicable.\n"
+        },
+        {
+          "name": "matchingenrollment",
+          "description": "Not Applicable.\n"
+        },
+        {
+          "name": "cmdischargedate",
+          "description": "Not Applicable.\n"
+        },
+        {
+          "name": "cmlengthenroll",
+          "description": "Not Applicable.\n"
+        },
+        {
+          "name": "bencost",
+          "description": "Not Applicable.\n"
+        },
+        {
+          "name": "bened",
+          "description": "Not Applicable.\n"
+        },
+        {
+          "name": "benip",
+          "description": "Not Applicable.\n"
+        },
+        {
+          "name": "benreadmit",
+          "description": "Not Applicable.\n"
+        },
+        {
+          "name": "benfollowup7",
+          "description": "Not Applicable.\n"
+        }
+      ]
+    }
+  ]
+};

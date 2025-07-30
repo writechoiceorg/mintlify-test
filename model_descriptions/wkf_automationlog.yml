@@ -1,0 +1,8 @@
+version: 2
+
+models:
+  - name: wkf_automationlog
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'F2UPGRADE-2825' ]

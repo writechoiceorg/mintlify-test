@@ -1,0 +1,122 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "eventDiagnosis",
+      "config": {
+        "tags": [
+          "utilization_and_expense_data"
+        ],
+        "statusDomain": "Medical Claim",
+        "frequencyDomain": "MEDICAL ECONOMICS"
+      },
+      "description": "This view maps the output of the Arcadia Claims Grouper to the complete array of diagnosis codes billed during that event, in addition to the primary diagnoses that appear in the medical events tables. A ranking is applied based on whether the claim was a trigger, the proximity of the claim, the cost of the claim, and the diagnosis line/sequence number within that claim.\n",
+      "data_tests": [
+        {
+          "has_rls": {
+            "meta": {
+              "requirement": [
+                "FDR-1514"
+              ]
+            }
+          }
+        }
+      ],
+      "columns": [
+        {
+          "name": "eventID",
+          "description": "The Arcadia internal ID of the IP or OP event after roll-up. Join to [dbo].[inpatientEvents] or [dbo].[outpatientEvents] for the rolled up event record. This identifier is subject to change over time.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-918"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "claimDxId",
+          "description": "The Arcadia internal Claim Diagnosis ID, which can be used to link to [dbo].[v_plan_claim_diagnosis]. Every diagnosis should have exactly one record in this table.\n",
+          "data_tests": [
+            {
+              "not_null": {
+                "meta": {
+                  "requirement": [
+                    "FDR-918"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "claimHeaderId",
+          "description": "The Arcadia internal Claim Header ID, which can be used to link to [dbo].[v_plan_claim_header] or [dbo].[v_plan_claim_diagnosis].\n"
+        },
+        {
+          "name": "personId",
+          "description": "Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.\n"
+        },
+        {
+          "name": "memberId",
+          "description": "The Arcadia internal member ID, which can be used to link to [dbo].[v_plan_member] or [dbo].[personAttribution]. This is a useful key, as those with dual eligibility may have multiple memberIds active for a single Arcadia “personId” This identifier is subject to change over time.\n"
+        },
+        {
+          "name": "triggerInd",
+          "description": "A 0/1 indicator that the claim header associated with this diagnosis was on a trigger for the event rollup.\n"
+        },
+        {
+          "name": "dxCode",
+          "description": "The billed diagnosis code value.\n"
+        },
+        {
+          "name": "dxCodeType",
+          "description": "The billed diagnosis code set.\n",
+          "data_tests": [
+            {
+              "column_values_are_in_uppercase": {
+                "meta": {
+                  "requirement": [
+                    "FDR-2063"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "name": "dxCodeDescription",
+          "description": "A text description of the diagnosis code.\n"
+        },
+        {
+          "name": "ccsDxMinor",
+          "description": "The bottom-level categorization of the of the primary diagnosis code, based on the AHRQ CCS classification system.\n"
+        },
+        {
+          "name": "ccsDxMajor",
+          "description": "The top-level categorization of the primary diagnosis code, based on the AHRQ CCS classification system.\n"
+        },
+        {
+          "name": "dxLineNo",
+          "description": "The original line number of the diagnosis within the claim. If diagnoses are not linked to claim lines in the claims feed, this value will be 0.\n"
+        },
+        {
+          "name": "dxSeqNo",
+          "description": "The original sequence number of the diagnosis within the claim.\n"
+        },
+        {
+          "name": "dxRank",
+          "description": "The Arcadia generated rank of all the event's contributing diagnoses from most to least significant based on whether the claim was a trigger, the proximity of the claim, the cost of the claim, and the diagnosis line/sequence number within that claim.\n"
+        },
+        {
+          "name": "origSourceId",
+          "description": "The field represents an identifier for the original source of the data from the connector.\n"
+        }
+      ]
+    }
+  ]
+};

@@ -1,0 +1,10 @@
+version: 2
+
+models:
+    - name: rpt_PlanPCPEndOfYear
+      description: >
+          Plan of pcp end of year
+      data_tests:
+          - not_empty:
+                meta:
+                    requirement: [ 'ETL-836' ]

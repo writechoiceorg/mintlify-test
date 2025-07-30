@@ -1,0 +1,78 @@
+version: 2
+
+models:
+  - name: cm_enrollmentMonthlyDetail
+    description: >
+      This table presents monthly care program enrollment data in a similar tending presentation to [personAttribution]. 
+      There is one record per “enrollee month,” in a 4 year lookback period with summable flags for the enrollee’s status in the program as well as responsible care manager. 
+      Almost all monthly trending analysis of program enrollment, and care manager panel activity should use this table as its foundation.
+    config:
+      tags: [ 'cm' ]
+      frequencyDomain: 'CARE MANAGEMENT'
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: [ 'FDR-1464' ]
+      - has_rls:
+          meta:
+            requirement: [ 'ETL-1239' ]
+    columns:
+      - name: personId
+        description: >
+          Arcadia's universal identifier for the patient/member
+          record. This identifier is subject to change over time.
+        data_tests:
+          - not_null:
+             meta:
+              requirement: [ 'FDR-1464' ]
+      - name: name
+        description: >
+          patient's full name
+      - name: dob
+        description: >
+          patient date of birth
+      - name: age
+        description: >
+          Patient age as of the 15th of the month.
+      - name: sex
+        description: >
+          patient sex
+      - name: enrollmentId
+        description: >
+          Arcadia’s internal identifier for the continuous program enrollment span
+      - name: careManagerId
+        description: >
+          Arcadia’s internal identifier for the care manager user assigned to the case.
+      - name: careManagerName
+        description: >
+          Name of the assigned user.
+      - name: careManagerEmail
+        description: >
+          Email of the assigned user.
+      - name: careManagerRole
+        description: >
+          Care Management role of the assigned user.
+      - name: periodStart
+        description: >
+          month start date.
+      - name: periodEnd
+        description: >
+          month end date.
+      - name: program
+        description: >
+          Name of the care program attributed in the enrollment.
+      - name: identifiedInd
+        description: >
+            A 0/1 indicator that the person was identified for the care program during the month.
+      - name: enrolledInd
+        description: >
+          A 0/1 indicator that the person is enrolled through the end of the month. Can be summed for enrollee-month counts
+      - name: newlyEnrolledInd
+        description: >
+          A 0 indicator that the person’s enrollment started during the month.
+      - name: dischargedInd
+        description: >
+          A 0/1 indicator that the person was discharge from the program during the month.
+      - name: daysEnrolled
+        description: >
+          No.of days enrolled for the program

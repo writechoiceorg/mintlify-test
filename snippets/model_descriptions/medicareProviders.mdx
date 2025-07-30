@@ -1,0 +1,112 @@
+export const schema = {
+  "version": 2,
+  "models": [
+    {
+      "name": "medicareProviders",
+      "description": "This is a lookup table with information about Medicare providers\n",
+      "config": {
+        "tags": [
+          "lookup"
+        ]
+      },
+      "columns": [
+        {
+          "name": "providerCCN",
+          "description": "The CMS Certification Number of the facility.\n"
+        },
+        {
+          "name": "facilityName",
+          "description": "The name of the facility.\n"
+        },
+        {
+          "name": "providerType",
+          "description": "The type of the facility.\n"
+        },
+        {
+          "name": "providerSubtype",
+          "description": "The sub-type of the facility.\n"
+        },
+        {
+          "name": "addressStreet",
+          "description": "The street address of the facility.\n"
+        },
+        {
+          "name": "addressCity",
+          "description": "The city of the facility.\n"
+        },
+        {
+          "name": "addressState",
+          "description": "The state of the facility.\n"
+        },
+        {
+          "name": "addressZip",
+          "description": "The ZIP code of the facility.\n"
+        },
+        {
+          "name": "addressFips",
+          "description": "The Federal Information Processing Standards 3-digit code for the county of the organization address.\n"
+        },
+        {
+          "name": "phone",
+          "description": "The phone number for the facility.\n"
+        },
+        {
+          "name": "fax",
+          "description": "The fax number for the facility.\n"
+        },
+        {
+          "name": "certificationDate",
+          "description": "Date of issue for the CCN, when the facility was CMS certified.\n"
+        },
+        {
+          "name": "eligible",
+          "description": "A Y/N indicator for whether the facility is currently a Medicare eligible organization.\n"
+        },
+        {
+          "name": "intermediary",
+          "description": "The fiscal intermediary for the organization.\n"
+        },
+        {
+          "name": "cmsRegion",
+          "description": "The CMS region with which the facility is affiliated.\n"
+        },
+        {
+          "name": "ownershipType",
+          "description": "Whether the facility privately, publicly, or otherwise funded and owned.\n"
+        },
+        {
+          "name": "urbanRural",
+          "description": "An indicator for whether the facility is in a rural or urban area.\n"
+        },
+        {
+          "name": "bedCount",
+          "description": "The number of beds in the facility.\n"
+        },
+        {
+          "name": "operatingRoomCount",
+          "description": "The number of operating rooms in the facility.\n"
+        },
+        {
+          "name": "swingBeds",
+          "description": "A description of the number of swing beds in the facility.\n"
+        },
+        {
+          "name": "provCountNP",
+          "description": "The number of nurse practitioners at the facility.\n"
+        },
+        {
+          "name": "provCountMD",
+          "description": "The number of physicians at the facility.\n"
+        },
+        {
+          "name": "provCountPA",
+          "description": "The number of physicians’ assistants at the facility.\n"
+        },
+        {
+          "name": "provCountRN",
+          "description": "The number of registered nurses at the facility.\n"
+        }
+      ]
+    }
+  ]
+};

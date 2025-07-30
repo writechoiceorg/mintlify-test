@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: cm_enrollmentCareTeam
+    description: >
+     This table presents all care team members associated with an enrollment in a program. 
+     This includes care team members with and without a user record in Arcadia. 
+    config:
+      tags: [ 'cm' ]
+      frequencyDomain: 'CARE MANAGEMENT'
+    data_tests:
+      - not_empty:
+          meta:
+            requirement: ['FDR-1463']
+      - has_rls:
+          meta:
+            requirement: [ 'ETL-1239' ]
+    columns:
+      - name: enrollmentId
+        description: >
+          Arcadia's internal identifier for the continuous program enrollment span, which can be used to link to [cm].[enrollmentMonthlyDetail].
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1463' ]
+      - name: program
+        description: >
+          Name of the care program attributed in the enrollment.
+      - name: personId
+        description: >
+          Arcadia's universal identifier for the patient/member record. This identifier is subject to change over time.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1463' ]
+      - name: careManagerId
+        description: >
+          Arcadia's internal identifier for the care manager user assigned to the case.
+        data_tests:
+          - not_null:
+              meta:
+                requirement: [ 'FDR-1463' ]
+      - name: careManagerName
+        description: >
+          Name of the assigned user.
+      - name: careManagerEmail
+        description: >
+          Email of the assigned user.
+      - name: phone
+        description: >
+          If available the user's phone number.
+      - name: careManagerRole
+        description: >
+          Care Management role of the assigned user.
+      - name: autoAssignedCareManagerInd
+        description: >
+          A 0/1 indicator that the care manager was auto assigned to the enrollments
