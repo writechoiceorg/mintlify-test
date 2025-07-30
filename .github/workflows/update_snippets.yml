@@ -3,7 +3,7 @@ name: Update MDX Snippets
 on:
   push:
     paths:
-      - "arcadia-yaml/**"
+      - "model_descriptions/**"
   workflow_dispatch:
 
 jobs:
