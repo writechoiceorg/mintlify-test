@@ -1,103 +1,123 @@
+// convert-with-column-check.js
+
 const fs = require("fs");
 const path = require("path");
 const yaml = require("js-yaml");
 
 //
-// CONFIG — adjust these if you need to change folder names
+// CONFIG — adjust these folder names if needed
 //
-const filepath = "model_descriptions";
-const baseInput = path.join(process.cwd(), filepath);
-const baseSnippetOutput = path.join(process.cwd(), "snippets", filepath);
-const basePageOutput = path.join(process.cwd(), "pages", filepath);
+const SRC_DIR = path.join(process.cwd(), "model_descriptions");
+const SNIPPET_DIR = path.join(process.cwd(), "snippets", "model_descriptions");
+const PAGE_DIR = path.join(process.cwd(), "pages", "model_descriptions");
+const REPORT_OK_PATH = path.join("report.json");
+const REPORT_FAIL_PATH = path.join("broken.json");
 
-//
-// will collect all generated page MDX paths (relative to cwd)
-//
 const generatedPages = [];
+const brokenYamls = [];
 
 /**
- * Recursively walks inputDir, parses every .yml/.yaml file,
- * writes:
- *   1) a snippet MDX under snippetDir
- *   2) a page MDX under pageDir, with frontmatter + imports
+ * Returns true if every `parsed.models` entry has a non‑empty `columns` array
  */
-function convertYamlToMdx(inputDir, snippetDir, pageDir) {
-  const entries = fs.readdirSync(inputDir, { withFileTypes: true });
+function hasColumns(parsed) {
+  if (!Array.isArray(parsed.models) || parsed.models.length === 0) {
+    return false;
+  }
+  return parsed.models.every((m) => Array.isArray(m.columns) && m.columns.length > 0);
+}
 
-  for (const entry of entries) {
-    const inputPath = path.join(inputDir, entry.name);
+/**
+ * Walk `dir`, for each .yml/.yaml:
+ *  - parse & check columns
+ *  - if OK: emit snippet + page MDX, record its page path
+ *  - if missing columns: record the YAML in brokenYamls
+ */
+function walkAndConvert(dir, snippetDir, pageDir) {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const fullSrc = path.join(dir, entry.name);
 
     if (entry.isDirectory()) {
-      // recurse into sub‑folders
-      convertYamlToMdx(inputPath, path.join(snippetDir, entry.name), path.join(pageDir, entry.name));
+      walkAndConvert(fullSrc, path.join(snippetDir, entry.name), path.join(pageDir, entry.name));
       continue;
     }
 
-    if (!entry.isFile() || !/\.ya?ml$/i.test(entry.name)) continue;
+    if (!/\.ya?ml$/i.test(entry.name)) {
+      continue;
+    }
 
-    // determine output filenames
-    const outputName = entry.name.replace(/\.ya?ml$/i, ".mdx");
-    const snippetOutputPath = path.join(snippetDir, outputName);
-    const pageOutputPath = path.join(pageDir, outputName);
+    // load + parse
+    let parsed;
+    try {
+      parsed = yaml.load(fs.readFileSync(fullSrc, "utf-8"));
+    } catch (e) {
+      console.warn(`⚠️  Invalid YAML, skipping: ${fullSrc}`);
+      brokenYamls.push(path.relative(process.cwd(), fullSrc).replace(/\\/g, "/"));
+      continue;
+    }
 
-    // --- 1) Snippet MDX ---
-    const raw = fs.readFileSync(inputPath, "utf-8");
-    const parsed = yaml.load(raw);
+    // check columns only
+    if (!hasColumns(parsed)) {
+      console.log(`❌  Missing columns, skipping: ${fullSrc}`);
+      brokenYamls.push(path.relative(process.cwd(), fullSrc).replace(/\\/g, "/"));
+      continue;
+    }
 
-    const jsonString = JSON.stringify(parsed, null, 2);
-    const snippetContent = `export const schema = ${jsonString};\n`;
+    // prepare names
+    const baseName = entry.name.replace(/\.ya?ml$/i, "");
+    const snippetOut = path.join(snippetDir, `${baseName}.mdx`);
+    const pageOut = path.join(pageDir, `${baseName}.mdx`);
 
-    fs.mkdirSync(path.dirname(snippetOutputPath), { recursive: true });
-    fs.writeFileSync(snippetOutputPath, snippetContent, "utf-8");
-    console.log(`✅ Snippet: ${inputPath} → ${snippetOutputPath}`);
+    // 1) Snippet MDX
+    const schemaJson = JSON.stringify(parsed, null, 2);
+    const snippetMd = `export const schema = ${schemaJson};\n`;
+    fs.mkdirSync(path.dirname(snippetOut), { recursive: true });
+    fs.writeFileSync(snippetOut, snippetMd, "utf-8");
 
-    // --- 2) Page MDX ---
-    // extract title from parsed.models[0].name, fallback to filename
-    let title = path.basename(outputName, ".mdx");
-    if (parsed && Array.isArray(parsed.models) && parsed.models[0] && typeof parsed.models[0].name === "string") {
+    // 2) Page MDX
+    let title = baseName;
+    if (parsed.models[0] && typeof parsed.models[0].name === "string") {
       title = parsed.models[0].name;
     }
 
-    // build import path to snippet
-    const rel = path
-      .relative(baseInput, inputPath)
-      .replace(/\\/g, "/")
-      .replace(/\.ya?ml$/i, ".mdx");
-    const snippetImportPath = `/snippets/${filepath}/${rel}`;
+    const relSnippetPath = path.relative(path.join(process.cwd(), "snippets"), snippetOut).replace(/\\/g, "/");
 
-    const pageContent = `---
+    const pageMd = `---
 title: ${title}
 ---
 
 import {SchemaToTable} from "/snippets/SchemaToTable.mdx";
-import {schema} from "${snippetImportPath}";
+import {schema} from "/snippets/${relSnippetPath}";
 
 <SchemaToTable schema={schema} />
 `;
+    fs.mkdirSync(path.dirname(pageOut), { recursive: true });
+    fs.writeFileSync(pageOut, pageMd, "utf-8");
 
-    fs.mkdirSync(path.dirname(pageOutputPath), { recursive: true });
-    fs.writeFileSync(pageOutputPath, pageContent, "utf-8");
-    console.log(`✅ Page:    ${pageOutputPath}`);
+    const relPage = path.relative(process.cwd(), pageOut).replace(/\\/g, "/");
+    generatedPages.push(relPage);
 
-    // record it (relative to cwd)
-    generatedPages.push(path.relative(process.cwd(), pageOutputPath));
+    console.log(`✅  Generated: ${relPage}`);
   }
 }
 
 function main() {
-  if (!fs.existsSync(baseInput)) {
-    console.error(`❌ Input folder "${baseInput}" does not exist.`);
+  if (!fs.existsSync(SRC_DIR)) {
+    console.error(`❌  Source directory not found: ${SRC_DIR}`);
     process.exit(1);
   }
 
-  // run conversion
-  convertYamlToMdx(baseInput, baseSnippetOutput, basePageOutput);
+  walkAndConvert(SRC_DIR, SNIPPET_DIR, PAGE_DIR);
 
-  // write report.json in your snippets folder
-  const report = { pages: generatedPages };
-  const reportPath = path.join(baseSnippetOutput, "report.json");
-  fs.writeFileSync(reportPath, JSON.stringify(report, null, 2), "utf-8");
-  console.log(`📄 Report:  ${reportPath}`);
+  // Write the “working” report
+  fs.mkdirSync(path.dirname(REPORT_OK_PATH), { recursive: true });
+  fs.writeFileSync(REPORT_OK_PATH, JSON.stringify({ pages: generatedPages }, null, 2), "utf-8");
+  console.log(`📄  report.json written: ${REPORT_OK_PATH}`);
+
+  // Write the “broken” report
+  fs.writeFileSync(REPORT_FAIL_PATH, JSON.stringify({ broken: brokenYamls }, null, 2), "utf-8");
+  console.log(`📄  broken.json written: ${REPORT_FAIL_PATH}`);
+
+  console.log(`✔️  Done: ${generatedPages.length} pages, ${brokenYamls.length} broken.`);
 }
 
 main();
